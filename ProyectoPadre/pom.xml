@@ -61,4 +61,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<modules>
+		<module>ProyectoPersistencia</module>
+	</modules>
 </project>
