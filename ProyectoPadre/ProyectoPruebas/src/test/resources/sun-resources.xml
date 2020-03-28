@@ -7,8 +7,7 @@ Definitions //EN" "http://www.sun.com/software/appserver/dtds/sun-resources_1_3.
 		res-type="javax.sql.DataSource">
 		<property name="user" value="root" />
 		<property name="password" value="root" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/prueba" />
+		<property name="url" value="jdbc:mysql://localhost:3306/prueba" />
 	</jdbc-connection-pool>
 	<jdbc-resource enabled="true" jndi-name="jdbc/prueba"
 		object-type="user" pool-name="mysql_prueba_pool" />
