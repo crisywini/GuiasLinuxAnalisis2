@@ -19,6 +19,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import co.edu.uniquindio.ejemploe.Estudiante;
 import co.edu.uniquindio.entidades.Genero;
 import co.edu.uniquindio.entidades.PersonaEntidades;
 
@@ -31,7 +32,7 @@ public class ModeloTest {
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap.create(WebArchive.class,
 
-				"prueba.war").addPackage(PersonaEntidades.class.getPackage()).addAsResource("persistenceForTest.xml",
+				"prueba.war").addPackage(Estudiante.class.getPackage()).addAsResource("persistenceForTest.xml",
 
 						"META-INF/persistence.xml")
 
@@ -43,7 +44,7 @@ public class ModeloTest {
 	}
 
 	@Test
-	@Transactional(value = TransactionMode.COMMIT)
+	@Transactional(value = TransactionMode.ROLLBACK)
 	/**
 	 * La manera de ejecutar la prueba: en Modo COMMIT comprueba que la inserción en
 	 * la base de datos sea correcta y deja la persona guardada, en modo ROLLBACK lo
