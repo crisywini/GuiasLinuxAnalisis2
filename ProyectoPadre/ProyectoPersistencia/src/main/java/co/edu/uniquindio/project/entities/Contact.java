@@ -20,8 +20,12 @@ public class Contact implements Serializable {
 	private String subject;
 	private String content;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false)
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
 	private Date date;
+	@ManyToOne
+	private Project projectCode;
+	@ManyToOne
+	private Client clientCode;
 	private static final long serialVersionUID = 1L;
 
 	public Contact() {
@@ -58,6 +62,22 @@ public class Contact implements Serializable {
 
 	public void setCode(int code) {
 		this.code = code;
+	}
+
+	public Project getProjectCode() {
+		return projectCode;
+	}
+
+	public void setProjectCode(Project projectCode) {
+		this.projectCode = projectCode;
+	}
+
+	public Client getClientCode() {
+		return clientCode;
+	}
+
+	public void setClientCode(Client clientCode) {
+		this.clientCode = clientCode;
 	}
 
 }

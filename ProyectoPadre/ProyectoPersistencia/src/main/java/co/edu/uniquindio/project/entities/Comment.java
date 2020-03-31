@@ -18,6 +18,10 @@ public class Comment implements Serializable {
 	private int code;
 	private String comment;
 	private Date date;
+	@ManyToOne
+	private Client clientCode;
+	@ManyToOne
+	private Project projectCode;
 	private static final long serialVersionUID = 1L;
 
 	public Comment() {
@@ -46,6 +50,22 @@ public class Comment implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public Client getClientCode() {
+		return clientCode;
+	}
+
+	public void setClientCode(Client clientCode) {
+		this.clientCode = clientCode;
+	}
+
+	public Project getProjectCode() {
+		return projectCode;
+	}
+
+	public void setProjectCode(Project projectCode) {
+		this.projectCode = projectCode;
 	}
 
 }

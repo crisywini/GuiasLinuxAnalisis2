@@ -2,13 +2,15 @@ package co.edu.uniquindio.project.entities;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.*;
 
 /**
  * Entity implementation class for Entity: EstateAgency
- *
+ * 
+ * @author crisisanchezp
  */
 @Entity
 
@@ -20,6 +22,8 @@ public class EstateAgency extends User implements Serializable {
 	@ElementCollection
 	private Map<String, String> advisor;// Asesor inmobiliario el cual el primero es el nombre y el segundo es el numero
 										// de telefono
+	@OneToMany(mappedBy = "estateAgency") // Esta entidad es la no propietaria
+	private List<Project> projects;
 	private static final long serialVersionUID = 1L;
 
 	public EstateAgency() {
@@ -48,6 +52,14 @@ public class EstateAgency extends User implements Serializable {
 
 	public void setAdvisor(Map<String, String> advisor) {
 		this.advisor = advisor;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
 
 }

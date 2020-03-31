@@ -4,6 +4,8 @@ import co.edu.uniquindio.project.entities.User;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +19,14 @@ public class Client extends User implements Serializable {
 	private String completeName;
 	private String phoneNumber;
 	private Date dateOfBirth;
+	@OneToMany(mappedBy = "clientCode")
+	private List<Contact> contacts;
+	@OneToMany(mappedBy = "clientCode")
+	private List<Comment> comments;
+	@OneToMany(mappedBy = "clientRating")
+	private List<Rating> ratings;
+	@ManyToMany
+	private List<Project> favoriteProjects;// Esta es la entidad propietaria
 	private static final long serialVersionUID = 1L;
 
 	public Client() {
@@ -45,6 +55,38 @@ public class Client extends User implements Serializable {
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public List<Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
+	}
+
+	public List<Project> getFavoriteProjects() {
+		return favoriteProjects;
+	}
+
+	public void setFavoriteProjects(List<Project> favoriteProjects) {
+		this.favoriteProjects = favoriteProjects;
 	}
 
 }
