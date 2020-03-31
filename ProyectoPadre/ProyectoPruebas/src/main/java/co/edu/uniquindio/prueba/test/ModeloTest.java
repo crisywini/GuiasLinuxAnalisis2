@@ -32,7 +32,7 @@ public class ModeloTest {
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap.create(WebArchive.class,
 
-				"prueba.war").addPackage(Estudiante.class.getPackage()).addAsResource("persistenceForTest.xml",
+				"prueba.war").addPackage(PersonaEntidades.class.getPackage()).addAsResource("persistenceForTest.xml",
 
 						"META-INF/persistence.xml")
 

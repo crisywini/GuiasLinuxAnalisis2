@@ -2,6 +2,8 @@ package co.edu.uniquindio.project.entities;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.Map;
+
 import javax.persistence.*;
 
 /**
@@ -10,24 +12,20 @@ import javax.persistence.*;
  */
 @Entity
 
-public class EstateAgency implements Serializable {
+public class EstateAgency extends User implements Serializable {
 
-	   
-	@Id
-	private String code;
 	private String address;
+	@ElementCollection
+	private Map<String, String> phoneNumbers;
+	@ElementCollection
+	private Map<String, String> advisor;// Asesor inmobiliario el cual el primero es el nombre y el segundo es el numero
+										// de telefono
 	private static final long serialVersionUID = 1L;
 
 	public EstateAgency() {
 		super();
-	}   
-	public String getCode() {
-		return this.code;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
-	}   
 	public String getAddress() {
 		return this.address;
 	}
@@ -35,5 +33,21 @@ public class EstateAgency implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-   
+
+	public Map<String, String> getPhoneNumbers() {
+		return phoneNumbers;
+	}
+
+	public void setPhoneNumbers(Map<String, String> phoneNumbers) {
+		this.phoneNumbers = phoneNumbers;
+	}
+
+	public Map<String, String> getAdvisor() {
+		return advisor;
+	}
+
+	public void setAdvisor(Map<String, String> advisor) {
+		this.advisor = advisor;
+	}
+
 }
