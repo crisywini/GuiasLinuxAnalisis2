@@ -28,7 +28,6 @@ public class ModeloTest {
 						"META-INF/persistence.xml")
 
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
-
 	}
 	@Test
 	public void generarTest() {
