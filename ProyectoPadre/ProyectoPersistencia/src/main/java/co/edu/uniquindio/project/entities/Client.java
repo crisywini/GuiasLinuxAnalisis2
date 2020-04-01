@@ -47,16 +47,16 @@ public class Client extends User implements Serializable {
 	/**
 	 * Constructor method from Client
 	 * 
-	 * @param code             from User primary key not nullable
-	 * @param email            from User unique not nullable
-	 * @param password         from User not nullable
-	 * @param completeName     from Client not nullable
-	 * @param phoneNumber      from Client not nullable
-	 * @param dateOfBirth      from Client not nullable
-	 * @param contacts         from relationship with Project
-	 * @param comments         from relationship with project
-	 * @param ratings          from relationship with project
-	 * @param favoriteProjects relationship with project
+	 * @param code             from {@link User} primary key not nullable
+	 * @param email            from {@link User} unique not nullable
+	 * @param password         from {@link User} not nullable
+	 * @param completeName     from {@link Client} not nullable
+	 * @param phoneNumber      from {@link Client} not nullable
+	 * @param dateOfBirth      from {@link Client} not nullable
+	 * @param contacts         from relationship with {@link Project}
+	 * @param comments         from relationship with {@link Project}
+	 * @param ratings          from relationship with {@link Project}
+	 * @param favoriteProjects relationship with {@link Project}
 	 */
 	public Client(String code, String email, String password, String completeName, String phoneNumber, Date dateOfBirth,
 			List<Contact> contacts, List<Comment> comments, List<Rating> ratings, List<Project> favoriteProjects) {

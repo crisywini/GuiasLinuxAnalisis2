@@ -2,6 +2,7 @@ package co.edu.uniquindio.project.entities;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,18 +17,42 @@ import javax.persistence.*;
 
 public class EstateAgency extends User implements Serializable {
 
+	@Column(name = "address", nullable = false)
 	private String address;
 	@ElementCollection
+	@JoinColumn(name = "phone_numbers")
 	private Map<String, String> phoneNumbers;
 	@ElementCollection
-	private Map<String, String> advisor;// Asesor inmobiliario el cual el primero es el nombre y el segundo es el numero
-										// de telefono
+	@JoinColumn(name = "advisors")
+	private Map<String, String> advisors;// Asesor inmobiliario el cual el primero es el nombre y el segundo es el
+											// numero
+											// de telefono
 	@OneToMany(mappedBy = "estateAgency") // Esta entidad es la no propietaria
+	@JoinColumn(name = "associated_projects")
 	private List<Project> projects;
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Default constructor method
+	 */
 	public EstateAgency() {
 		super();
+	}
+
+	/**
+	 * 
+	 * @param code     from {@link User} primary key not nullable
+	 * @param email    from {@link User} unique not nullable
+	 * @param password from {@link User} not nullable
+	 * @param address  from {@link EstateAgency} not nullable
+	 * @param projects from relationship with {@link Project}
+	 */
+	public EstateAgency(String code, String email, String password, String address, List<Project> projects) {
+		super(code, email, password);
+		this.address = address;
+		this.projects = projects;
+		advisors = new HashMap<String, String>();
+		phoneNumbers = new HashMap<String, String>();
 	}
 
 	public String getAddress() {
@@ -46,12 +71,12 @@ public class EstateAgency extends User implements Serializable {
 		this.phoneNumbers = phoneNumbers;
 	}
 
-	public Map<String, String> getAdvisor() {
-		return advisor;
+	public Map<String, String> getAdvisors() {
+		return advisors;
 	}
 
-	public void setAdvisor(Map<String, String> advisor) {
-		this.advisor = advisor;
+	public void setAdvisors(Map<String, String> advisors) {
+		this.advisors = advisors;
 	}
 
 	public List<Project> getProjects() {

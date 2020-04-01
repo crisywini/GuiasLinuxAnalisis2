@@ -32,9 +32,10 @@ public class User implements Serializable {
 	/**
 	 * Constructor method
 	 * 
-	 * @param code     from User primary key
-	 * @param email    from User unique
-	 * @param password from User
+	 * @param code     from {@link User} primary key, length max = 10 and not
+	 *                 nullable
+	 * @param email    from {@link User} unique and not nullable
+	 * @param password from {@link User} not nullable
 	 */
 	public User(String code, String email, String password) {
 		super();
