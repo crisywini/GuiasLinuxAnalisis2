@@ -16,20 +16,53 @@ public class Contact implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "code")
 	private int code;
+
+	@Column(name = "subject", nullable = false)
 	private String subject;
+
+	@Column(name = "content", nullable = false)
 	private String content;
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", name = "date", nullable = false)
 	private Date date;
+
 	@ManyToOne
+	@JoinColumn(name = "project_code")
 	private Project projectCode;
+
 	@ManyToOne
+	@JoinColumn(name = "client_code")
 	private Client clientCode;
+
 	private static final long serialVersionUID = 1L;
 
 	public Contact() {
 		super();
+	}
+
+	/**
+	 * 
+	 * Constructor method from Contact
+	 * 
+	 * @param code        from {@link Contact} primaty key, and generated value
+	 * @param subject     from {@link Contact} not nullable
+	 * @param content     from {@link Contact} not nullable
+	 * @param date        from {@link Contact} column definition, and not nullable
+	 * @param projectCode from relationship with {@link Project}
+	 * @param clientCode  from relationship with {@link Client}
+	 */
+
+	public Contact(int code, String subject, String content, Date date, Project projectCode, Client clientCode) {
+		super();
+		this.code = code;
+		this.subject = subject;
+		this.content = content;
+		this.date = date;
+		this.projectCode = projectCode;
+		this.clientCode = clientCode;
 	}
 
 	public String getSubject() {

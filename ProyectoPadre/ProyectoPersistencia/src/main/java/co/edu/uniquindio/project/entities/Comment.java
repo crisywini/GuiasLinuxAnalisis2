@@ -23,7 +23,7 @@ public class Comment implements Serializable {
 	private String comment;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date", nullable = false)
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", name = "date", nullable = false)
 	private Date date;
 
 	@ManyToOne
@@ -45,7 +45,7 @@ public class Comment implements Serializable {
 	 * 
 	 * @param code        from {@link Comment} primary key, and generated value
 	 * @param comment     from {@link Comment} not nullable
-	 * @param date        from {@link Comment} not nullable
+	 * @param date        from {@link Comment} column definition, and not nullable
 	 * @param clientCode  from relationship with {@link Client}
 	 * @param projectCode from relationship with {@link Project}
 	 */
