@@ -8,12 +8,29 @@ import javax.persistence.*;
 @Embeddable
 public class RatingPK implements Serializable {
 
+	@Column(name = "client_code", nullable = false)
 	private String clientCode;
+	@Column(name = "project_code", nullable = false)
 	private int projectCode;
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Default constructor method
+	 */
 	public RatingPK() {
 		super();
+	}
+
+	/**
+	 * Constructor method
+	 * 
+	 * @param clientCode  from relationship with {@link Client} not nullable
+	 * @param projectCode from relationship with {@link Project} not nullable
+	 */
+	public RatingPK(String clientCode, int projectCode) {
+		super();
+		this.clientCode = clientCode;
+		this.projectCode = projectCode;
 	}
 
 	public String getClientCode() {
