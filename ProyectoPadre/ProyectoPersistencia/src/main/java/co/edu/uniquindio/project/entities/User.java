@@ -8,8 +8,7 @@ import javax.persistence.*;
  * Entity implementation class for Entity: User
  *
  */
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // Me preocupa esa advertencia
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
 @MappedSuperclass
 public class User implements Serializable {
 
