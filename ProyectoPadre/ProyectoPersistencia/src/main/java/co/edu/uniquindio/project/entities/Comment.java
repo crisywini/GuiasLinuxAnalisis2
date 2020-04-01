@@ -15,13 +15,23 @@ public class Comment implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "code")
 	private int code;
+	
+	@Lob
+	@Column(name = "comment", nullable = false)
 	private String comment;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "date", nullable = false)
 	private Date date;
+	
 	@ManyToOne
 	private Client clientCode;
+	
 	@ManyToOne
 	private Project projectCode;
+	
 	private static final long serialVersionUID = 1L;
 
 	public Comment() {
