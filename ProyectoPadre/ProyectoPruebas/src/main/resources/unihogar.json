@@ -1,0 +1,16 @@
+{
+	"CITY": [
+		{
+			"CODE": 1,
+			"NAME": "Armenia"
+		},
+		{
+			"CODE": 2,
+			"NAME": "Ibague"
+		},
+		{
+			"CODE": 3,
+			"NAME": "Montenegro"
+		}
+	]
+}
