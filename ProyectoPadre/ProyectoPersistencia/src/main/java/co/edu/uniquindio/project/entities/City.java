@@ -2,6 +2,7 @@ package co.edu.uniquindio.project.entities;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -42,6 +43,18 @@ public class City implements Serializable {
 		this.code = code;
 		this.name = name;
 		this.projects = projects;
+	}
+
+	/**
+	 * Constructor method
+	 * 
+	 * @param code from {@link City} primary key and not nullable
+	 * @param name from {@link City} not nullable
+	 */
+	public City(int code, String name) {
+		this.code = code;
+		this.name = name;
+		projects = new LinkedList<Project>();
 	}
 
 	public int getCode() {
