@@ -1,27 +1,36 @@
 package co.edu.uniquindio.prueba.test;
 
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.ejemploe.Estudiante;
 import co.edu.uniquindio.entidades.Genero;
 import co.edu.uniquindio.entidades.PersonaEntidades;
+import co.edu.uniquindio.project.entities.Administrator;
+import co.edu.uniquindio.project.entities.City;
+import co.edu.uniquindio.project.entities.Project;
 
 @RunWith(Arquillian.class)
 public class ModeloTest {
@@ -32,7 +41,7 @@ public class ModeloTest {
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap.create(WebArchive.class,
 
-				"prueba.war").addPackage(PersonaEntidades.class.getPackage()).addAsResource("persistenceForTest.xml",
+				"prueba.war").addPackage(Administrator.class.getPackage()).addAsResource("persistenceForTest.xml",
 
 						"META-INF/persistence.xml")
 
@@ -43,6 +52,7 @@ public class ModeloTest {
 	public void generarTest() {
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	/**
@@ -82,6 +92,15 @@ public class ModeloTest {
 		entityManager.persist(newPersona2);
 		entityManager.flush();
 
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" }) // Esto se pone para utilizar los archivos json
+	public void cityPersistenceTest() {
+
+		City searchedCity = entityManager.find(City.class, 1);// El cero es muy trivial
+		Assert.assertNotNull(searchedCity);
 	}
 
 }
