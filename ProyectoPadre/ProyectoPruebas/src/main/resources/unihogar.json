@@ -463,6 +463,41 @@
 			"EstateAgency_code": "3",
 			"PHONENUMBERS": "7334567",
 			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "4",
+			"PHONENUMBERS": "7345678",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "5",
+			"PHONENUMBERS": "7356789",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "6",
+			"PHONENUMBERS": "7367890",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "7",
+			"PHONENUMBERS": "7378901",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "8",
+			"PHONENUMBERS": "7389012",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "9",
+			"PHONENUMBERS": "7390123",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "10",
+			"PHONENUMBERS": "7310987",
+			"PHONENUMBERS_KEY": "1"
 		}
 	],
 	"EstateAgency_ADVISORS": [
