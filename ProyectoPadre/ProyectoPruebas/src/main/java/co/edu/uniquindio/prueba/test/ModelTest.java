@@ -112,6 +112,7 @@ public class ModelTest {
 
 		Assert.assertEquals(admin, registered);
 	}
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -194,11 +195,25 @@ public class ModelTest {
 	@UsingDataSet({ "unihogar.json" })
 	public void adminRemoveTest() {
 
-		Administrator admin = entityManager.find(Administrator.class, "123"); 
+		Administrator admin = entityManager.find(Administrator.class, "123");
 		entityManager.remove(admin);
 		Administrator registered = entityManager.find(Administrator.class, "123");
 		Assert.assertNull(registered);
-	}	
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" }) // Esto se pone para utilizar los archivos json
+	public void cityRemoveTest() {
+
+		City city = entityManager.find(City.class, 1);
+		entityManager.remove(city);
+
+		City registered = entityManager.find(City.class, 1);
+		Assert.assertNull(registered);
+
+	}
 	// Test merge
 	// Test find
 
