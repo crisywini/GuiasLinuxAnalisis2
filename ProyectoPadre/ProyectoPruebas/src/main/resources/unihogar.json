@@ -33,25 +33,25 @@
 	"CLIENT": [
 		{
 			"code": "1",
-			"complete_name": "Juan Carlos Garcia",
+			"complete_name": "Cliente1",
 			"date_of_birth": "05/11/2020",
-			"email": "jcg@hotmail.com",
+			"email": "c1@hotmail.com",
 			"password": "password1",
 			"phone_number": "3051234567"
 		},
 		{
 			"code": "2",
-			"complete_name": "Rosa Maria Lopez",
+			"complete_name": "Cliente2",
 			"date_of_birth": "21/07/2020",
-			"email": "rml@hotmail.com",
+			"email": "c2@hotmail.com",
 			"password": "password2",
 			"phone_number": "3112345678"
 		},
 		{
 			"code": "3",
-			"complete_name": "Andres Felipe Gutierrez",
+			"complete_name": "Cliente3",
 			"date_of_birth": "13/02/2020",
-			"email": "afg@hotmail.com",
+			"email": "c3@hotmail.com",
 			"password": "password3",
 			"phone_number": "3123456789"
 		}
@@ -96,23 +96,24 @@
 	"CONTACT": [
 		{
 			"code": 1,
-			"content": "",
+			"content": "Este es el primer contenido de prueba",
 			"date": "12/03/2020",
-			"subject": "",
+			"subject": "Subject1",
 			"client_code": "1",
 			"project_code": 1
 		},
 		{
-			"content": "",
+			"code": 2,
+			"content": "Este es el segundo contenido de prueba",
 			"date": "05/01/2020",
-			"subject": "",
+			"subject": "Subject2",
 			"client_code": "2",
 			"project_code": 1
 		},
 		{
-			"content": "",
+			"content": "Este es el tercer contenido de prueba",
 			"date": "14/02/2020",
-			"subject": "",
+			"subject": "Subject3",
 			"client_code": "2",
 			"project_code": 3
 		}
@@ -173,6 +174,23 @@
 			"email": "imb3@inmobiliaria.com",
 			"name": "Casas",
 			"password": "password"
+		}
+	],
+	"EstateAgency_ADVISORS": [
+		{
+			"EstateAgency_code": "1",
+			"ADVISORS": "Asesor1",
+			"ADVISORS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "2",
+			"ADVISORS": "Asesor2",
+			"ADVISORS_KEY": "2"
+		},
+		{
+			"EstateAgency_code": "3",
+			"ADVISORS": "Asesor3",
+			"ADVISORS_KEY": "3"
 		}
 	],
 	"PROJECT": [
