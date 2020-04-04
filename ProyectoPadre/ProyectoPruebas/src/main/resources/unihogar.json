@@ -395,8 +395,57 @@
 			"code": "IMB3",
 			"address": "San antonio",
 			"email": "imb3@inmobiliaria.com",
-			"name": "Casas",
-			"password": "password"
+			"name": "Casas bellas",
+			"password": "password3"
+		},
+		{
+			"code": "IMB4",
+			"address": "San carlos",
+			"email": "imb4@inmobiliaria.com",
+			"name": "El renacer",
+			"password": "password4"
+		},
+		{
+			"code": "IMB5",
+			"address": "Los camellos",
+			"email": "imb5@inmobiliaria.com",
+			"name": "Porvenir",
+			"password": "password5"
+		},
+		{
+			"code": "IMB6",
+			"address": "San simon",
+			"email": "imb6@inmobiliaria.com",
+			"name": "Lux",
+			"password": "password6"
+		},
+		{
+			"code": "IMB7",
+			"address": "Amanecer",
+			"email": "imb7@inmobiliaria.com",
+			"name": "Rio claro",
+			"password": "password7"
+		},
+		{
+			"code": "IMB8",
+			"address": "Bolivariana",
+			"email": "imb8@inmobiliaria.com",
+			"name": "Santa maria",
+			"password": "password8"
+		},
+		{
+			"code": "IMB9",
+			"address": "San cristobal",
+			"email": "imb9@inmobiliaria.com",
+			"name": "Villa celmira",
+			"password": "password9"
+		},
+		{
+			"code": "IMB10",
+			"address": "Restrepo",
+			"email": "imb10@inmobiliaria.com",
+			"name": "Bella Suiza",
+			"password": "password10"
 		}
 	],
 	"EstateAgency_PHONENUMBERS": [
