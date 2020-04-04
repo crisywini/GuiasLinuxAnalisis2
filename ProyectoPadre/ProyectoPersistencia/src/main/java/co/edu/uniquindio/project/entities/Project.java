@@ -2,6 +2,7 @@ package co.edu.uniquindio.project.entities;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -26,6 +27,9 @@ public class Project implements Serializable {
 	@Lob
 	@Column(name = "description", nullable = false)
 	private String description;
+	@ElementCollection
+	@JoinColumn(name = "images")
+	private List<String> images;
 	@ManyToMany(mappedBy = "projects") // Esta es la entidad no propietaria
 	@JoinColumn(name = "associated_services")
 	private List<Service> services;
@@ -91,6 +95,7 @@ public class Project implements Serializable {
 		this.contacts = contacts;
 		this.comments = comments;
 		this.ratings = ratings;
+		images = new LinkedList<String>();
 		this.favoriteClients = favoriteClients;
 	}
 
@@ -164,6 +169,14 @@ public class Project implements Serializable {
 
 	public void setFavoriteClients(List<Client> favoriteClients) {
 		this.favoriteClients = favoriteClients;
+	}
+
+	public List<String> getImages() {
+		return images;
+	}
+
+	public void setImages(List<String> images) {
+		this.images = images;
 	}
 
 }
