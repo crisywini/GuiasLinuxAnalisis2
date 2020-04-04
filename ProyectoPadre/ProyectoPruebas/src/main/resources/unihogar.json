@@ -70,6 +70,30 @@
 			"favoriteClients_code": "3"
 		}
 	],
+	"CONTACT": [
+		{
+			"code": 1,
+			"content": "",
+			"date": "12/03/2020",
+			"subject": "",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"content": "",
+			"date": "05/01/2020",
+			"subject": "",
+			"client_code": "2",
+			"project_code": 1
+		},
+		{
+			"content": "",
+			"date": "14/02/2020",
+			"subject": "",
+			"client_code": "2",
+			"project_code": 3
+		}
+	],
 	"COMMENT": [
 		{
 			"code": 1,
