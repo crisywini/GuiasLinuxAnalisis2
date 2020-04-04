@@ -324,6 +324,19 @@ public class ModelTest {
 		Assert.assertEquals(commentRegistered, comment.getComment());
 	}
 
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void contactMergeTest() {
+		Contact contact = entityManager.find(Contact.class, 1);
+		contact.setContent("Este contacto es para saber del proyecto");
+		entityManager.merge(contact);
+
+		Contact registered = entityManager.find(Contact.class, 1);
+		String contentRegistered = registered.getContent();
+		Assert.assertEquals(contentRegistered, contact.getContent());
+	}
+
 	// Test find
 
 }
