@@ -239,7 +239,32 @@ public class ModelTest {
 		Assert.assertNull(registered);
 	}
 
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void contactRemoveTest() {
+		Contact contact = entityManager.find(Contact.class, 1);
+		entityManager.remove(contact);
+
+		Contact registered = entityManager.find(Contact.class, 1);
+		Assert.assertNull(registered);
+	}
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void dwellingRemoveTest() {
+		Dwelling dwelling = entityManager.find(Dwelling.class, 1);
+		entityManager.remove(dwelling);
+
+		Dwelling registered = entityManager.find(Dwelling.class, 1);
+		Assert.assertNull(registered);
+
+	}
+
 	// Test merge
+	
 	// Test find
 
 }
