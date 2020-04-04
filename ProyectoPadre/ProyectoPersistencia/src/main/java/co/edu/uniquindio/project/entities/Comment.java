@@ -45,14 +45,13 @@ public class Comment implements Serializable {
 	 * 
 	 * @param code        from {@link Comment} primary key, and generated value
 	 * @param comment     from {@link Comment} not nullable
-	 * @param date        from {@link Comment} column definition, and not nullable
 	 */
 
-	public Comment(int code, String comment, Date date) {
+	public Comment(int code, String comment) {
 		super();
 		this.code = code;
 		this.comment = comment;
-		this.date = date;
+		this.date = new Date();
 	}
 
 	public int getCode() {
