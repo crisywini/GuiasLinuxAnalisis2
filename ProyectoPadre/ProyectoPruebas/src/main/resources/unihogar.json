@@ -84,5 +84,27 @@
 			"Project_code" : 4,
 			"IMAGES":"/image4prueba.png"
 		}
+	],
+	"RATING":[
+		{
+			"score":150,
+			"client_rating":"1023654758",
+			"project_rating":1
+		},
+		{
+			"score":155,
+			"client_rating":"1023654755",
+			"project_rating":2
+		},
+		{
+			"score":157,
+			"client_rating":"1023654751",
+			"project_rating":3
+		},
+		{
+			"score":150,
+			"client_rating":"1023654758",
+			"project_rating":2
+		}
 	]
 }
