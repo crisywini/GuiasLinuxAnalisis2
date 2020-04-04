@@ -212,8 +212,20 @@ public class ModelTest {
 
 		City registered = entityManager.find(City.class, 1);
 		Assert.assertNull(registered);
-
 	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void clientRemoveTest() throws ParseException {
+		Client client = entityManager.find(Client.class, "1");
+		entityManager.remove(client);
+
+		Client registered = entityManager.find(Client.class, "1");
+		Assert.assertNull(registered);
+	}
+
 	// Test merge
 	// Test find
 
