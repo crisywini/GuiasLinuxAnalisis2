@@ -29,6 +29,7 @@ import co.edu.uniquindio.project.entities.Administrator;
 import co.edu.uniquindio.project.entities.City;
 import co.edu.uniquindio.project.entities.Client;
 import co.edu.uniquindio.project.entities.Comment;
+import co.edu.uniquindio.project.entities.Contact;
 
 @RunWith(Arquillian.class)
 public class ModelTest {
@@ -152,6 +153,19 @@ public class ModelTest {
 		Comment registered = entityManager.find(Comment.class, 4);
 		Assert.assertEquals(registered, comment);
 	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void contactPersistenceTest() {
+		Contact contact = new Contact(6, "CONTACTO", "Hola quería contactarme con ustedes porque es el mejor proyecto que he visto");
+		entityManager.persist(contact);
+		entityManager.flush();
+		
+		Contact registered = entityManager.find(Contact.class, 6);
+		Assert.assertEquals(registered, contact);
+	}
+
 	// Test remove
 	// Test merge
 	// Test find
