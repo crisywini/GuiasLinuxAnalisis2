@@ -31,5 +31,13 @@ public class Administrator extends User implements Serializable {
 	public Administrator(String code, String email, String password) {
 		super(code, email, password);
 	}
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 
 }
