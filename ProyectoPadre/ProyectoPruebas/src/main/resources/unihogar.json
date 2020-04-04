@@ -70,6 +70,29 @@
 			"favoriteClients_code": "3"
 		}
 	],
+	"COMMENT": [
+		{
+			"code": 1,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "15/03/2020",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 2,
+			"comment": "Este es el segundo comentario de prueba",
+			"date": "18/02/2020",
+			"client_code": "1",
+			"project_code": 2
+		},
+		{
+			"code": 3,
+			"comment": "Este es el tercer comentario de prueba",
+			"date": "03/03/2020",
+			"client_code": "3",
+			"project_code": 2
+		}
+	],
 	"CONTACT": [
 		{
 			"code": 1,
@@ -94,27 +117,39 @@
 			"project_code": 3
 		}
 	],
-	"COMMENT": [
+	"DWELLING": [
 		{
 			"code": 1,
-			"comment": "Este es el primer comentario de prueba",
-			"date": "15/03/2020",
-			"client_code": "1",
-			"project_code": 1
+			"area": 70.1,
+			"description": "Esta es la primera descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 3,
+			"price": 95000000.0,
+			"type": 1,
+			"urlImage": "",
+			"project": 1
 		},
 		{
 			"code": 2,
-			"comment": "Este es el segundo comentario de prueba",
-			"date": "18/02/2020",
-			"client_code": "1",
-			"project_code": 2
+			"area": 75.5,
+			"description": "Esta es la segunda descripcion de prueba",
+			"numBathrooms": 2,
+			"numRooms": 3,
+			"price": 130000000.0,
+			"type": 1,
+			"urlImage": "",
+			"project": 2
 		},
 		{
 			"code": 3,
-			"comment": "Este es el tercer comentario de prueba",
-			"date": "03/03/2020",
-			"client_code": "3",
-			"project_code": 2
+			"area": 62.0,
+			"description": "Esta es la tercera descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 88000000.0,
+			"type": 2,
+			"urlImage": "",
+			"project": 3
 		}
 	],
 	"ESTATEAGENCY": [
