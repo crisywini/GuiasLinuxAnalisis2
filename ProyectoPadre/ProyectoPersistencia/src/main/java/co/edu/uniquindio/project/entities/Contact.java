@@ -51,19 +51,14 @@ public class Contact implements Serializable {
 	 * @param code        from {@link Contact} primaty key, and generated value
 	 * @param subject     from {@link Contact} not nullable
 	 * @param content     from {@link Contact} not nullable
-	 * @param date        from {@link Contact} column definition, and not nullable
-	 * @param projectCode from relationship with {@link Project}
-	 * @param clientCode  from relationship with {@link Client}
 	 */
 
-	public Contact(int code, String subject, String content, Date date, Project projectCode, Client clientCode) {
+	public Contact(int code, String subject, String content) {
 		super();
 		this.code = code;
 		this.subject = subject;
 		this.content = content;
-		this.date = date;
-		this.projectCode = projectCode;
-		this.clientCode = clientCode;
+		this.date = new Date();
 	}
 
 	public String getSubject() {
