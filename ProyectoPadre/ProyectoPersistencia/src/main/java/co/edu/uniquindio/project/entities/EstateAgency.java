@@ -99,4 +99,10 @@ public class EstateAgency extends User implements Serializable {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "EstateAgency [address=" + address + ", name=" + name + ", phoneNumbers=" + phoneNumbers + ", advisors="
+				+ advisors + ", projects=" + projects + "]";
+	}
+	
 }
