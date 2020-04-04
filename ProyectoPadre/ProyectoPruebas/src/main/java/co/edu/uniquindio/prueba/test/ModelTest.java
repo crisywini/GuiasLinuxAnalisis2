@@ -291,6 +291,19 @@ public class ModelTest {
 		String nameRegistered = registered.getName();
 		Assert.assertEquals(nameRegistered, city.getName());
 	}
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void clientMergeTest() throws ParseException {
+		Client client = entityManager.find(Client.class, "1");
+		client.setPassword("yanoespassword.com");
+		entityManager.merge(client);
+
+		Client registered = entityManager.find(Client.class, "1");
+		String passwordRegistered = registered.getPassword();
+		Assert.assertEquals(passwordRegistered, client.getPassword());;
+	}
 	// Test find
 
 }
