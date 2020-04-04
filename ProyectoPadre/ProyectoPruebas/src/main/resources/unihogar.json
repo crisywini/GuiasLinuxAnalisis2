@@ -16,6 +16,20 @@
 			"password": "password3"
 		}
 	],
+	"CITY": [
+		{
+			"code": 1,
+			"name": "Armenia"
+		},
+		{
+			"code": 2,
+			"name": "Ibague"
+		},
+		{
+			"code": 3,
+			"name": "Montenegro"
+		}
+	],
 	"CLIENT": [
 		{
 			"code": "1",
@@ -42,18 +56,27 @@
 			"phone_number": "3123456789"
 		}
 	],
-	"CITY": [
+	"COMMENT": [
 		{
 			"code": 1,
-			"name": "Armenia"
+			"comment": "Este es el primer comentario de prueba",
+			"date": "15/03/2020",
+			"client_code": "1",
+			"project_code": 1
 		},
 		{
 			"code": 2,
-			"name": "Ibague"
+			"comment": "Este es el segundo comentario de prueba",
+			"date": "18/02/2020",
+			"client_code": "1",
+			"project_code": 2
 		},
 		{
 			"code": 3,
-			"name": "Montenegro"
+			"comment": "Este es el tercer comentario de prueba",
+			"date": "03/03/2020",
+			"client_code": "3",
+			"project_code": 2
 		}
 	],
 	"ESTATEAGENCY": [
