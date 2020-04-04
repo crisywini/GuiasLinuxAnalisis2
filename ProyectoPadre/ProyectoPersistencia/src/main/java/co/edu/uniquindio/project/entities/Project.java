@@ -179,4 +179,34 @@ public class Project implements Serializable {
 		this.images = images;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + code;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Project other = (Project) obj;
+		if (code != other.code)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Project [code=" + code + ", name=" + name + ", latitude=" + latitude + ", length=" + length
+				+ ", description=" + description + ", images=" + images + ", services=" + services + ", estateAgency="
+				+ estateAgency + ", city=" + city + ", dwellings=" + dwellings + ", contacts=" + contacts
+				+ ", comments=" + comments + ", ratings=" + ratings + ", favoriteClients=" + favoriteClients + "]";
+	}
+
 }
