@@ -30,6 +30,7 @@ import co.edu.uniquindio.entidades.Genero;
 import co.edu.uniquindio.entidades.PersonaEntidades;
 import co.edu.uniquindio.project.entities.Administrator;
 import co.edu.uniquindio.project.entities.City;
+import co.edu.uniquindio.project.entities.Client;
 import co.edu.uniquindio.project.entities.Project;
 
 @RunWith(Arquillian.class)
@@ -125,6 +126,20 @@ public class ModelTest {
 		
 		City registered = entityManager.find(City.class, 22);
 		Assert.assertEquals(city, registered);
+		
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void clientPersistenceTest() throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+		Date dateOfBirth = sdf.parse("15/11/1999");
+		Client client = new Client("123", "client5@mail.com", "password", "Crisi sanchez", "3145658898", dateOfBirth);
+		entityManager.persist(client);
+		entityManager.flush();
+		
+		Client registered = entityManager.find(Client.class, "123");
+		Assert.assertEquals(client, registered);
 		
 	}
 	//Test remove
