@@ -19,6 +19,8 @@ public class EstateAgency extends User implements Serializable {
 
 	@Column(name = "address", nullable = false)
 	private String address;
+	@Column(name = "name", nullable = false)
+	private String name;
 	@ElementCollection
 	@JoinColumn(name = "phone_numbers")
 	private Map<String, String> phoneNumbers;
@@ -47,10 +49,12 @@ public class EstateAgency extends User implements Serializable {
 	 * @param address  from {@link EstateAgency} not nullable
 	 * @param projects from relationship with {@link Project}
 	 */
-	public EstateAgency(String code, String email, String password, String address, List<Project> projects) {
+	public EstateAgency(String name, String code, String email, String password, String address,
+			List<Project> projects) {
 		super(code, email, password);
 		this.address = address;
 		this.projects = projects;
+		this.name = name;
 		advisors = new HashMap<String, String>();
 		phoneNumbers = new HashMap<String, String>();
 	}
@@ -85,6 +89,14 @@ public class EstateAgency extends User implements Serializable {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
