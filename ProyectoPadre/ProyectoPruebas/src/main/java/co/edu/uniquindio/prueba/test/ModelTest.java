@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -25,13 +23,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import co.edu.uniquindio.ejemploe.Estudiante;
 import co.edu.uniquindio.entidades.Genero;
 import co.edu.uniquindio.entidades.PersonaEntidades;
 import co.edu.uniquindio.project.entities.Administrator;
 import co.edu.uniquindio.project.entities.City;
 import co.edu.uniquindio.project.entities.Client;
-import co.edu.uniquindio.project.entities.Project;
+import co.edu.uniquindio.project.entities.Comment;
 
 @RunWith(Arquillian.class)
 public class ModelTest {
@@ -95,24 +92,24 @@ public class ModelTest {
 
 	}
 
-	//Test persist
+	// Test persist
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void adminPersistenceTest() {
 
 		Administrator admin = new Administrator("1234", "admin51@administrador.com", "password1");
 		entityManager.persist(admin);
 		entityManager.flush();
-		
+
 		Administrator registered = entityManager.find(Administrator.class, "1234");
 		System.out.println(admin.toString());
 		System.out.println(registered.toString());
 
 		Assert.assertEquals(admin, registered);
 	}
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" }) // Esto se pone para utilizar los archivos json
@@ -123,27 +120,40 @@ public class ModelTest {
 		City city = new City(22, "Salento");
 		entityManager.persist(city);
 		entityManager.flush();
-		
+
 		City registered = entityManager.find(City.class, 22);
 		Assert.assertEquals(city, registered);
-		
+
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void clientPersistenceTest() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
 		Date dateOfBirth = sdf.parse("15/11/1999");
 		Client client = new Client("123", "client5@mail.com", "password", "Crisi sanchez", "3145658898", dateOfBirth);
 		entityManager.persist(client);
 		entityManager.flush();
-		
+
 		Client registered = entityManager.find(Client.class, "123");
 		Assert.assertEquals(client, registered);
-		
 	}
-	//Test remove
-	//Test merge
-	//Test find
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void commentPersistenceTest() {
+
+		Comment comment = new Comment(4, "Holita que prueba tan chevere =) ");
+		entityManager.persist(comment);
+		entityManager.flush();
+
+		Comment registered = entityManager.find(Comment.class, 4);
+		Assert.assertEquals(registered, comment);
+	}
+	// Test remove
+	// Test merge
+	// Test find
 
 }
