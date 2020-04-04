@@ -95,30 +95,37 @@ public class ModelTest {
 	}
 
 	//Test persist
-
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({"unihogar.json"})
 	public void adminPersistenceTest() {
 
 		Administrator admin = new Administrator("1234", "admin51@administrador.com", "password1");
-		System.out.println(admin.toString());
 		entityManager.persist(admin);
 		entityManager.flush();
 		
 		Administrator registered = entityManager.find(Administrator.class, "1234");
-		Assert.assertEquals(admin, registered);
+		System.out.println(admin.toString());
+		System.out.println(registered.toString());
 
+		Assert.assertEquals(admin, registered);
 	}
 	
-	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" }) // Esto se pone para utilizar los archivos json
 	public void cityPersistenceTest() {
 
-		City searchedCity = entityManager.find(City.class, 1);// El cero es muy trivial
-		Assert.assertNotNull(searchedCity);
+//		City searchedCity = entityManager.find(City.class, 1);// El cero es muy trivial
+//		Assert.assertNotNull(searchedCity);
+		City city = new City(22, "Salento");
+		entityManager.persist(city);
+		entityManager.flush();
+		
+		City registered = entityManager.find(City.class, 22);
+		Assert.assertEquals(city, registered);
+		
 	}
 	//Test remove
 	//Test merge
