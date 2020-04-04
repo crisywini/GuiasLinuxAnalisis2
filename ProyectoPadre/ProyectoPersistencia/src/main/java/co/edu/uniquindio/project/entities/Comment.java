@@ -46,17 +46,13 @@ public class Comment implements Serializable {
 	 * @param code        from {@link Comment} primary key, and generated value
 	 * @param comment     from {@link Comment} not nullable
 	 * @param date        from {@link Comment} column definition, and not nullable
-	 * @param clientCode  from relationship with {@link Client}
-	 * @param projectCode from relationship with {@link Project}
 	 */
 
-	public Comment(int code, String comment, Date date, Client clientCode, Project projectCode) {
+	public Comment(int code, String comment, Date date) {
 		super();
 		this.code = code;
 		this.comment = comment;
 		this.date = date;
-		this.clientCode = clientCode;
-		this.projectCode = projectCode;
 	}
 
 	public int getCode() {
@@ -98,5 +94,34 @@ public class Comment implements Serializable {
 	public void setProjectCode(Project projectCode) {
 		this.projectCode = projectCode;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + code;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comment other = (Comment) obj;
+		if (code != other.code)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment [code=" + code + ", comment=" + comment + ", date=" + date + ", clientCode=" + clientCode
+				+ ", projectCode=" + projectCode + "]";
+	}
+	
 
 }
