@@ -77,4 +77,9 @@ public class RatingPK implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "RatingPK [clientCode=" + clientCode + ", projectCode=" + projectCode + "]";
+	}
+
 }
