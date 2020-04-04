@@ -250,6 +250,7 @@ public class ModelTest {
 		Contact registered = entityManager.find(Contact.class, 1);
 		Assert.assertNull(registered);
 	}
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -277,10 +278,11 @@ public class ModelTest {
 		String mailRegistered = registered.getEmail();
 		Assert.assertEquals(mailRegistered, admin.getEmail());
 	}
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "unihogar.json" }) 
+	@UsingDataSet({ "unihogar.json" })
 	public void cityMergeTest() {
 
 		City city = entityManager.find(City.class, 1);
@@ -291,6 +293,7 @@ public class ModelTest {
 		String nameRegistered = registered.getName();
 		Assert.assertEquals(nameRegistered, city.getName());
 	}
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -302,8 +305,25 @@ public class ModelTest {
 
 		Client registered = entityManager.find(Client.class, "1");
 		String passwordRegistered = registered.getPassword();
-		Assert.assertEquals(passwordRegistered, client.getPassword());;
+		Assert.assertEquals(passwordRegistered, client.getPassword());
+		;
 	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void commentMergeTest() {
+
+		Comment comment = entityManager.find(Comment.class, 2);
+		comment.setComment("This is the second best comment but in english");
+		entityManager.merge(comment);
+
+		Comment registered = entityManager.find(Comment.class, 2);
+		String commentRegistered = registered.getComment();
+		Assert.assertEquals(commentRegistered, comment.getComment());
+	}
+
 	// Test find
 
 }
