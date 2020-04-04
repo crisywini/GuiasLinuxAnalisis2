@@ -23,17 +23,66 @@
 		},
 		{
 			"code": "IMB2",
-			"address": "Coliseo",
+			"address": "San jacinto",
 			"email": "imb2@inmobiliaria.com",
-			"name": "Alejandrinas",
-			"password": "password"
+			"name": "Campos Verdes",
+			"password": "password2"
 		},
 		{
 			"code": "IMB3",
-			"address": "Castellana",
+			"address": "San antonio",
 			"email": "imb3@inmobiliaria.com",
-			"name": "Camu",
+			"name": "Casas",
 			"password": "password"
+		}
+	],
+	"PROJECT": [
+		{
+			"code": 1,
+			"description": "El mejor proyecto de todos",
+			"latitude": 1.42,
+			"length": 1.456,
+			"name": "Villas del mar",
+			"associated_city":1,
+			"associated_estate_agency":"IMB1"
+		},
+		{
+			"code": 2,
+			"description": "El segundo mejor proyecto de todos",
+			"latitude": 1.43,
+			"length": 1.466,
+			"name": "Cafe del cielo",
+			"associated_city":1,
+			"associated_estate_agency":"IMB2"
+			
+		},
+		{
+			"code": 3,
+			"description": "El tercer mejor proyecto de todos",
+			"latitude": 1.4782,
+			"length": 1.4566846,
+			"name": "Villas del sol",
+			"associated_city":1,
+			"associated_estate_agency":"IMB3"
+			
+		}
+	],
+	"Project_IMAGES" : [
+		{
+			"Project_code" : 1,
+			"IMAGES":"/image1prueba.png"
+		},
+		{
+			"Project_code" : 2,
+			"IMAGES":"/image2prueba.png"
+		},
+		{
+			"Project_code" : 3,
+			"IMAGES":"/image3prueba.png"
+		},
+		{
+			"Project_code" : 4,
+			"IMAGES":"/image4prueba.png"
 		}
 	]
 }
