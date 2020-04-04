@@ -106,5 +106,23 @@
 			"client_rating":"1023654758",
 			"project_rating":2
 		}
+	],
+	"SERVICE":[
+		{
+			"code":1,
+			"name":"piscinita"
+		},
+		{
+			"code":2,
+			"name":"Gimnasio"
+		},
+		{
+			"code":3,
+			"name":"BBQ"
+		},
+		{
+			"code":4,
+			"name":"Tienda"
+		}
 	]
 }
