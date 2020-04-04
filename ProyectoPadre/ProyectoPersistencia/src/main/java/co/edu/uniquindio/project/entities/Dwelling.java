@@ -62,12 +62,10 @@ public class Dwelling implements Serializable {
 	 * @param numRooms     from {@link Dwelling} not nullable and length max = 10
 	 * @param numBathrooms from {@link Dwelling} not nullable and length max = 10
 	 * @param type         from {@link Dwelling} not nullable
-	 * @param project      from relationship with {@link Project}
 	 */
 
 	public Dwelling(int code, String urlImage, double area, double price, String description, int numRooms,
-			int numBathrooms, Type type, Project project) {
-		super();
+			int numBathrooms, Type type) {
 		this.code = code;
 		this.urlImage = urlImage;
 		this.area = area;
@@ -76,7 +74,6 @@ public class Dwelling implements Serializable {
 		this.numRooms = numRooms;
 		this.numBathrooms = numBathrooms;
 		this.type = type;
-		this.project = project;
 	}
 
 	public int getCode() {
