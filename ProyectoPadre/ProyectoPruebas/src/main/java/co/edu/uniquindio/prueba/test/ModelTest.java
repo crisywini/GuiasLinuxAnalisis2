@@ -274,10 +274,23 @@ public class ModelTest {
 		admin.setEmail("newAdmin1@mail.com");
 		entityManager.merge(admin);
 		Administrator registered = entityManager.find(Administrator.class, "123");
-		String mail = registered.getEmail();
-		Assert.assertEquals(mail, admin.getEmail());
+		String mailRegistered = registered.getEmail();
+		Assert.assertEquals(mailRegistered, admin.getEmail());
 	}
-	
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" }) 
+	public void cityMergeTest() {
+
+		City city = entityManager.find(City.class, 1);
+		city.setName("Sincelejo");
+		entityManager.merge(city);
+
+		City registered = entityManager.find(City.class, 1);
+		String nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, city.getName());
+	}
 	// Test find
 
 }
