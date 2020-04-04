@@ -176,6 +176,23 @@
 			"password": "password"
 		}
 	],
+	"EstateAgency_PHONENUMBERS": [
+		{
+			"EstateAgency_code": "1",
+			"PHONENUMBERS": "7312345",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "2",
+			"PHONENUMBERS": "7323456",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "3",
+			"PHONENUMBERS": "7334567",
+			"PHONENUMBERS_KEY": "1"
+		}
+	],
 	"EstateAgency_ADVISORS": [
 		{
 			"EstateAgency_code": "1",
