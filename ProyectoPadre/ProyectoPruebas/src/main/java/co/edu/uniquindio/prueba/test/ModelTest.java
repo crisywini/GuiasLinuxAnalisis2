@@ -324,6 +324,7 @@ public class ModelTest {
 		Assert.assertEquals(commentRegistered, comment.getComment());
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -335,6 +336,21 @@ public class ModelTest {
 		Contact registered = entityManager.find(Contact.class, 1);
 		String contentRegistered = registered.getContent();
 		Assert.assertEquals(contentRegistered, contact.getContent());
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void dwellingMergeTest() {
+		Dwelling dwelling = entityManager.find(Dwelling.class, 1);
+		dwelling.setDescription("Empty description");
+		entityManager.merge(dwelling);
+
+		Dwelling registered = entityManager.find(Dwelling.class, 1);
+		String descriptionRegistered = registered.getDescription();
+		Assert.assertEquals(descriptionRegistered, dwelling.getDescription());
+
 	}
 
 	// Test find
