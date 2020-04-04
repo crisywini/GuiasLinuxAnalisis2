@@ -33,7 +33,7 @@ import co.edu.uniquindio.project.entities.City;
 import co.edu.uniquindio.project.entities.Project;
 
 @RunWith(Arquillian.class)
-public class ModeloTest {
+public class ModelTest {
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -93,7 +93,17 @@ public class ModeloTest {
 		entityManager.flush();
 
 	}
+	
+	//Test persist
 
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void adminPersistenceTest() {
+		
+	}
+	
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" }) // Esto se pone para utilizar los archivos json
@@ -102,5 +112,8 @@ public class ModeloTest {
 		City searchedCity = entityManager.find(City.class, 1);// El cero es muy trivial
 		Assert.assertNotNull(searchedCity);
 	}
+	//Test remove
+	//Test merge
+	//Test find
 
 }
