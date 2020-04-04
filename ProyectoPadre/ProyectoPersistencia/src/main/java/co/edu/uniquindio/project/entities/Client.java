@@ -53,21 +53,12 @@ public class Client extends User implements Serializable {
 	 * @param completeName     from {@link Client} not nullable
 	 * @param phoneNumber      from {@link Client} not nullable
 	 * @param dateOfBirth      from {@link Client} not nullable
-	 * @param contacts         from relationship with {@link Project}
-	 * @param comments         from relationship with {@link Project}
-	 * @param ratings          from relationship with {@link Project}
-	 * @param favoriteProjects relationship with {@link Project}
 	 */
-	public Client(String code, String email, String password, String completeName, String phoneNumber, Date dateOfBirth,
-			List<Contact> contacts, List<Comment> comments, List<Rating> ratings, List<Project> favoriteProjects) {
+	public Client(String code, String email, String password, String completeName, String phoneNumber, Date dateOfBirth) {
 		super(code, email, password);
 		this.completeName = completeName;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
-		this.contacts = contacts;
-		this.comments = comments;
-		this.ratings = ratings;
-		this.favoriteProjects = favoriteProjects;
 	}
 
 	public String getCompleteName() {
