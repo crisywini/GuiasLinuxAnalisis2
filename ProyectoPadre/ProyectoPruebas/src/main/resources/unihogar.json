@@ -124,5 +124,23 @@
 			"code":4,
 			"name":"Tienda"
 		}
+	],
+	"SERVICE_PROJECT":[
+		{
+			"services_code":1,
+			"projects_code":1
+		},
+		{
+			"services_code":2,
+			"projects_code":1
+		},
+		{
+			"services_code":2,
+			"projects_code":2
+		},
+		{
+			"services_code":3,
+			"projects_code":3
+		}
 	]
 }
