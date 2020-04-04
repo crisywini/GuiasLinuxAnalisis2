@@ -126,4 +126,9 @@ public class Client extends User implements Serializable {
 		this.favoriteProjects = favoriteProjects;
 	}
 
+	@Override
+	public String toString() {
+		return "Client [completeName=" + completeName + ", phoneNumber=" + phoneNumber + "]";
+	}
+
 }
