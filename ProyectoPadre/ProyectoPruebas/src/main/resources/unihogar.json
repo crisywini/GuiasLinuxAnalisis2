@@ -6,12 +6,12 @@
 			"password": "password1"
 		},
 		{
-			"code": "124",
+			"code": "1244567801",
 			"email": "admin2@administrador.com",
 			"password": "password2"
 		},
 		{
-			"code": "125",
+			"code": "1254567801",
 			"email": "admin3@administrador.com",
 			"password": "password3"
 		}
@@ -34,7 +34,7 @@
 		{
 			"code": "1",
 			"complete_name": "Cliente1",
-			"date_of_birth": "05/11/2020",
+			"date_of_birth": "2020-11-05",
 			"email": "c1@hotmail.com",
 			"password": "password1",
 			"phone_number": "3051234567"
@@ -42,7 +42,7 @@
 		{
 			"code": "2",
 			"complete_name": "Cliente2",
-			"date_of_birth": "21/07/2020",
+			"date_of_birth": "2020-07-21",
 			"email": "c2@hotmail.com",
 			"password": "password2",
 			"phone_number": "3112345678"
@@ -50,7 +50,7 @@
 		{
 			"code": "3",
 			"complete_name": "Cliente3",
-			"date_of_birth": "13/02/2020",
+			"date_of_birth": "2020-02-21",
 			"email": "c3@hotmail.com",
 			"password": "password3",
 			"phone_number": "3123456789"
@@ -74,21 +74,21 @@
 		{
 			"code": 1,
 			"comment": "Este es el primer comentario de prueba",
-			"date": "15/03/2020",
+			"date": "2020-03-15 05:42:04",
 			"client_code": "1",
 			"project_code": 1
 		},
 		{
 			"code": 2,
 			"comment": "Este es el segundo comentario de prueba",
-			"date": "18/02/2020",
+			"date": "2020-02-18 06:46:05",
 			"client_code": "1",
 			"project_code": 2
 		},
 		{
 			"code": 3,
 			"comment": "Este es el tercer comentario de prueba",
-			"date": "03/03/2020",
+			"date": "2020-03-03 03:45:10",
 			"client_code": "3",
 			"project_code": 2
 		}
@@ -97,7 +97,7 @@
 		{
 			"code": 1,
 			"content": "Este es el primer contenido de prueba",
-			"date": "12/03/2020",
+			"date": "2020-03-03 03:45:10",
 			"subject": "Subject1",
 			"client_code": "1",
 			"project_code": 1
@@ -105,14 +105,14 @@
 		{
 			"code": 2,
 			"content": "Este es el segundo contenido de prueba",
-			"date": "05/01/2020",
+			"date": "2020-02-18 06:46:05",
 			"subject": "Subject2",
 			"client_code": "2",
 			"project_code": 1
 		},
 		{
 			"content": "Este es el tercer contenido de prueba",
-			"date": "14/02/2020",
+			"date": "2020-03-15 05:42:04",
 			"subject": "Subject3",
 			"client_code": "2",
 			"project_code": 3
@@ -127,7 +127,7 @@
 			"numRooms": 3,
 			"price": 95000000.0,
 			"type": 1,
-			"urlImage": "",
+			"urlImage": "images/imagen.png",
 			"project": 1
 		},
 		{
@@ -138,7 +138,7 @@
 			"numRooms": 3,
 			"price": 130000000.0,
 			"type": 1,
-			"urlImage": "",
+			"urlImage": "images/imagen2.png",
 			"project": 2
 		},
 		{
@@ -149,7 +149,7 @@
 			"numRooms": 2,
 			"price": 88000000.0,
 			"type": 2,
-			"urlImage": "",
+			"urlImage": "images/imagen3.png",
 			"project": 3
 		}
 	],
