@@ -56,6 +56,20 @@
 			"phone_number": "3123456789"
 		}
 	],
+	"CLIENT_PROJECT": [
+		{
+			"favoriteProjects_code": 1,
+			"favoriteClients_code": "1"
+		},
+		{
+			"favoriteProjects_code": 2,
+			"favoriteClients_code": "2"
+		},
+		{
+			"favoriteProjects_code": 3,
+			"favoriteClients_code": "3"
+		}
+	],
 	"COMMENT": [
 		{
 			"code": 1,
