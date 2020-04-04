@@ -30,6 +30,8 @@ import co.edu.uniquindio.project.entities.City;
 import co.edu.uniquindio.project.entities.Client;
 import co.edu.uniquindio.project.entities.Comment;
 import co.edu.uniquindio.project.entities.Contact;
+import co.edu.uniquindio.project.entities.Dwelling;
+import co.edu.uniquindio.project.entities.Type;
 
 @RunWith(Arquillian.class)
 public class ModelTest {
@@ -110,7 +112,7 @@ public class ModelTest {
 
 		Assert.assertEquals(admin, registered);
 	}
-
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" }) // Esto se pone para utilizar los archivos json
@@ -127,6 +129,7 @@ public class ModelTest {
 
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -141,6 +144,7 @@ public class ModelTest {
 		Assert.assertEquals(client, registered);
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -154,16 +158,33 @@ public class ModelTest {
 		Assert.assertEquals(registered, comment);
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void contactPersistenceTest() {
-		Contact contact = new Contact(6, "CONTACTO", "Hola quería contactarme con ustedes porque es el mejor proyecto que he visto");
+		Contact contact = new Contact(6, "CONTACTO",
+				"Hola quería contactarme con ustedes porque es el mejor proyecto que he visto");
 		entityManager.persist(contact);
 		entityManager.flush();
-		
+
 		Contact registered = entityManager.find(Contact.class, 6);
 		Assert.assertEquals(registered, contact);
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void dwellingPersistenceTest() {
+		Dwelling dwelling = new Dwelling(8, "/images/apartacho.png", 45, 14000000.0, "Apartamento con vista a Armenia",
+				4, 2, Type.APARTMENT);
+		entityManager.persist(dwelling);
+		entityManager.flush();
+
+		Dwelling registered = entityManager.find(Dwelling.class, 8);
+		Assert.assertEquals(dwelling, registered);
+
 	}
 
 	// Test remove
