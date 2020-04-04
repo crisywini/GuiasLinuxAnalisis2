@@ -188,6 +188,17 @@ public class ModelTest {
 	}
 
 	// Test remove
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.COMMIT)
+	@UsingDataSet({ "unihogar.json" })
+	public void adminRemoveTest() {
+
+		Administrator admin = entityManager.find(Administrator.class, "123"); 
+		entityManager.remove(admin);
+		Administrator registered = entityManager.find(Administrator.class, "123");
+		Assert.assertNull(registered);
+	}	
 	// Test merge
 	// Test find
 
