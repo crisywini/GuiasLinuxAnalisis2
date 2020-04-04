@@ -12,5 +12,28 @@
 			"CODE": 3,
 			"NAME": "Montenegro"
 		}
+	],
+	"ESTATEAGENCY": [
+		{
+			"code": "IMB1",
+			"address": "La curva",
+			"email": "imb1@inmobiliaria.com",
+			"name": "Banderas Verdes",
+			"password": "password"
+		},
+		{
+			"code": "IMB2",
+			"address": "Coliseo",
+			"email": "imb2@inmobiliaria.com",
+			"name": "Alejandrinas",
+			"password": "password"
+		},
+		{
+			"code": "IMB3",
+			"address": "Castellana",
+			"email": "imb3@inmobiliaria.com",
+			"name": "Camu",
+			"password": "password"
+		}
 	]
 }
