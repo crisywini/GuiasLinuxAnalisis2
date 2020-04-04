@@ -264,6 +264,19 @@ public class ModelTest {
 	}
 
 	// Test merge
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.COMMIT)
+	@UsingDataSet({ "unihogar.json" })
+	public void adminMergeTest() {
+
+		Administrator admin = entityManager.find(Administrator.class, "123");
+		admin.setEmail("newAdmin1@mail.com");
+		entityManager.merge(admin);
+		Administrator registered = entityManager.find(Administrator.class, "123");
+		String mail = registered.getEmail();
+		Assert.assertEquals(mail, admin.getEmail());
+	}
 	
 	// Test find
 
