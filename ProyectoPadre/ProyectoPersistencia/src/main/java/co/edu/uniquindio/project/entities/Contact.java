@@ -1,3 +1,4 @@
+
 package co.edu.uniquindio.project.entities;
 
 import java.io.Serializable;
@@ -112,5 +113,33 @@ public class Contact implements Serializable {
 	public void setClientCode(Client clientCode) {
 		this.clientCode = clientCode;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + code;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contact other = (Contact) obj;
+		if (code != other.code)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [code=" + code + ", subject=" + subject + ", content=" + content + ", date=" + date + "]";
+	}
+	
 
 }
