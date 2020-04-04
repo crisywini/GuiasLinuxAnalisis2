@@ -93,14 +93,22 @@ public class ModelTest {
 		entityManager.flush();
 
 	}
-	
+
 	//Test persist
 
 	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
+	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({"unihogar.json"})
 	public void adminPersistenceTest() {
+
+		Administrator admin = new Administrator("1234", "admin51@administrador.com", "password1");
+		System.out.println(admin.toString());
+		entityManager.persist(admin);
+		entityManager.flush();
 		
+		Administrator registered = entityManager.find(Administrator.class, "1234");
+		Assert.assertEquals(admin, registered);
+
 	}
 	
 	@Ignore
