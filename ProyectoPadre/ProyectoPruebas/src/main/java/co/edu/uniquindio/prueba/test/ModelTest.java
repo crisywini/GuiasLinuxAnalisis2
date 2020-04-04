@@ -226,6 +226,19 @@ public class ModelTest {
 		Assert.assertNull(registered);
 	}
 
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void commentRemoveTest() {
+
+		Comment comment = entityManager.find(Comment.class, 1);
+		entityManager.remove(comment);
+
+		Comment registered = entityManager.find(Comment.class, 1);
+		Assert.assertNull(registered);
+	}
+
 	// Test merge
 	// Test find
 
