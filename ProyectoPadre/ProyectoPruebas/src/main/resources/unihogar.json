@@ -16,6 +16,32 @@
 			"password": "password3"
 		}
 	],
+	"CLIENT": [
+		{
+			"code": "1",
+			"complete_name": "Juan Carlos Garcia",
+			"date_of_birth": "05/11/2020",
+			"email": "jcg@hotmail.com",
+			"password": "password1",
+			"phone_number": "3051234567"
+		},
+		{
+			"code": "2",
+			"complete_name": "Rosa Maria Lopez",
+			"date_of_birth": "21/07/2020",
+			"email": "rml@hotmail.com",
+			"password": "password2",
+			"phone_number": "3112345678"
+		},
+		{
+			"code": "3",
+			"complete_name": "Andres Felipe Gutierrez",
+			"date_of_birth": "13/02/2020",
+			"email": "afg@hotmail.com",
+			"password": "password3",
+			"phone_number": "3123456789"
+		}
+	],
 	"CITY": [
 		{
 			"code": 1,
