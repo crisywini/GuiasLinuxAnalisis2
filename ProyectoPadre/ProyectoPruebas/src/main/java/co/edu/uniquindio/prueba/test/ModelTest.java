@@ -34,6 +34,7 @@ import co.edu.uniquindio.project.entities.Dwelling;
 import co.edu.uniquindio.project.entities.EstateAgency;
 import co.edu.uniquindio.project.entities.Project;
 import co.edu.uniquindio.project.entities.Rating;
+import co.edu.uniquindio.project.entities.RatingPK;
 import co.edu.uniquindio.project.entities.Service;
 import co.edu.uniquindio.project.entities.Type;
 import co.edu.uniquindio.project.entities.User;
@@ -1273,21 +1274,22 @@ public class ModelTest {
 		Assert.assertEquals(project, registered);
 	}
 
-	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void ratingPersistenceTest() {
-		
+
 		// TODO: REVISAR
 
+		Client client = entityManager.find(Client.class, "1");
+		Project project = entityManager.find(Project.class, 1);
 		Rating registered;
-
-		Rating estateAgency = new Rating(1, 150, clientRating, projectRating)
-		entityManager.persist(estateAgency);
+		RatingPK key = new RatingPK("1", 1);
+		Rating rating = new Rating(key, 152, client, project);
+		entityManager.persist(rating);
 		entityManager.flush();
-		registered = entityManager.find(Rating.class, "121");
-		Assert.assertEquals(estateAgency, registered);
+		registered = entityManager.find(Rating.class, key);
+		Assert.assertEquals(rating, registered);
 	}
 
 	@Ignore
