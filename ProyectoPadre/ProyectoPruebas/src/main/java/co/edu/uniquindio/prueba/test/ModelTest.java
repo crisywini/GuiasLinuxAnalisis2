@@ -37,7 +37,6 @@ import co.edu.uniquindio.project.entities.Rating;
 import co.edu.uniquindio.project.entities.RatingPK;
 import co.edu.uniquindio.project.entities.Service;
 import co.edu.uniquindio.project.entities.Type;
-import co.edu.uniquindio.project.entities.User;
 
 @RunWith(Arquillian.class)
 public class ModelTest {
@@ -57,6 +56,7 @@ public class ModelTest {
 
 	@Test
 	public void generarTest() {
+
 	}
 
 	@Ignore
@@ -976,6 +976,7 @@ public class ModelTest {
 		Assert.assertEquals(commentRegistered, comment.getComment());
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1133,6 +1134,7 @@ public class ModelTest {
 	// Test find
 
 	// Test persist
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1274,18 +1276,63 @@ public class ModelTest {
 		Assert.assertEquals(project, registered);
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void ratingPersistenceTest() {
 
-		// TODO: REVISAR
+		Rating registered;
 
 		Client client = entityManager.find(Client.class, "1");
 		Project project = entityManager.find(Project.class, 1);
-		Rating registered;
 		RatingPK key = new RatingPK("1", 1);
 		Rating rating = new Rating(key, 152, client, project);
+		entityManager.persist(rating);
+		entityManager.flush();
+		registered = entityManager.find(Rating.class, key);
+		Assert.assertEquals(rating, registered);
+
+		client = entityManager.find(Client.class, "3");
+		project = entityManager.find(Project.class, 3);
+		key = new RatingPK("3", 3);
+		rating = new Rating(key, 159, client, project);
+		entityManager.persist(rating);
+		entityManager.flush();
+		registered = entityManager.find(Rating.class, key);
+		Assert.assertEquals(rating, registered);
+
+		client = entityManager.find(Client.class, "2");
+		project = entityManager.find(Project.class, 4);
+		key = new RatingPK("2", 4);
+		rating = new Rating(key, 153, client, project);
+		entityManager.persist(rating);
+		entityManager.flush();
+		registered = entityManager.find(Rating.class, key);
+		Assert.assertEquals(rating, registered);
+
+		client = entityManager.find(Client.class, "1");
+		project = entityManager.find(Project.class, 5);
+		key = new RatingPK("1", 5);
+		rating = new Rating(key, 157, client, project);
+		entityManager.persist(rating);
+		entityManager.flush();
+		registered = entityManager.find(Rating.class, key);
+		Assert.assertEquals(rating, registered);
+
+		client = entityManager.find(Client.class, "2");
+		project = entityManager.find(Project.class, 6);
+		key = new RatingPK("2", 6);
+		rating = new Rating(key, 150, client, project);
+		entityManager.persist(rating);
+		entityManager.flush();
+		registered = entityManager.find(Rating.class, key);
+		Assert.assertEquals(rating, registered);
+
+		client = entityManager.find(Client.class, "3");
+		project = entityManager.find(Project.class, 7);
+		key = new RatingPK("3", 7);
+		rating = new Rating(key, 150, client, project);
 		entityManager.persist(rating);
 		entityManager.flush();
 		registered = entityManager.find(Rating.class, key);
@@ -1361,77 +1408,6 @@ public class ModelTest {
 		Assert.assertEquals(service, registered);
 	}
 
-	@Ignore
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "unihogar.json" })
-	public void userPersistenceTest() {
-
-		// TODO: REVISAR
-
-		User registered;
-
-		User user = new User("110", "user@mail.com", "password");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "110");
-		Assert.assertEquals(user, registered);
-
-		user = new User("111", "user1@mail.com", "password1");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "111");
-		Assert.assertEquals(user, registered);
-
-		user = new User("112", "user2@mail.com", "password2");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "112");
-		Assert.assertEquals(user, registered);
-
-		user = new User("113", "user3@mail.com", "password3");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "113");
-		Assert.assertEquals(user, registered);
-
-		user = new User("114", "user4@mail.com", "password4");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "114");
-		Assert.assertEquals(user, registered);
-
-		user = new User("115", "user5@mail.com", "password5");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "115");
-		Assert.assertEquals(user, registered);
-
-		user = new User("116", "user6@mail.com", "password6");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "116");
-		Assert.assertEquals(user, registered);
-
-		user = new User("117", "user7@mail.com", "password7");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "117");
-		Assert.assertEquals(user, registered);
-
-		user = new User("118", "user8@mail.com", "password8");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "118");
-		Assert.assertEquals(user, registered);
-
-		user = new User("119", "user9@mail.com", "password9");
-		entityManager.persist(user);
-		entityManager.flush();
-		registered = entityManager.find(User.class, "119");
-		Assert.assertEquals(user, registered);
-	}
-
 	// Test remove
 
 	@Ignore
@@ -1443,11 +1419,6 @@ public class ModelTest {
 		EstateAgency estateAgency = entityManager.find(EstateAgency.class, "IMB1");
 		entityManager.remove(estateAgency);
 		EstateAgency registered = entityManager.find(EstateAgency.class, "IMB1");
-		Assert.assertNull(registered);
-
-		estateAgency = entityManager.find(EstateAgency.class, "IMB2");
-		entityManager.remove(estateAgency);
-		registered = entityManager.find(EstateAgency.class, "IMB2");
 		Assert.assertNull(registered);
 
 		estateAgency = entityManager.find(EstateAgency.class, "IMB3");
@@ -1502,11 +1473,6 @@ public class ModelTest {
 		Project registered = entityManager.find(Project.class, 1);
 		Assert.assertNull(registered);
 
-		project = entityManager.find(Project.class, 2);
-		entityManager.remove(project);
-		registered = entityManager.find(Project.class, 2);
-		Assert.assertNull(registered);
-
 		project = entityManager.find(Project.class, 3);
 		entityManager.remove(project);
 		registered = entityManager.find(Project.class, 3);
@@ -1552,16 +1518,45 @@ public class ModelTest {
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
+	public void ratingRemoveTest() {
+
+		RatingPK key = new RatingPK("1", 1);
+		Rating rating = entityManager.find(Rating.class, key);
+		entityManager.remove(rating);
+		Project registered = entityManager.find(Project.class, 1);
+		Assert.assertNull(registered);
+
+		key = new RatingPK("2", 2);
+		rating = entityManager.find(Rating.class, key);
+		entityManager.remove(rating);
+		registered = entityManager.find(Project.class, 2);
+		Assert.assertNull(registered);
+
+//		rating = entityManager.find(Rating.class, 157);
+//		entityManager.remove(rating);
+//		registered = entityManager.find(Project.class, 3);
+//		Assert.assertNull(registered);
+//		
+//		rating = entityManager.find(Rating.class, 150);
+//		entityManager.remove(rating);
+//		registered = entityManager.find(Project.class, 4);
+//		Assert.assertNull(registered);
+//		
+//		rating = entityManager.find(Rating.class, 151);
+//		entityManager.remove(rating);
+//		registered = entityManager.find(Project.class, 5);
+//		Assert.assertNull(registered);
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
 	public void serviceRemoveTest() {
 
 		Service service = entityManager.find(Service.class, 1);
 		entityManager.remove(service);
 		Service registered = entityManager.find(Service.class, 1);
-		Assert.assertNull(registered);
-
-		service = entityManager.find(Service.class, 2);
-		entityManager.remove(service);
-		registered = entityManager.find(Service.class, 2);
 		Assert.assertNull(registered);
 
 		service = entityManager.find(Service.class, 3);
@@ -1605,25 +1600,6 @@ public class ModelTest {
 		Assert.assertNull(registered);
 	}
 
-	@Ignore
-	@Test
-	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({ "unihogar.json" })
-	public void userRemoveTest() {
-
-		// TODO: REVISAR
-
-		User user = entityManager.find(User.class, 1);
-		entityManager.remove(user);
-		User registered = entityManager.find(User.class, 1);
-		Assert.assertNull(registered);
-
-		user = entityManager.find(User.class, 2);
-		entityManager.remove(user);
-		registered = entityManager.find(User.class, 2);
-		Assert.assertNull(registered);
-	}
-
 	// Test merge
 
 	@Ignore
@@ -1639,19 +1615,218 @@ public class ModelTest {
 		String nameRegistered = registered.getName();
 		Assert.assertEquals(nameRegistered, estateAgency.getName());
 
-		estateAgency = entityManager.find(EstateAgency.class, "IMB2");
-		estateAgency.setName("San patricio");
-		entityManager.merge(estateAgency);
-		registered = entityManager.find(EstateAgency.class, "imb2");
-		nameRegistered = registered.getName();
-		Assert.assertEquals(nameRegistered, estateAgency.getName());
-
 		estateAgency = entityManager.find(EstateAgency.class, "IMB3");
 		estateAgency.setEmail("imb33@inmobiliaria.com");
 		entityManager.merge(estateAgency);
-		registered = entityManager.find(EstateAgency.class, "imb3");
+		registered = entityManager.find(EstateAgency.class, "IBM3");
 		nameRegistered = registered.getEmail();
+		Assert.assertEquals(nameRegistered, estateAgency.getEmail());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB4");
+		estateAgency.setEmail("imb44@inmobiliaria.com");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM4");
+		nameRegistered = registered.getEmail();
+		Assert.assertEquals(nameRegistered, estateAgency.getEmail());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB5");
+		estateAgency.setName("Banderines");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM5");
+		nameRegistered = registered.getName();
 		Assert.assertEquals(nameRegistered, estateAgency.getName());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB6");
+		estateAgency.setName("Banderitas");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM6");
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, estateAgency.getName());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB7");
+		estateAgency.setName("Banderas moradas");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM7");
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, estateAgency.getName());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB5");
+		estateAgency.setName("Banderines");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM5");
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, estateAgency.getName());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB6");
+		estateAgency.setName("Banderitas");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM6");
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, estateAgency.getName());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB7");
+		estateAgency.setName("Banderas moradas");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM7");
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, estateAgency.getName());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB8");
+		estateAgency.setName("Sin banderas");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM8");
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, estateAgency.getName());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB9");
+		estateAgency.setEmail("imb99@inmobiliaria.com");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM9");
+		nameRegistered = registered.getEmail();
+		Assert.assertEquals(nameRegistered, estateAgency.getEmail());
+
+		estateAgency = entityManager.find(EstateAgency.class, "IMB10");
+		estateAgency.setEmail("imb100@inmobiliaria.com");
+		entityManager.merge(estateAgency);
+		registered = entityManager.find(EstateAgency.class, "IBM10");
+		nameRegistered = registered.getEmail();
+		Assert.assertEquals(nameRegistered, estateAgency.getEmail());
 	}
 
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void projectMergeTest() {
+
+		Project project = entityManager.find(Project.class, 1);
+		project.setName("Un cambio nuevo");
+		entityManager.merge(project);
+		Project registered = entityManager.find(Project.class, 1);
+		String nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, project.getName());
+
+		project = entityManager.find(Project.class, 3);
+		project.setDescription("Este es el mejor proyecto de todos");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 3);
+		nameRegistered = registered.getDescription();
+		Assert.assertEquals(nameRegistered, project.getDescription());
+
+		project = entityManager.find(Project.class, 4);
+		project.setDescription("Este no es tan bueno como los otros");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 4);
+		nameRegistered = registered.getDescription();
+		Assert.assertEquals(nameRegistered, project.getDescription());
+
+		project = entityManager.find(Project.class, 5);
+		project.setName("Villas de santa isabel");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 5);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, project.getName());
+
+		project = entityManager.find(Project.class, 6);
+		project.setName("Villa carolina");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 6);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, project.getName());
+
+		project = entityManager.find(Project.class, 7);
+		project.setName("Villas cristina");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 7);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, project.getName());
+
+		project = entityManager.find(Project.class, 8);
+		project.setName("Villa sofia");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 8);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, project.getName());
+
+		project = entityManager.find(Project.class, 9);
+		project.setName("Villa fernandez");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 9);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, project.getName());
+
+		project = entityManager.find(Project.class, 10);
+		project.setName("Villa lucia");
+		entityManager.merge(project);
+		registered = entityManager.find(Project.class, 10);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, project.getName());
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void ratingMergeTest() {
+
+		RatingPK key = new RatingPK("1", 1);
+		Rating rating = entityManager.find(Rating.class, key);
+		rating.setScore(160);
+		entityManager.merge(rating);
+		Rating registered = entityManager.find(Rating.class, key);
+		int scoreRegistered = registered.getScore();
+		Assert.assertEquals(scoreRegistered, rating.getScore());
+
+		key = new RatingPK("2", 2);
+		rating = entityManager.find(Rating.class, key);
+		rating.setScore(150);
+		entityManager.merge(rating);
+		registered = entityManager.find(Rating.class, key);
+		scoreRegistered = registered.getScore();
+		Assert.assertEquals(scoreRegistered, rating.getScore());
+
+		key = new RatingPK("3", 3);
+		rating = entityManager.find(Rating.class, key);
+		rating.setScore(160);
+		entityManager.merge(rating);
+		registered = entityManager.find(Rating.class, key);
+		scoreRegistered = registered.getScore();
+		Assert.assertEquals(scoreRegistered, rating.getScore());
+
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void serviceMergeTest() {
+
+		Service service = entityManager.find(Service.class, 1);
+		service.setName("Carritos chocones");
+		entityManager.merge(service);
+		Service registered = entityManager.find(Service.class, 1);
+		String nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, service.getName());
+
+		service = entityManager.find(Service.class, 3);
+		service.setName("Peluqueria");
+		entityManager.merge(service);
+		registered = entityManager.find(Service.class, 3);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, service.getName());
+
+		service = entityManager.find(Service.class, 4);
+		service.setName("Cafeteria");
+		entityManager.merge(service);
+		registered = entityManager.find(Service.class, 4);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, service.getName());
+
+		service = entityManager.find(Service.class, 5);
+		service.setName("Panaderia");
+		entityManager.merge(service);
+		registered = entityManager.find(Service.class, 5);
+		nameRegistered = registered.getName();
+		Assert.assertEquals(nameRegistered, service.getName());
+	}
 }
