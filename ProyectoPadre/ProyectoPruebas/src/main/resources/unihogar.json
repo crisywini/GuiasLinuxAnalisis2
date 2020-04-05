@@ -754,6 +754,30 @@
 		{
 			"code": 4,
 			"name": "Tienda"
+		},
+		{
+			"code": 5,
+			"name": "Parroquia"
+		},
+		{
+			"code": 6,
+			"name": "Dulceria"
+		},
+		{
+			"code": 7,
+			"name": "Zona camping"
+		},
+		{
+			"code": 8,
+			"name": "Zapateria"
+		},
+		{
+			"code": 9,
+			"name": "Carniceria"
+		},
+		{
+			"code": 10,
+			"name": "Fruteria"
 		}
 	],
 	"SERVICE_PROJECT": [
@@ -772,6 +796,30 @@
 		{
 			"services_code": 3,
 			"projects_code": 3
+		},
+		{
+			"services_code": 5,
+			"projects_code": 4
+		},
+		{
+			"services_code": 10,
+			"projects_code": 5
+		},
+		{
+			"services_code": 9,
+			"projects_code": 6
+		},
+		{
+			"services_code": 1,
+			"projects_code": 7
+		},
+		{
+			"services_code": 2,
+			"projects_code": 8
+		},
+		{
+			"services_code": 8,
+			"projects_code": 9
 		}
 	]
 }
