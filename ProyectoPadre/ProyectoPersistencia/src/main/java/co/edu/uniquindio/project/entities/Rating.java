@@ -39,10 +39,16 @@ public class Rating implements Serializable {
 	 * @param key           from {@link RatingPK} primary key from the relationship
 	 *                      between {@link Client} and {@link Project}
 	 * @param score         from {@link Rating} an integer not nullable
+	 * @param clientRating  from relationship between {@link Client} and
+	 *                      {@link Project}
+	 * @param projectRating from relationship between {@link Client} and
+	 *                      {@link Project}
 	 */
-	public Rating(RatingPK key, int score) {
+	public Rating(RatingPK key, int score, Client clientRating, Project projectRating) {
 		this.key = key;
 		this.score = score;
+		this.clientRating = clientRating;
+		this.projectRating = projectRating;
 	}
 
 	public int getScore() {
@@ -67,6 +73,14 @@ public class Rating implements Serializable {
 
 	public void setProjectRating(Project projectRating) {
 		this.projectRating = projectRating;
+	}
+
+	public RatingPK getKey() {
+		return key;
+	}
+
+	public void setKey(RatingPK key) {
+		this.key = key;
 	}
 
 	@Override
@@ -99,5 +113,5 @@ public class Rating implements Serializable {
 		return "Rating [key=" + key + ", score=" + score + ", clientRating=" + clientRating + ", projectRating="
 				+ projectRating + "]";
 	}
-	
+
 }
