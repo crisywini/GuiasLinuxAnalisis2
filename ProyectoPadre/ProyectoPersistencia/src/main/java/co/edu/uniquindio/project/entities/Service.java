@@ -43,6 +43,17 @@ public class Service implements Serializable {
 		this.name = name;
 		this.projects = projects;
 	}
+	
+	/**
+	 * Constructor method
+	 * 
+	 * @param code     from {@link Service} primary key and not nullable
+	 * @param name     from {@link Service} not nullable and unique
+	 */
+	public Service(int code, String name) {
+		this.code = code;
+		this.name = name;
+	}
 
 	public int getCode() {
 		return this.code;

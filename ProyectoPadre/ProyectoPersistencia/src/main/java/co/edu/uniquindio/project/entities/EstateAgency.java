@@ -58,6 +58,21 @@ public class EstateAgency extends User implements Serializable {
 		advisors = new HashMap<String, String>();
 		phoneNumbers = new HashMap<String, String>();
 	}
+	
+	/**
+	 * 
+	 * @param code     from {@link User} primary key not nullable
+	 * @param email    from {@link User} unique not nullable
+	 * @param password from {@link User} not nullable
+	 * @param address  from {@link EstateAgency} not nullable
+	 */
+	public EstateAgency(String name, String code, String email, String password, String address) {
+		super(code, email, password);
+		this.address = address;
+		this.name = name;
+		advisors = new HashMap<String, String>();
+		phoneNumbers = new HashMap<String, String>();
+	}
 
 	public String getAddress() {
 		return this.address;

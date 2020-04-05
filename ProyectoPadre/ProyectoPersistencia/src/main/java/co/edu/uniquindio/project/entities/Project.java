@@ -99,6 +99,24 @@ public class Project implements Serializable {
 		this.favoriteClients = favoriteClients;
 	}
 
+	/**
+	 * Constructor method
+	 * 
+	 * @param code        from {@link Project} primary key and not nullable
+	 * @param name        from {@link Project} not nullable
+	 * @param latitude    from {@link Project} not nullable
+	 * @param length      from {@link Project} not nullable
+	 * @param description from {@link Project} big description and not nullable
+	 */
+	public Project(int code, String name, double latitude, double length, String description) {
+		this.code = code;
+		this.name = name;
+		this.latitude = latitude;
+		this.length = length;
+		this.description = description;
+		images = new LinkedList<String>();
+	}
+
 	public int getCode() {
 		return this.code;
 	}
