@@ -704,8 +704,38 @@
 		},
 		{
 			"score": 150,
-			"client_rating": "1023654758",
-			"project_rating": 2
+			"client_rating": "1023654753",
+			"project_rating": 4
+		},
+		{
+			"score": 151,
+			"client_rating": "1023654757",
+			"project_rating": 5
+		},
+		{
+			"score": 152,
+			"client_rating": "1023654752",
+			"project_rating": 6
+		},
+		{
+			"score": 159,
+			"client_rating": "1023654754",
+			"project_rating": 7
+		},
+		{
+			"score": 157,
+			"client_rating": "1023654751",
+			"project_rating": 8
+		},
+		{
+			"score": 156,
+			"client_rating": "1023654750",
+			"project_rating": 9
+		},
+		{
+			"score": 153,
+			"client_rating": "1023654756",
+			"project_rating": 10
 		}
 	],
 	"SERVICE": [
