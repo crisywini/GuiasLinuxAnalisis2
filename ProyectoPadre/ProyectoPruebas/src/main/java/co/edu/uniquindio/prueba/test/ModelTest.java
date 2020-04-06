@@ -38,11 +38,25 @@ import co.edu.uniquindio.project.entities.RatingPK;
 import co.edu.uniquindio.project.entities.Service;
 import co.edu.uniquindio.project.entities.Type;
 
+/**
+ * Class Model Test.
+ *
+ * @author Critian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
+ */
+
 @RunWith(Arquillian.class)
 public class ModelTest {
+
+	/** The entity manager. */
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	/**
+	 * Creates the test archive.
+	 *
+	 * @return the archive
+	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap.create(WebArchive.class,
@@ -54,11 +68,19 @@ public class ModelTest {
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 
+	/**
+	 * Generar test.
+	 */
 	@Test
 	public void generarTest() {
 
 	}
 
+	/**
+	 * Probar persistencia.
+	 *
+	 * @throws ParseException the parse exception
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -69,6 +91,7 @@ public class ModelTest {
 	 * para que no se almacenen en la base de datos
 	 */
 	public void probarPersistencia() throws ParseException {
+
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
 		Date fecha = sdf.parse("15/11/1999");
 
@@ -101,8 +124,11 @@ public class ModelTest {
 
 	}
 
-	// ---------------------------------------------Test
-	// persist---------------------------------------------
+	// --------------------------------Test persist----------------------------- //
+
+	/**
+	 * Admin persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
@@ -146,8 +172,12 @@ public class ModelTest {
 		entityManager.flush();
 		registered = entityManager.find(Administrator.class, "6719683121");
 		Assert.assertEquals(admin, registered);
+
 	}
 
+	/**
+	 * City persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -193,11 +223,17 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Client persistence test.
+	 *
+	 * @throws ParseException the parse exception
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void clientPersistenceTest() throws ParseException {
+
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
 		Date dateOfBirth = sdf.parse("15/11/1999");
 		Client client = new Client("123", "client5@mail.com", "password", "Crisi sanchez", "3145658898", dateOfBirth);
@@ -257,6 +293,9 @@ public class ModelTest {
 		Assert.assertEquals(client, registered);
 	}
 
+	/**
+	 * Comment persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -313,11 +352,15 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Contact persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void contactPersistenceTest() {
+
 		Contact contact = new Contact(6, "CONTACTO",
 				"Hola quería contactarme con ustedes porque es el mejor proyecto que he visto");
 		entityManager.persist(contact);
@@ -383,11 +426,15 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Dwelling persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void dwellingPersistenceTest() {
+
 		Dwelling dwelling = new Dwelling(11, "/images/apartacho.png", 45, 14000000.0, "Apartamento con vista a Armenia",
 				4, 2, Type.APARTMENT);
 		entityManager.persist(dwelling);
@@ -450,8 +497,12 @@ public class ModelTest {
 		entityManager.flush();
 		registered = entityManager.find(Dwelling.class, 19);
 		Assert.assertEquals(dwelling, registered);
+
 	}
 
+	/**
+	 * Estate agency persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -522,8 +573,12 @@ public class ModelTest {
 		entityManager.flush();
 		registered = entityManager.find(EstateAgency.class, "129");
 		Assert.assertEquals(estateAgency, registered);
+
 	}
 
+	/**
+	 * Project persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -591,8 +646,12 @@ public class ModelTest {
 		entityManager.flush();
 		registered = entityManager.find(Project.class, 129);
 		Assert.assertEquals(project, registered);
+
 	}
 
+	/**
+	 * Rating persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -654,8 +713,12 @@ public class ModelTest {
 		entityManager.flush();
 		registered = entityManager.find(Rating.class, key);
 		Assert.assertEquals(rating, registered);
+
 	}
 
+	/**
+	 * Service persistence test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -723,11 +786,14 @@ public class ModelTest {
 		entityManager.flush();
 		registered = entityManager.find(Service.class, 20);
 		Assert.assertEquals(service, registered);
+
 	}
 
-	// --------------------------------------------------Test
-	// remove--------------------------------------------------
+	// --------------------------------Test remove---------------------------- //
 
+	/**
+	 * Admin remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
@@ -751,6 +817,9 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * City remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -824,11 +893,17 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Client remove test.
+	 *
+	 * @throws ParseException the parse exception
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void clientRemoveTest() throws ParseException {
+
 		Client client = entityManager.find(Client.class, "1");
 		entityManager.remove(client);
 		Client registered = entityManager.find(Client.class, "1");
@@ -846,6 +921,9 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Comment remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -904,11 +982,15 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Contact remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void contactRemoveTest() {
+
 		Contact contact = entityManager.find(Contact.class, 1);
 		entityManager.remove(contact);
 		Contact registered = entityManager.find(Contact.class, 1);
@@ -958,13 +1040,18 @@ public class ModelTest {
 		entityManager.remove(contact);
 		registered = entityManager.find(Contact.class, 10);
 		Assert.assertNull(registered);
+
 	}
 
+	/**
+	 * Dwelling remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void dwellingRemoveTest() {
+
 		Dwelling dwelling = entityManager.find(Dwelling.class, 1);
 		entityManager.remove(dwelling);
 		Dwelling registered = entityManager.find(Dwelling.class, 1);
@@ -1017,6 +1104,9 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Estate agency remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1067,8 +1157,12 @@ public class ModelTest {
 		entityManager.remove(estateAgency);
 		registered = entityManager.find(EstateAgency.class, "IMB10");
 		Assert.assertNull(registered);
+
 	}
 
+	/**
+	 * Project remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1119,8 +1213,12 @@ public class ModelTest {
 		entityManager.remove(project);
 		registered = entityManager.find(Project.class, 10);
 		Assert.assertNull(registered);
+
 	}
 
+	/**
+	 * Rating remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1144,8 +1242,12 @@ public class ModelTest {
 		entityManager.remove(rating);
 		registered = entityManager.find(Rating.class, key);
 		Assert.assertNull(registered);
+
 	}
 
+	/**
+	 * Service remove test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1196,11 +1298,14 @@ public class ModelTest {
 		entityManager.remove(service);
 		registered = entityManager.find(Service.class, 10);
 		Assert.assertNull(registered);
+
 	}
 
-	// -----------------------------------------------Test
-	// merge-----------------------------------------------
+	// ------------------------------Test merge--------------------------- //
 
+	/**
+	 * Admin merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
@@ -1232,6 +1337,9 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * City merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1328,13 +1436,18 @@ public class ModelTest {
 		registered = entityManager.find(City.class, 13);
 		nameRegistered = registered.getName();
 		Assert.assertEquals(nameRegistered, city.getName());
+
 	}
 
+	/**
+	 * Client merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void clientMergeTest() {
+
 		Client client = entityManager.find(Client.class, "1");
 		client.setPassword("yanoespassword.com");
 		entityManager.merge(client);
@@ -1355,8 +1468,12 @@ public class ModelTest {
 		registered = entityManager.find(Client.class, "3");
 		emailRegistered = registered.getEmail();
 		Assert.assertEquals(emailRegistered, client.getEmail());
+
 	}
 
+	/**
+	 * Comment merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1432,13 +1549,18 @@ public class ModelTest {
 		registered = entityManager.find(Comment.class, 10);
 		commentRegistered = registered.getComment();
 		Assert.assertEquals(commentRegistered, comment.getComment());
+
 	}
 
+	/**
+	 * Contact merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void contactMergeTest() {
+
 		Contact contact = entityManager.find(Contact.class, 1);
 		contact.setContent("Este contacto es para saber del proyecto");
 		entityManager.merge(contact);
@@ -1508,13 +1630,18 @@ public class ModelTest {
 		registered = entityManager.find(Contact.class, 10);
 		contentRegistered = registered.getContent();
 		Assert.assertEquals(contentRegistered, contact.getContent());
+
 	}
 
+	/**
+	 * Dwelling merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void dwellingMergeTest() {
+
 		Dwelling dwelling = entityManager.find(Dwelling.class, 1);
 		dwelling.setDescription("Empty description");
 		entityManager.merge(dwelling);
@@ -1587,8 +1714,12 @@ public class ModelTest {
 		registered = entityManager.find(Dwelling.class, 10);
 		descriptionRegistered = registered.getDescription();
 		Assert.assertEquals(descriptionRegistered, dwelling.getDescription());
+
 	}
 
+	/**
+	 * Estate agency merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1678,8 +1809,12 @@ public class ModelTest {
 		registered = entityManager.find(EstateAgency.class, "IMB10");
 		nameRegistered = registered.getEmail();
 		Assert.assertEquals(nameRegistered, estateAgency.getEmail());
+
 	}
 
+	/**
+	 * Project merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1748,8 +1883,12 @@ public class ModelTest {
 		registered = entityManager.find(Project.class, 10);
 		nameRegistered = registered.getName();
 		Assert.assertEquals(nameRegistered, project.getName());
+
 	}
 
+	/**
+	 * Rating merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1782,6 +1921,9 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Service merge test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1815,15 +1957,20 @@ public class ModelTest {
 		registered = entityManager.find(Service.class, 5);
 		nameRegistered = registered.getName();
 		Assert.assertEquals(nameRegistered, service.getName());
+
 	}
 
-	//-----------------------------------------------------Test find------------------------------------------------
+	// ------------------------------Test find------------------------------ //
 
+	/**
+	 * Administrator find test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void administratorFindTest() {
+
 		Administrator adminQuery = entityManager.find(Administrator.class, "123");
 		Assert.assertEquals(adminQuery.getEmail(), "admin1@administrador.com");
 
@@ -1832,13 +1979,18 @@ public class ModelTest {
 
 		adminQuery = entityManager.find(Administrator.class, "1254567801");
 		Assert.assertEquals(adminQuery.getPassword(), "password3");
+
 	}
 
+	/**
+	 * City find test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void cityFindTest() {
+
 		City cityQuery = entityManager.find(City.class, 1);
 		String nameCityQuery = cityQuery.getName();
 		Assert.assertTrue(nameCityQuery.length() == 7);
@@ -1890,13 +2042,18 @@ public class ModelTest {
 		cityQuery = entityManager.find(City.class, 13);
 		nameCityQuery = cityQuery.getName();
 		Assert.assertTrue(nameCityQuery.length() == 12);
+
 	}
 
+	/**
+	 * Comment find test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void commentFindTest() {
+
 		Comment commentQuery = entityManager.find(Comment.class, 1);
 		int projectCode = commentQuery.getProjectCode().getCode();
 		Assert.assertTrue((projectCode - 1) == 0);
@@ -1936,8 +2093,12 @@ public class ModelTest {
 		commentQuery = entityManager.find(Comment.class, 10);
 		projectCode = commentQuery.getProjectCode().getCode();
 		Assert.assertTrue((projectCode - 1) == 0);
+
 	}
 
+	/**
+	 * Contact find test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -1983,13 +2144,18 @@ public class ModelTest {
 		contactQuery = entityManager.find(Contact.class, 10);
 		contentContactQuery = contactQuery.getContent();
 		Assert.assertEquals(contentContactQuery, "Este es el decimo contenido de prueba");
+
 	}
 
+	/**
+	 * Dwelling find test.
+	 */
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void dwellingFindTest() {
+
 		Dwelling dwellingQuery = entityManager.find(Dwelling.class, 1);
 		String dwellingDescriptionQuery = dwellingQuery.getDescription();
 		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la primera descripcion de prueba");
@@ -2029,6 +2195,186 @@ public class ModelTest {
 		dwellingQuery = entityManager.find(Dwelling.class, 10);
 		dwellingDescriptionQuery = dwellingQuery.getDescription();
 		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la decima descripcion de prueba");
+
+	}
+
+	/**
+	 * Estate agency find test.
+	 */
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void estateAgencyFindTest() {
+
+		EstateAgency estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB1");
+		String estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Banderas Verdes");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB2");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Campos Verdes");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB3");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Casas bellas");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB4");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "El renacer");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB5");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Porvenir");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB6");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Lux");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB7");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Rio claro");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB8");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Santa maria");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB9");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Villa celmira");
+
+		estateAgencyQuery = entityManager.find(EstateAgency.class, "IMB10");
+		estateAgencyNameQuery = estateAgencyQuery.getName();
+		Assert.assertEquals(estateAgencyNameQuery, "Bella suiza");
+
+	}
+
+	/**
+	 * Project find test.
+	 */
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void projectFindTest() {
+
+		Project projectQuery = entityManager.find(Project.class, 1);
+		String projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 2);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El segundo mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 3);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El tercer mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 4);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El cuarto mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 5);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El quinto mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 6);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El sexto mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 7);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El septimo mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 8);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El octavo mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 9);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El noveno mejor proyecto de todos");
+
+		projectQuery = entityManager.find(Project.class, 10);
+		projectDescriptionQuery = projectQuery.getDescription();
+		Assert.assertEquals(projectDescriptionQuery, "El decimo mejor proyecto de todos");
+
+	}
+
+	/**
+	 * Rating find test.
+	 */
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void ratingFindTest() {
+
+		RatingPK key = new RatingPK("1", 1);
+		Rating ratingQuery = entityManager.find(Rating.class, key);
+		int ratingScoreQuery = ratingQuery.getScore();
+		Assert.assertEquals(ratingScoreQuery, 150);
+
+		key = new RatingPK("2", 2);
+		ratingQuery = entityManager.find(Rating.class, key);
+		ratingScoreQuery = ratingQuery.getScore();
+		Assert.assertEquals(ratingScoreQuery, 155);
+
+		key = new RatingPK("3", 3);
+		ratingQuery = entityManager.find(Rating.class, key);
+		ratingScoreQuery = ratingQuery.getScore();
+		Assert.assertEquals(ratingScoreQuery, 157);
+
+	}
+
+	/**
+	 * Service find test.
+	 */
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void serviceFindTest() {
+
+		Service serviceQuery = entityManager.find(Service.class, 1);
+		String serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Piscinita");
+
+		serviceQuery = entityManager.find(Service.class, 2);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Gimnasio");
+
+		serviceQuery = entityManager.find(Service.class, 3);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "BBQ");
+
+		serviceQuery = entityManager.find(Service.class, 4);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Tienda");
+
+		serviceQuery = entityManager.find(Service.class, 5);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Parroquia");
+
+		serviceQuery = entityManager.find(Service.class, 6);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Dulceria");
+
+		serviceQuery = entityManager.find(Service.class, 7);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Zona camping");
+
+		serviceQuery = entityManager.find(Service.class, 8);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Zapateria");
+
+		serviceQuery = entityManager.find(Service.class, 9);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Carniceria");
+
+		serviceQuery = entityManager.find(Service.class, 10);
+		serviceNameQuery = serviceQuery.getName();
+		Assert.assertEquals(serviceNameQuery, "Fruteria");
+
 	}
 
 }
