@@ -101,7 +101,8 @@ public class ModelTest {
 
 	}
 
-	//---------------------------------------------Test persist---------------------------------------------
+	// ---------------------------------------------Test
+	// persist---------------------------------------------
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
@@ -724,8 +725,9 @@ public class ModelTest {
 		Assert.assertEquals(service, registered);
 	}
 
-	//--------------------------------------------------Test remove--------------------------------------------------
-	
+	// --------------------------------------------------Test
+	// remove--------------------------------------------------
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
@@ -1196,8 +1198,9 @@ public class ModelTest {
 		Assert.assertNull(registered);
 	}
 
-	//-----------------------------------------------Test merge-----------------------------------------------
-	
+	// -----------------------------------------------Test
+	// merge-----------------------------------------------
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
@@ -1586,6 +1589,7 @@ public class ModelTest {
 		Assert.assertEquals(descriptionRegistered, dwelling.getDescription());
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1813,5 +1817,218 @@ public class ModelTest {
 		Assert.assertEquals(nameRegistered, service.getName());
 	}
 
-	// Test find
+	//-----------------------------------------------------Test find------------------------------------------------
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void administratorFindTest() {
+		Administrator adminQuery = entityManager.find(Administrator.class, "123");
+		Assert.assertEquals(adminQuery.getEmail(), "admin1@administrador.com");
+
+		adminQuery = entityManager.find(Administrator.class, "1244567801");
+		Assert.assertEquals(adminQuery.getCode(), "1244567801");
+
+		adminQuery = entityManager.find(Administrator.class, "1254567801");
+		Assert.assertEquals(adminQuery.getPassword(), "password3");
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void cityFindTest() {
+		City cityQuery = entityManager.find(City.class, 1);
+		String nameCityQuery = cityQuery.getName();
+		Assert.assertTrue(nameCityQuery.length() == 7);
+
+		cityQuery = entityManager.find(City.class, 2);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertTrue(nameCityQuery.length() == 6);
+
+		cityQuery = entityManager.find(City.class, 3);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertTrue(nameCityQuery.length() == 10);
+
+		cityQuery = entityManager.find(City.class, 4);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertTrue(nameCityQuery.length() == 8);
+
+		cityQuery = entityManager.find(City.class, 5);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertEquals(nameCityQuery, "Circasia");
+
+		cityQuery = entityManager.find(City.class, 6);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertEquals(nameCityQuery, "Medellin");
+
+		cityQuery = entityManager.find(City.class, 7);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertTrue(nameCityQuery.length() == 4);
+
+		cityQuery = entityManager.find(City.class, 8);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertEquals(nameCityQuery, "Bogotá");
+
+		cityQuery = entityManager.find(City.class, 9);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertTrue(nameCityQuery.length() == 9);
+
+		cityQuery = entityManager.find(City.class, 10);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertEquals(nameCityQuery, "Tumaco");
+
+		cityQuery = entityManager.find(City.class, 11);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertEquals(nameCityQuery, "Amazonas");
+
+		cityQuery = entityManager.find(City.class, 12);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertEquals(nameCityQuery, "Sincelejo");
+
+		cityQuery = entityManager.find(City.class, 13);
+		nameCityQuery = cityQuery.getName();
+		Assert.assertTrue(nameCityQuery.length() == 12);
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void commentFindTest() {
+		Comment commentQuery = entityManager.find(Comment.class, 1);
+		int projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+
+		commentQuery = entityManager.find(Comment.class, 2);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 1);
+
+		commentQuery = entityManager.find(Comment.class, 3);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 1);
+
+		commentQuery = entityManager.find(Comment.class, 4);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+
+		commentQuery = entityManager.find(Comment.class, 5);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+
+		commentQuery = entityManager.find(Comment.class, 6);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+
+		commentQuery = entityManager.find(Comment.class, 7);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+
+		commentQuery = entityManager.find(Comment.class, 8);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+
+		commentQuery = entityManager.find(Comment.class, 9);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+
+		commentQuery = entityManager.find(Comment.class, 10);
+		projectCode = commentQuery.getProjectCode().getCode();
+		Assert.assertTrue((projectCode - 1) == 0);
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void contactFindTest() {
+
+		Contact contactQuery = entityManager.find(Contact.class, 1);
+		String contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el primer contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 2);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el segundo contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 3);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el tercer contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 4);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el Cuarto contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 5);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el quinto contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 6);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el sexto contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 7);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el septimo contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 8);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el octavo contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 9);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el noveno contenido de prueba");
+
+		contactQuery = entityManager.find(Contact.class, 10);
+		contentContactQuery = contactQuery.getContent();
+		Assert.assertEquals(contentContactQuery, "Este es el decimo contenido de prueba");
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void dwellingFindTest() {
+		Dwelling dwellingQuery = entityManager.find(Dwelling.class, 1);
+		String dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la primera descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 2);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la segunda descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 3);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la tercera descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 4);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la cuarta descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 5);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la quinta descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 6);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la sexta descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 7);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la septima descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 8);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la octava descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 9);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la novena descripcion de prueba");
+
+		dwellingQuery = entityManager.find(Dwelling.class, 10);
+		dwellingDescriptionQuery = dwellingQuery.getDescription();
+		Assert.assertEquals(dwellingDescriptionQuery, "Esta es la decima descripcion de prueba");
+	}
+
 }
