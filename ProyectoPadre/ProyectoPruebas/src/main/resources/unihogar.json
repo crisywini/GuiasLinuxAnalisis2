@@ -1,0 +1,790 @@
+{
+	"ADMINISTRATOR": [
+		{
+			"code": "123",
+			"email": "admin1@administrador.com",
+			"password": "password1"
+		},
+		{
+			"code": "1244567801",
+			"email": "admin2@administrador.com",
+			"password": "password2"
+		},
+		{
+			"code": "1254567801",
+			"email": "admin3@administrador.com",
+			"password": "password3"
+		}
+	],
+	"CITY": [
+		{
+			"code": 1,
+			"name": "Armenia"
+		},
+		{
+			"code": 2,
+			"name": "Ibague"
+		},
+		{
+			"code": 3,
+			"name": "Montenegro"
+		},
+		{
+			"code": 4,
+			"name": "Filandia"
+		},
+		{
+			"code": 5,
+			"name": "Circasia"
+		},
+		{
+			"code": 6,
+			"name": "Medellin"
+		},
+		{
+			"code": 7,
+			"name": "Cali"
+		},
+		{
+			"code": 8,
+			"name": "Bogotá"
+		},
+		{
+			"code": 9,
+			"name": "Cartagena"
+		},
+		{
+			"code": 10,
+			"name": "Tumaco"
+		},
+		{
+			"code": 11,
+			"name": "Amazonas"
+		},
+		{
+			"code": 12,
+			"name": "Sincelejo"
+		},
+		{
+			"code": 13,
+			"name": "Santa monica"
+		}
+	],
+	"CLIENT": [
+		{
+			"code": "1",
+			"complete_name": "Cliente1",
+			"date_of_birth": "2020-11-05",
+			"email": "c1@hotmail.com",
+			"password": "password1",
+			"phone_number": "3051234567"
+		},
+		{
+			"code": "2",
+			"complete_name": "Cliente2",
+			"date_of_birth": "2020-07-21",
+			"email": "c2@hotmail.com",
+			"password": "password2",
+			"phone_number": "3112345678"
+		},
+		{
+			"code": "3",
+			"complete_name": "Cliente3",
+			"date_of_birth": "2020-02-21",
+			"email": "c3@hotmail.com",
+			"password": "password3",
+			"phone_number": "3123456789"
+		}
+	],
+	"CLIENT_PROJECT": [
+		{
+			"favoriteProjects_code": 1,
+			"favoriteClients_code": "1"
+		},
+		{
+			"favoriteProjects_code": 2,
+			"favoriteClients_code": "2"
+		},
+		{
+			"favoriteProjects_code": 3,
+			"favoriteClients_code": "3"
+		}
+	],
+	"COMMENT": [
+		{
+			"code": 1,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 2,
+			"comment": "Este es el segundo comentario de prueba",
+			"date": "2020-02-18 06:46:05",
+			"client_code": "1",
+			"project_code": 2
+		},
+		{
+			"code": 3,
+			"comment": "Este es el tercer comentario de prueba",
+			"date": "2020-03-03 03:45:10",
+			"client_code": "3",
+			"project_code": 2
+		},
+		{
+			"code": 4,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 5,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 6,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 7,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 8,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 9,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 10,
+			"comment": "Este es el primer comentario de prueba",
+			"date": "2020-03-15 05:42:04",
+			"client_code": "1",
+			"project_code": 1
+		}
+	],
+	"CONTACT": [
+		{
+			"code": 1,
+			"content": "Este es el primer contenido de prueba",
+			"date": "2020-03-03 03:45:10",
+			"subject": "Subject1",
+			"client_code": "1",
+			"project_code": 1
+		},
+		{
+			"code": 2,
+			"content": "Este es el segundo contenido de prueba",
+			"date": "2020-02-18 06:46:05",
+			"subject": "Subject2",
+			"client_code": "2",
+			"project_code": 1
+		},
+		{
+			"code": 3,
+			"content": "Este es el tercer contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		},
+		{
+			"code": 4,
+			"content": "Este es el Cuarto contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		},
+		{
+			"code": 5,
+			"content": "Este es el quinto contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		},
+		{
+			"code": 6,
+			"content": "Este es el sexto contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		},
+		{
+			"code": 7,
+			"content": "Este es el septimo contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		},
+		{
+			"code": 8,
+			"content": "Este es el octavo contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		},
+		{
+			"code": 9,
+			"content": "Este es el noveno contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		},
+		{
+			"code": 10,
+			"content": "Este es el decimo contenido de prueba",
+			"date": "2020-03-15 05:42:04",
+			"subject": "Subject3",
+			"client_code": "2",
+			"project_code": 3
+		}
+	],
+	"DWELLING": [
+		{
+			"code": 1,
+			"area": 70.1,
+			"description": "Esta es la primera descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 3,
+			"price": 95000000.0,
+			"type": 1,
+			"urlImage": "images/imagen.png",
+			"project": 1
+		},
+		{
+			"code": 2,
+			"area": 75.5,
+			"description": "Esta es la segunda descripcion de prueba",
+			"numBathrooms": 2,
+			"numRooms": 3,
+			"price": 130000000.0,
+			"type": 1,
+			"urlImage": "images/imagen2.png",
+			"project": 2
+		},
+		{
+			"code": 3,
+			"area": 62.0,
+			"description": "Esta es la tercera descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 88000000.0,
+			"type": 0,
+			"urlImage": "images/imagen3.png",
+			"project": 3
+		},
+		{
+			"code": 4,
+			"area": 62.5,
+			"description": "Esta es la cuarta descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 88000000.0,
+			"type": 1,
+			"urlImage": "images/imagen4.png",
+			"project": 3
+		},
+		{
+			"code": 5,
+			"area": 68.0,
+			"description": "Esta es la quinta descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 88000000.0,
+			"type": 0,
+			"urlImage": "images/imagen5.png",
+			"project": 3
+		},
+		{
+			"code": 6,
+			"area": 72.0,
+			"description": "Esta es la sexta descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 88000000.0,
+			"type": 1,
+			"urlImage": "images/imagen6.png",
+			"project": 3
+		},
+		{
+			"code": 7,
+			"area": 66.0,
+			"description": "Esta es la septima descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 88000000.0,
+			"type": 1,
+			"urlImage": "images/imagen7.png",
+			"project": 3
+		},
+		{
+			"code": 8,
+			"area": 82.0,
+			"description": "Esta es la octava descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 88000000.0,
+			"type": 0,
+			"urlImage": "images/imagen8.png",
+			"project": 3
+		},
+		{
+			"code": 9,
+			"area": 91.0,
+			"description": "Esta es la novena descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 880000000.0,
+			"type": 1,
+			"urlImage": "images/imagen9.png",
+			"project": 3
+		},
+		{
+			"code": 10,
+			"area": 72.0,
+			"description": "Esta es la decima descripcion de prueba",
+			"numBathrooms": 1,
+			"numRooms": 2,
+			"price": 8800000.0,
+			"type": 0,
+			"urlImage": "images/imagen10.png",
+			"project": 3
+		}
+	],
+	"ESTATEAGENCY": [
+		{
+			"code": "IMB1",
+			"address": "La curva",
+			"email": "imb1@inmobiliaria.com",
+			"name": "Banderas Verdes",
+			"password": "password"
+		},
+		{
+			"code": "IMB2",
+			"address": "San jacinto",
+			"email": "imb2@inmobiliaria.com",
+			"name": "Campos Verdes",
+			"password": "password2"
+		},
+		{
+			"code": "IMB3",
+			"address": "San antonio",
+			"email": "imb3@inmobiliaria.com",
+			"name": "Casas bellas",
+			"password": "password3"
+		},
+		{
+			"code": "IMB4",
+			"address": "San carlos",
+			"email": "imb4@inmobiliaria.com",
+			"name": "El renacer",
+			"password": "password4"
+		},
+		{
+			"code": "IMB5",
+			"address": "Los camellos",
+			"email": "imb5@inmobiliaria.com",
+			"name": "Porvenir",
+			"password": "password5"
+		},
+		{
+			"code": "IMB6",
+			"address": "San simon",
+			"email": "imb6@inmobiliaria.com",
+			"name": "Lux",
+			"password": "password6"
+		},
+		{
+			"code": "IMB7",
+			"address": "Amanecer",
+			"email": "imb7@inmobiliaria.com",
+			"name": "Rio claro",
+			"password": "password7"
+		},
+		{
+			"code": "IMB8",
+			"address": "Bolivariana",
+			"email": "imb8@inmobiliaria.com",
+			"name": "Santa maria",
+			"password": "password8"
+		},
+		{
+			"code": "IMB9",
+			"address": "San cristobal",
+			"email": "imb9@inmobiliaria.com",
+			"name": "Villa celmira",
+			"password": "password9"
+		},
+		{
+			"code": "IMB10",
+			"address": "Restrepo",
+			"email": "imb10@inmobiliaria.com",
+			"name": "Bella Suiza",
+			"password": "password10"
+		}
+	],
+	"EstateAgency_PHONENUMBERS": [
+		{
+			"EstateAgency_code": "1",
+			"PHONENUMBERS": "7312345",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "2",
+			"PHONENUMBERS": "7323456",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "3",
+			"PHONENUMBERS": "7334567",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "4",
+			"PHONENUMBERS": "7345678",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "5",
+			"PHONENUMBERS": "7356789",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "6",
+			"PHONENUMBERS": "7367890",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "7",
+			"PHONENUMBERS": "7378901",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "8",
+			"PHONENUMBERS": "7389012",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "9",
+			"PHONENUMBERS": "7390123",
+			"PHONENUMBERS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "10",
+			"PHONENUMBERS": "7310987",
+			"PHONENUMBERS_KEY": "1"
+		}
+	],
+	"EstateAgency_ADVISORS": [
+		{
+			"EstateAgency_code": "1",
+			"ADVISORS": "Asesor1",
+			"ADVISORS_KEY": "1"
+		},
+		{
+			"EstateAgency_code": "2",
+			"ADVISORS": "Asesor2",
+			"ADVISORS_KEY": "2"
+		},
+		{
+			"EstateAgency_code": "3",
+			"ADVISORS": "Asesor3",
+			"ADVISORS_KEY": "3"
+		},
+		{
+			"EstateAgency_code": "4",
+			"ADVISORS": "Asesor4",
+			"ADVISORS_KEY": "4"
+		},
+		{
+			"EstateAgency_code": "5",
+			"ADVISORS": "Asesor5",
+			"ADVISORS_KEY": "5"
+		},
+		{
+			"EstateAgency_code": "6",
+			"ADVISORS": "Asesor6",
+			"ADVISORS_KEY": "6"
+		},
+		{
+			"EstateAgency_code": "7",
+			"ADVISORS": "Asesor7",
+			"ADVISORS_KEY": "7"
+		},
+		{
+			"EstateAgency_code": "8",
+			"ADVISORS": "Asesor8",
+			"ADVISORS_KEY": "8"
+		},
+		{
+			"EstateAgency_code": "9",
+			"ADVISORS": "Asesor9",
+			"ADVISORS_KEY": "9"
+		},
+		{
+			"EstateAgency_code": "10",
+			"ADVISORS": "Asesor10",
+			"ADVISORS_KEY": "10"
+		}
+	],
+	"PROJECT": [
+		{
+			"code": 1,
+			"description": "El mejor proyecto de todos",
+			"latitude": 1.42,
+			"length": 1.456,
+			"name": "Villas del mar",
+			"associated_city": 1,
+			"associated_estate_agency": "IMB1"
+		},
+		{
+			"code": 2,
+			"description": "El segundo mejor proyecto de todos",
+			"latitude": 1.43,
+			"length": 1.466,
+			"name": "Cafe del cielo",
+			"associated_city": 1,
+			"associated_estate_agency": "IMB2"
+		},
+		{
+			"code": 3,
+			"description": "El tercer mejor proyecto de todos",
+			"latitude": 1.4782,
+			"length": 1.4566846,
+			"name": "Villas del sol",
+			"associated_city": 1,
+			"associated_estate_agency": "IMB3"
+		},
+		{
+			"code": 4,
+			"description": "El cuarto mejor proyecto de todos",
+			"latitude": 1.494,
+			"length": 1.4209,
+			"name": "Villas del oasis",
+			"associated_city": 2,
+			"associated_estate_agency": "IMB4"
+		},
+		{
+			"code": 5,
+			"description": "El quinto mejor proyecto de todos",
+			"latitude": 1.449,
+			"length": 1.41038,
+			"name": "Villas del cristal",
+			"associated_city": 6,
+			"associated_estate_agency": "IMB5"
+		},
+		{
+			"code": 6,
+			"description": "El sexto mejor proyecto de todos",
+			"latitude": 1.4119,
+			"length": 1.40393,
+			"name": "Villas del rio",
+			"associated_city": 4,
+			"associated_estate_agency": "IMB6"
+		},
+		{
+			"code": 7,
+			"description": "El septimo mejor proyecto de todos",
+			"latitude": 1.4003,
+			"length": 1.493778,
+			"name": "Villas del rocio",
+			"associated_city": 7,
+			"associated_estate_agency": "IMB7"
+		},
+		{
+			"code": 8,
+			"description": "El octavo mejor proyecto de todos",
+			"latitude": 1.449,
+			"length": 1.402438,
+			"name": "Villas de maria",
+			"associated_city": 9,
+			"associated_estate_agency": "IMB8"
+		},
+		{
+			"code": 9,
+			"description": "El noveno mejor proyecto de todos",
+			"latitude": 1.4201,
+			"length": 1.420998,
+			"name": "Villas del cielo",
+			"associated_city": 10,
+			"associated_estate_agency": "IMB9"
+		},
+		{
+			"code": 10,
+			"description": "El decimo mejor proyecto de todos",
+			"latitude": 1.4123,
+			"length": 1.49898,
+			"name": "Villas claras",
+			"associated_city": 5,
+			"associated_estate_agency": "IMB10"
+		}
+	],
+	"Project_IMAGES": [
+		{
+			"Project_code": 1,
+			"IMAGES": "/image1prueba.png"
+		},
+		{
+			"Project_code": 2,
+			"IMAGES": "/image2prueba.png"
+		},
+		{
+			"Project_code": 3,
+			"IMAGES": "/image3prueba.png"
+		},
+		{
+			"Project_code": 4,
+			"IMAGES": "/image4prueba.png"
+		},
+		{
+			"Project_code": 5,
+			"IMAGES": "/imagen5prueba.png"
+		},
+		{
+			"Project_code": 6,
+			"IMAGES": "/image6prueba.png"
+		},
+		{
+			"Project_code": 7,
+			"IMAGES": "/image7prueba.png"
+		},
+		{
+			"Project_code": 8,
+			"IMAGES": "/image8prueba.png"
+		},
+		{
+			"Project_code": 9,
+			"IMAGES": "/image9prueba.png"
+		},
+		{
+			"Project_code": 10,
+			"IMAGES": "/imagen10prueba.png"
+		}
+	],
+	"RATING": [
+		{
+			"score": 150,
+			"client_rating": "1",
+			"project_rating": 1
+		},
+		{
+			"score": 155,
+			"client_rating": "2",
+			"project_rating": 2
+		},
+		{
+			"score": 157,
+			"client_rating": "3",
+			"project_rating": 3
+		}
+	],
+	"SERVICE": [
+		{
+			"code": 1,
+			"name": "piscinita"
+		},
+		{
+			"code": 2,
+			"name": "Gimnasio"
+		},
+		{
+			"code": 3,
+			"name": "BBQ"
+		},
+		{
+			"code": 4,
+			"name": "Tienda"
+		},
+		{
+			"code": 5,
+			"name": "Iglesia"
+		},
+		{
+			"code": 6,
+			"name": "Candy shop"
+		},
+		{
+			"code": 7,
+			"name": "Camping zone"
+		},
+		{
+			"code": 8,
+			"name": "Canchas de futbol"
+		},
+		{
+			"code": 9,
+			"name": "Canchas de baloncesto"
+		},
+		{
+			"code": 10,
+			"name": "Parque para perros"
+		}
+	],
+	"SERVICE_PROJECT": [
+		{
+			"services_code": 1,
+			"projects_code": 1
+		},
+		{
+			"services_code": 2,
+			"projects_code": 1
+		},
+		{
+			"services_code": 2,
+			"projects_code": 2
+		},
+		{
+			"services_code": 3,
+			"projects_code": 3
+		},
+		{
+			"services_code": 5,
+			"projects_code": 4
+		},
+		{
+			"services_code": 10,
+			"projects_code": 5
+		},
+		{
+			"services_code": 9,
+			"projects_code": 6
+		},
+		{
+			"services_code": 1,
+			"projects_code": 7
+		},
+		{
+			"services_code": 2,
+			"projects_code": 8
+		},
+		{
+			"services_code": 8,
+			"projects_code": 9
+		}
+	]
+}

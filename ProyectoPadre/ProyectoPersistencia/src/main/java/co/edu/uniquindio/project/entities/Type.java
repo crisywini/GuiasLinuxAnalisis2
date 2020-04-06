@@ -1,7 +1,17 @@
 package co.edu.uniquindio.project.entities;
 
+/**
+ * The Enum Type.
+ * 
+ * @author Critian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
+ */
 public enum Type {
-	APARTMENT, 
-	HOUSE;
 
+	/** The apartment. */
+	APARTMENT,
+
+	/** The house. */
+	HOUSE;
+	
 }
