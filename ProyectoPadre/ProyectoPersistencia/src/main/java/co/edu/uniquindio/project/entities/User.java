@@ -5,31 +5,40 @@ import java.lang.String;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: User
+ * Entity implementation class for Entity: User.
  *
+ * @author Critian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
  */
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
+
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 public class User implements Serializable {
 
+	/** The code. */
 	@Id
 	@Column(name = "code", nullable = false, length = 10)
 	private String code;
+
+	/** The email. */
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
+
+	/** The password. */
 	@Column(name = "password", nullable = false)
 	private String password;
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor method
+	 * Default constructor method.
 	 */
 	public User() {
 		super();
 	}
 
 	/**
-	 * Constructor method
+	 * Constructor method from User.
 	 * 
 	 * @param code     from {@link User} primary key, length max = 10 and not
 	 *                 nullable
@@ -43,30 +52,65 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+	/**
+	 * Gets the code.
+	 *
+	 * @return the code
+	 */
 	public String getCode() {
 		return this.code;
 	}
 
+	/**
+	 * Sets the code.
+	 *
+	 * @param code the new code
+	 */
 	public void setCode(String code) {
 		this.code = code;
 	}
 
+	/**
+	 * Gets the email.
+	 *
+	 * @return the email
+	 */
 	public String getEmail() {
 		return this.email;
 	}
 
+	/**
+	 * Sets the email.
+	 *
+	 * @param email the new email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * Gets the password.
+	 *
+	 * @return the password
+	 */
 	public String getPassword() {
 		return this.password;
 	}
 
+	/**
+	 * Sets the password.
+	 *
+	 * @param password the new password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -75,6 +119,12 @@ public class User implements Serializable {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -92,10 +142,14 @@ public class User implements Serializable {
 		return true;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "User [code=" + code + ", email=" + email + ", password=" + password + "]";
 	}
-	
 
 }

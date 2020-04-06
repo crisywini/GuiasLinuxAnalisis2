@@ -4,37 +4,47 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Rating
+ * Entity implementation class for Entity: Rating.
  *
+ * @author Critian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
  */
-@Entity
 
+@Entity
 public class Rating implements Serializable {
 
+	/** The key. */
 	@EmbeddedId
 	@JoinColumn(name = "key")
 	private RatingPK key;
+
+	/** The score. */
 	@Column(name = "score", nullable = false)
 	private int score;
+
+	/** The client rating. */
 	@ManyToOne
 	@MapsId("clientCode")
 	@JoinColumn(name = "client_rating")
 	private Client clientRating;
+
+	/** The project rating. */
 	@ManyToOne
 	@MapsId("projectCode")
 	@JoinColumn(name = "project_rating")
 	private Project projectRating;
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor method
+	 * Default constructor method.
 	 */
 	public Rating() {
 		super();
 	}
 
 	/**
-	 * Constructor method
+	 * Constructor method from Rating.
 	 * 
 	 * @param key           from {@link RatingPK} primary key from the relationship
 	 *                      between {@link Client} and {@link Project}
@@ -51,38 +61,83 @@ public class Rating implements Serializable {
 		this.projectRating = projectRating;
 	}
 
+	/**
+	 * Gets the score.
+	 *
+	 * @return the score
+	 */
 	public int getScore() {
 		return this.score;
 	}
 
+	/**
+	 * Sets the score.
+	 *
+	 * @param score the new score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 
+	/**
+	 * Gets the client rating.
+	 *
+	 * @return the client rating
+	 */
 	public Client getClientRating() {
 		return clientRating;
 	}
 
+	/**
+	 * Sets the client rating.
+	 *
+	 * @param clientRating the new client rating
+	 */
 	public void setClientRating(Client clientRating) {
 		this.clientRating = clientRating;
 	}
 
+	/**
+	 * Gets the project rating.
+	 *
+	 * @return the project rating
+	 */
 	public Project getProjectRating() {
 		return projectRating;
 	}
 
+	/**
+	 * Sets the project rating.
+	 *
+	 * @param projectRating the new project rating
+	 */
 	public void setProjectRating(Project projectRating) {
 		this.projectRating = projectRating;
 	}
 
+	/**
+	 * Gets the key.
+	 *
+	 * @return the key
+	 */
 	public RatingPK getKey() {
 		return key;
 	}
 
+	/**
+	 * Sets the key.
+	 *
+	 * @param key the new key
+	 */
 	public void setKey(RatingPK key) {
 		this.key = key;
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +146,12 @@ public class Rating implements Serializable {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -108,6 +169,11 @@ public class Rating implements Serializable {
 		return true;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Rating [key=" + key + ", score=" + score + ", clientRating=" + clientRating + ", projectRating="
