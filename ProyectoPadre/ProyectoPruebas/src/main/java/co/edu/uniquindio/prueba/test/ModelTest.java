@@ -2336,6 +2336,18 @@ public class ModelTest {
 		}
 		
 	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void dwellingAreaListTest() {
+		
+		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.DWELLINGS_AREA_LIST, Dwelling.class);
+		query.setParameter("area", 18.5);
+		List<Dwelling> resultList = query.getResultList();
+		
+		Assert.assertEquals(resultList.size(), 10);
+		
+	}
 	
 	
 
