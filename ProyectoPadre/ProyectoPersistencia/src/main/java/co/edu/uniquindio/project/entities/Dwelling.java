@@ -14,6 +14,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Dwelling.DWELLINGS_AREA_LIST, query = "SELECT d FROM Dwelling d WHERE d.area > :area")
+})
 public class Dwelling implements Serializable {
 
 	/** The code. */
@@ -54,7 +57,10 @@ public class Dwelling implements Serializable {
 	@ManyToOne // Entidad propietaria
 	@JoinColumn(name = "project")
 	private Project project;
-
+	
+	//Queries
+	public static final String DWELLINGS_AREA_LIST = "DWELLINGS_AREA_LIST";
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
