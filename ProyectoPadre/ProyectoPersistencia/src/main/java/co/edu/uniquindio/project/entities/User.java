@@ -10,9 +10,12 @@ import javax.persistence.*;
  * @author Critian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
-
+@Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
+@NamedQueries({
+	@NamedQuery(name = User.AUTHENTICATE_USERS, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password")
+})
 public class User implements Serializable {
 
 	/** The code. */
@@ -27,6 +30,9 @@ public class User implements Serializable {
 	/** The password. */
 	@Column(name = "password", nullable = false)
 	private String password;
+	
+	//Queries
+	public static final String AUTHENTICATE_USERS = "AUTHENTICATE_USERS";
 
 	private static final long serialVersionUID = 1L;
 
