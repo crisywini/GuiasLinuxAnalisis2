@@ -11,6 +11,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Rating.GET_ALL_RATING, query = "SELECT r FROM Rating r")
+})
 public class Rating implements Serializable {
 
 	/** The key. */
@@ -33,6 +36,9 @@ public class Rating implements Serializable {
 	@MapsId("projectCode")
 	@JoinColumn(name = "project_rating")
 	private Project projectRating;
+	
+	//Queries
+	public static final String GET_ALL_RATING = "GET_ALL_RATING";
 
 	private static final long serialVersionUID = 1L;
 
