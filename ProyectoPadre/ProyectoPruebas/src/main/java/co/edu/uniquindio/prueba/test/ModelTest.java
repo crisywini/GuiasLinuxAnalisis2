@@ -2366,6 +2366,7 @@ public class ModelTest {
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2377,5 +2378,41 @@ public class ModelTest {
 		int size = resultList.size();
 		int expected = 10;
 		Assert.assertTrue("<getAllEstateAgencyQueryTest>Size: " + size + " expected: " + expected, size == expected);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllProjectsTest() {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS,
+				Project.class);
+		List<Project> resultList = query.getResultList();
+
+		int size = resultList.size();
+		int expected = 10;
+		Assert.assertTrue("<getAllProjectsQueryTest>Size: " + size + " expected: " + expected, size == expected);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllRatingTest() {
+		TypedQuery<Rating> query = entityManager.createNamedQuery(Rating.GET_ALL_RATING,
+				Rating.class);
+		List<Rating> resultList = query.getResultList();
+
+		int size = resultList.size();
+		int expected = 3;
+		Assert.assertTrue("<getAllRatingQueryTest>Size: " + size + " expected: " + expected, size == expected);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllServiceTest() {
+		TypedQuery<Service> query = entityManager.createNamedQuery(Service.GET_ALL_SERVICES,
+				Service.class);
+		List<Service> resultList = query.getResultList();
+
+		int size = resultList.size();
+		int expected = 10;
+		Assert.assertTrue("<getAllServiceQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 }
