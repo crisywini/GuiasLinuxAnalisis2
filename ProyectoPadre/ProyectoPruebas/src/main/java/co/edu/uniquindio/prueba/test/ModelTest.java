@@ -2319,36 +2319,50 @@ public class ModelTest {
 		serviceNameQuery = serviceQuery.getName();
 		Assert.assertEquals(serviceNameQuery, "Parque para perros");
 	}
-	//-----------------Queries Tests----------------
+
+	// -----------------Queries Tests----------------
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void authenticateUserTest() {
-		
+
 		TypedQuery<User> query = entityManager.createNamedQuery(User.AUTHENTICATE_USER, User.class);
 		query.setParameter("email", "c1@hotmail.com");
 		query.setParameter("password", "password1");
 		User user = entityManager.find(Client.class, "1");
-		
+
 		List<User> resultList = query.getResultList();
-		if(resultList.contains(user)) {
+		if (resultList.contains(user)) {
 			System.out.println("Holita si lo encontró");
 		}
-		
+
 	}
+
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void dwellingAreaListTest() {
-		
+
 		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.DWELLINGS_AREA_LIST, Dwelling.class);
 		query.setParameter("area", 18.5);
 		List<Dwelling> resultList = query.getResultList();
-		
+
 		Assert.assertEquals(resultList.size(), 10);
-		
+
 	}
-	
-	
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllUsersQueryTest() {
+		TypedQuery<User> query = entityManager.createNamedQuery(User.GET_ALL_USERS, User.class);
+		List<User> resultList = query.getResultList();
+
+		int size = resultList.size();
+		int expected = 16;
+		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
+	}
 
 }
