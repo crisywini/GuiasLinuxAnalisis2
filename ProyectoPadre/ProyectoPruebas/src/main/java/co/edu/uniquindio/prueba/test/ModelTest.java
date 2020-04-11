@@ -2333,10 +2333,8 @@ public class ModelTest {
 		User user = entityManager.find(Client.class, "1");
 
 		List<User> resultList = query.getResultList();
-		if (resultList.contains(user)) {
-			System.out.println("Holita si lo encontró");
-		}
-
+		Assert.assertTrue("", resultList.contains(user));
+	
 	}
 
 	@Ignore
@@ -2391,6 +2389,7 @@ public class ModelTest {
 		int expected = 10;
 		Assert.assertTrue("<getAllProjectsQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2403,6 +2402,7 @@ public class ModelTest {
 		int expected = 3;
 		Assert.assertTrue("<getAllRatingQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
+	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
