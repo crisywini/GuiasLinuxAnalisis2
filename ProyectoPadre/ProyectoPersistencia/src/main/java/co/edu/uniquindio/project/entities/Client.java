@@ -16,6 +16,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+		@NamedQuery(name = Client.CLIENT_GET_ALL, query = "select c from Client c")
+})
 public class Client extends User implements Serializable {
 
 	/** The complete name. */
@@ -50,6 +53,9 @@ public class Client extends User implements Serializable {
 	@ManyToMany
 	@JoinColumn(name = "favorite_projects")
 	private List<Project> favoriteProjects;// Esta es la entidad propietaria
+	
+	//Queries
+	public static final String CLIENT_GET_ALL = "CLIENT_GET_ALL";
 
 	private static final long serialVersionUID = 1L;
 
