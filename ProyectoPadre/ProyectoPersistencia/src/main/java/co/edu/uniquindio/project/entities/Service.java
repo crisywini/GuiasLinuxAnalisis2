@@ -14,6 +14,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Service.GET_ALL_SERVICES, query = "SELECT s FROM Service s")
+})
 public class Service implements Serializable {
 
 	/** The code. */
@@ -29,6 +32,9 @@ public class Service implements Serializable {
 	@ManyToMany
 	@JoinColumn(name = "associated_projects")
 	private List<Project> projects;
+	
+	//Queries
+	public static final String GET_ALL_SERVICES = "GET_ALL_SERVICES";
 
 	private static final long serialVersionUID = 1L;
 
