@@ -2325,7 +2325,7 @@ public class ModelTest {
 	@UsingDataSet({"unihogar.json"})
 	public void authenticateUserTest() {
 		
-		TypedQuery<User> query = entityManager.createNamedQuery(User.AUTHENTICATE_USERS, User.class);
+		TypedQuery<User> query = entityManager.createNamedQuery(User.AUTHENTICATE_USER, User.class);
 		query.setParameter("email", "c1@hotmail.com");
 		query.setParameter("password", "password1");
 		User user = entityManager.find(Client.class, "1");
