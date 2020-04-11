@@ -15,6 +15,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name=Project.GET_ALL_PROJECTS,query = "SELECT p FROM Project p")
+})
 public class Project implements Serializable {
 
 	/** The code. */
@@ -83,6 +86,9 @@ public class Project implements Serializable {
 	@ManyToMany(mappedBy = "favoriteProjects") // Esta es la entidad no propietaria
 	@JoinColumn(name = "associated_favorite_clients")
 	private List<Client> favoriteClients;
+	
+	//Queries
+	public static final String GET_ALL_PROJECTS = "GET_ALL_PROJECTS";
 
 	private static final long serialVersionUID = 1L;
 
