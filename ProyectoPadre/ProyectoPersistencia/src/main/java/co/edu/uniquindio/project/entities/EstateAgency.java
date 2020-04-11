@@ -16,6 +16,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY, query = "SELECT ea FROM EstateAgency ea")
+})
 public class EstateAgency extends User implements Serializable {
 
 	/** The address. */
@@ -41,6 +44,9 @@ public class EstateAgency extends User implements Serializable {
 	@JoinColumn(name = "associated_projects")
 	private List<Project> projects;
 
+	//Queries
+	public static final String GET_ALL_ESTATE_AGENCY = "GET_ALL_ESTATE_AGENCY";
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
