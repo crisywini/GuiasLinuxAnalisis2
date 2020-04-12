@@ -2522,4 +2522,89 @@ public class ModelTest {
 		String nameResult = query.getSingleResult();
 		Assert.assertEquals("Banderas Verdes", nameResult);
 	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getProjectAndScoreTest() {
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Client.GET_PROJECTS_RATING_UNIQUE, Object[].class);
+		query.setParameter("clientCode", "1");
+		List<Object[]> resultList = query.getResultList();
+		int sizeResult = resultList.size();
+		int expected = 2;
+		Assert.assertTrue("<getProjectAndScoreTest>Size: " + sizeResult + " expected: " + expected,
+				sizeResult == expected);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getCodeEstateAgencyAndProjectsTest() {
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(EstateAgency.GET_ALL_ESTATE_AGENCY_PROJECTS,
+				Object[].class);
+		List<Object[]> resultList = query.getResultList();
+		int sizeResult = resultList.size();
+		int expected = 10;
+		Assert.assertTrue("<getCodeEstateAgencyAndProjectsTest>Size: " + sizeResult + " expected: " + expected,
+				sizeResult == expected);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getClientsContactProjectTest() {
+		TypedQuery<Client> query = entityManager.createNamedQuery(Project.GET_CLIENTS_CONTACT, Client.class);
+		query.setParameter("projectCode", 1);
+		List<Client> resultList = query.getResultList();
+		int sizeResult = resultList.size();
+		int expected = 2;
+		Assert.assertTrue("<getClientsContactProjectTest>Size: " + sizeResult + " expected: " + expected,
+				expected == sizeResult);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getProjectRatingTest() {
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_PROJECTS_RATING, Object[].class);
+		List<Object[]> resultList = query.getResultList();
+		int sizeResult = resultList.size();
+		int expected = 10;
+		Assert.assertTrue("<getProjectRatingTest>Size: " + sizeResult + " expected: " + expected,
+				expected == sizeResult);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getCommentClientNonRepeatedTest() {
+		TypedQuery<Client> query = entityManager.createNamedQuery(Comment.GET_CLIENT_NO_REPEATED, Client.class);
+		query.setParameter("projectCode", 1);
+		List<Client> resultList = query.getResultList();
+		int sizeResult = resultList.size();
+		int expected = 1;
+		Assert.assertTrue("<getCommentClientNonRepeatedTest>Size: " + sizeResult + " expected: " + expected,
+				expected == sizeResult);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getInfoProjectsByCity() {
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_PROJECTS_CITY_ASSOCIATED,
+				Object[].class);
+		query.setParameter("cityCode", 1);
+		List<Object[]> resultList = query.getResultList();
+		String infoConsole = "";
+		for (Object[] objects : resultList) {
+			infoConsole += (Integer) objects[0] + " " + (String) objects[1] + " " + (Double) objects[2] + " "
+					+ (Double) objects[3] + " " + (String) objects[4];
+			infoConsole += "\n";
+		}
+		String outExpected = "1 Villas del mar 1.42 1.456 IMB1\n" + 
+				"2 Cafe del cielo 1.43 1.466 IMB2\n" + 
+				"3 Villas del sol 1.4782 1.4566846 IMB3";
+		Assert.assertEquals(outExpected, infoConsole);
+	}
 }
