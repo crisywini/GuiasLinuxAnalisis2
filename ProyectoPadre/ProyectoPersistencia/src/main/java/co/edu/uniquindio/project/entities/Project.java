@@ -22,7 +22,10 @@ import javax.persistence.*;
 	@NamedQuery(name = Project.GET_PROJECT_BY_ID, query = "SELECT p FROM Project p WHERE p.code = :projectCode"),
 	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT p FROM Project p WHERE p.estateAgency.code = :estateAgencyCode"),
 	@NamedQuery(name = Project.GET_PROJECT_BY_LATTITUDE_LENGTH, query = "SELECT p FROM Project p WHERE p.latitude = :latitude AND p.length = :length"),
-	@NamedQuery(name = Project.GET_NAME_ESTATE_AGENCY, query = "SELECT p.estateAgency.name FROM Project p WHERE p.code = :projectCode")
+	@NamedQuery(name = Project.GET_NAME_ESTATE_AGENCY, query = "SELECT p.estateAgency.name FROM Project p WHERE p.code = :projectCode"),
+	@NamedQuery(name = Project.GET_CLIENTS_CONTACT, query = "SELECT c.clientCode FROM Project p JOIN p.contacts c WHERE p.code = :projectCode"),
+	@NamedQuery(name = Project.GET_PROJECTS_RATING, query = "SELECT p, r.score FROM Project p LEFT JOIN p.ratings r"),
+	@NamedQuery(name = Project.GET_PROJECTS_CITY_ASSOCIATED, query = "SELECT p.code, p.name, p.latitude, p.length, p.estateAgency.code FROM Project p WHERE p.city.code = :cityCode")
 })
 public class Project implements Serializable {
 
@@ -101,6 +104,10 @@ public class Project implements Serializable {
 	public static final String GET_ALL_PROJECTS_BY_ESTATE_AGENCY = "GET_ALL_PROJECTS_BY_ESTATE_AGENCY";
 	public static final String GET_PROJECT_BY_LATTITUDE_LENGTH = "GET_PROJECT_BY_LATTITUDE_LENGTH";
 	public static final String GET_NAME_ESTATE_AGENCY = "GET_NAME_ESTATE_AGENCY";
+	public static final String GET_CLIENTS_CONTACT = "GET_CLIENTS_CONTACT";
+	public static final String GET_PROJECTS_RATING = "GET_PROJECTS_RATING";
+	public static final String GET_PROJECTS_CITY_ASSOCIATED = "GET_PROJECTS_CITY_ASSOCIATED";
+
 
 	private static final long serialVersionUID = 1L;
 
