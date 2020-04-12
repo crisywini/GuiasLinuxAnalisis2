@@ -2,7 +2,6 @@ package co.edu.uniquindio.prueba.test;
 
 import java.text.ParseException;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -2430,5 +2429,15 @@ public class ModelTest {
 		int size = resultList.size();
 		int expected = 3;
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getLastUserClientTest() {
+		TypedQuery<Client> query = entityManager.createNamedQuery(Client.GET_ALL_CLIENT, Client.class);
+		query = query.setFirstResult(2);
+		Client client = query.getSingleResult();
+		System.out.println(client);
 	}
 }
