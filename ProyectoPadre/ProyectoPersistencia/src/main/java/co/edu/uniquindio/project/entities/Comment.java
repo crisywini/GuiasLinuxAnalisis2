@@ -13,6 +13,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Comment.GET_CLIENT_NO_REPEATED, query = "SELECT DISTINCT c.clientCode FROM Comment c WHERE c.code = :projectCode")
+})
 public class Comment implements Serializable {
 
 	/** The code. */
@@ -40,6 +43,9 @@ public class Comment implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "project_code")
 	private Project projectCode;
+	
+	//Queries
+	public static final String GET_CLIENT_NO_REPEATED = "GET_CLIENT_NO_REPEATED";
 
 	private static final long serialVersionUID = 1L;
 
