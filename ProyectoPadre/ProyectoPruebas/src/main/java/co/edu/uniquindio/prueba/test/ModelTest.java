@@ -2,6 +2,7 @@ package co.edu.uniquindio.prueba.test;
 
 import java.text.ParseException;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -2334,7 +2335,7 @@ public class ModelTest {
 
 		List<User> resultList = query.getResultList();
 		Assert.assertTrue("", resultList.contains(user));
-	
+
 	}
 
 	@Ignore
@@ -2377,42 +2378,57 @@ public class ModelTest {
 		int expected = 10;
 		Assert.assertTrue("<getAllEstateAgencyQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void getAllProjectsTest() {
-		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS,
-				Project.class);
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS, Project.class);
 		List<Project> resultList = query.getResultList();
 
 		int size = resultList.size();
 		int expected = 10;
 		Assert.assertTrue("<getAllProjectsQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void getAllRatingTest() {
-		TypedQuery<Rating> query = entityManager.createNamedQuery(Rating.GET_ALL_RATING,
-				Rating.class);
+		TypedQuery<Rating> query = entityManager.createNamedQuery(Rating.GET_ALL_RATING, Rating.class);
 		List<Rating> resultList = query.getResultList();
 
 		int size = resultList.size();
 		int expected = 3;
 		Assert.assertTrue("<getAllRatingQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
+
 	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void getAllServiceTest() {
-		TypedQuery<Service> query = entityManager.createNamedQuery(Service.GET_ALL_SERVICES,
-				Service.class);
+		TypedQuery<Service> query = entityManager.createNamedQuery(Service.GET_ALL_SERVICES, Service.class);
 		List<Service> resultList = query.getResultList();
 
 		int size = resultList.size();
 		int expected = 10;
 		Assert.assertTrue("<getAllServiceQueryTest>Size: " + size + " expected: " + expected, size == expected);
+	}
+
+	@Ignore
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getMaxLimitUsersQueryTest() {
+		TypedQuery<User> query = entityManager.createNamedQuery(User.GET_ALL_USERS, User.class);
+		query = query.setMaxResults(1);// Al ser superclase lo que hace es generar los maximos resultados de cada
+										// subclase
+										// Es decir: max = 1, genera 1 de cada subclase
+		List<User> resultList = query.getResultList();
+		int size = resultList.size();
+		int expected = 3;
+		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 }
