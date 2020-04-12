@@ -15,8 +15,13 @@ import javax.persistence.*;
  */
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name=Project.GET_ALL_PROJECTS,query = "SELECT p FROM Project p")
+@NamedQueries({ 
+	@NamedQuery(name = Project.GET_ALL_PROJECTS, query = "SELECT p FROM Project p"),
+	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_CITY, query = "SELECT p FROM Project p WHERE p.city.code = :cityCode"),
+	@NamedQuery(name = Project.GET_PROJECT_BY_NAME, query = "SELECT p FROM Project p WHERE p.name = :projectName"),
+	@NamedQuery(name = Project.GET_PROJECT_BY_ID, query = "SELECT p FROM Project p WHERE p.code = :projectCode"),
+	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT p FROM Project p WHERE p.estateAgency.code = :estateAgencyCode"),
+	@NamedQuery(name = Project.GET_PROJECT_BY_LATTITUDE_LENGTH, query = "SELECT p FROM Project p WHERE p.latitude = :latitude AND p.length = :length")
 })
 public class Project implements Serializable {
 
@@ -86,9 +91,14 @@ public class Project implements Serializable {
 	@ManyToMany(mappedBy = "favoriteProjects") // Esta es la entidad no propietaria
 	@JoinColumn(name = "associated_favorite_clients")
 	private List<Client> favoriteClients;
-	
-	//Queries
+
+	// Queries
 	public static final String GET_ALL_PROJECTS = "GET_ALL_PROJECTS";
+	public static final String GET_ALL_PROJECTS_BY_CITY = "GET_ALL_PROJECTS_BY_CITY";
+	public static final String GET_PROJECT_BY_NAME = "GET_PROJECT_BY_NAME";
+	public static final String GET_PROJECT_BY_ID = "GET_PROJECT_BY_ID";
+	public static final String GET_ALL_PROJECTS_BY_ESTATE_AGENCY = "GET_ALL_PROJECTS_BY_ESTATE_AGENCY";
+	public static final String GET_PROJECT_BY_LATTITUDE_LENGTH = "GET_PROJECT_BY_LATTITUDE_LENGTH";
 
 	private static final long serialVersionUID = 1L;
 
