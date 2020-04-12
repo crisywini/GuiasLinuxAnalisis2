@@ -17,7 +17,8 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = Client.GET_ALL_CLIENT, query = "SELECT c FROM Client c")
+		@NamedQuery(name = Client.GET_ALL_CLIENT, query = "SELECT c FROM Client c"),
+		@NamedQuery(name = Client.GET_PROJECTS_RATING_UNIQUE, query = "SELECT r.projectRating, r.score FROM Client c INNER JOIN c.ratings r WHERE c.code = :clientCode")
 })
 public class Client extends User implements Serializable {
 
@@ -56,6 +57,8 @@ public class Client extends User implements Serializable {
 	
 	//Queries
 	public static final String GET_ALL_CLIENT = "GET_ALL_CLIENT";
+	public static final String GET_PROJECTS_RATING_UNIQUE = "GET_PROJECTS_RATING_UNIQUE";
+
 
 	private static final long serialVersionUID = 1L;
 
