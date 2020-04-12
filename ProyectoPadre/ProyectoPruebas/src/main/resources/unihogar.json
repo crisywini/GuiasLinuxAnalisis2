@@ -701,6 +701,11 @@
 			"score": 157,
 			"client_rating": "3",
 			"project_rating": 3
+		},
+		{
+			"score": 1000,
+			"client_rating": "1",
+			"project_rating": 3
 		}
 	],
 	"SERVICE": [
