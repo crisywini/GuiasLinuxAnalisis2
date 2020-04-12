@@ -21,7 +21,8 @@ import javax.persistence.*;
 	@NamedQuery(name = Project.GET_PROJECT_BY_NAME, query = "SELECT p FROM Project p WHERE p.name = :projectName"),
 	@NamedQuery(name = Project.GET_PROJECT_BY_ID, query = "SELECT p FROM Project p WHERE p.code = :projectCode"),
 	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT p FROM Project p WHERE p.estateAgency.code = :estateAgencyCode"),
-	@NamedQuery(name = Project.GET_PROJECT_BY_LATTITUDE_LENGTH, query = "SELECT p FROM Project p WHERE p.latitude = :latitude AND p.length = :length")
+	@NamedQuery(name = Project.GET_PROJECT_BY_LATTITUDE_LENGTH, query = "SELECT p FROM Project p WHERE p.latitude = :latitude AND p.length = :length"),
+	@NamedQuery(name = Project.GET_NAME_ESTATE_AGENCY, query = "SELECT p.estateAgency.name FROM Project p WHERE p.code = :projectCode")
 })
 public class Project implements Serializable {
 
@@ -99,6 +100,7 @@ public class Project implements Serializable {
 	public static final String GET_PROJECT_BY_ID = "GET_PROJECT_BY_ID";
 	public static final String GET_ALL_PROJECTS_BY_ESTATE_AGENCY = "GET_ALL_PROJECTS_BY_ESTATE_AGENCY";
 	public static final String GET_PROJECT_BY_LATTITUDE_LENGTH = "GET_PROJECT_BY_LATTITUDE_LENGTH";
+	public static final String GET_NAME_ESTATE_AGENCY = "GET_NAME_ESTATE_AGENCY";
 
 	private static final long serialVersionUID = 1L;
 
