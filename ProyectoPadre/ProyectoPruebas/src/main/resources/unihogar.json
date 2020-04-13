@@ -108,7 +108,12 @@
 		{
 			"favoriteProjects_code": 3,
 			"favoriteClients_code": "3"
+		},
+		{
+			"favoriteProjects_code": 2,
+			"favoriteClients_code": "1"
 		}
+		
 	],
 	"COMMENT": [
 		{
@@ -337,7 +342,7 @@
 			"description": "Esta es la septima descripcion de prueba",
 			"numBathrooms": 1,
 			"numRooms": 2,
-			"price": 88000000.0,
+			"price": 100000000.0,
 			"type": 1,
 			"urlImage": "images/imagen7.png",
 			"project": 3
@@ -739,7 +744,7 @@
 		},
 		{
 			"code": 8,
-			"name": "Canchas de futbol"
+			"name": "Canchas de tenis"
 		},
 		{
 			"code": 9,
