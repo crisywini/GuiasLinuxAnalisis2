@@ -24,6 +24,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import co.edu.uniquindio.project.dto.QueryProjectCityDTO;
 import co.edu.uniquindio.project.entities.Administrator;
 import co.edu.uniquindio.project.entities.City;
 import co.edu.uniquindio.project.entities.Client;
@@ -2592,19 +2593,17 @@ public class ModelTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void getInfoProjectsByCity() {
-		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_PROJECTS_CITY_ASSOCIATED,
-				Object[].class);
+		TypedQuery<QueryProjectCityDTO> query = entityManager.createNamedQuery(Project.GET_PROJECTS_CITY_ASSOCIATED,
+				QueryProjectCityDTO.class);
 		query.setParameter("cityCode", 1);
-		List<Object[]> resultList = query.getResultList();
+		List<QueryProjectCityDTO> resultList = query.getResultList();
 		String infoConsole = "";
-		for (Object[] objects : resultList) {
-			infoConsole += (Integer) objects[0] + " " + (String) objects[1] + " " + (Double) objects[2] + " "
-					+ (Double) objects[3] + " " + (String) objects[4];
-			infoConsole += "\n";
+		for (QueryProjectCityDTO objects : resultList) {
+			infoConsole += objects+"\n";
 		}
-		String outExpected = "1 Villas del mar 1.42 1.456 IMB1\n" + 
-				"2 Cafe del cielo 1.43 1.466 IMB2\n" + 
-				"3 Villas del sol 1.4782 1.4566846 IMB3";
+		String outExpected = "QueryProjectCityDTO [projectCode=1, projectName=Villas del mar, projectLatitude=1.42, projectLength=1.456, estateAgencyName=Banderas Verdes]\n" + 
+				"QueryProjectCityDTO [projectCode=2, projectName=Cafe del cielo, projectLatitude=1.43, projectLength=1.466, estateAgencyName=Campos Verdes]\n" + 
+				"QueryProjectCityDTO [projectCode=3, projectName=Villas del sol, projectLatitude=1.4782, projectLength=1.4566846, estateAgencyName=Casas bellas]\n" ;
 		Assert.assertEquals(outExpected, infoConsole);
 	}
 	@Test
