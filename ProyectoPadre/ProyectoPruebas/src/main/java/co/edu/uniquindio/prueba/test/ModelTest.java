@@ -2592,7 +2592,7 @@ public class ModelTest {
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
-	public void getInfoProjectsByCity() {
+	public void getInfoProjectsByCityTest() {
 		TypedQuery<QueryProjectCityDTO> query = entityManager.createNamedQuery(Project.GET_PROJECTS_CITY_ASSOCIATED,
 				QueryProjectCityDTO.class);
 		query.setParameter("cityCode", 1);
@@ -2609,7 +2609,7 @@ public class ModelTest {
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
-	public void getFavouritesProjectsByClient() {
+	public void getFavouritesProjectsByClientTest() {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Client.GET_FAVOURITES_PROJECTS, Project.class);
 		query.setParameter("clientCode", "1");
 		List<Project> resultList = query.getResultList();
@@ -2621,7 +2621,7 @@ public class ModelTest {
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
-	public void getProjectsByHouseAndPrice() {
+	public void getProjectsByHouseAndPriceTest() {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECTS_HOUSE_PRICE, Project.class);
 		query.setParameter("type", Type.HOUSE);
 		query.setParameter("minPrice", 90000000.0);
@@ -2635,7 +2635,7 @@ public class ModelTest {
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
-	public void getProjectsImagesByServices() {
+	public void getProjectsImagesByServicesTest() {
 		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_PROJECTS_IMAGES_BY_SERVICE, Object[].class);
 		query.setParameter("serviceOne", "Canchas de tenis");
 		query.setParameter("serviceTwo", "piscinita");
@@ -2644,5 +2644,46 @@ public class ModelTest {
 		int expected = 3;
 		Assert.assertTrue("<getProjectsImagesByServices>Size: " + sizeResult + " expected: " + expected,
 				expected == sizeResult);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getNumberOfProjectsByItsServiceTest() {
+		TypedQuery<Long> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_SERVICE, Long.class);
+		query.setParameter("nameService", "Canchas de tenis");
+		Long result = query.getSingleResult();
+		long resultExpected = 1;
+		Assert.assertTrue("<getNumberOfProjectsByItsService>Result: "+result+" expected: "+resultExpected, result==resultExpected);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getGroupNumberDwellingsByTypeAndCityTest() {
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_NUMBER_DWELLINGS_BY_TYPE, Object[].class);
+		query.setParameter("nameCity", "Armenia");
+		List<Object[]> resultList = query.getResultList();
+		Long result1 = (Long)resultList.get(0)[1];
+		Long result2 = (Long)resultList.get(1)[1];
+		Assert.assertTrue(result1 == 6 && result2 == 4);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getProjectsWithoutCommentsTest() {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECTS_WITHOUT_COMMENTS, Project.class);
+		List<Project> resultList = query.getResultList();
+		int sizeResult = resultList.size();
+		int expected = 8;
+		Assert.assertTrue("<getProjectsWithoutCommentsTest>Size: "+sizeResult+" expected: "+expected, sizeResult==expected);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getClientsWithGmailTest() {
+		TypedQuery<Client> query = entityManager.createNamedQuery(Client.GET_CLIENTS_GMAIL, Client.class);
+		List<Client> resultList = query.getResultList();
+		int resultSize = resultList.size();
+		int expected = 2;
+		Assert.assertTrue("<getClientsWithGmailTest>Size: "+resultSize+" expected: "+expected,resultSize==expected);
 	}
 }
