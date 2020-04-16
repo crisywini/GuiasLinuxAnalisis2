@@ -1,20 +1,22 @@
-package co.edu.uniquindio.project.entities;
+package co.edu.uniquindio.unihogar.entities;
 
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
-
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Contact.
- *
+ * Entity implementation class for Entity: Comment.
+ * 
  * @author Critian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
 @Entity
-public class Contact implements Serializable {
+@NamedQueries({
+	@NamedQuery(name = Comment.GET_CLIENT_NO_REPEATED, query = "SELECT DISTINCT c.clientCode FROM Comment c WHERE c.code = :projectCode")
+})
+public class Comment implements Serializable {
 
 	/** The code. */
 	@Id
@@ -22,106 +24,50 @@ public class Contact implements Serializable {
 	@Column(name = "code")
 	private int code;
 
-	/** The subject. */
-	@Column(name = "subject", nullable = false)
-	private String subject;
-
-	/** The content. */
-	@Column(name = "content", nullable = false)
-	private String content;
+	/** The comment. */
+	@Lob
+	@Column(name = "comment", nullable = false)
+	private String comment;
 
 	/** The date. */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", name = "date", nullable = false)
 	private Date date;
 
-	/** The project code. */
-	@ManyToOne
-	@JoinColumn(name = "project_code")
-	private Project projectCode;
-
 	/** The client code. */
 	@ManyToOne
 	@JoinColumn(name = "client_code")
 	private Client clientCode;
 
+	/** The project code. */
+	@ManyToOne
+	@JoinColumn(name = "project_code")
+	private Project projectCode;
+	
+	//Queries
+	public static final String GET_CLIENT_NO_REPEATED = "GET_CLIENT_NO_REPEATED";
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new contact.
+	 * Instantiates a new comment.
 	 */
-	public Contact() {
+	public Comment() {
 		super();
 	}
 
 	/**
-	 * Constructor method from Contact.
+	 * Constructor method from comment.
 	 *
-	 * @param code    from {@link Contact} primaty key, and generated value
-	 * @param subject from {@link Contact} not nullable
-	 * @param content from {@link Contact} not nullable
+	 * @param code    from {@link Comment} primary key, and generated value
+	 * @param comment from {@link Comment} not nullable
 	 */
 
-	public Contact(int code, String subject, String content) {
+	public Comment(int code, String comment) {
 		super();
 		this.code = code;
-		this.subject = subject;
-		this.content = content;
+		this.comment = comment;
 		this.date = new Date();
-	}
-
-	/**
-	 * Gets the subject.
-	 *
-	 * @return the subject
-	 */
-	public String getSubject() {
-		return this.subject;
-	}
-
-	/**
-	 * Sets the subject.
-	 *
-	 * @param subject the new subject
-	 */
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	/**
-	 * Gets the content.
-	 *
-	 * @return the content
-	 */
-	public String getContent() {
-		return this.content;
-	}
-
-	/**
-	 * Sets the content.
-	 *
-	 * @param content the new content
-	 */
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	/**
-	 * Gets the date.
-	 *
-	 * @return the date
-	 */
-	public Date getDate() {
-		return date;
-	}
-
-	/**
-	 * Sets the date.
-	 *
-	 * @param date the new date
-	 */
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	/**
@@ -130,7 +76,7 @@ public class Contact implements Serializable {
 	 * @return the code
 	 */
 	public int getCode() {
-		return code;
+		return this.code;
 	}
 
 	/**
@@ -143,21 +89,39 @@ public class Contact implements Serializable {
 	}
 
 	/**
-	 * Gets the project code.
+	 * Gets the comment.
 	 *
-	 * @return the project code
+	 * @return the comment
 	 */
-	public Project getProjectCode() {
-		return projectCode;
+	public String getComment() {
+		return this.comment;
 	}
 
 	/**
-	 * Sets the project code.
+	 * Sets the comment.
 	 *
-	 * @param projectCode the new project code
+	 * @param comment the new comment
 	 */
-	public void setProjectCode(Project projectCode) {
-		this.projectCode = projectCode;
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	/**
+	 * Gets the date.
+	 *
+	 * @return the date
+	 */
+	public Date getDate() {
+		return this.date;
+	}
+
+	/**
+	 * Sets the date.
+	 *
+	 * @param date the new date
+	 */
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/**
@@ -176,6 +140,24 @@ public class Contact implements Serializable {
 	 */
 	public void setClientCode(Client clientCode) {
 		this.clientCode = clientCode;
+	}
+
+	/**
+	 * Gets the project code.
+	 *
+	 * @return the project code
+	 */
+	public Project getProjectCode() {
+		return projectCode;
+	}
+
+	/**
+	 * Sets the project code.
+	 *
+	 * @param projectCode the new project code
+	 */
+	public void setProjectCode(Project projectCode) {
+		this.projectCode = projectCode;
 	}
 
 	/**
@@ -205,7 +187,7 @@ public class Contact implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Contact other = (Contact) obj;
+		Comment other = (Comment) obj;
 		if (code != other.code)
 			return false;
 		return true;
@@ -218,7 +200,8 @@ public class Contact implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Contact [code=" + code + ", subject=" + subject + ", content=" + content + ", date=" + date + "]";
+		return "Comment [code=" + code + ", comment=" + comment + ", date=" + date + ", clientCode=" + clientCode
+				+ ", projectCode=" + projectCode + "]";
 	}
 
 }

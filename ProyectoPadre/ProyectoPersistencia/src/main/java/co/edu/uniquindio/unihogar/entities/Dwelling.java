@@ -1,10 +1,11 @@
-package co.edu.uniquindio.project.entities;
+package co.edu.uniquindio.unihogar.entities;
 
-import co.edu.uniquindio.project.entities.Project;
-import co.edu.uniquindio.project.entities.Type;
 import java.io.Serializable;
 import java.lang.String;
 import javax.persistence.*;
+
+import co.edu.uniquindio.unihogar.entities.Project;
+import co.edu.uniquindio.unihogar.entities.Type;
 
 /**
  * Entity implementation class for Entity: Dwelling.

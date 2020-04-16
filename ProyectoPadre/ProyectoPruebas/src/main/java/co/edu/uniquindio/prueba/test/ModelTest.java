@@ -24,20 +24,20 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import co.edu.uniquindio.project.dto.QueryProjectCityDTO;
-import co.edu.uniquindio.project.entities.Administrator;
-import co.edu.uniquindio.project.entities.City;
-import co.edu.uniquindio.project.entities.Client;
-import co.edu.uniquindio.project.entities.Comment;
-import co.edu.uniquindio.project.entities.Contact;
-import co.edu.uniquindio.project.entities.Dwelling;
-import co.edu.uniquindio.project.entities.EstateAgency;
-import co.edu.uniquindio.project.entities.Project;
-import co.edu.uniquindio.project.entities.Rating;
-import co.edu.uniquindio.project.entities.RatingPK;
-import co.edu.uniquindio.project.entities.Service;
-import co.edu.uniquindio.project.entities.Type;
-import co.edu.uniquindio.project.entities.User;
+import co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO;
+import co.edu.uniquindio.unihogar.entities.Administrator;
+import co.edu.uniquindio.unihogar.entities.City;
+import co.edu.uniquindio.unihogar.entities.Client;
+import co.edu.uniquindio.unihogar.entities.Comment;
+import co.edu.uniquindio.unihogar.entities.Contact;
+import co.edu.uniquindio.unihogar.entities.Dwelling;
+import co.edu.uniquindio.unihogar.entities.EstateAgency;
+import co.edu.uniquindio.unihogar.entities.Project;
+import co.edu.uniquindio.unihogar.entities.Rating;
+import co.edu.uniquindio.unihogar.entities.RatingPK;
+import co.edu.uniquindio.unihogar.entities.Service;
+import co.edu.uniquindio.unihogar.entities.Type;
+import co.edu.uniquindio.unihogar.entities.User;
 
 /**
  * Class Model Test.

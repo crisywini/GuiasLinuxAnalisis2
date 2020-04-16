@@ -1,22 +1,20 @@
-package co.edu.uniquindio.project.entities;
+package co.edu.uniquindio.unihogar.entities;
 
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
+
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Comment.
- * 
+ * Entity implementation class for Entity: Contact.
+ *
  * @author Critian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name = Comment.GET_CLIENT_NO_REPEATED, query = "SELECT DISTINCT c.clientCode FROM Comment c WHERE c.code = :projectCode")
-})
-public class Comment implements Serializable {
+public class Contact implements Serializable {
 
 	/** The code. */
 	@Id
@@ -24,86 +22,88 @@ public class Comment implements Serializable {
 	@Column(name = "code")
 	private int code;
 
-	/** The comment. */
-	@Lob
-	@Column(name = "comment", nullable = false)
-	private String comment;
+	/** The subject. */
+	@Column(name = "subject", nullable = false)
+	private String subject;
+
+	/** The content. */
+	@Column(name = "content", nullable = false)
+	private String content;
 
 	/** The date. */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", name = "date", nullable = false)
 	private Date date;
 
+	/** The project code. */
+	@ManyToOne
+	@JoinColumn(name = "project_code")
+	private Project projectCode;
+
 	/** The client code. */
 	@ManyToOne
 	@JoinColumn(name = "client_code")
 	private Client clientCode;
 
-	/** The project code. */
-	@ManyToOne
-	@JoinColumn(name = "project_code")
-	private Project projectCode;
-	
-	//Queries
-	public static final String GET_CLIENT_NO_REPEATED = "GET_CLIENT_NO_REPEATED";
-
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new comment.
+	 * Instantiates a new contact.
 	 */
-	public Comment() {
+	public Contact() {
 		super();
 	}
 
 	/**
-	 * Constructor method from comment.
+	 * Constructor method from Contact.
 	 *
-	 * @param code    from {@link Comment} primary key, and generated value
-	 * @param comment from {@link Comment} not nullable
+	 * @param code    from {@link Contact} primaty key, and generated value
+	 * @param subject from {@link Contact} not nullable
+	 * @param content from {@link Contact} not nullable
 	 */
 
-	public Comment(int code, String comment) {
+	public Contact(int code, String subject, String content) {
 		super();
 		this.code = code;
-		this.comment = comment;
+		this.subject = subject;
+		this.content = content;
 		this.date = new Date();
 	}
 
 	/**
-	 * Gets the code.
+	 * Gets the subject.
 	 *
-	 * @return the code
+	 * @return the subject
 	 */
-	public int getCode() {
-		return this.code;
+	public String getSubject() {
+		return this.subject;
 	}
 
 	/**
-	 * Sets the code.
+	 * Sets the subject.
 	 *
-	 * @param code the new code
+	 * @param subject the new subject
 	 */
-	public void setCode(int code) {
-		this.code = code;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	/**
-	 * Gets the comment.
+	 * Gets the content.
 	 *
-	 * @return the comment
+	 * @return the content
 	 */
-	public String getComment() {
-		return this.comment;
+	public String getContent() {
+		return this.content;
 	}
 
 	/**
-	 * Sets the comment.
+	 * Sets the content.
 	 *
-	 * @param comment the new comment
+	 * @param content the new content
 	 */
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Comment implements Serializable {
 	 * @return the date
 	 */
 	public Date getDate() {
-		return this.date;
+		return date;
 	}
 
 	/**
@@ -125,21 +125,21 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * Gets the client code.
+	 * Gets the code.
 	 *
-	 * @return the client code
+	 * @return the code
 	 */
-	public Client getClientCode() {
-		return clientCode;
+	public int getCode() {
+		return code;
 	}
 
 	/**
-	 * Sets the client code.
+	 * Sets the code.
 	 *
-	 * @param clientCode the new client code
+	 * @param code the new code
 	 */
-	public void setClientCode(Client clientCode) {
-		this.clientCode = clientCode;
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	/**
@@ -158,6 +158,24 @@ public class Comment implements Serializable {
 	 */
 	public void setProjectCode(Project projectCode) {
 		this.projectCode = projectCode;
+	}
+
+	/**
+	 * Gets the client code.
+	 *
+	 * @return the client code
+	 */
+	public Client getClientCode() {
+		return clientCode;
+	}
+
+	/**
+	 * Sets the client code.
+	 *
+	 * @param clientCode the new client code
+	 */
+	public void setClientCode(Client clientCode) {
+		this.clientCode = clientCode;
 	}
 
 	/**
@@ -187,7 +205,7 @@ public class Comment implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Comment other = (Comment) obj;
+		Contact other = (Contact) obj;
 		if (code != other.code)
 			return false;
 		return true;
@@ -200,8 +218,7 @@ public class Comment implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Comment [code=" + code + ", comment=" + comment + ", date=" + date + ", clientCode=" + clientCode
-				+ ", projectCode=" + projectCode + "]";
+		return "Contact [code=" + code + ", subject=" + subject + ", content=" + content + ", date=" + date + "]";
 	}
 
 }

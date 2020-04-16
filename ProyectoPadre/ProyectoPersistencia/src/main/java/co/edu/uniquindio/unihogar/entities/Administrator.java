@@ -1,8 +1,9 @@
-package co.edu.uniquindio.project.entities;
+package co.edu.uniquindio.unihogar.entities;
 
-import co.edu.uniquindio.project.entities.User;
 import java.io.Serializable;
 import javax.persistence.*;
+
+import co.edu.uniquindio.unihogar.entities.User;
 
 /**
  * Entity implementation class for Entity: Administrator.

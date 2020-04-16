@@ -1,4 +1,4 @@
-package co.edu.uniquindio.project.entities;
+package co.edu.uniquindio.unihogar.entities;
 
 import java.io.Serializable;
 import java.lang.String;
@@ -25,7 +25,7 @@ import javax.persistence.*;
 	@NamedQuery(name = Project.GET_NAME_ESTATE_AGENCY, query = "SELECT p.estateAgency.name FROM Project p WHERE p.code = :projectCode"),
 	@NamedQuery(name = Project.GET_CLIENTS_CONTACT, query = "SELECT c.clientCode FROM Project p JOIN p.contacts c WHERE p.code = :projectCode"),
 	@NamedQuery(name = Project.GET_PROJECTS_RATING, query = "SELECT p, r.score FROM Project p LEFT JOIN p.ratings r"),
-	@NamedQuery(name = Project.GET_PROJECTS_CITY_ASSOCIATED, query = "SELECT new co.edu.uniquindio.project.dto.QueryProjectCityDTO( p.code, p.name, p.latitude, p.length, p.estateAgency.name ) FROM Project p WHERE p.city.code = :cityCode"),
+	@NamedQuery(name = Project.GET_PROJECTS_CITY_ASSOCIATED, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO( p.code, p.name, p.latitude, p.length, p.estateAgency.name ) FROM Project p WHERE p.city.code = :cityCode"),
 	@NamedQuery(name = Project.GET_PROJECTS_HOUSE_PRICE, query = "SELECT p FROM Project p INNER JOIN p.dwellings d WHERE d.type = :type AND d.price >= :minPrice AND d.price <= :maxPrice"),
 	@NamedQuery(name = Project.GET_PROJECTS_IMAGES_BY_SERVICE, query = "SELECT p, i FROM Project p LEFT JOIN p.images i LEFT JOIN p.services s WHERE s.name = :serviceOne OR s.name =:serviceTwo"),
 })

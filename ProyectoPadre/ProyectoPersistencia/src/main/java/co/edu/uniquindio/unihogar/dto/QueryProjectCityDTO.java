@@ -1,4 +1,4 @@
-package co.edu.uniquindio.project.dto;
+package co.edu.uniquindio.unihogar.dto;
 
 public class QueryProjectCityDTO {
 	private int projectCode;

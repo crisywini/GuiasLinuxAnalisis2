@@ -1,12 +1,13 @@
-package co.edu.uniquindio.project.entities;
+package co.edu.uniquindio.unihogar.entities;
 
-import co.edu.uniquindio.project.entities.User;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+
+import co.edu.uniquindio.unihogar.entities.User;
 
 /**
  * Entity implementation class for Entity: Client.

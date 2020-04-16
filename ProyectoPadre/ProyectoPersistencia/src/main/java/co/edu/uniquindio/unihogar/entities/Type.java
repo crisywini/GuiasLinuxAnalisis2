@@ -1,4 +1,4 @@
-package co.edu.uniquindio.project.entities;
+package co.edu.uniquindio.unihogar.entities;
 
 /**
  * The Enum Type.
