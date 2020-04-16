@@ -30,7 +30,11 @@ import javax.persistence.*;
 	@NamedQuery(name = Project.GET_PROJECTS_IMAGES_BY_SERVICE, query = "SELECT p, i FROM Project p LEFT JOIN p.images i LEFT JOIN p.services s WHERE s.name = :serviceOne OR s.name =:serviceTwo"),
 	@NamedQuery(name = Project.GET_NUMBER_PROJECTS_SERVICE, query = "SELECT count(p) FROM Project p INNER JOIN p.services s WHERE s.name = :nameService"),
 	@NamedQuery(name = Project.GET_NUMBER_DWELLINGS_BY_TYPE, query = "SELECT d.type, count(d) FROM Project p INNER JOIN p.dwellings d WHERE p.city.name = :nameCity GROUP BY d.type"),
-	@NamedQuery(name = Project.GET_PROJECTS_WITHOUT_COMMENTS, query = "SELECT p FROM Project p WHERE p.comments IS EMPTY")
+	@NamedQuery(name = Project.GET_PROJECTS_WITHOUT_COMMENTS, query = "SELECT p FROM Project p WHERE p.comments IS EMPTY"),
+	@NamedQuery(name = Project.GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryNumberProjectsEstateAgencyDTO(p.estateAgency.name, p.estateAgency.address, count(p)) FROM Project p GROUP BY p.estateAgency"),
+	@NamedQuery(name = Project.GET_AVG_DWELLINGS, query = "SELECT avg(d.price) FROM Project p JOIN p.dwellings d JOIN p.services s WHERE p.city.name = :nameCity AND d.numBathrooms = 2 AND d.numRooms = 3 AND s.name = 'piscinita'"),
+	@NamedQuery(name = Project.GET_PROJECTS_BY_SERVICES, query = "SELECT p FROM Project p JOIN p.services s WHERE s.name IN(:nameService1, :nameService2) GROUP BY p HAVING count(p) = 2"),
+	@NamedQuery(name = Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, query = "SELECT d FROM Project p JOIN p.dwellings d WHERE p.city.name = 'Armenia' AND d.price = SELECT MAX(d2.price) FROM Project p2 JOIN p.dwellings d2 WHERE p2.city.name = 'Armenia'")
 })
 public class Project implements Serializable {
 
@@ -117,6 +121,10 @@ public class Project implements Serializable {
 	public static final String GET_NUMBER_PROJECTS_SERVICE = "GET_NUMBER_PROJECTS_SERVICE";
 	public static final String GET_NUMBER_DWELLINGS_BY_TYPE = "GET_NUMBER_DWELLINGS_BY_TYPE";
 	public static final String GET_PROJECTS_WITHOUT_COMMENTS = "GET_PROJECTS_WITHOUT_COMMENTS";
+	public static final String GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY = "GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY";
+	public static final String GET_AVG_DWELLINGS = "GET_AVG_DWELLINGS";
+	public static final String GET_PROJECTS_BY_SERVICES = "GET_PROJECTS_BY_SERVICES";
+	public static final String GET_MOST_EXPENSIVE_DWELLING_BY_CITY = "GET_MOST_EXPENSIVE_DWELLING_BY_CITY";
 
 	private static final long serialVersionUID = 1L;
 
