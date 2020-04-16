@@ -18,7 +18,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY, query = "SELECT ea FROM EstateAgency ea"),
-	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY_PROJECTS, query="SELECT ea.code, p FROM EstateAgency ea LEFT JOIN ea.projects p")
+	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY_PROJECTS, query="SELECT ea.code, p FROM EstateAgency ea LEFT JOIN ea.projects p"),
 })
 public class EstateAgency extends User implements Serializable {
 
