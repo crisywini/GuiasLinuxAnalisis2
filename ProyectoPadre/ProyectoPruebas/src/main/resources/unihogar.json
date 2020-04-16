@@ -83,7 +83,7 @@
 			"code": "2",
 			"complete_name": "Cliente2",
 			"date_of_birth": "2020-07-21",
-			"email": "c2@hotmail.com",
+			"email": "c2@gmail.com",
 			"password": "password2",
 			"phone_number": "3112345678"
 		},
@@ -91,7 +91,7 @@
 			"code": "3",
 			"complete_name": "Cliente3",
 			"date_of_birth": "2020-02-21",
-			"email": "c3@hotmail.com",
+			"email": "c3@gmail.com",
 			"password": "password3",
 			"phone_number": "3123456789"
 		}
