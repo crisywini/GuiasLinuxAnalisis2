@@ -24,6 +24,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import co.edu.uniquindio.unihogar.dto.QueryNumberProjectsEstateAgencyDTO;
 import co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
 import co.edu.uniquindio.unihogar.entities.City;
@@ -2686,4 +2687,33 @@ public class ModelTest {
 		int expected = 2;
 		Assert.assertTrue("<getClientsWithGmailTest>Size: "+resultSize+" expected: "+expected,resultSize==expected);
 	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getNumerProjectsEstateAgencyTest() {
+		TypedQuery<QueryNumberProjectsEstateAgencyDTO> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY, QueryNumberProjectsEstateAgencyDTO.class);
+		List<QueryNumberProjectsEstateAgencyDTO> resultList = query.getResultList();
+		int resultSize = resultList.size();
+		int expected = 10;
+		Assert.assertTrue("<getNumerProjectsEstateAgencyTest>Size: "+resultSize+" expected: "+expected,resultSize==expected);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})	
+	public void getProjectsByServiceTest() {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECTS_BY_SERVICES, Project.class);
+		query.setParameter("nameService1", "piscinita");
+		query.setParameter("nameService2", "Gimnasio");
+		List<Project> resultList = query.getResultList();
+		System.out.println(resultList);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})	
+	public void getMostExpensiveDwellingInArmenia() {
+		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, Dwelling.class);
+		List<Dwelling> listReList= query.getResultList();
+		System.out.println(listReList);
+	}
+	
 }
