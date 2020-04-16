@@ -19,7 +19,8 @@ import co.edu.uniquindio.unihogar.entities.User;
 @NamedQueries({
 		@NamedQuery(name = Client.GET_ALL_CLIENT, query = "SELECT c FROM Client c"),
 		@NamedQuery(name = Client.GET_PROJECTS_RATING_UNIQUE, query = "SELECT r.projectRating, r.score FROM Client c INNER JOIN c.ratings r WHERE c.code = :clientCode"),
-		@NamedQuery(name = Client.GET_FAVOURITES_PROJECTS, query = "SELECT fp FROM Client c LEFT JOIN c.favoriteProjects fp WHERE c.code = :clientCode")
+		@NamedQuery(name = Client.GET_FAVOURITES_PROJECTS, query = "SELECT fp FROM Client c LEFT JOIN c.favoriteProjects fp WHERE c.code = :clientCode"),
+		@NamedQuery(name = Client.GET_CLIENTS_GMAIL, query = "SELECT c FROM Client c WHERE c.email LIKE '%gmail%'")
 })
 public class Client extends User implements Serializable {
 
@@ -60,7 +61,7 @@ public class Client extends User implements Serializable {
 	public static final String GET_ALL_CLIENT = "GET_ALL_CLIENT";
 	public static final String GET_PROJECTS_RATING_UNIQUE = "GET_PROJECTS_RATING_UNIQUE";
 	public static final String GET_FAVOURITES_PROJECTS = "GET_FAVOURITES_PROJECTS";
-
+	public static final String GET_CLIENTS_GMAIL = "GET_CLIENTS_GMAIL";
 
 	private static final long serialVersionUID = 1L;
 
