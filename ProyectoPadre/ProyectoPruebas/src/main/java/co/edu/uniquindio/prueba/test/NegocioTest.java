@@ -1,0 +1,53 @@
+package co.edu.uniquindio.prueba.test;
+
+import javax.ejb.EJB;
+
+import org.jboss.arquillian.junit.Arquillian;
+import org.junit.runner.RunWith;
+
+import co.edu.uniquindio.project.PruebaEJB;
+import co.edu.uniquindio.project.exceptions.AuthenticationException;
+import co.edu.uniquindio.project.exceptions.NonexistentUserException;
+import co.edu.uniquindio.unihogar.entities.User;
+
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.persistence.UsingDataSet;
+import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
+import org.jboss.arquillian.transaction.api.annotation.Transactional;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@RunWith(Arquillian.class)
+public class NegocioTest {
+
+	@EJB
+	private PruebaEJB pruebaEJB;
+
+	@Deployment
+	public static Archive<?> createDeploymentPackage() {
+		return ShrinkWrap.create(JavaArchive.class).addClass(PruebaEJB.class)
+
+				.addPackage(User.class.getPackage()).addAsResource("persistenceForTest.xml", "META-INF/persistence.xml")
+				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void authenticateUserTest() {
+			try {
+				pruebaEJB.authenticateUser("harmaharcri@hotmail.com", "contraseñita");
+			} catch (AuthenticationException e) {
+				e.printStackTrace();
+			}
+	}
+
+}

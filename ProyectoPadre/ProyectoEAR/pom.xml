@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>grid.uniquindio.edu.co</groupId>
+		<artifactId>ProyectoPadre</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>ProyectoEAR</artifactId>
+	<packaging>ear</packaging>
+	<name>Proyecto EAR</name>
+	<description>Proyecto de despliegue de los modulos del aplicativo en el servidor de aplicaciones</description>
+	<dependencies>
+		<dependency>
+			<groupId>grid.uniquindio.edu.co</groupId>
+			<artifactId>ProyectoDeNegocio</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+</project>

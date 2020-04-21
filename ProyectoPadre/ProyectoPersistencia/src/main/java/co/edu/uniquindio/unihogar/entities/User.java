@@ -15,7 +15,8 @@ import javax.persistence.*;
 @MappedSuperclass
 @NamedQueries({
 	@NamedQuery(name = User.AUTHENTICATE_USER, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
-	@NamedQuery(name = User.GET_ALL_USERS, query = "SELECT u FROM User u")
+	@NamedQuery(name = User.GET_ALL_USERS, query = "SELECT u FROM User u"),
+	@NamedQuery(name = User.GET_USER_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email")
 })
 public class User implements Serializable {
 
@@ -35,6 +36,7 @@ public class User implements Serializable {
 	//Queries
 	public static final String AUTHENTICATE_USER = "AUTHENTICATE_USER";
 	public static final String GET_ALL_USERS = "GET_ALL_USERS";
+	public static final String GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 
 	private static final long serialVersionUID = 1L;
 

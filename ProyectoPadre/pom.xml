@@ -65,5 +65,7 @@
 	</build>
 	<modules>
 		<module>proyectoPruebas</module>
+		<module>ProyectoEAR</module>
+		<module>ProyectoDeNegocio</module>
 	</modules>
 </project>

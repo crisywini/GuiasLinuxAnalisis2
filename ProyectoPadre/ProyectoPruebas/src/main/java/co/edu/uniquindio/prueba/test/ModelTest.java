@@ -2,6 +2,7 @@ package co.edu.uniquindio.prueba.test;
 
 import java.text.ParseException;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -2714,6 +2715,16 @@ public class ModelTest {
 		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, Dwelling.class);
 		List<Dwelling> listReList= query.getResultList();
 		System.out.println(listReList);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})		
+	public void getMostExpensiveDwellingsByCity() {
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY, Object[].class);
+		List<Object[]> listResult = query.getResultList();
+		for (Object[] objects : listResult) {
+			System.out.println(objects[0]+" "+objects[1]);
+		}
 	}
 	
 }
