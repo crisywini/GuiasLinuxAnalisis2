@@ -94,5 +94,13 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ALL_ESTATE_AGENCY, EstateAgency.class);
 		return query.getResultList();
 	}
+
+	@Override
+	public List<EstateAgency> listAgenciesByCity(String nameCity) {
+		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY, EstateAgency.class);
+		query.setParameter("nameCity", nameCity);
+		
+		return query.getResultList();
+	}
 	
 }

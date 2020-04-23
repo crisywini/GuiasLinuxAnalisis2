@@ -18,7 +18,8 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY, query = "SELECT ea FROM EstateAgency ea"),
-	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY_PROJECTS, query="SELECT ea.code, p FROM EstateAgency ea LEFT JOIN ea.projects p")
+	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY_PROJECTS, query="SELECT ea.code, p FROM EstateAgency ea LEFT JOIN ea.projects p"),
+	@NamedQuery(name = EstateAgency.GET_ESTATE_AGENCY_BY_CITY, query = "SELECT ea FROM EstateAgency ea JOIN ea.projects p WHERE p.city.name = :nameCity")
 })
 public class EstateAgency extends User implements Serializable {
 
@@ -48,6 +49,7 @@ public class EstateAgency extends User implements Serializable {
 	//Queries
 	public static final String GET_ALL_ESTATE_AGENCY = "GET_ALL_ESTATE_AGENCY";
 	public static final String GET_ALL_ESTATE_AGENCY_PROJECTS = "GET_ALL_ESTATE_AGENCY_PROJECTS";
+	public static final String GET_ESTATE_AGENCY_BY_CITY = "GET_ESTATE_AGENCY_BY_CITY";
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -60,8 +62,8 @@ public class EstateAgency extends User implements Serializable {
 	}
 
 	/**
-	 * Constructor method from estate agency.
 	 *@deprecated
+	 * Constructor method from estate agency.
 	 * @param name     the name
 	 * @param code     from {@link User} primary key not nullable
 	 * @param email    from {@link User} unique not nullable

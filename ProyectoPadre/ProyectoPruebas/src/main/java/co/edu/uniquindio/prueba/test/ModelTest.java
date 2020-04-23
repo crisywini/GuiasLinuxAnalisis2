@@ -2322,7 +2322,7 @@ public class ModelTest {
 	}
 
 	// -----------------Queries Tests----------------
-	/**
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2724,5 +2724,16 @@ public class ModelTest {
 			System.out.println(objects[0]+" "+objects[1]);
 		}
 	}
-	*/
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})		
+	public void getEstateAgencyByCity() {
+		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY, EstateAgency.class);
+		query.setParameter("nameCity", "Armenia");
+		List<EstateAgency> resultList = query.getResultList();
+		for (EstateAgency estateAgency : resultList) {
+			System.out.println(estateAgency);
+		}
+	}
+	
 }
