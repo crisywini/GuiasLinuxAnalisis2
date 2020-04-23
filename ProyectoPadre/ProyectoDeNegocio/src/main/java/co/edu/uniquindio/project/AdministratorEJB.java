@@ -3,6 +3,7 @@ package co.edu.uniquindio.project;
 import java.util.List;
 
 
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import javax.persistence.TypedQuery;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
+import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.User;
 
 /**
@@ -36,12 +38,12 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		
 		if(query1!=null)
 			throw new RepeatedUserException("The user with code: " + code+" already exist");
-		if(isEmailRepeated(email))
+		if(isUserEmailRepeated(email))
 			throw new RepeatedUserException("The user with email: "+email+" already exist");
 
 		entityManager.persist(newUser);
 	}
-	public boolean isEmailRepeated(String email) {
+	public boolean isUserEmailRepeated(String email) {
 		TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_EMAIL, User.class);
 		query.setParameter(":email", email);
 		return query.getResultList().size()>0;
@@ -59,4 +61,38 @@ public class AdministratorEJB implements AdministratorEJBRemote {
  		return resultList.get(0);
 	}
 
+	@Override
+	public void createEstateAgency(String name, String code, String email, String password, String address)
+			throws RepeatedUserException{
+		EstateAgency query = entityManager.find(EstateAgency.class, code);
+		if(query!=null)
+			throw new RepeatedUserException("The Estate Agency(code): "+code+" already exist");
+		if(isUserEmailRepeated(email))
+			throw new RepeatedUserException("The Estate Agency(email): "+email+" already exist");
+		EstateAgency newEstateAgency = new EstateAgency(name, code, email, password, address);
+		entityManager.persist(newEstateAgency);
+	}
+
+	@Override
+	public EstateAgency getEstateAgency(String code) throws NonexistentUserException {
+		EstateAgency query = entityManager.find(EstateAgency.class, code);
+		if(query == null)
+			throw new NonexistentUserException("The Estate Agency(code): "+code+" does not exist");
+		return query;
+	}
+
+	@Override
+	public void removeEstateAgency(String code) throws NonexistentUserException {
+		EstateAgency query = entityManager.find(EstateAgency.class, code);
+		if(query==null)
+			throw new NonexistentUserException("The Estate Agency(code): "+code+" does not exist");
+		entityManager.remove(query);
+	}
+
+	@Override
+	public List<EstateAgency> listAgencies() {
+		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ALL_ESTATE_AGENCY, EstateAgency.class);
+		return query.getResultList();
+	}
+	
 }
