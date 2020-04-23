@@ -5,7 +5,7 @@ import javax.ejb.EJB;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.runner.RunWith;
 
-import co.edu.uniquindio.project.PruebaEJB;
+import co.edu.uniquindio.project.AdministratorEJB;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.unihogar.entities.User;
@@ -29,11 +29,11 @@ import org.junit.runner.RunWith;
 public class NegocioTest {
 
 	@EJB
-	private PruebaEJB pruebaEJB;
+	private AdministratorEJB pruebaEJB;
 
 	@Deployment
 	public static Archive<?> createDeploymentPackage() {
-		return ShrinkWrap.create(JavaArchive.class).addClass(PruebaEJB.class)
+		return ShrinkWrap.create(JavaArchive.class).addClass(AdministratorEJB.class)
 
 				.addPackage(User.class.getPackage()).addAsResource("persistenceForTest.xml", "META-INF/persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");

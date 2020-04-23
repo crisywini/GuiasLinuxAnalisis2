@@ -76,7 +76,7 @@ public class ModelTest {
 	/**
 	 * Admin persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({ "unihogar.json" })
@@ -125,7 +125,6 @@ public class ModelTest {
 	/**
 	 * City persistence test.
 	 */
-	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -175,7 +174,6 @@ public class ModelTest {
 	 *
 	 * @throws ParseException the parse exception
 	 */
-	@Ignore
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -243,7 +241,7 @@ public class ModelTest {
 	/**
 	 * Comment persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -302,7 +300,7 @@ public class ModelTest {
 	/**
 	 * Contact persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -376,7 +374,7 @@ public class ModelTest {
 	/**
 	 * Dwelling persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -450,7 +448,7 @@ public class ModelTest {
 	/**
 	 * Estate agency persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -526,7 +524,7 @@ public class ModelTest {
 	/**
 	 * Project persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -599,7 +597,7 @@ public class ModelTest {
 	/**
 	 * Rating persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -666,7 +664,7 @@ public class ModelTest {
 	/**
 	 * Service persistence test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -741,7 +739,7 @@ public class ModelTest {
 	/**
 	 * Admin remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({ "unihogar.json" })
@@ -767,7 +765,7 @@ public class ModelTest {
 	/**
 	 * City remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -845,7 +843,7 @@ public class ModelTest {
 	 *
 	 * @throws ParseException the parse exception
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -871,7 +869,7 @@ public class ModelTest {
 	/**
 	 * Comment remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -932,7 +930,7 @@ public class ModelTest {
 	/**
 	 * Contact remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -993,7 +991,7 @@ public class ModelTest {
 	/**
 	 * Dwelling remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1054,7 +1052,7 @@ public class ModelTest {
 	/**
 	 * Estate agency remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1110,7 +1108,7 @@ public class ModelTest {
 	/**
 	 * Project remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1166,7 +1164,7 @@ public class ModelTest {
 	/**
 	 * Rating remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1195,7 +1193,7 @@ public class ModelTest {
 	/**
 	 * Service remove test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1253,7 +1251,7 @@ public class ModelTest {
 	/**
 	 * Admin merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({ "unihogar.json" })
@@ -1287,7 +1285,7 @@ public class ModelTest {
 	/**
 	 * City merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1389,7 +1387,7 @@ public class ModelTest {
 	/**
 	 * Client merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1421,7 +1419,7 @@ public class ModelTest {
 	/**
 	 * Comment merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1502,7 +1500,7 @@ public class ModelTest {
 	/**
 	 * Contact merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1583,7 +1581,7 @@ public class ModelTest {
 	/**
 	 * Dwelling merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1667,7 +1665,7 @@ public class ModelTest {
 	/**
 	 * Estate agency merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1762,7 +1760,7 @@ public class ModelTest {
 	/**
 	 * Project merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1836,7 +1834,7 @@ public class ModelTest {
 	/**
 	 * Rating merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1871,7 +1869,7 @@ public class ModelTest {
 	/**
 	 * Service merge test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1912,7 +1910,7 @@ public class ModelTest {
 	/**
 	 * Administrator find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1932,7 +1930,7 @@ public class ModelTest {
 	/**
 	 * City find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1995,7 +1993,7 @@ public class ModelTest {
 	/**
 	 * Comment find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2046,7 +2044,7 @@ public class ModelTest {
 	/**
 	 * Contact find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2097,7 +2095,7 @@ public class ModelTest {
 	/**
 	 * Dwelling find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2148,7 +2146,7 @@ public class ModelTest {
 	/**
 	 * Estate agency find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2199,7 +2197,7 @@ public class ModelTest {
 	/**
 	 * Project find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2250,7 +2248,7 @@ public class ModelTest {
 	/**
 	 * Rating find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2276,7 +2274,7 @@ public class ModelTest {
 	/**
 	 * Service find test.
 	 */
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2324,7 +2322,7 @@ public class ModelTest {
 	}
 
 	// -----------------Queries Tests----------------
-	@Ignore
+	/**
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2340,7 +2338,7 @@ public class ModelTest {
 
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2354,7 +2352,7 @@ public class ModelTest {
 
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2367,7 +2365,7 @@ public class ModelTest {
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2381,7 +2379,7 @@ public class ModelTest {
 		Assert.assertTrue("<getAllEstateAgencyQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2394,7 +2392,7 @@ public class ModelTest {
 		Assert.assertTrue("<getAllProjectsQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2407,7 +2405,7 @@ public class ModelTest {
 		Assert.assertTrue("<getAllRatingQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2420,7 +2418,7 @@ public class ModelTest {
 		Assert.assertTrue("<getAllServiceQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2435,7 +2433,7 @@ public class ModelTest {
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2447,7 +2445,7 @@ public class ModelTest {
 		Assert.assertEquals(client, requested);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2462,7 +2460,7 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2476,7 +2474,7 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2488,7 +2486,7 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2500,7 +2498,7 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2515,7 +2513,7 @@ public class ModelTest {
 				sizeResult == sizeExpected);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2526,7 +2524,7 @@ public class ModelTest {
 		Assert.assertEquals("Banderas Verdes", nameResult);
 	}
 
-	@Ignore
+	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2726,5 +2724,5 @@ public class ModelTest {
 			System.out.println(objects[0]+" "+objects[1]);
 		}
 	}
-	
+	*/
 }

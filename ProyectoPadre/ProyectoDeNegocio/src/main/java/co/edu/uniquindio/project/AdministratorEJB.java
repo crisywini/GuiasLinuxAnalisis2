@@ -19,15 +19,14 @@ import co.edu.uniquindio.unihogar.entities.User;
  */
 @Stateless
 @LocalBean
-public class PruebaEJB implements PruebaEJBRemote {
+public class AdministratorEJB implements AdministratorEJBRemote {
 	@PersistenceContext
 	private EntityManager entityManager;
 
 	/**
 	 * Default constructor. 
 	 */
-	public PruebaEJB() {
-		// TODO Auto-generated constructor stub
+	public AdministratorEJB() {
 	}
 
 	@Override
