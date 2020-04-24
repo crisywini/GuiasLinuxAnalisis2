@@ -14,6 +14,7 @@ import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
+import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.User;
 
 /**
@@ -100,6 +101,20 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY, EstateAgency.class);
 		query.setParameter("nameCity", nameCity);
 		
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Project> listProjects() {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS, Project.class);
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Project> listProjectsByCity(String nameCity) {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS_BY_CITY, Project.class);
+		query.setParameter("cityName", nameCity);
 		return query.getResultList();
 	}
 	

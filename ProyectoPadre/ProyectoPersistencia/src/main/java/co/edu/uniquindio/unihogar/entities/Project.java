@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name = Project.GET_ALL_PROJECTS, query = "SELECT p FROM Project p"),
-	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_CITY, query = "SELECT p FROM Project p WHERE p.city.code = :cityCode"),
+	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_CITY, query = "SELECT p FROM Project p WHERE p.city.name = :cityName"),
 	@NamedQuery(name = Project.GET_PROJECT_BY_NAME, query = "SELECT p FROM Project p WHERE p.name = :projectName"),
 	@NamedQuery(name = Project.GET_PROJECT_BY_ID, query = "SELECT p FROM Project p WHERE p.code = :projectCode"),
 	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT p FROM Project p WHERE p.estateAgency.code = :estateAgencyCode"),
