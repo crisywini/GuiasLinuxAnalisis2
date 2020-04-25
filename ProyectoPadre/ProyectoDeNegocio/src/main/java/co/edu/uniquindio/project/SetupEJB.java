@@ -31,7 +31,6 @@ public class SetupEJB {
 	public void config(){
 		if(!isThereAnyAdministrator()) {
 			Administrator newAdmin = new Administrator("root", "cgsanchezp@uqvirtual.edu.co", "root");
-			System.out.println(newAdmin);
 			entityManager.persist(newAdmin);
 		}
 	}
