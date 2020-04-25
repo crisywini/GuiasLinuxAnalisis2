@@ -1,8 +1,8 @@
-package co.edu.uniquindio.project.controller;
+package co.edu.uniquindio.project.app;
 
 import java.io.IOException;
 
-
+import co.edu.uniquindio.project.controller.InitController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

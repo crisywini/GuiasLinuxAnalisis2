@@ -13,10 +13,16 @@ import co.edu.uniquindio.unihogar.entities.User;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Administrator.ADMINISTRATORS_LIST, query = "SELECT a FROM Administrator a")
+})
 public class Administrator extends User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	//Queries
+	public static final String ADMINISTRATORS_LIST = "ADMINISTRATORS_LIST";
 
+	
 	/**
 	 * Default constructor method.
 	 */

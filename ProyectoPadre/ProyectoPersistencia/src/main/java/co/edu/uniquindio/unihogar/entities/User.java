@@ -56,7 +56,6 @@ public class User implements Serializable {
 	 * @param password from {@link User} not nullable
 	 */
 	public User(String code, String email, String password) {
-		super();
 		this.code = code;
 		this.email = email;
 		this.password = password;

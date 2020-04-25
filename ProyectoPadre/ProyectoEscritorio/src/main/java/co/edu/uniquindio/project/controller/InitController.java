@@ -11,8 +11,11 @@ import java.net.URL;
 
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.project.app.ApplicationProject;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -41,12 +44,22 @@ public class InitController {
     		try {
 				logginPane = loader.load();
 				logginController = loader.getController();
+				logginController.setInitController(this);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
     	}
     	parent.setCenter(logginPane);
     }
+    
+    public static void showAlert(String contentText, String title, String headerText, AlertType alertType){
+    	Alert alert = new Alert(alertType);
+    	alert.setContentText(contentText);
+    	alert.setHeaderText(headerText);
+    	alert.setTitle(title);
+    	alert.showAndWait();
+    }
+    
 
 	public ApplicationProject getMain() {
 		return main;
