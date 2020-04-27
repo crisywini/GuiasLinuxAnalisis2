@@ -24,5 +24,6 @@ public interface AdministratorEJBRemote {
 	List<EstateAgency> listAgenciesByCity(String nameCity);
 	List<Project> listProjects();
 	List<Project> listProjectsByCity(String nameCity);
+	boolean isEmailWithPasswordSended(String email)throws NonexistentUserException;
 
 }

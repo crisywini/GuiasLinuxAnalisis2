@@ -13,6 +13,8 @@ import javax.persistence.TypedQuery;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
+import co.edu.uniquindio.project.util.MailSender;
+import co.edu.uniquindio.unihogar.entities.Administrator;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.User;
@@ -116,6 +118,23 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS_BY_CITY, Project.class);
 		query.setParameter("cityName", nameCity);
 		return query.getResultList();
+	}
+
+	@Override
+	public boolean isEmailWithPasswordSended(String email) throws NonexistentUserException {
+		
+		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.GET_USER_BY_EMAIL, Administrator.class);
+		query.setParameter("email", email);
+		List<Administrator> resultList = query.getResultList();
+		if (resultList.isEmpty()) 
+			throw new NonexistentUserException("The user(email): "+email+" does not exist");
+		Administrator result = resultList.get(0);
+		System.out.println(result);
+		String recipient = email;
+		String subject = "Password recovery";
+		String bodyMessage = "Your password is: "+result.getPassword();
+		MailSender.sendMailWithGMail(recipient, subject, bodyMessage);
+		return true;
 	}
 	
 }
