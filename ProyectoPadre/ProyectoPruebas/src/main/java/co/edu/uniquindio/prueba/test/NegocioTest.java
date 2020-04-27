@@ -2,12 +2,14 @@ package co.edu.uniquindio.prueba.test;
 
 import javax.ejb.EJB;
 
+
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.project.AdministratorEJB;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
+import co.edu.uniquindio.project.util.MailSender;
 import co.edu.uniquindio.unihogar.entities.User;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -48,6 +50,19 @@ public class NegocioTest {
 			} catch (AuthenticationException e) {
 				e.printStackTrace();
 			}
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void sendRecoveryPasswordMailTest() {
+		int counter = 0;
+		try {
+			pruebaEJB.isEmailWithPasswordSended("harmaharcri@hotmail.com");
+			counter +=1;
+		} catch (NonexistentUserException e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(counter==1);
 	}
 
 }

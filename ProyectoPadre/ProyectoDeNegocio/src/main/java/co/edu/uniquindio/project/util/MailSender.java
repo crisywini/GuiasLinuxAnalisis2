@@ -10,10 +10,10 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSender {
 	public static void main(String[] args) {
-		sendMailWithGMail("harmaharcri@hotmail.com", "hola", "prueba");
+		sendMailWithGMail("luisacotte18@gmail.com", "Holita JAVA MAIL CON HOLITA ", "Holita luisa Fernanda cotte, este correo ha sido enviado con\nJava mail y para que sepas, Java antes tiene un salto de linea.");
 	}
 	public static void sendMailWithGMail(String recipient, String subject, String bodyMessage) {
-		String userS = "analisisdealgoritmos12@gmail.com";
+		String userS = "analisisdealgoritmosdos@gmail.com";
 		Properties props = System.getProperties();
 		props.put("mail.smtp.host", "smtp.gmail.com"); 
 		props.put("mail.smtp.user", userS);
@@ -33,7 +33,7 @@ public class MailSender {
 			message.setSubject(subject);
 			message.setText(bodyMessage);
 			Transport transport = session.getTransport("smtp");
-			transport.connect("smtp.gmail.com", userS, "sergiotoc2");
+			transport.connect("smtp.gmail.com", userS, "crilu2analisis");
 			transport.sendMessage(message, message.getAllRecipients());
 			transport.close();
 		} catch (MessagingException me) {

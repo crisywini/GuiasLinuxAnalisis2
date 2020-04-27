@@ -14,13 +14,15 @@ import co.edu.uniquindio.unihogar.entities.User;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = Administrator.ADMINISTRATORS_LIST, query = "SELECT a FROM Administrator a")
+	@NamedQuery(name = Administrator.ADMINISTRATORS_LIST, query = "SELECT a FROM Administrator a"),
+	@NamedQuery(name = Administrator.ADMINISTRATOR_BY_EMAIL, query = "SELECT a FROM Administrator a WHERE a.email=:emailAdmin")
 })
 public class Administrator extends User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	//Queries
 	public static final String ADMINISTRATORS_LIST = "ADMINISTRATORS_LIST";
+	public static final String ADMINISTRATOR_BY_EMAIL ="ADMINISTRATORS_BY_EMAIL";
 
 	
 	/**

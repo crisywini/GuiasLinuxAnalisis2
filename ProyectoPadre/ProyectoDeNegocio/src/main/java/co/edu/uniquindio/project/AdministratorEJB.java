@@ -123,13 +123,12 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	@Override
 	public boolean isEmailWithPasswordSended(String email) throws NonexistentUserException {
 		
-		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.GET_USER_BY_EMAIL, Administrator.class);
-		query.setParameter("email", email);
+		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATOR_BY_EMAIL, Administrator.class);
+		query.setParameter("emailAdmin", email);
 		List<Administrator> resultList = query.getResultList();
 		if (resultList.isEmpty()) 
 			throw new NonexistentUserException("The user(email): "+email+" does not exist");
 		Administrator result = resultList.get(0);
-		System.out.println(result);
 		String recipient = email;
 		String subject = "Password recovery";
 		String bodyMessage = "Your password is: "+result.getPassword();

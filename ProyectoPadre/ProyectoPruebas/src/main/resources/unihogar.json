@@ -15,6 +15,12 @@
 			"email": "admin3@administrador.com",
 			"password": "password3"
 		}
+		,
+		{
+			"code": "79981",
+			"email": "harmaharcri@hotmail.com",
+			"password": "root"
+		}
 	],
 	"CITY": [
 		{
