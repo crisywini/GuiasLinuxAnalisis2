@@ -1,5 +1,6 @@
 package co.edu.uniquindio.project;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -134,6 +135,32 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		String bodyMessage = "Your password is: "+result.getPassword();
 		MailSender.sendMailWithGMail(recipient, subject, bodyMessage);
 		return true;
+	}
+
+	@Override
+	public List<EstateAgency> getTop5ListEstateAgenciesByCity(String nameCity) {
+		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY, EstateAgency.class);
+		query.setParameter("nameCity", nameCity);
+		List<EstateAgency> resultList = query.getResultList();
+		List<EstateAgency> top5EstateAgencies = new LinkedList<EstateAgency>();
+		EstateAgency eaAux = null;
+		for (int i = 0; i < 5; i++) {
+			eaAux = getEstateAgencyMaxSizeProjects(resultList, top5EstateAgencies);
+			if(eaAux!=null)
+				top5EstateAgencies.add(eaAux);	
+		}
+		return top5EstateAgencies;
+	}
+	public EstateAgency getEstateAgencyMaxSizeProjects(List<EstateAgency> estateAgencies, List<EstateAgency> estateAgenciesSorted) {
+		int max = 0;
+		EstateAgency eaMax = null;
+		for (EstateAgency estateAgency : estateAgencies) {
+			if(estateAgency.getProjects().size()>max&&!estateAgenciesSorted.contains(estateAgency)) {
+				max = estateAgency.getProjects().size();
+				eaMax = estateAgency;
+			}
+		}
+		return eaMax;
 	}
 	
 }

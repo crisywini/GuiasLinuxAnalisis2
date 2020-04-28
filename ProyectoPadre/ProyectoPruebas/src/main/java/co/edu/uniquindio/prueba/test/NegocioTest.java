@@ -1,5 +1,7 @@
 package co.edu.uniquindio.prueba.test;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 
 
@@ -10,6 +12,7 @@ import co.edu.uniquindio.project.AdministratorEJB;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.util.MailSender;
+import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.User;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -46,7 +49,7 @@ public class NegocioTest {
 	@UsingDataSet({"unihogar.json"})
 	public void authenticateUserTest() {
 			try {
-				pruebaEJB.authenticateUser("harmaharcri@hotmail.com", "contraseñita");
+				pruebaEJB.authenticateUser("harmaharcri@hotmail.com", "root");
 			} catch (AuthenticationException e) {
 				e.printStackTrace();
 			}
@@ -55,14 +58,18 @@ public class NegocioTest {
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
 	public void sendRecoveryPasswordMailTest() {
-		int counter = 0;
 		try {
-			pruebaEJB.isEmailWithPasswordSended("harmaharcri@hotmail.com");
-			counter +=1;
+			Assert.assertTrue(pruebaEJB.isEmailWithPasswordSended("harmaharcri@hotmail.com"));
 		} catch (NonexistentUserException e) {
 			e.printStackTrace();
 		}
-		Assert.assertTrue(counter==1);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getTop5StateAgenciesByCountProjectsTest() {
+		List<EstateAgency> result = pruebaEJB.getTop5ListEstateAgenciesByCity("Armenia");
+		System.out.println(result.size());
 	}
 
 }
