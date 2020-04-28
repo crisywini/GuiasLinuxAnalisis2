@@ -2735,5 +2735,14 @@ public class ModelTest {
 			System.out.println(estateAgency);
 		}
 	}
-	
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void randomTest() {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_TOP_PROJECTS_RATING, Project.class);
+		List<Project> resultList = query.getResultList();
+		System.out.println(resultList.get(0));
+		System.out.println(resultList.get(1));
+		System.out.println(resultList.get(2));
+	}
 }

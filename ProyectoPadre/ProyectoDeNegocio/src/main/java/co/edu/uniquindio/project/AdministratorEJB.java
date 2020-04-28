@@ -162,5 +162,16 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		}
 		return eaMax;
 	}
-	
+
+	@Override
+	public List<Project> getTop5ProjectsByRatings() {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_TOP_PROJECTS_RATING, Project.class);
+		List<Project> resultList = query.getResultList();
+		List<Project> top5 = new LinkedList<Project>();
+		for (int i = 1; i < resultList.size()&& i<5; i++) {
+			top5.add(resultList.get(i));
+		}
+		return top5;
+	}
+
 }

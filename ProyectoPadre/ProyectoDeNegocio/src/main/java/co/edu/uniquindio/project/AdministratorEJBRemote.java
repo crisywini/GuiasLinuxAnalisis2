@@ -26,5 +26,5 @@ public interface AdministratorEJBRemote {
 	List<Project> listProjectsByCity(String nameCity);
 	boolean isEmailWithPasswordSended(String email)throws NonexistentUserException;
 	List<EstateAgency> getTop5ListEstateAgenciesByCity(String nameCity);
-
+	List<Project> getTop5ProjectsByRatings();
 }

@@ -13,6 +13,7 @@ import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.util.MailSender;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
+import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.User;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -70,6 +71,13 @@ public class NegocioTest {
 	public void getTop5StateAgenciesByCountProjectsTest() {
 		List<EstateAgency> result = pruebaEJB.getTop5ListEstateAgenciesByCity("Armenia");
 		System.out.println(result.size());
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getTop5ProjectRating() {
+		List<Project> top5 = pruebaEJB.getTop5ProjectsByRatings();
+		System.out.println(top5);
 	}
 
 }

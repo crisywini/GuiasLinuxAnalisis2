@@ -35,7 +35,8 @@ import javax.persistence.*;
 	@NamedQuery(name = Project.GET_AVG_DWELLINGS, query = "SELECT avg(d.price) FROM Project p JOIN p.dwellings d JOIN p.services s WHERE p.city.name = :nameCity AND d.numBathrooms = 2 AND d.numRooms = 3 AND s.name = 'piscinita'"),
 	@NamedQuery(name = Project.GET_PROJECTS_BY_SERVICES, query = "SELECT p FROM Project p JOIN p.services s WHERE s.name IN(:nameService1, :nameService2) GROUP BY p HAVING count(p) = 2"),
 	@NamedQuery(name = Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, query = "SELECT d FROM Project p JOIN p.dwellings d WHERE p.city.name = 'Armenia' AND d.price = SELECT MAX(d2.price) FROM Project p2 JOIN p.dwellings d2 WHERE p2.city.name = 'Armenia'"),
-	@NamedQuery(name = Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY, query = "SELECT MAX(d.price), p.city.name FROM Project p LEFT JOIN p.dwellings d GROUP BY p.city")
+	@NamedQuery(name = Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY, query = "SELECT MAX(d.price), p.city.name FROM Project p LEFT JOIN p.dwellings d GROUP BY p.city"),
+	@NamedQuery(name = Project.GET_TOP_PROJECTS_RATING, query = "SELECT p FROM Project p LEFT JOIN p.ratings r ORDER BY r.score DESC")
 })
 public class Project implements Serializable {
 
@@ -127,6 +128,7 @@ public class Project implements Serializable {
 	public static final String GET_PROJECTS_BY_SERVICES = "GET_PROJECTS_BY_SERVICES";
 	public static final String GET_MOST_EXPENSIVE_DWELLING_BY_CITY = "GET_MOST_EXPENSIVE_DWELLING_BY_CITY";
 	public static final String GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY = "GET_MOST_EXPENSIVEs_DWELLINGS_BY_CITY";
+	public static final String GET_TOP_PROJECTS_RATING = "GET_TOP_PROJECTS_RATING";
 
 	private static final long serialVersionUID = 1L;
 

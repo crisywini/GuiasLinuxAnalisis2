@@ -19,7 +19,8 @@ import javax.persistence.*;
 @NamedQueries({
 	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY, query = "SELECT ea FROM EstateAgency ea"),
 	@NamedQuery(name = EstateAgency.GET_ALL_ESTATE_AGENCY_PROJECTS, query="SELECT ea.code, p FROM EstateAgency ea LEFT JOIN ea.projects p"),
-	@NamedQuery(name = EstateAgency.GET_ESTATE_AGENCY_BY_CITY, query = "SELECT ea FROM EstateAgency ea JOIN ea.projects p WHERE p.city.name = :nameCity")
+	@NamedQuery(name = EstateAgency.GET_ESTATE_AGENCY_BY_CITY, query = "SELECT ea FROM EstateAgency ea JOIN ea.projects p WHERE p.city.name = :nameCity"),
+	@NamedQuery(name = EstateAgency.GET_ESTATE_AGENCIES_WITH_PROJECTS, query = "SELECT ea FROM EstateAgency ea LEFT JOIN ea.projects p")
 })
 public class EstateAgency extends User implements Serializable {
 
@@ -50,6 +51,7 @@ public class EstateAgency extends User implements Serializable {
 	public static final String GET_ALL_ESTATE_AGENCY = "GET_ALL_ESTATE_AGENCY";
 	public static final String GET_ALL_ESTATE_AGENCY_PROJECTS = "GET_ALL_ESTATE_AGENCY_PROJECTS";
 	public static final String GET_ESTATE_AGENCY_BY_CITY = "GET_ESTATE_AGENCY_BY_CITY";
+	public static final String GET_ESTATE_AGENCIES_WITH_PROJECTS = "GET_ESTATE_AGENCIES_WITH_PROJECTS";
 	
 	private static final long serialVersionUID = 1L;
 	
