@@ -14,8 +14,10 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = Comment.GET_CLIENT_NO_REPEATED, query = "SELECT DISTINCT c.clientCode FROM Comment c WHERE c.code = :projectCode")
-})
+		@NamedQuery(name = Comment.GET_CLIENT_NO_REPEATED, query = "SELECT DISTINCT c.clientCode FROM Comment c WHERE c.code = :projectCode"),
+		@NamedQuery(name = Comment.GET_COMMENT_BY_CLIENT, query = "SELECT c FROM Comment c WHERE c.clientCode.code =:clientCode"),
+		@NamedQuery(name = Comment.GET_COMMENT_BY_PROYECT, query = "SELECT c FROM Comment c WHERE c.projectCode.code =:projectCode"),
+		@NamedQuery(name = Comment.GET_ALL_COMMENT, query = "SELECT c FROM Comment c") })
 public class Comment implements Serializable {
 
 	/** The code. */
@@ -43,9 +45,12 @@ public class Comment implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "project_code")
 	private Project projectCode;
-	
-	//Queries
+
+	// Queries
 	public static final String GET_CLIENT_NO_REPEATED = "GET_CLIENT_NO_REPEATED";
+	public static final String GET_COMMENT_BY_CLIENT = "GET_COMMENT_BY_CLIENT";
+	public static final String GET_COMMENT_BY_PROYECT = "GET_COMMENT_BY_PROYECT";
+	public static final String GET_ALL_COMMENT = "GET_ALL_COMMENT";
 
 	private static final long serialVersionUID = 1L;
 
