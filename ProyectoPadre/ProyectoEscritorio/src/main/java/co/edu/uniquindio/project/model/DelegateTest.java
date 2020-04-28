@@ -67,5 +67,17 @@ public class DelegateTest implements AdministratorEJBRemote{
 	public List<Project> listProjectsByCity(String nameCity) {
 		return adminEJB.listProjectsByCity(nameCity);
 	}
+	@Override
+	public boolean isEmailWithPasswordSended(String email) throws NonexistentUserException {
+		return adminEJB.isEmailWithPasswordSended(email);
+	}
+	@Override
+	public List<EstateAgency> getTop5ListEstateAgenciesByCity(String nameCity) {
+		return adminEJB.getTop5ListEstateAgenciesByCity(nameCity);
+	}
+	@Override
+	public List<Project> getTop5ProjectsByRatings() {
+		return adminEJB.getTop5ProjectsByRatings();
+	}
 
 }
