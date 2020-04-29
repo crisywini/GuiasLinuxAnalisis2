@@ -25,6 +25,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectsEstateAgencyDTO;
 import co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
@@ -2735,6 +2736,7 @@ public class ModelTest {
 			System.out.println(estateAgency);
 		}
 	}
+	@Deprecated
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -2744,5 +2746,15 @@ public class ModelTest {
 		System.out.println(resultList.get(0));
 		System.out.println(resultList.get(1));
 		System.out.println(resultList.get(2));
+	}
+	@Deprecated
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void randomTest2() {
+		TypedQuery<QueryNumberProjectByCityDTO> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_CITY,QueryNumberProjectByCityDTO.class);
+		List<QueryNumberProjectByCityDTO> result = query.getResultList();
+		System.out.println(result);
+		
 	}
 }
