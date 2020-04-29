@@ -2,15 +2,16 @@ package co.edu.uniquindio.prueba.test;
 
 import java.text.ParseException;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.inject.Typed;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.glassfish.internal.embedded.ScatteredArchive.Builder.type;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.persistence.UsingDataSet;
@@ -26,6 +27,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
+import com.sun.xml.bind.v2.TODO;
+
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectsEstateAgencyDTO;
 import co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
@@ -77,7 +80,7 @@ public class ModelTest {
 	/**
 	 * Admin persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({ "unihogar.json" })
@@ -242,7 +245,7 @@ public class ModelTest {
 	/**
 	 * Comment persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -301,7 +304,7 @@ public class ModelTest {
 	/**
 	 * Contact persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -375,7 +378,7 @@ public class ModelTest {
 	/**
 	 * Dwelling persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -449,7 +452,7 @@ public class ModelTest {
 	/**
 	 * Estate agency persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -525,7 +528,7 @@ public class ModelTest {
 	/**
 	 * Project persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -598,7 +601,7 @@ public class ModelTest {
 	/**
 	 * Rating persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -665,7 +668,7 @@ public class ModelTest {
 	/**
 	 * Service persistence test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -740,7 +743,7 @@ public class ModelTest {
 	/**
 	 * Admin remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({ "unihogar.json" })
@@ -766,7 +769,7 @@ public class ModelTest {
 	/**
 	 * City remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -844,7 +847,7 @@ public class ModelTest {
 	 *
 	 * @throws ParseException the parse exception
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -870,7 +873,7 @@ public class ModelTest {
 	/**
 	 * Comment remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -931,7 +934,7 @@ public class ModelTest {
 	/**
 	 * Contact remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -992,7 +995,7 @@ public class ModelTest {
 	/**
 	 * Dwelling remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1053,7 +1056,7 @@ public class ModelTest {
 	/**
 	 * Estate agency remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1109,7 +1112,7 @@ public class ModelTest {
 	/**
 	 * Project remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1165,7 +1168,7 @@ public class ModelTest {
 	/**
 	 * Rating remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1194,7 +1197,7 @@ public class ModelTest {
 	/**
 	 * Service remove test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1252,7 +1255,7 @@ public class ModelTest {
 	/**
 	 * Admin merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.COMMIT)
 	@UsingDataSet({ "unihogar.json" })
@@ -1286,7 +1289,7 @@ public class ModelTest {
 	/**
 	 * City merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1388,7 +1391,7 @@ public class ModelTest {
 	/**
 	 * Client merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1420,7 +1423,7 @@ public class ModelTest {
 	/**
 	 * Comment merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1501,7 +1504,7 @@ public class ModelTest {
 	/**
 	 * Contact merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1582,7 +1585,7 @@ public class ModelTest {
 	/**
 	 * Dwelling merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1666,7 +1669,7 @@ public class ModelTest {
 	/**
 	 * Estate agency merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1761,7 +1764,7 @@ public class ModelTest {
 	/**
 	 * Project merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1835,7 +1838,7 @@ public class ModelTest {
 	/**
 	 * Rating merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1870,7 +1873,7 @@ public class ModelTest {
 	/**
 	 * Service merge test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1911,7 +1914,7 @@ public class ModelTest {
 	/**
 	 * Administrator find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1931,7 +1934,7 @@ public class ModelTest {
 	/**
 	 * City find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -1994,7 +1997,7 @@ public class ModelTest {
 	/**
 	 * Comment find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2045,7 +2048,7 @@ public class ModelTest {
 	/**
 	 * Contact find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2096,7 +2099,7 @@ public class ModelTest {
 	/**
 	 * Dwelling find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2147,7 +2150,7 @@ public class ModelTest {
 	/**
 	 * Estate agency find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2198,7 +2201,7 @@ public class ModelTest {
 	/**
 	 * Project find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2249,7 +2252,7 @@ public class ModelTest {
 	/**
 	 * Rating find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2275,7 +2278,7 @@ public class ModelTest {
 	/**
 	 * Service find test.
 	 */
-	
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2339,7 +2342,6 @@ public class ModelTest {
 
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2353,7 +2355,6 @@ public class ModelTest {
 
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2366,7 +2367,6 @@ public class ModelTest {
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2380,7 +2380,6 @@ public class ModelTest {
 		Assert.assertTrue("<getAllEstateAgencyQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2393,7 +2392,6 @@ public class ModelTest {
 		Assert.assertTrue("<getAllProjectsQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2406,7 +2404,6 @@ public class ModelTest {
 		Assert.assertTrue("<getAllRatingQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2419,7 +2416,6 @@ public class ModelTest {
 		Assert.assertTrue("<getAllServiceQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2434,7 +2430,6 @@ public class ModelTest {
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2446,7 +2441,6 @@ public class ModelTest {
 		Assert.assertEquals(client, requested);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2461,7 +2455,6 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2475,7 +2468,6 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2487,7 +2479,6 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2499,7 +2490,6 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2514,7 +2504,6 @@ public class ModelTest {
 				sizeResult == sizeExpected);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2525,7 +2514,6 @@ public class ModelTest {
 		Assert.assertEquals("Banderas Verdes", nameResult);
 	}
 
-	
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2600,13 +2588,14 @@ public class ModelTest {
 		List<QueryProjectCityDTO> resultList = query.getResultList();
 		String infoConsole = "";
 		for (QueryProjectCityDTO objects : resultList) {
-			infoConsole += objects+"\n";
+			infoConsole += objects + "\n";
 		}
-		String outExpected = "QueryProjectCityDTO [projectCode=1, projectName=Villas del mar, projectLatitude=1.42, projectLength=1.456, estateAgencyName=Banderas Verdes]\n" + 
-				"QueryProjectCityDTO [projectCode=2, projectName=Cafe del cielo, projectLatitude=1.43, projectLength=1.466, estateAgencyName=Campos Verdes]\n" + 
-				"QueryProjectCityDTO [projectCode=3, projectName=Villas del sol, projectLatitude=1.4782, projectLength=1.4566846, estateAgencyName=Casas bellas]\n" ;
+		String outExpected = "QueryProjectCityDTO [projectCode=1, projectName=Villas del mar, projectLatitude=1.42, projectLength=1.456, estateAgencyName=Banderas Verdes]\n"
+				+ "QueryProjectCityDTO [projectCode=2, projectName=Cafe del cielo, projectLatitude=1.43, projectLength=1.466, estateAgencyName=Campos Verdes]\n"
+				+ "QueryProjectCityDTO [projectCode=3, projectName=Villas del sol, projectLatitude=1.4782, projectLength=1.4566846, estateAgencyName=Casas bellas]\n";
 		Assert.assertEquals(outExpected, infoConsole);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2619,6 +2608,7 @@ public class ModelTest {
 		Assert.assertTrue("<getFavouritesProjectsByClient>Size: " + sizeResult + " expected: " + expected,
 				expected == sizeResult);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2633,11 +2623,13 @@ public class ModelTest {
 		Assert.assertTrue("<getProjectsByHouseAndPrice>Size: " + sizeResult + " expected: " + expected,
 				expected == sizeResult);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
 	public void getProjectsImagesByServicesTest() {
-		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_PROJECTS_IMAGES_BY_SERVICE, Object[].class);
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_PROJECTS_IMAGES_BY_SERVICE,
+				Object[].class);
 		query.setParameter("serviceOne", "Canchas de tenis");
 		query.setParameter("serviceTwo", "piscinita");
 		List<Object[]> resultList = query.getResultList();
@@ -2646,60 +2638,73 @@ public class ModelTest {
 		Assert.assertTrue("<getProjectsImagesByServices>Size: " + sizeResult + " expected: " + expected,
 				expected == sizeResult);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void getNumberOfProjectsByItsServiceTest() {
 		TypedQuery<Long> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_SERVICE, Long.class);
 		query.setParameter("nameService", "Canchas de tenis");
 		Long result = query.getSingleResult();
 		long resultExpected = 1;
-		Assert.assertTrue("<getNumberOfProjectsByItsService>Result: "+result+" expected: "+resultExpected, result==resultExpected);
+		Assert.assertTrue("<getNumberOfProjectsByItsService>Result: " + result + " expected: " + resultExpected,
+				result == resultExpected);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void getGroupNumberDwellingsByTypeAndCityTest() {
-		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_NUMBER_DWELLINGS_BY_TYPE, Object[].class);
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_NUMBER_DWELLINGS_BY_TYPE,
+				Object[].class);
 		query.setParameter("nameCity", "Armenia");
 		List<Object[]> resultList = query.getResultList();
-		Long result1 = (Long)resultList.get(0)[1];
-		Long result2 = (Long)resultList.get(1)[1];
+		Long result1 = (Long) resultList.get(0)[1];
+		Long result2 = (Long) resultList.get(1)[1];
 		Assert.assertTrue(result1 == 6 && result2 == 4);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void getProjectsWithoutCommentsTest() {
-		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECTS_WITHOUT_COMMENTS, Project.class);
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECTS_WITHOUT_COMMENTS,
+				Project.class);
 		List<Project> resultList = query.getResultList();
 		int sizeResult = resultList.size();
 		int expected = 8;
-		Assert.assertTrue("<getProjectsWithoutCommentsTest>Size: "+sizeResult+" expected: "+expected, sizeResult==expected);
+		Assert.assertTrue("<getProjectsWithoutCommentsTest>Size: " + sizeResult + " expected: " + expected,
+				sizeResult == expected);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void getClientsWithGmailTest() {
 		TypedQuery<Client> query = entityManager.createNamedQuery(Client.GET_CLIENTS_GMAIL, Client.class);
 		List<Client> resultList = query.getResultList();
 		int resultSize = resultList.size();
 		int expected = 2;
-		Assert.assertTrue("<getClientsWithGmailTest>Size: "+resultSize+" expected: "+expected,resultSize==expected);
+		Assert.assertTrue("<getClientsWithGmailTest>Size: " + resultSize + " expected: " + expected,
+				resultSize == expected);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
 	public void getNumerProjectsEstateAgencyTest() {
-		TypedQuery<QueryNumberProjectsEstateAgencyDTO> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY, QueryNumberProjectsEstateAgencyDTO.class);
+		TypedQuery<QueryNumberProjectsEstateAgencyDTO> query = entityManager.createNamedQuery(
+				Project.GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY, QueryNumberProjectsEstateAgencyDTO.class);
 		List<QueryNumberProjectsEstateAgencyDTO> resultList = query.getResultList();
 		int resultSize = resultList.size();
 		int expected = 10;
-		Assert.assertTrue("<getNumerProjectsEstateAgencyTest>Size: "+resultSize+" expected: "+expected,resultSize==expected);
+		Assert.assertTrue("<getNumerProjectsEstateAgencyTest>Size: " + resultSize + " expected: " + expected,
+				resultSize == expected);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})	
+	@UsingDataSet({ "unihogar.json" })
 	public void getProjectsByServiceTest() {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECTS_BY_SERVICES, Project.class);
 		query.setParameter("nameService1", "piscinita");
@@ -2707,29 +2712,35 @@ public class ModelTest {
 		List<Project> resultList = query.getResultList();
 		System.out.println(resultList);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})	
+	@UsingDataSet({ "unihogar.json" })
 	public void getMostExpensiveDwellingInArmenia() {
-		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, Dwelling.class);
-		List<Dwelling> listReList= query.getResultList();
+		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY,
+				Dwelling.class);
+		List<Dwelling> listReList = query.getResultList();
 		System.out.println(listReList);
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})		
+	@UsingDataSet({ "unihogar.json" })
 	public void getMostExpensiveDwellingsByCity() {
-		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY, Object[].class);
+		TypedQuery<Object[]> query = entityManager.createNamedQuery(Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY,
+				Object[].class);
 		List<Object[]> listResult = query.getResultList();
 		for (Object[] objects : listResult) {
-			System.out.println(objects[0]+" "+objects[1]);
+			System.out.println(objects[0] + " " + objects[1]);
 		}
 	}
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})		
+	@UsingDataSet({ "unihogar.json" })
 	public void getEstateAgencyByCity() {
-		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY, EstateAgency.class);
+		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY,
+				EstateAgency.class);
 		query.setParameter("nameCity", "Armenia");
 		List<EstateAgency> resultList = query.getResultList();
 		for (EstateAgency estateAgency : resultList) {
@@ -2737,9 +2748,190 @@ public class ModelTest {
 		}
 	}
 	@Deprecated
+
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
-	@UsingDataSet({"unihogar.json"})
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllCityTest() {
+		TypedQuery<City> query = entityManager.createNamedQuery(City.GET_ALL_CITY, City.class);
+		List<City> listResult = query.getResultList();
+
+		Assert.assertEquals(13, listResult.size());
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllContactTest() {
+		TypedQuery<Contact> query = entityManager.createNamedQuery(Contact.GET_ALL_CONTACT, Contact.class);
+		List<Contact> listResult = query.getResultList();
+
+		Assert.assertEquals(10, listResult.size());
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAdminByCodeTest() {
+
+		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATOR_BY_CODE,
+				Administrator.class);
+		query.setParameter("codeAdmin", "123");
+		List<Administrator> listResult = query.getResultList();
+
+		Administrator a = listResult.get(0);
+
+		Assert.assertEquals("admin1@administrador.com", a.getEmail());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getCityByCodeTest() {
+
+		TypedQuery<City> query = entityManager.createNamedQuery(City.GET_BY_CODE, City.class);
+		query.setParameter("codeCity", 1);
+		List<City> listResult = query.getResultList();
+
+		City c = listResult.get(0);
+
+		Assert.assertEquals("Armenia", c.getName());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getCityByNameTest() {
+
+		TypedQuery<City> query = entityManager.createNamedQuery(City.GET_BY_NAME, City.class);
+		query.setParameter("nameCity", "Armenia");
+		List<City> listResult = query.getResultList();
+
+		City c = listResult.get(0);
+
+		Assert.assertEquals(1, c.getCode());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getCommentByCLientTest() {
+
+		TypedQuery<Comment> query = entityManager.createNamedQuery(Comment.GET_COMMENT_BY_CLIENT, Comment.class);
+		query.setParameter("clientCode", "1");
+		List<Comment> listResult = query.getResultList();
+
+		Comment c = listResult.get(0);
+
+		Assert.assertEquals("1", c.getClientCode().getCode());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getCommentByCProjectTest() {
+
+		TypedQuery<Comment> query = entityManager.createNamedQuery(Comment.GET_COMMENT_BY_PROYECT, Comment.class);
+		query.setParameter("projectCode", 1);
+		List<Comment> listResult = query.getResultList();
+
+		Comment c = listResult.get(0);
+
+		Assert.assertEquals(1, c.getProjectCode().getCode());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllCommentTest() {
+
+		TypedQuery<Comment> query = entityManager.createNamedQuery(Comment.GET_ALL_COMMENT, Comment.class);
+		List<Comment> listResult = query.getResultList();
+
+		Assert.assertEquals(10, listResult.size());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getContactByCLientTest() {
+
+		TypedQuery<Contact> query = entityManager.createNamedQuery(Contact.GET_CONTACT_BY_CLIENT_CODE, Contact.class);
+		query.setParameter("clientCode", "1");
+		List<Contact> listResult = query.getResultList();
+
+		Contact c = listResult.get(0);
+
+		Assert.assertEquals("1", c.getClientCode().getCode());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getContactByCProjectTest() {
+
+		TypedQuery<Contact> query = entityManager.createNamedQuery(Contact.GET_CONTACT_BY_PROJECT_CODE, Contact.class);
+		query.setParameter("projectCode", 1);
+		List<Contact> listResult = query.getResultList();
+
+		Contact c = listResult.get(0);
+
+		Assert.assertEquals(1, c.getProjectCode().getCode());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getAllDwellingTest() {
+
+		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.GET_ALL_DWELLING, Dwelling.class);
+		List<Dwelling> listResult = query.getResultList();
+
+		Assert.assertEquals(10, listResult.size());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getDwellingByCodeTest() {
+
+		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.GET_DWELLING_BY_CODE, Dwelling.class);
+		query.setParameter("code", 1);
+		List<Dwelling> listResult = query.getResultList();
+
+		Dwelling d = listResult.get(0);
+
+		Assert.assertEquals(1, d.getCode());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getDwellingByTypeTest() {
+
+		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.GET_DWELLING_BY_TYPE, Dwelling.class);
+		query.setParameter("type", Type.HOUSE);
+		List<Dwelling> listResult = query.getResultList();
+
+		Dwelling d = listResult.get(0);
+
+		Assert.assertEquals(Type.HOUSE, d.getType());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
 	public void randomTest() {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_TOP_PROJECTS_RATING, Project.class);
 		List<Project> resultList = query.getResultList();

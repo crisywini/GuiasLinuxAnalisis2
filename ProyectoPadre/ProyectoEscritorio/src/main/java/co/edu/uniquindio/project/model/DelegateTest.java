@@ -13,9 +13,9 @@ import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.User;
 
-public class DelegateTest implements AdministratorEJBRemote{
+public class DelegateTest implements AdministratorEJBRemote {
 	private AdministratorEJBRemote adminEJB;
-	public static DelegateTest delegateTest = instance(); 
+	public static DelegateTest delegateTest = instance();
 
 	private DelegateTest() {
 		try {
@@ -24,8 +24,9 @@ public class DelegateTest implements AdministratorEJBRemote{
 			e.printStackTrace();
 		}
 	}
+
 	private static DelegateTest instance() {
-		if(delegateTest==null) 
+		if (delegateTest == null)
 			delegateTest = new DelegateTest();
 
 		return delegateTest;
@@ -67,17 +68,25 @@ public class DelegateTest implements AdministratorEJBRemote{
 	public List<Project> listProjectsByCity(String nameCity) {
 		return adminEJB.listProjectsByCity(nameCity);
 	}
+
 	@Override
 	public boolean isEmailWithPasswordSended(String email) throws NonexistentUserException {
 		return adminEJB.isEmailWithPasswordSended(email);
 	}
+
 	@Override
 	public List<EstateAgency> getTop5ListEstateAgenciesByCity(String nameCity) {
 		return adminEJB.getTop5ListEstateAgenciesByCity(nameCity);
 	}
+
 	@Override
 	public List<Project> getTop5ProjectsByRatings() {
 		return adminEJB.getTop5ProjectsByRatings();
+	}
+
+	@Override
+	public EstateAgency updateEstateAgency(String code, EstateAgency estateAgency) throws NonexistentUserException {
+		return adminEJB.updateEstateAgency(code, estateAgency);
 	}
 
 }

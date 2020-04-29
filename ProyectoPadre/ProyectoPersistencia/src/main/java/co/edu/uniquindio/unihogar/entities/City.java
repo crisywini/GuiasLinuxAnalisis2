@@ -15,6 +15,12 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({ @NamedQuery(name = City.GET_ALL_CITY, query = "SELECT c FROM City c"),
+		@NamedQuery(name = City.GET_BY_CODE, query = "SELECT c FROM City c WHERE c.code =:codeCity"),
+		@NamedQuery(name = City.GET_BY_NAME, query = "SELECT c FROM City c WHERE c.name = :nameCity")
+
+})
+
 public class City implements Serializable {
 
 	/** The code. */
@@ -32,6 +38,11 @@ public class City implements Serializable {
 	private List<Project> projects;
 
 	private static final long serialVersionUID = 1L;
+
+	// Queries
+	public static final String GET_ALL_CITY = "GET_ALL_CITY";
+	public static final String GET_BY_CODE = "GET_BY_CODE";
+	public static final String GET_BY_NAME = "GET_BY_NAME";
 
 	/**
 	 * Default constructor method.
@@ -117,6 +128,11 @@ public class City implements Serializable {
 	 */
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+
+	@Override
+	public String toString() {
+		return "City [code=" + code + ", name=" + name + "]";
 	}
 
 }

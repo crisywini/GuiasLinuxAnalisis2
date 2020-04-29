@@ -16,8 +16,10 @@ import co.edu.uniquindio.unihogar.entities.Type;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = Dwelling.DWELLINGS_AREA_LIST, query = "SELECT d FROM Dwelling d WHERE d.area > :area")
-})
+		@NamedQuery(name = Dwelling.DWELLINGS_AREA_LIST, query = "SELECT d FROM Dwelling d WHERE d.area > :area"),
+		@NamedQuery(name = Dwelling.GET_ALL_DWELLING, query = "SELECT d FROM Dwelling d"),
+		@NamedQuery(name = Dwelling.GET_DWELLING_BY_CODE, query = "SELECT d FROM Dwelling d WHERE d.code =:code"),
+		@NamedQuery(name = Dwelling.GET_DWELLING_BY_TYPE, query = "SELECT d FROM Dwelling d WHERE d.type =:type") })
 public class Dwelling implements Serializable {
 
 	/** The code. */
@@ -58,10 +60,13 @@ public class Dwelling implements Serializable {
 	@ManyToOne // Entidad propietaria
 	@JoinColumn(name = "project")
 	private Project project;
-	
-	//Queries
+
+	// Queries
 	public static final String DWELLINGS_AREA_LIST = "DWELLINGS_AREA_LIST";
-	
+	public static final String GET_ALL_DWELLING = "GET_ALL_DWELLING";
+	public static final String GET_DWELLING_BY_TYPE = "GET_DWELLING_BY_TYPE";
+	public static final String GET_DWELLING_BY_CODE = "GET_DWELLING_BY_CODE";
+
 	private static final long serialVersionUID = 1L;
 
 	/**

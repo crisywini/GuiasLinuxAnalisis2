@@ -14,6 +14,10 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({ @NamedQuery(name = Contact.GET_ALL_CONTACT, query = "SELECT c FROM Contact c"),
+		@NamedQuery(name = Contact.GET_CONTACT_BY_CLIENT_CODE, query = "SELECT c FROM Contact c Where c.clientCode.code =:clientCode"),
+		@NamedQuery(name = Contact.GET_CONTACT_BY_PROJECT_CODE, query = "SELECT c FROM Contact c Where c.projectCode.code =:projectCode") })
+
 public class Contact implements Serializable {
 
 	/** The code. */
@@ -46,6 +50,11 @@ public class Contact implements Serializable {
 	private Client clientCode;
 
 	private static final long serialVersionUID = 1L;
+
+	// Queries
+	public static final String GET_ALL_CONTACT = "GET_ALL_CONTACT";
+	public static final String GET_CONTACT_BY_CLIENT_CODE = "GET_CONTACT_BY_CLIENT_CODE";
+	public static final String GET_CONTACT_BY_PROJECT_CODE = "GET_CONTACT_BY_PROJECT_CODE";
 
 	/**
 	 * Instantiates a new contact.
