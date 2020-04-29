@@ -12,6 +12,7 @@ import co.edu.uniquindio.project.AdministratorEJB;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.util.MailSender;
+import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
@@ -86,7 +87,13 @@ public class NegocioTest {
 	public void getTopCITY() {
 		List<QueryNumberProjectByCityDTO> list = pruebaEJB.getTopCityByProjects();
 		System.out.println(list);
-		
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void getTopProjectsByDwelling() {
+		List<QueryDwellingByProjectDTO> list = pruebaEJB.getTopProjectsByDwellings();
+		System.out.println(list);
 	}
 
 }

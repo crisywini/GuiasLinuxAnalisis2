@@ -26,6 +26,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import com.sun.xml.bind.v2.TODO;
 
@@ -2947,6 +2948,12 @@ public class ModelTest {
 		TypedQuery<QueryNumberProjectByCityDTO> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_CITY,QueryNumberProjectByCityDTO.class);
 		List<QueryNumberProjectByCityDTO> result = query.getResultList();
 		System.out.println(result);
-		
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void randomTest3(){
+		TypedQuery<QueryDwellingByProjectDTO> query = entityManager.createNamedQuery(Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, QueryDwellingByProjectDTO.class);
+		System.out.println(query.getResultList());
 	}
 }

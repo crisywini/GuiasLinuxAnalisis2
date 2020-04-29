@@ -19,7 +19,9 @@ import co.edu.uniquindio.unihogar.entities.Type;
 		@NamedQuery(name = Dwelling.DWELLINGS_AREA_LIST, query = "SELECT d FROM Dwelling d WHERE d.area > :area"),
 		@NamedQuery(name = Dwelling.GET_ALL_DWELLING, query = "SELECT d FROM Dwelling d"),
 		@NamedQuery(name = Dwelling.GET_DWELLING_BY_CODE, query = "SELECT d FROM Dwelling d WHERE d.code =:code"),
-		@NamedQuery(name = Dwelling.GET_DWELLING_BY_TYPE, query = "SELECT d FROM Dwelling d WHERE d.type =:type") })
+		@NamedQuery(name = Dwelling.GET_DWELLING_BY_TYPE, query = "SELECT d FROM Dwelling d WHERE d.type =:type"),
+		@NamedQuery(name = Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO(COUNT(d), d.project.name) FROM Dwelling d GROUP BY d.project.name")
+})
 public class Dwelling implements Serializable {
 
 	/** The code. */
@@ -66,6 +68,7 @@ public class Dwelling implements Serializable {
 	public static final String GET_ALL_DWELLING = "GET_ALL_DWELLING";
 	public static final String GET_DWELLING_BY_TYPE = "GET_DWELLING_BY_TYPE";
 	public static final String GET_DWELLING_BY_CODE = "GET_DWELLING_BY_CODE";
+	public static final String GET_NUMBER_DWELLINGS_BY_PROJECT = "GET_NUMBER_DWELLINGS_BY_PROJECT";
 
 	private static final long serialVersionUID = 1L;
 

@@ -8,6 +8,7 @@ import javax.ejb.Remote;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
+import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
@@ -25,7 +26,7 @@ public interface AdministratorEJBRemote {
 	List<EstateAgency> getTop5ListEstateAgenciesByCity(String nameCity);
 	List<Project> getTop5ProjectsByRatings();
 	List<QueryNumberProjectByCityDTO> getTopCityByProjects();
-	
+	List<QueryDwellingByProjectDTO> getTopProjectsByDwellings();
 	// CRUD
 	void createEstateAgency(String name, String code, String email, String password, String address)throws RepeatedUserException;
 	void removeEstateAgency(String code) throws NonexistentUserException;
