@@ -30,6 +30,7 @@ import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import com.sun.xml.bind.v2.TODO;
 
+import co.edu.uniquindio.unihogar.dto.QueryEstateAgencyCountProjectsDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectsEstateAgencyDTO;
 import co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
@@ -2927,6 +2928,22 @@ public class ModelTest {
 		Dwelling d = listResult.get(0);
 
 		Assert.assertEquals(Type.HOUSE, d.getType());
+
+	}
+
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({ "unihogar.json" })
+	public void getEstateAgencyCountProjectsTest() {
+
+		TypedQuery<QueryEstateAgencyCountProjectsDTO> query = entityManager.createNamedQuery(
+				EstateAgency.GET_ESTATE_AGENCY_WITH_COUNT_PROJECTS, QueryEstateAgencyCountProjectsDTO.class);
+		query.setParameter("code", "IMB10");
+		List<QueryEstateAgencyCountProjectsDTO> listResult = query.getResultList();
+
+		QueryEstateAgencyCountProjectsDTO e = listResult.get(0);
+
+		Assert.assertEquals(new Long(0), e.getCountProjects());
 
 	}
 
