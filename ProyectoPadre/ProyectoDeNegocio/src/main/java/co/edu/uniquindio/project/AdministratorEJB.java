@@ -13,6 +13,7 @@ import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.project.util.MailSender;
+import co.edu.uniquindio.unihogar.dto.QueryEstateAgencyCountProjectsDTO;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
@@ -191,6 +192,20 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 
 		EstateAgency newEstateAgency = entityManager.merge(estateAgency);
 		return newEstateAgency;
+	}
+
+	@Override
+	public QueryEstateAgencyCountProjectsDTO getEstateAgencyAndCountProjects(String code)
+			throws NonexistentUserException {
+		EstateAgency query = entityManager.find(EstateAgency.class, code);
+		if (query == null)
+			throw new NonexistentUserException("The Estate Agency(code): " + code + " does not exist");
+		TypedQuery<QueryEstateAgencyCountProjectsDTO> queryE = entityManager.createNamedQuery(
+				EstateAgency.GET_ESTATE_AGENCY_WITH_COUNT_PROJECTS, QueryEstateAgencyCountProjectsDTO.class);
+		queryE.setParameter("code", code);
+		List<QueryEstateAgencyCountProjectsDTO> resultList = queryE.getResultList();
+
+		return resultList.get(0);
 	}
 
 	@Override
