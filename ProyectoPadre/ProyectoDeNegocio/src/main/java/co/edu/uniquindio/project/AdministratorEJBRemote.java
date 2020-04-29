@@ -1,12 +1,14 @@
 package co.edu.uniquindio.project;
 
 import java.util.List;
+
 import javax.ejb.Remote;
 
 
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
+import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.User;
@@ -22,6 +24,7 @@ public interface AdministratorEJBRemote {
 	boolean isEmailWithPasswordSended(String email)throws NonexistentUserException;
 	List<EstateAgency> getTop5ListEstateAgenciesByCity(String nameCity);
 	List<Project> getTop5ProjectsByRatings();
+	List<QueryNumberProjectByCityDTO> getTopCityByProjects();
 	
 	// CRUD
 	void createEstateAgency(String name, String code, String email, String password, String address)throws RepeatedUserException;

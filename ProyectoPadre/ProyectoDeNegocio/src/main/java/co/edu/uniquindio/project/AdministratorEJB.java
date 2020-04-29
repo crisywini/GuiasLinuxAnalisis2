@@ -13,7 +13,9 @@ import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.project.util.MailSender;
+import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
+import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.User;
@@ -187,6 +189,13 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 
 		EstateAgency newEstateAgency = entityManager.merge(estateAgency);
 		return newEstateAgency;
+	}
+
+	@Override
+	public List<QueryNumberProjectByCityDTO> getTopCityByProjects() {
+		TypedQuery<QueryNumberProjectByCityDTO> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_CITY, QueryNumberProjectByCityDTO.class);
+		
+		return query.getResultList();
 	}
 
 }
