@@ -4,25 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.project.controller.LogginPaneController">
    <children>
-      <ImageView fitHeight="490.0" fitWidth="690.0" pickOnBounds="true">
-         <image>
-            <Image url="file:///home/crisisanchezp/uniquindio/analisis2/repositoryGuias/ProyectoPadre/ProyectoEscritorio/src/main/resources/images/fondoApp.jpg" />
-         </image>
-      </ImageView>
       <AnchorPane layoutX="353.0" layoutY="83.0" opacity="0.55" prefHeight="299.0" prefWidth="309.0" style="-fx-background-color: #35206A; -fx-background-radius: 20px;">
          <children>
             <TextField fx:id="userField" layoutX="32.0" layoutY="103.0" prefHeight="26.0" prefWidth="249.0" promptText="Escribe tu usuario" style="-fx-background-color: #211442; -fx-text-inner-color: #FFFFFF; -fx-background-radius: 20px;" />
             <Label layoutX="32.0" layoutY="72.0" text="Usuario" textFill="WHITE" />
             <Label layoutX="32.0" layoutY="151.0" text="Contraseña" textFill="WHITE" />
             <PasswordField fx:id="passwordField" layoutX="31.0" layoutY="175.0" prefHeight="26.0" prefWidth="249.0" promptText="Escribe tu contraseña" style="-fx-background-color: #211442; -fx-text-inner-color: #FFFFFF; -fx-background-radius: 20px;" />
-            <Button layoutX="119.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleLoggingButton" style="-fx-background-color: #211442; -fx-background-radius: 20px;" text="Ingresar" textFill="WHITE" />
+            <Button layoutX="121.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleLoggingButton" style="-fx-background-color: #211442; -fx-background-radius: 20px;" text="Ingresar" textFill="WHITE" />
             <Label layoutX="139.0" layoutY="37.0" text="Ingresa" textFill="WHITE" />
          </children>
       </AnchorPane>
@@ -31,5 +24,6 @@
             <Font name="Fira Sans Hair" size="23.0" />
          </font>
       </Label>
+      <Button layoutX="508.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleCreateNewUserButton" opacity="0.55" prefHeight="16.0" prefWidth="158.0" style="-fx-background-color: #211442; -fx-background-radius: 20px;" text="Crear nuevo Usuario" textFill="WHITE" />
    </children>
 </AnchorPane>

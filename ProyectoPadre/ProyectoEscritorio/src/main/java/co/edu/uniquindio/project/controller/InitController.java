@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 public class InitController {
 
@@ -31,6 +32,8 @@ public class InitController {
     private ApplicationProject main;
     AnchorPane logginPane;
     LogginPaneController logginController;
+    VBox createUserPane;
+    CreateUserPaneController createUserController;
     
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -51,6 +54,20 @@ public class InitController {
     	}
     	parent.setCenter(logginPane);
     }
+    public void loadCreateUserPane() {
+    	if(createUserPane == null) {
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateUserPane.fxml"));
+    		try {
+				createUserPane = loader.load();
+				createUserController = loader.getController();
+				createUserController.setInitController(this);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+    	parent.setCenter(createUserPane);
+    }
+   
     
     public static void showAlert(String contentText, String title, String headerText, AlertType alertType){
     	Alert alert = new Alert(alertType);
