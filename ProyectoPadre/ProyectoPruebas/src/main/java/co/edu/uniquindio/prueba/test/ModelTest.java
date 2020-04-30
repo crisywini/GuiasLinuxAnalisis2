@@ -2966,11 +2966,16 @@ public class ModelTest {
 		List<QueryNumberProjectByCityDTO> result = query.getResultList();
 		System.out.println(result);
 	}
+	public void randomTest3(){
+		TypedQuery<QueryDwellingByProjectDTO> query = entityManager.createNamedQuery(Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, QueryDwellingByProjectDTO.class);
+		System.out.println(query.getResultList());
+	}
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
-	public void randomTest3(){
-		TypedQuery<QueryDwellingByProjectDTO> query = entityManager.createNamedQuery(Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, QueryDwellingByProjectDTO.class);
+	public void testt() {
+		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATOR_BY_EMAIL, Administrator.class);
+		query.setParameter("emailAdmin", "harmaharcri@hotmail.com");
 		System.out.println(query.getResultList());
 	}
 }

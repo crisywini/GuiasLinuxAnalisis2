@@ -2,6 +2,7 @@ package co.edu.uniquindio.prueba.test;
 
 import java.util.List;
 
+
 import javax.ejb.EJB;
 
 
@@ -11,6 +12,7 @@ import org.junit.runner.RunWith;
 import co.edu.uniquindio.project.AdministratorEJB;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
+import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.project.util.MailSender;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
@@ -94,6 +96,17 @@ public class NegocioTest {
 	public void getTopProjectsByDwelling() {
 		List<QueryDwellingByProjectDTO> list = pruebaEJB.getTopProjectsByDwellings();
 		System.out.println(list);
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void logginUserTest() {
+		try {
+			pruebaEJB.logginUser("234", "hola@prueba.com", "2");
+		} catch (RepeatedUserException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Passed");
 	}
 
 }

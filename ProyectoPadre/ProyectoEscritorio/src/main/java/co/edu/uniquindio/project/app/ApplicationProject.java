@@ -29,6 +29,7 @@ public class ApplicationProject extends Application {
 		Parent parent = loader.load();
 		Scene scene = new Scene(parent);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		parent.getStyleClass().add("pane");
 		InitController controller = loader.getController();
 		controller.setMain(this);
 		primaryStage.setScene(scene);

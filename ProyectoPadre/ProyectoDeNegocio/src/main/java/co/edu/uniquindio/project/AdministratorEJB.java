@@ -1,6 +1,7 @@
 package co.edu.uniquindio.project;
 
 import java.util.LinkedList;
+
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -17,7 +18,6 @@ import co.edu.uniquindio.unihogar.dto.QueryEstateAgencyCountProjectsDTO;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
-import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Dwelling;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
@@ -40,21 +40,23 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 
 	@Override
 	public void logginUser(String code, String email, String password) throws RepeatedUserException {
-		User newUser = new User(code, email, password);
-		User query1 = entityManager.find(User.class, code);
+		Administrator query1 = entityManager.find(Administrator.class, code);
 
 		if (query1 != null)
 			throw new RepeatedUserException("The user with code: " + code + " already exist");
 		if (isUserEmailRepeated(email))
 			throw new RepeatedUserException("The user with email: " + email + " already exist");
-
+		Administrator newUser = new Administrator();
+		newUser.setCode(code);
+		newUser.setEmail(email);
+		newUser.setPassword(password);
 		entityManager.persist(newUser);
 	}
 
 	public boolean isUserEmailRepeated(String email) {
-		TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_EMAIL, User.class);
-		query.setParameter(":email", email);
-		return query.getResultList().size() > 0;
+		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATOR_BY_EMAIL, Administrator.class);
+		query.setParameter("emailAdmin", email);
+		return !query.getResultList().isEmpty();
 	}
 
 	@Override
