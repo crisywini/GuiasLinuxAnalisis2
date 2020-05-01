@@ -4,18 +4,24 @@
 
 package co.edu.uniquindio.project.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.project.app.ApplicationProject;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.model.DelegateTest;
 import co.edu.uniquindio.project.model.EstateAgencyObservable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class EstateAgencyInfoPaneController {
 
@@ -89,7 +95,32 @@ public class EstateAgencyInfoPaneController {
 
 	@FXML
 	void handleUpdateEstateAgencyButton(ActionEvent event) {
-		// Saltar a otra pantalla con la información del estate agency
+		EstateAgencyObservable eao = estateAgencyTableView.getSelectionModel().getSelectedItem();
+		if(eao!=null) {
+			String codeEstateAgency = eao.getCode().get();
+			loadUpdateStage(codeEstateAgency);
+			menuPaneController.loadEstateAgencyInfoPane();
+			estateAgencyTableView.refresh();
+		}else
+			InitController.showAlert("Debes seleccionar una inmobiliaria", "ERROR", "", AlertType.ERROR);
+	}
+	public void loadUpdateStage(String codeEstateAgency) {
+		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/UpdateEstateAgencyPane.fxml"));
+		try {
+			Parent parent = loader.load();
+			Scene scene = new Scene(parent);
+			scene.getStylesheets().add(ApplicationProject.class.getResource("application.css").toExternalForm());
+			parent.getStyleClass().add("pane");
+			Stage stage = new Stage();
+			UpdateEstateAgencyPaneController controller = loader.getController();
+			controller.setCodeEstateAgency(codeEstateAgency);
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
