@@ -48,6 +48,7 @@ public class SetupEJB {
 		Project newProject = new Project(12, "banderas hota", 1, 45, "description");
 		City city = new City(45, "Armenia");
 		newProject.setCity(city);
+		newProject.setEstateAgency(ea);
 		entityManager.persist(city);
 		ea.getProjects().add(newProject);
 		entityManager.persist(newProject);

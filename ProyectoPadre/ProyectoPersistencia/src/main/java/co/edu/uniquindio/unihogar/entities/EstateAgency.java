@@ -2,6 +2,7 @@ package co.edu.uniquindio.unihogar.entities;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,6 +97,7 @@ public class EstateAgency extends User implements Serializable {
 		super(code, email, password);
 		this.address = address;
 		this.name = name;
+		this.projects = new ArrayList<Project>();
 	}
 
 	/**

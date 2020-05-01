@@ -421,4 +421,13 @@ public class Project implements Serializable {
 				+ ", comments=" + comments + ", ratings=" + ratings + ", favoriteClients=" + favoriteClients + "]";
 	}
 
+	public EstateAgency getEstateAgency() {
+		return estateAgency;
+	}
+
+	public void setEstateAgency(EstateAgency estateAgency) {
+		this.estateAgency = estateAgency;
+	}
+	
+
 }

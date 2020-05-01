@@ -55,7 +55,10 @@ public class ProjectInfoPaneController {
 
     @FXML
     void handleSelectAllButton(ActionEvent event) {
-
+    	nameField.setText("");
+    	nameField.setPromptText("Ingrese el proyecto");
+    	menuController.loadProjectInfoPane();
+    	projectTableView.refresh();
     }
 
     @FXML
@@ -87,6 +90,7 @@ public class ProjectInfoPaneController {
 
 	public void setMenuController(MenuAdminPaneController menuController) {
 		this.menuController = menuController;
+		initTableView();
 	}
     
 }
