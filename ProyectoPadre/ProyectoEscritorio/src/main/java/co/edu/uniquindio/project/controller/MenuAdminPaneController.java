@@ -50,6 +50,8 @@ public class MenuAdminPaneController {
 	private User user;
 	VBox estateAgencyInfoPane;
 	EstateAgencyInfoPaneController estateAgencyInfoController;
+	VBox projectInfoPane;
+	ProjectInfoPaneController projectPaneController;
 
 	@FXML
 	void handleDetailEstateAgencyButton(ActionEvent event) {
@@ -59,6 +61,7 @@ public class MenuAdminPaneController {
 
 	@FXML
 	void handleDetailProjectButton(ActionEvent event) {
+		loadProjectInfoPane();
 
 	}
 
@@ -69,6 +72,7 @@ public class MenuAdminPaneController {
 
 	@FXML
 	void handleLogOutButton(ActionEvent event) {
+		//Cargar el init controller otta vez
 
 	}
 
@@ -120,6 +124,20 @@ public class MenuAdminPaneController {
 		loadDataEstateAgency();
 		estateAgencyInfoController.setMenuPaneController(this);
 		tablePane.setCenter(estateAgencyInfoPane);
+	}
+	public void loadProjectInfoPane() {
+		if(projectInfoPane == null) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjectInfoPane.fxml"));
+			try {
+				projectInfoPane = loader.load();
+				projectPaneController = loader.getController();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		loadDataProject();
+		projectPaneController.setMenuController(this);
+		tablePane.setCenter(projectInfoPane);
 	}
 	public void loadDataEstateAgency() {
 		DelegateTest delegate = DelegateTest.delegateTest;
