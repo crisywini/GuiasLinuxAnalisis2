@@ -64,4 +64,5 @@ public class Administrator extends User implements Serializable {
 	public int hashCode() {
 		return super.hashCode();
 	}
+	
 }

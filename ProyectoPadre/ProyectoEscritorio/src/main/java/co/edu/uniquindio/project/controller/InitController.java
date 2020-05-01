@@ -6,6 +6,7 @@ package co.edu.uniquindio.project.controller;
 
 import java.io.IOException;
 
+
 import java.net.URL;
 
 
@@ -90,14 +91,16 @@ public class InitController {
     	}
     	parent.setCenter(recoverPasswordPane);
     }
-    public void loadSplash() {
+    public void loadSplash(Stage stageRootApp) {
     	try {
     		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/Splash.fxml"));
 			Parent rootSplash = loader.load();
 			Scene scene = new Scene(rootSplash);
 			scene.getStylesheets().add(ApplicationProject.class.getResource("application.css").toExternalForm());
 			parent.getStyleClass().add("pane");
-			SplashController controller = loader.getController();
+			SplashController controllerS = loader.getController();
+			controllerS.setInitController(this);
+			controllerS.setStage(stageRootApp);
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.show();
@@ -106,10 +109,8 @@ public class InitController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	
     }
    
-    
     public static void showAlert(String contentText, String title, String headerText, AlertType alertType){
     	Alert alert = new Alert(alertType);
     	DialogPane dialogPane = alert.getDialogPane();

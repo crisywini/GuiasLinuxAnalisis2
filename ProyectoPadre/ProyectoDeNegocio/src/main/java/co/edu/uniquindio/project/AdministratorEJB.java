@@ -223,6 +223,12 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		
 		return query.getResultList();
 	}
+
+	@Override
+	public List<Dwelling> listDwellings() {
+		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.GET_ALL_DWELLING, Dwelling.class);
+		return query.getResultList();
+	}
 	
 
 }
