@@ -25,5 +25,6 @@
          </font>
       </Label>
       <Button layoutX="508.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleCreateNewUserButton" opacity="0.55" prefHeight="16.0" prefWidth="158.0" style="-fx-background-color: #211442; -fx-background-radius: 20px;" text="Crear nuevo Usuario" textFill="WHITE" />
+      <Button layoutX="307.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleGetPasswordEmailButton" opacity="0.55" prefHeight="26.0" prefWidth="201.0" style="-fx-background-color: #211442; -fx-background-radius: 20px;" text="Recuperar contraseña" textFill="WHITE" />
    </children>
 </AnchorPane>

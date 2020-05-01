@@ -9,10 +9,22 @@
 	-fx-background-radius: 20px;
 }
 .pane{
-    -fx-background-image: url("../src/main/resources/images/fondoApp.jpg");
-	-fx-background-size: 690, 490;
-	-fx-background-repeat: no-repeat;
-	-fx-background-position: center;
+    -fx-background-image: url("../images/fondoApp.jpg");
+	-fx-background-size: 700, 500;
+	/*-fx-background-repeat: no-repeat;*/
+	-fx-background-position: center;	
+}
+.alert{
+	-fx-background-color:   #35206A;
+	-fx-opacity:0.55;
+	/*-fx-background-radius: 20px;*/
+}
+.alert > .content.label {
+	-fx-text-fill:#FFFFFF;
 	
-	
+}
+.alert .button{
+	-fx-text-fill:#FFFFFF;	
+	-fx-background-color:  #211442;
+	-fx-background-radius: 20px;
 }

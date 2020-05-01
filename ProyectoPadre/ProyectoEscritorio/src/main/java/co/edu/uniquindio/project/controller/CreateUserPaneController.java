@@ -52,10 +52,15 @@ public class CreateUserPaneController {
 				emailField.setText("");
 				passwordField.setText("");
 				rePasswordField.setText("");
+				cedulaField.setPromptText("Ingresa tu cedula");
+				emailField.setPromptText("Ingresa tu correo electrónico");
+				passwordField.setPromptText("Ingresa tu contraseña");
+				rePasswordField.setPromptText("Repite tu contraseña");
 			} catch (RepeatedUserException e) {
 				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
 			}
 			//Se tiene que llevar a la interfaz de inicio de la aplicación
+			//Haciendo un splash
 		}
 
 	}

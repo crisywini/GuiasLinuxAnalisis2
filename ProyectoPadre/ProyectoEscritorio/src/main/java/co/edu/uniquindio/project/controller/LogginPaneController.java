@@ -38,6 +38,11 @@ public class LogginPaneController {
 			try {
 				delegate.authenticateUser(userField.getText(), passwordField.getText());
 				InitController.showAlert("Welcome user: "+userField.getText(), "WELCOME!", "", AlertType.INFORMATION);
+				userField.setText("");
+				passwordField.setText("");
+				userField.setPromptText("Escribe tu usuario");
+				passwordField.setPromptText("Escribe tu contraseña");
+				initController.loadSplash();
 			} catch (AuthenticationException e) {
 				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
 			}
@@ -62,9 +67,9 @@ public class LogginPaneController {
 	public boolean isInputValid() {
 		String errorMessage = "";
 		if(userField.getText().isEmpty())
-			errorMessage += "You have to add your user\n";
+			errorMessage += "Tienes que agregar el usuario(email)\n";
 		if(passwordField.getText().isEmpty())
-			errorMessage+="You have to add your password\n";
+			errorMessage+="Tienes que agregar la contraseña\n";
 
 		boolean result = false;
 		if(errorMessage.isEmpty())
@@ -76,6 +81,10 @@ public class LogginPaneController {
 	@FXML
 	void handleCreateNewUserButton(ActionEvent event) {
 		initController.loadCreateUserPane();
-
 	}
+    @FXML
+    void handleGetPasswordEmailButton(ActionEvent event) {
+    	initController.loadRecoverPasswordPane();
+  
+    }
 }
