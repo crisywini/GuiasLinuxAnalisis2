@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.project.app.ApplicationProject;
 import co.edu.uniquindio.project.model.DelegateTest;
 import co.edu.uniquindio.project.model.DwellingsObservable;
 import co.edu.uniquindio.project.model.EstateAgencyObservable;
@@ -22,10 +23,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class MenuAdminPaneController {
 	public static ObservableList<DwellingsObservable> DWELLING_DATA = FXCollections.observableArrayList();
@@ -73,6 +77,22 @@ public class MenuAdminPaneController {
 	@FXML
 	void handleLogOutButton(ActionEvent event) {
 		//Cargar el init controller otta vez
+		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/initPane.fxml"));
+		Parent parent;
+		try {
+			parent = loader.load();
+			Scene scene = new Scene(parent);
+			scene.getStylesheets().add(ApplicationProject.class.getResource("application.css").toExternalForm());
+			parent.getStyleClass().add("pane");
+			InitController controller = loader.getController();
+			Stage primaryStage =  new Stage();
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Init application");
+			primaryStage.show();
+			tablePane.getScene().getWindow().hide();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -173,6 +193,15 @@ public class MenuAdminPaneController {
 		ESTATE_AGENCY_DATA.clear();
 		for (EstateAgency estateAgency : listEA) {
 			ESTATE_AGENCY_DATA.add(new EstateAgencyObservable(estateAgency.getCode(), estateAgency.getEmail(), estateAgency.getName(), estateAgency.getAddress()));
+		}
+	}
+	public void loadProjectByCityData(String nameCity) {
+		DelegateTest delegate = DelegateTest.delegateTest;
+
+		PROJECTS_DATA.clear();
+		List<Project> projects = delegate.listProjectsByCity(nameCity);
+		for (Project project : projects) {
+			PROJECTS_DATA.add(new ProjectObservable(""+project.getCode(), project.getName(), ""+project.getLatitude(), ""+project.getLength(), project.getDescription(), project.getCity().getName()));
 		}
 	}
 

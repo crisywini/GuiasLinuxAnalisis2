@@ -32,7 +32,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <children>
-                  <TextField fx:id="nameField" promptText="Ingrese el proyecto" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="nameField" promptText="Ingresa la ciudad" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">

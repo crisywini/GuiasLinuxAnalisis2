@@ -7,6 +7,8 @@ package co.edu.uniquindio.project.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.project.exceptions.NonexistentUserException;
+import co.edu.uniquindio.project.model.DelegateTest;
 import co.edu.uniquindio.project.model.EstateAgencyObservable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,12 +45,28 @@ public class EstateAgencyInfoPaneController {
 
 	@FXML
 	void handleRemoveEstateAgencyButton(ActionEvent event) {
+		EstateAgencyObservable eao = estateAgencyTableView.getSelectionModel().getSelectedItem();
+		if (eao != null) {
+			String code = eao.getCode().get();
+			DelegateTest delegate = DelegateTest.delegateTest;
+			try {
+				delegate.removeEstateAgency(code);
+				menuPaneController.loadEstateAgencyInfoPane();
+				estateAgencyTableView.refresh();
+				InitController.showAlert("La inmobiliaria: \n" + eao + "\nHa sido eliminada", "INFORMACIÓN", "",
+						AlertType.INFORMATION);
+			} catch (NonexistentUserException e) {
+				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
+			}
+
+		} else
+			InitController.showAlert("Debes seleccionar una inmobiliaria", "ERROR", "", AlertType.ERROR);
 
 	}
 
 	@FXML
 	void handleSearchByCityButton(ActionEvent event) {
-		if(isInputValid()) {
+		if (isInputValid()) {
 			menuPaneController.loadDataEstateAgencyByCity(cityField.getText());
 			estateAgencyTableView.refresh();
 		}
@@ -56,22 +74,22 @@ public class EstateAgencyInfoPaneController {
 
 	@FXML
 	void handleSelectAllButton(ActionEvent event) {
-		//cargar la tabla otra vez
+		// cargar la tabla otra vez
 		cityField.setText("");
 		cityField.setPromptText("Ingresa la ciudad");
 		menuPaneController.loadEstateAgencyInfoPane();
 		estateAgencyTableView.refresh();
-		//No se sabe si funciona jejeje
-	}
-	@FXML
-	void handleAddEstateAgencyButton(ActionEvent event) {
-		//Saltar otra pantalla
+		// No se sabe si funciona jejeje
 	}
 
+	@FXML
+	void handleAddEstateAgencyButton(ActionEvent event) {
+		// Saltar otra pantalla
+	}
 
 	@FXML
 	void handleUpdateEstateAgencyButton(ActionEvent event) {
-		//Saltar a otra pantalla con la información del estate agency
+		// Saltar a otra pantalla con la información del estate agency
 	}
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
@@ -82,6 +100,7 @@ public class EstateAgencyInfoPaneController {
 		assert nameColumn != null : "fx:id=\"nameColumn\" was not injected: check your FXML file 'EstateAgencyInfoPane.fxml'.";
 		assert emailColumn != null : "fx:id=\"emailColumn\" was not injected: check your FXML file 'EstateAgencyInfoPane.fxml'.";
 	}
+
 	public void initTableView() {
 		codeColumn.setCellValueFactory(cellData -> cellData.getValue().getCode());
 		nameColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
@@ -95,16 +114,16 @@ public class EstateAgencyInfoPaneController {
 		this.menuPaneController = menuPaneController;
 		initTableView();
 	}
+
 	public boolean isInputValid() {
 		String errorMessage = "";
 		boolean isValid = false;
-		if(cityField.getText().isEmpty())
+		if (cityField.getText().isEmpty())
 			errorMessage += "Debes ingresar el nombre de la ciudad";
-		if(errorMessage.isEmpty())
+		if (errorMessage.isEmpty())
 			isValid = true;
 		else
 			InitController.showAlert(errorMessage, "ADVERTENCIA", "", AlertType.WARNING);
 		return isValid;
 	}
 }
-

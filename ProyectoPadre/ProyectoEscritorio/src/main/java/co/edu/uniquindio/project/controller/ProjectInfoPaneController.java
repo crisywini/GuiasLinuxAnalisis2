@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class ProjectInfoPaneController {
 
@@ -50,13 +51,17 @@ public class ProjectInfoPaneController {
 
     @FXML
     void handleSearchByNameButton(ActionEvent event) {
+    	if(isInputValid()) {
+    		menuController.loadProjectByCityData(nameField.getText());
+    		projectTableView.refresh();
+    	}
 
     }
 
     @FXML
     void handleSelectAllButton(ActionEvent event) {
     	nameField.setText("");
-    	nameField.setPromptText("Ingrese el proyecto");
+    	nameField.setPromptText("Ingrese la ciudad");
     	menuController.loadProjectInfoPane();
     	projectTableView.refresh();
     }
@@ -92,5 +97,15 @@ public class ProjectInfoPaneController {
 		this.menuController = menuController;
 		initTableView();
 	}
-    
+    public boolean isInputValid() {
+    	boolean isValid = false;
+    	String errorMessage = "";
+    	if(nameField.getText().isEmpty())
+    		errorMessage+="Debes ingresar la ciudad para buscar los proyectos";
+    	if(errorMessage.isEmpty())
+    		isValid = true;
+    	else
+    		InitController.showAlert(errorMessage, "ADVERTENCIA", "", AlertType.WARNING);
+    	return isValid;
+    }
 }

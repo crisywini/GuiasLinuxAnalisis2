@@ -41,6 +41,11 @@ public class EstateAgencyObservable {
 	public void setAddress(StringProperty address) {
 		this.address = address;
 	}
+	@Override
+	public String toString() {
+		return "[code=" + code + ", email=" + email + ", name=" + name + ", address=" + address
+				+ "]";
+	}
 	
 
 }
