@@ -1,6 +1,12 @@
 package co.edu.uniquindio.unihogar.dto;
 
-public class QueryDwellingByProjectDTO {
+import java.io.Serializable;
+
+public class QueryDwellingByProjectDTO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long numberDwellings;
 	private String nameProject;
 	
