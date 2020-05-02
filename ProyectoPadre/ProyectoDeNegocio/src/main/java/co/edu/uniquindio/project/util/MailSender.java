@@ -9,9 +9,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailSender {
-	public static void main(String[] args) {
-		sendMailWithGMail("luisacotte18@gmail.com", "Holita JAVA MAIL CON HOLITA ", "Holita luisa Fernanda cotte, este correo ha sido enviado con\nJava mail y para que sepas, Java antes tiene un salto de linea.");
-	}
+//	public static void main(String[] args) {
+//		sendMailWithGMail("luisacotte18@gmail.com", "Holita JAVA MAIL CON HOLITA ", "Holita luisa Fernanda cotte, este correo ha sido enviado con\nJava mail y para que sepas, Java antes tiene un salto de linea.");
+//	}
 	public static void sendMailWithGMail(String recipient, String subject, String bodyMessage) {
 		String userS = "analisisdealgoritmosdos@gmail.com";
 		Properties props = System.getProperties();
