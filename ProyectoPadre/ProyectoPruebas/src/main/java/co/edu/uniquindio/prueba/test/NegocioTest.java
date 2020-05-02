@@ -3,6 +3,8 @@ package co.edu.uniquindio.prueba.test;
 import java.util.List;
 
 
+
+
 import javax.ejb.EJB;
 
 
@@ -13,7 +15,6 @@ import co.edu.uniquindio.project.AdministratorEJB;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
-import co.edu.uniquindio.project.util.MailSender;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
@@ -107,6 +108,16 @@ public class NegocioTest {
 			e.printStackTrace();
 		}
 		System.out.println("Passed");
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void random() {
+		try {
+			System.out.println(pruebaEJB.listEstateAgencyCountProjects());
+		} catch (NonexistentUserException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -3,6 +3,7 @@
 	<name>ProyectoEAR</name>
 	<comment></comment>
 	<projects>
+		<project>ProyectoDeNegocio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

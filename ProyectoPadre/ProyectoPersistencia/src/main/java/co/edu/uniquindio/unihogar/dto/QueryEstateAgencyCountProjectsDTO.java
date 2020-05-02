@@ -1,8 +1,14 @@
 package co.edu.uniquindio.unihogar.dto;
 
+import java.io.Serializable;
+
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 
-public class QueryEstateAgencyCountProjectsDTO {
+public class QueryEstateAgencyCountProjectsDTO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private EstateAgency estateAgency;
 	private Long countProjects;
 

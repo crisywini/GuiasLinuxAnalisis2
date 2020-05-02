@@ -82,11 +82,12 @@ public class ProjectInfoPaneController {
     		DelegateTest delegate = DelegateTest.delegateTest;
     		try {
 				Project project = delegate.getProject(Integer.parseInt(projectSelected.getCode().get()));
-				if(project.getImages().isEmpty())
-					InitController.showAlert("El projecto: "+project.getName()+" no tiene imágenes", "INFORMACIÓN", "", AlertType.INFORMATION);
-				else {
-					loadVisualizeImages(project);
-				}
+				System.out.println(project.getImages());
+//				if(project.getImages().isEmpty())
+//					InitController.showAlert("El projecto: "+project.getName()+" no tiene imágenes", "INFORMACIÓN", "", AlertType.INFORMATION);
+//				else {
+//					loadVisualizeImages(project);
+//				}
 			} catch (NonexistentProject e) {
 				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
 			}

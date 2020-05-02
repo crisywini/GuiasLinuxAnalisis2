@@ -1,5 +1,6 @@
 package co.edu.uniquindio.project;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import java.util.List;
@@ -234,11 +235,23 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	@Override
 	public Project getProject(int code) throws NonexistentProject {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECT_BY_ID, Project.class);
+		query.setParameter("projectCode", code);
 		List<Project> list = query.getResultList();
 		if(list.isEmpty())
 			throw new NonexistentProject("El proyecto con id: "+code+ " no extá registrado");
 		return list.get(0);
 	}
+
+	@Override
+	public List<QueryEstateAgencyCountProjectsDTO> listEstateAgencyCountProjects() throws NonexistentUserException {
+		List<EstateAgency> agencies = listAgencies();
+		List<QueryEstateAgencyCountProjectsDTO> resultList = new ArrayList<QueryEstateAgencyCountProjectsDTO>();
+		for (EstateAgency ea : agencies) {
+			resultList.add(getEstateAgencyAndCountProjects(ea.getCode()));
+		}
+		return resultList;
+	}
+	
 	
 
 }

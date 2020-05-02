@@ -78,4 +78,12 @@ public class RootApplicationPaneController {
 		this.user = user;
 	}
 
+	public BorderPane getRoot() {
+		return root;
+	}
+
+	public void setRoot(BorderPane root) {
+		this.root = root;
+	}
+
 }

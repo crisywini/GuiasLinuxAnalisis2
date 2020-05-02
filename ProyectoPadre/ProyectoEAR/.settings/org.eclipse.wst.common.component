@@ -3,6 +3,7 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
         <dependent-module archiveName="ProyectoDeNegocio.jar" deploy-path="/" handle="module:/resource/ProyectoDeNegocio/ProyectoDeNegocio">
+            <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="ProyectoPersistencia.jar" deploy-path="/lib" handle="module:/resource/ProyectoPersistencia/ProyectoPersistencia">

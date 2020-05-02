@@ -63,16 +63,16 @@ public class MenuAdminPaneController {
 
 	}
 
-	@FXML
-	void handleDetailProjectButton(ActionEvent event) {
-		loadProjectInfoPane();
-
-	}
-
-	@FXML
-	void handleDwellingsButton(ActionEvent event) {
-
-	}
+//	@FXML
+//	void handleDetailProjectButton(ActionEvent event) {
+//		loadProjectInfoPane();
+//
+//	}
+//
+//	@FXML
+//	void handleDwellingsButton(ActionEvent event) {
+//
+//	}
 
 	@FXML
 	void handleLogOutButton(ActionEvent event) {
@@ -98,7 +98,7 @@ public class MenuAdminPaneController {
 
 	@FXML
 	void handleStatisticsButton(ActionEvent event) {
-
+		loadStatisticsPane();
 	}
 
 	@FXML
@@ -158,6 +158,25 @@ public class MenuAdminPaneController {
 		loadDataProject();
 		projectPaneController.setMenuController(this);
 		tablePane.setCenter(projectInfoPane);
+	}
+	public void loadStatisticsPane() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/RootStatisticsPane.fxml"));
+		try {
+			Parent parent = loader.load();
+			Scene scene = new Scene(parent);
+			scene.getStylesheets().add(ApplicationProject.class.getResource("application.css").toExternalForm());
+			parent.getStyleClass().add("statistics-pane");
+			RootStatisticsPaneController controller = loader.getController();
+			controller.setRootApp(rootController);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initOwner(rootController.getRoot().getScene().getWindow());
+			stage.setResizable(false);
+			stage.show();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public void loadDataEstateAgency() {
 		DelegateTest delegate = DelegateTest.delegateTest;

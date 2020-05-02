@@ -37,6 +37,7 @@ public interface AdministratorEJBRemote {
 	EstateAgency getEstateAgency(String code)throws NonexistentUserException;
 	List<EstateAgency> listAgencies();
 	EstateAgency updateEstateAgency(String code, EstateAgency estateAgency) throws NonexistentUserException;
+	List<QueryEstateAgencyCountProjectsDTO> listEstateAgencyCountProjects() throws NonexistentUserException ;
 	
 	QueryEstateAgencyCountProjectsDTO getEstateAgencyAndCountProjects(String code) throws NonexistentUserException;
 	List<Dwelling> listDwellings();

@@ -120,4 +120,9 @@ public class DelegateTest implements AdministratorEJBRemote {
 		return adminEJB.getProject(code);
 	}
 
+	@Override
+	public List<QueryEstateAgencyCountProjectsDTO> listEstateAgencyCountProjects() throws NonexistentUserException {
+		return adminEJB.listEstateAgencyCountProjects();
+	}
+
 }
