@@ -216,7 +216,6 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	@Override
 	public List<QueryNumberProjectByCityDTO> getTopCityByProjects() {
 		TypedQuery<QueryNumberProjectByCityDTO> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_CITY, QueryNumberProjectByCityDTO.class);
-		//Se tienen que organizar dependiendo del mayor al menor
 		return query.getResultList();
 	}
 

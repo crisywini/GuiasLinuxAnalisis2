@@ -65,7 +65,7 @@ public class TopEstateAgencyByCityController {
 			data.add(new PieChart.Data(ea.getName(), ea.getProjects().size()));
 		}
 	    PieChart pieChart = new PieChart(data);
-		pieChart.setTitle("PieChart Tutorial 2017");
+		pieChart.setTitle("Cantidad de inmobiliarias por ciudad");
 		pieChart.setLegendSide(Side.LEFT);
 		pieChart.setTitleSide(Side.TOP);
 		pieChart.setLabelLineLength(60);

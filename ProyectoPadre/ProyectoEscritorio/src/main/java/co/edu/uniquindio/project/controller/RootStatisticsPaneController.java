@@ -30,10 +30,13 @@ public class RootStatisticsPaneController {
     EstateAgenciesAndCountProjectsController easCountProjectController;
     VBox topEstateAgencyByCity;
     TopEstateAgencyByCityController topEstateAgencyByCityController;
+    VBox topCitiesByProject;
+    TopCityByProjectController topCityByProjectController;
 
     @FXML
     void handleBackButton(ActionEvent event) {
-
+    	//Se debe solo cerrar 
+    	rootPane.getScene().getWindow().hide();
     }
 
     @FXML
@@ -44,7 +47,7 @@ public class RootStatisticsPaneController {
 
     @FXML
     void handleTopCityByProjectMenuItem(ActionEvent event) {
-
+    	loadTopCitiesByProject();
     }
 
     @FXML
@@ -91,6 +94,19 @@ public class RootStatisticsPaneController {
     	}
     	topEstateAgencyByCityController.setRootStatisticsController(this);
     	rootPane.setCenter(topEstateAgencyByCity);
+    }
+    public void loadTopCitiesByProject() {
+    	if(topCitiesByProject==null) {
+    		try {
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/TopCityByProjectPane.fxml"));
+				topCitiesByProject = loader.load();
+				topCityByProjectController = loader.getController();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+    	topCityByProjectController.setRootStatisticsController(this);
+    	rootPane.setCenter(topCitiesByProject);
     }
 
 
