@@ -20,6 +20,7 @@ import co.edu.uniquindio.unihogar.dto.QueryEstateAgencyCountProjectsDTO;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.entities.Administrator;
+import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Dwelling;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
@@ -250,6 +251,13 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 			resultList.add(getEstateAgencyAndCountProjects(ea.getCode()));
 		}
 		return resultList;
+	}
+
+	@Override
+	public List<City> getCities() {
+		TypedQuery<City> query = entityManager.createNamedQuery(City.GET_ALL_CITY, City.class);
+		
+		return query.getResultList();
 	}
 	
 	

@@ -12,6 +12,7 @@ import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.dto.QueryEstateAgencyCountProjectsDTO;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
+import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Dwelling;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
@@ -41,4 +42,5 @@ public interface AdministratorEJBRemote {
 	
 	QueryEstateAgencyCountProjectsDTO getEstateAgencyAndCountProjects(String code) throws NonexistentUserException;
 	List<Dwelling> listDwellings();
+	List<City> getCities();
 }

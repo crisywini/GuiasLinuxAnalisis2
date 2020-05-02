@@ -13,6 +13,7 @@ import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
 import co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO;
 import co.edu.uniquindio.unihogar.dto.QueryEstateAgencyCountProjectsDTO;
+import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Dwelling;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
@@ -123,6 +124,11 @@ public class DelegateTest implements AdministratorEJBRemote {
 	@Override
 	public List<QueryEstateAgencyCountProjectsDTO> listEstateAgencyCountProjects() throws NonexistentUserException {
 		return adminEJB.listEstateAgencyCountProjects();
+	}
+
+	@Override
+	public List<City> getCities() {
+		return adminEJB.getCities();
 	}
 
 }
