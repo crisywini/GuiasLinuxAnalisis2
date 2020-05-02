@@ -4,16 +4,25 @@
 
 package co.edu.uniquindio.project.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.project.app.ApplicationProject;
+import co.edu.uniquindio.project.exceptions.NonexistentProject;
+import co.edu.uniquindio.project.model.DelegateTest;
 import co.edu.uniquindio.project.model.ProjectObservable;
+import co.edu.uniquindio.unihogar.entities.Project;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class ProjectInfoPaneController {
 
@@ -68,7 +77,22 @@ public class ProjectInfoPaneController {
 
     @FXML
     void handleVisualizeImagesButton(ActionEvent event) {
-
+    	ProjectObservable projectSelected = projectTableView.getSelectionModel().getSelectedItem();
+    	if(projectSelected!=null) {
+    		DelegateTest delegate = DelegateTest.delegateTest;
+    		try {
+				Project project = delegate.getProject(Integer.parseInt(projectSelected.getCode().get()));
+				if(project.getImages().isEmpty())
+					InitController.showAlert("El projecto: "+project.getName()+" no tiene imágenes", "INFORMACIÓN", "", AlertType.INFORMATION);
+				else {
+					loadVisualizeImages(project);
+				}
+			} catch (NonexistentProject e) {
+				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
+			}
+    	}
+    	else
+    		InitController.showAlert("Debes seleccionar un projecto", "ADVERTENCIA", "", AlertType.WARNING);
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -107,5 +131,23 @@ public class ProjectInfoPaneController {
     	else
     		InitController.showAlert(errorMessage, "ADVERTENCIA", "", AlertType.WARNING);
     	return isValid;
+    }
+    public void loadVisualizeImages(Project project) {
+    	FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/VisualizeProjectImages.fxml"));
+		try {
+			Parent parent = loader.load();
+			Scene scene = new Scene(parent);
+			scene.getStylesheets().add(ApplicationProject.class.getResource("application.css").toExternalForm());
+			parent.getStyleClass().add("pane");
+			Stage stage = new Stage();
+			VisualizeProjectImagesController controller = loader.getController();
+			controller.setProject(project);
+			controller.setScene(scene);
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}    	
     }
 }

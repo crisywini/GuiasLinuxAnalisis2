@@ -12,7 +12,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <AnchorPane layoutX="99.0" layoutY="12.0" opacity="0.55" prefHeight="476.0" prefWidth="403.0" style="-fx-background-radius: 20px; -fx-background-color: #35206A;">
+            <AnchorPane fx:id="anchorPane" layoutX="99.0" layoutY="12.0" opacity="0.55" prefHeight="476.0" prefWidth="403.0" style="-fx-background-radius: 20px; -fx-background-color: #35206A;">
                <children>
                   <Label layoutX="50.0" layoutY="132.0" text="Correo electrónico" textFill="WHITE" />
                   <TextField fx:id="userField" layoutX="57.0" layoutY="167.0" prefHeight="26.0" prefWidth="300.0" promptText="Escribe el correo electrónico" style="-fx-background-color: #211442; -fx-text-inner-color: #FFFFFF; -fx-background-radius: 20px;" />

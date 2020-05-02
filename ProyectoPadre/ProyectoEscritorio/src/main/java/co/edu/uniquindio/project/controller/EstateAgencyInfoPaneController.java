@@ -80,12 +80,10 @@ public class EstateAgencyInfoPaneController {
 
 	@FXML
 	void handleSelectAllButton(ActionEvent event) {
-		// cargar la tabla otra vez
 		cityField.setText("");
 		cityField.setPromptText("Ingresa la ciudad");
 		menuPaneController.loadEstateAgencyInfoPane();
 		estateAgencyTableView.refresh();
-		// No se sabe si funciona jejeje
 	}
 
 	@FXML

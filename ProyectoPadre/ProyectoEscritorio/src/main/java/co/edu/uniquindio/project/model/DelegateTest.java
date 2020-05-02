@@ -7,6 +7,7 @@ import javax.naming.NamingException;
 
 import co.edu.uniquindio.project.AdministratorEJBRemote;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
+import co.edu.uniquindio.project.exceptions.NonexistentProject;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO;
@@ -112,6 +113,11 @@ public class DelegateTest implements AdministratorEJBRemote {
 	@Override
 	public List<Dwelling> listDwellings() {
 		return adminEJB.listDwellings();
+	}
+
+	@Override
+	public Project getProject(int code) throws NonexistentProject {
+		return adminEJB.getProject(code);
 	}
 
 }

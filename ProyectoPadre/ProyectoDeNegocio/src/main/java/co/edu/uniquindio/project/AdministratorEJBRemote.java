@@ -6,6 +6,7 @@ import javax.ejb.Remote;
 
 
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
+import co.edu.uniquindio.project.exceptions.NonexistentProject;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.dto.QueryEstateAgencyCountProjectsDTO;
@@ -20,6 +21,7 @@ import co.edu.uniquindio.unihogar.entities.User;
 public interface AdministratorEJBRemote {
 	public static final String JNDI = "java:global/ProyectoEAR/ProyectoDeNegocio/AdministratorEJB!co.edu.uniquindio.project.AdministratorEJBRemote";
 	void logginUser(String code, String email, String password)throws RepeatedUserException;
+	Project getProject(int code)throws NonexistentProject;
 	User authenticateUser(String email, String password) throws AuthenticationException;
 	List<EstateAgency> listAgenciesByCity(String nameCity);
 	List<Project> listProjects();

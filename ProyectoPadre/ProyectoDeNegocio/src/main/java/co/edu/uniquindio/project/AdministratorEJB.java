@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
+import co.edu.uniquindio.project.exceptions.NonexistentProject;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.project.util.MailSender;
@@ -228,6 +229,15 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	public List<Dwelling> listDwellings() {
 		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.GET_ALL_DWELLING, Dwelling.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public Project getProject(int code) throws NonexistentProject {
+		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECT_BY_ID, Project.class);
+		List<Project> list = query.getResultList();
+		if(list.isEmpty())
+			throw new NonexistentProject("El proyecto con id: "+code+ " no extá registrado");
+		return list.get(0);
 	}
 	
 
