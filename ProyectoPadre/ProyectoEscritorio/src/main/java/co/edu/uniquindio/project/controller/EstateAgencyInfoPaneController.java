@@ -90,7 +90,9 @@ public class EstateAgencyInfoPaneController {
 
 	@FXML
 	void handleAddEstateAgencyButton(ActionEvent event) {
-		// Saltar otra pantalla
+		loadAddEstateAgencyPane();
+		menuPaneController.loadDataEstateAgency();
+		estateAgencyTableView.refresh();
 	}
 
 	@FXML
@@ -120,8 +122,24 @@ public class EstateAgencyInfoPaneController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
+	public void loadAddEstateAgencyPane() {
+		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/AddEstateAgency.fxml"));
+		try {
+			Parent parent = loader.load();
+			Scene scene = new Scene(parent);
+			scene.getStylesheets().add(ApplicationProject.class.getResource("application.css").toExternalForm());
+			parent.getStyleClass().add("pane");
+			AddEstateAgencyController controller = loader.getController();
+			controller.setLastController(this);
+			controller.setScene(scene);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	}
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
