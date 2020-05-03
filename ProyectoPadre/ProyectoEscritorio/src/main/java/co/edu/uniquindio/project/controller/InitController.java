@@ -102,6 +102,7 @@ public class InitController {
 			controllerS.setInitController(this);
 			controllerS.setStage(stageRootApp);
 			Stage stage = new Stage();
+			stage.setResizable(false);
 			stage.setScene(scene);
 			stage.show();
 			parent.getScene().getWindow().hide();

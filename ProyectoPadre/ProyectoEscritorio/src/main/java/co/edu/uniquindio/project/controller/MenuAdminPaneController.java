@@ -62,6 +62,10 @@ public class MenuAdminPaneController {
 		loadEstateAgencyInfoPane();
 
 	}
+    @FXML
+    void handleInfoProjectsButton(ActionEvent event) {
+    	loadProjectInfoPane();
+    }
 
 //	@FXML
 //	void handleDetailProjectButton(ActionEvent event) {
@@ -100,12 +104,16 @@ public class MenuAdminPaneController {
 	void handleStatisticsButton(ActionEvent event) {
 		loadStatisticsPane();
 	}
-
-	@FXML
-	void handleUpdateInfoButton(ActionEvent event) {
-
-	}
-
+//
+//	@FXML
+//	void handleUpdateInfoButton(ActionEvent event) {
+//
+//	}
+	//
+//	@FXML
+//	void handleUpdateInfoButton(ActionEvent event) {
+//
+//	}
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
 		assert image != null : "fx:id=\"image\" was not injected: check your FXML file 'MenuAdminPane.fxml'.";

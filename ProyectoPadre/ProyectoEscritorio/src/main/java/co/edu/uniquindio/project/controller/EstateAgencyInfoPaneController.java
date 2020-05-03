@@ -47,6 +47,7 @@ public class EstateAgencyInfoPaneController {
 	private TableColumn<EstateAgencyObservable, String> emailColumn; // Value injected by FXMLLoader
 	@FXML // fx:id="addressColumn"
 	private TableColumn<EstateAgencyObservable, String> addressColumn; // Value injected by FXMLLoader
+
 	private MenuAdminPaneController menuPaneController;
 
 	@FXML

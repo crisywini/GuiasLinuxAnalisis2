@@ -77,23 +77,25 @@ public class ProjectInfoPaneController {
 
     @FXML
     void handleVisualizeImagesButton(ActionEvent event) {
-    	ProjectObservable projectSelected = projectTableView.getSelectionModel().getSelectedItem();
-    	if(projectSelected!=null) {
-    		DelegateTest delegate = DelegateTest.delegateTest;
-    		try {
-				Project project = delegate.getProject(Integer.parseInt(projectSelected.getCode().get()));
-				System.out.println(project.getImages());
+    	InitController.showAlert("Esta función aún no está habilitada", "INFORMACIÓN", "", AlertType.INFORMATION);
+    	
+//    	ProjectObservable projectSelected = projectTableView.getSelectionModel().getSelectedItem();
+//    	if(projectSelected!=null) {
+//    		DelegateTest delegate = DelegateTest.delegateTest;
+//    		try {
+//				Project project = delegate.getProject(Integer.parseInt(projectSelected.getCode().get()));
+//				System.out.println(project.getImages());
 //				if(project.getImages().isEmpty())
 //					InitController.showAlert("El projecto: "+project.getName()+" no tiene imágenes", "INFORMACIÓN", "", AlertType.INFORMATION);
 //				else {
 //					loadVisualizeImages(project);
 //				}
-			} catch (NonexistentProject e) {
-				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
-			}
-    	}
-    	else
-    		InitController.showAlert("Debes seleccionar un projecto", "ADVERTENCIA", "", AlertType.WARNING);
+//			} catch (NonexistentProject e) {
+//				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
+//			}
+//    	}
+//    	else
+//    		InitController.showAlert("Debes seleccionar un projecto", "ADVERTENCIA", "", AlertType.WARNING);
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

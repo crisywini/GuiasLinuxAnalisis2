@@ -45,3 +45,28 @@
 	-fx-background-color:  #211442;
 	-fx-background-radius: 20px;
 }
+.statistics-pane{
+    -fx-background-color: #1d1d1d;
+	
+}
+.statistics-pane .button{
+	-fx-text-fill:#FFFFFF;	
+	-fx-background-color:  #211442;
+	-fx-background-radius: 20px;
+}
+.statistics-pane .menu-bar {
+	-fx-background-color: derive(#1d1d1d,20.0%);
+	
+
+	-fx-text-fill:#FFFFFF;	
+	/*-fx-background-color:  #A38CD2;*/
+	-fx-background-radius: 20px;
+	
+}
+.statistics-pane .context-menu {
+    -fx-background-color: derive(#1d1d1d,50.0%);
+}
+.statistics-pane .menu-bar .label {
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}

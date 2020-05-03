@@ -34,7 +34,8 @@ public class RootStatisticsPaneController {
     TopCityByProjectController topCityByProjectController;
     VBox topProjectsByRating;
     TopProjectsByRatingController topProjectsByRatingController;
-
+    VBox topProjectsByDwellings;
+    TopProjectsByDwellingsController topProjectsByDwellingsController;
     @FXML
     void handleBackButton(ActionEvent event) {
     	//Se debe solo cerrar 
@@ -59,7 +60,7 @@ public class RootStatisticsPaneController {
 
     @FXML
     void handleTopProjectsByDwellingMenuItem(ActionEvent event) {
-
+    	loadTopProjectsByDwellings();
     }
 
     @FXML
@@ -122,6 +123,20 @@ public class RootStatisticsPaneController {
     	}
     	topProjectsByRatingController.setRootStatisticsController(this);
     	rootPane.setCenter(topProjectsByRating);
+    }
+    public void loadTopProjectsByDwellings() {
+    	if(topProjectsByDwellings==null) {
+    		try {
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/TopProjectsByDwellings.fxml"));
+				topProjectsByDwellings = loader.load();
+				topProjectsByDwellingsController = loader.getController();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+    	topProjectsByDwellingsController.setRootStatisticsController(this);
+    	rootPane.setCenter(topProjectsByDwellings);
+    	
     }
 
 

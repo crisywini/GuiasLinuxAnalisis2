@@ -53,6 +53,7 @@ public class LogginPaneController {
 				passwordField.setPromptText("Escribe tu contraseña"); 
 				ApplicationProject.LOGGIN_DATA.add(admin);
 				Stage rootApp = loadRootApp();
+				rootApp.setResizable(false);
 				initController.loadSplash(rootApp);
 			} catch (AuthenticationException e) {
 				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);

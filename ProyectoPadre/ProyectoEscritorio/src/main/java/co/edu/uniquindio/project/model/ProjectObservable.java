@@ -83,4 +83,5 @@ public class ProjectObservable {
 	public void setCityName(StringProperty cityName) {
 		this.cityName = cityName;
 	}
+
 }

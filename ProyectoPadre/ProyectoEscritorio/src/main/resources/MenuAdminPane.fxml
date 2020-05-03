@@ -65,7 +65,10 @@
                               <Button mnemonicParsing="false" onAction="#handleStatisticsButton" prefHeight="24.0" prefWidth="208.0" text="Estadisticos" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="23.0" prefWidth="220.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefHeight="23.0" prefWidth="220.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleInfoProjectsButton" prefWidth="208.0" text="Detalle proyectos" />
+                           </children></HBox>
                      </children>
                   </GridPane>
                   <GridPane>
@@ -77,11 +80,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#handleUpdateInfoButton" text="Actualizar info" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                         <HBox alignment="CENTER" prefHeight="30.0" prefWidth="66.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                            <children>
                               <Button mnemonicParsing="false" onAction="#handleLogOutButton" text="Salir" HBox.hgrow="ALWAYS" />

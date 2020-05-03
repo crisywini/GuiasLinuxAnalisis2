@@ -50,10 +50,11 @@ public class RootApplicationPaneController {
 	public void loadMenuAdminPane() {
 
 		if(menuAdminPane==null) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/MenuAdminPane.fxml"));
+			FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/MenuAdminPane.fxml"));
 			try {
 				menuAdminPane = loader.load();
 				menuAdminController = loader.getController();
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
