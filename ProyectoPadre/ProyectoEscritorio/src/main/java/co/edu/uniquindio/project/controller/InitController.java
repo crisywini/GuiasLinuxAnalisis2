@@ -27,6 +27,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * The class InitController
+ *
+ * @author Cristian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
+ */
 public class InitController {
 
     @FXML// ResourceBundle that was given to the FXMLLoader
@@ -34,24 +40,50 @@ public class InitController {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    
     @FXML // fx:id="parent"
     private BorderPane parent; // Value injected by FXMLLoader
+    
+	/** The main. */
     private ApplicationProject main;
+    
+    /** The loggin pane. */
     AnchorPane logginPane;
+    
+    /** The loggin controller. */
     LogginPaneController logginController;
+    
+    /** The create user pane. */
     VBox createUserPane;
+    
+    /** The create user controller. */
     CreateUserPaneController createUserController;
+    
+    /** The recover password pane. */
     VBox recoverPasswordPane;
+    
+    /** The recover password controller. */
     RecoverPasswordPaneController recoverPasswordController;
+    
+    /** The splash pane. */
     StackPane splashPane;
+    
+    /** The splash controller. */
     SplashController splashController;
     
 
+    /**
+     * Initialize.
+     */
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
     	loadLogginPane();
 
     }
+    
+    /**
+     * Load loggin pane.
+     */
     public void loadLogginPane() {
     	if(logginPane == null) {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logginPane.fxml"));
@@ -65,6 +97,10 @@ public class InitController {
     	}
     	parent.setCenter(logginPane);
     }
+    
+    /**
+     * Load create user pane.
+     */
     public void loadCreateUserPane() {
     	if(createUserPane == null) {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateUserPane.fxml"));
@@ -78,6 +114,10 @@ public class InitController {
     	}
     	parent.setCenter(createUserPane);
     }
+    
+    /**
+     * Load recover password pane.
+     */
     public void loadRecoverPasswordPane() {
     	if(recoverPasswordPane==null) {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/RecoverPasswordPane.fxml"));
@@ -91,6 +131,12 @@ public class InitController {
     	}
     	parent.setCenter(recoverPasswordPane);
     }
+    
+    /**
+     * Load splash.
+     *
+     * @param stageRootApp the stage root app
+     */
     public void loadSplash(Stage stageRootApp) {
     	try {
     		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/Splash.fxml"));
@@ -112,6 +158,14 @@ public class InitController {
 		}
     }
    
+    /**
+     * Show alert.
+     *
+     * @param contentText the content text
+     * @param title the title
+     * @param headerText the header text
+     * @param alertType the alert type
+     */
     public static void showAlert(String contentText, String title, String headerText, AlertType alertType){
     	Alert alert = new Alert(alertType);
     	DialogPane dialogPane = alert.getDialogPane();
@@ -125,9 +179,20 @@ public class InitController {
     }
     
 
+	/**
+	 * Gets the main.
+	 *
+	 * @return the main
+	 */
 	public ApplicationProject getMain() {
 		return main;
 	}
+	
+	/**
+	 * Sets the main.
+	 *
+	 * @param main the new main
+	 */
 	public void setMain(ApplicationProject main) {
 		this.main = main;
 	}

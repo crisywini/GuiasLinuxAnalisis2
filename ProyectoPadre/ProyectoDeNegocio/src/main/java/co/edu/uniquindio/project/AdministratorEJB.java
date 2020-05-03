@@ -28,10 +28,15 @@ import co.edu.uniquindio.unihogar.entities.User;
 
 /**
  * Session Bean implementation class PruebaEJB
+ *
+ * @author Cristian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
  */
 @Stateless
 @LocalBean
 public class AdministratorEJB implements AdministratorEJBRemote {
+
+	/** The entity manager. */
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -41,6 +46,14 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	public AdministratorEJB() {
 	}
 
+	/**
+	 * Loggin user.
+	 *
+	 * @param code     the code
+	 * @param email    the email
+	 * @param password the password
+	 * @throws RepeatedUserException the repeated user exception
+	 */
 	@Override
 	public void logginUser(String code, String email, String password) throws RepeatedUserException {
 		Administrator query1 = entityManager.find(Administrator.class, code);
@@ -56,12 +69,27 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		entityManager.persist(newUser);
 	}
 
+	/**
+	 * Checks if is user email repeated.
+	 *
+	 * @param email the email
+	 * @return true, if is user email repeated
+	 */
 	public boolean isUserEmailRepeated(String email) {
-		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATOR_BY_EMAIL, Administrator.class);
+		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATOR_BY_EMAIL,
+				Administrator.class);
 		query.setParameter("emailAdmin", email);
 		return !query.getResultList().isEmpty();
 	}
 
+	/**
+	 * Authenticate user.
+	 *
+	 * @param email    the email
+	 * @param password the password
+	 * @return the user
+	 * @throws AuthenticationException the authentication exception
+	 */
 	@Override
 	public User authenticateUser(String email, String password) throws AuthenticationException {
 		TypedQuery<User> query = entityManager.createNamedQuery(User.AUTHENTICATE_USER, User.class);
@@ -74,6 +102,16 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return resultList.get(0);
 	}
 
+	/**
+	 * Creates the estate agency.
+	 *
+	 * @param name     the name
+	 * @param code     the code
+	 * @param email    the email
+	 * @param password the password
+	 * @param address  the address
+	 * @throws RepeatedUserException the repeated user exception
+	 */
 	@Override
 	public void createEstateAgency(String name, String code, String email, String password, String address)
 			throws RepeatedUserException {
@@ -86,6 +124,13 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		entityManager.persist(newEstateAgency);
 	}
 
+	/**
+	 * Gets the estate agency.
+	 *
+	 * @param code the code
+	 * @return the estate agency
+	 * @throws NonexistentUserException the nonexistent user exception
+	 */
 	@Override
 	public EstateAgency getEstateAgency(String code) throws NonexistentUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
@@ -94,6 +139,12 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return query;
 	}
 
+	/**
+	 * Removes the estate agency.
+	 *
+	 * @param code the code
+	 * @throws NonexistentUserException the nonexistent user exception
+	 */
 	@Override
 	public void removeEstateAgency(String code) throws NonexistentUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
@@ -102,6 +153,11 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		entityManager.remove(query);
 	}
 
+	/**
+	 * List agencies.
+	 *
+	 * @return the list
+	 */
 	@Override
 	public List<EstateAgency> listAgencies() {
 		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ALL_ESTATE_AGENCY,
@@ -109,6 +165,12 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return query.getResultList();
 	}
 
+	/**
+	 * List agencies by city.
+	 *
+	 * @param nameCity the name city
+	 * @return the list
+	 */
 	@Override
 	public List<EstateAgency> listAgenciesByCity(String nameCity) {
 		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY,
@@ -118,6 +180,11 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return query.getResultList();
 	}
 
+	/**
+	 * List projects.
+	 *
+	 * @return the list
+	 */
 	@Override
 	public List<Project> listProjects() {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS, Project.class);
@@ -125,6 +192,12 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return query.getResultList();
 	}
 
+	/**
+	 * List projects by city.
+	 *
+	 * @param nameCity the name city
+	 * @return the list
+	 */
 	@Override
 	public List<Project> listProjectsByCity(String nameCity) {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_ALL_PROJECTS_BY_CITY, Project.class);
@@ -132,6 +205,13 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return query.getResultList();
 	}
 
+	/**
+	 * Checks if is email with password sended.
+	 *
+	 * @param email the email
+	 * @return true, if is email with password sended
+	 * @throws NonexistentUserException the nonexistent user exception
+	 */
 	@Override
 	public boolean isEmailWithPasswordSended(String email) throws NonexistentUserException {
 
@@ -149,6 +229,12 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return true;
 	}
 
+	/**
+	 * Gets the top 5 list estate agencies by city.
+	 *
+	 * @param nameCity the name city
+	 * @return the top 5 list estate agencies by city
+	 */
 	@Override
 	public List<EstateAgency> getTop5ListEstateAgenciesByCity(String nameCity) {
 		TypedQuery<EstateAgency> query = entityManager.createNamedQuery(EstateAgency.GET_ESTATE_AGENCY_BY_CITY,
@@ -165,6 +251,13 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return top5EstateAgencies;
 	}
 
+	/**
+	 * Gets the estate agency max size projects.
+	 *
+	 * @param estateAgencies       the estate agencies
+	 * @param estateAgenciesSorted the estate agencies sorted
+	 * @return the estate agency max size projects
+	 */
 	public EstateAgency getEstateAgencyMaxSizeProjects(List<EstateAgency> estateAgencies,
 			List<EstateAgency> estateAgenciesSorted) {
 		int max = 0;
@@ -178,6 +271,11 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return eaMax;
 	}
 
+	/**
+	 * Gets the top 5 projects by ratings.
+	 *
+	 * @return the top 5 projects by ratings
+	 */
 	@Override
 	public List<Project> getTop5ProjectsByRatings() {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_TOP_PROJECTS_RATING, Project.class);
@@ -189,6 +287,14 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return top5;
 	}
 
+	/**
+	 * Update estate agency.
+	 *
+	 * @param code         the code
+	 * @param estateAgency the estate agency
+	 * @return the estate agency
+	 * @throws NonexistentUserException the nonexistent user exception
+	 */
 	@Override
 	public EstateAgency updateEstateAgency(String code, EstateAgency estateAgency) throws NonexistentUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
@@ -199,6 +305,13 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return newEstateAgency;
 	}
 
+	/**
+	 * Gets the estate agency and count projects.
+	 *
+	 * @param code the code
+	 * @return the estate agency and count projects
+	 * @throws NonexistentUserException the nonexistent user exception
+	 */
 	@Override
 	public QueryEstateAgencyCountProjectsDTO getEstateAgencyAndCountProjects(String code)
 			throws NonexistentUserException {
@@ -213,35 +326,65 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return resultList.get(0);
 	}
 
+	/**
+	 * Gets the top city by projects.
+	 *
+	 * @return the top city by projects
+	 */
 	@Override
 	public List<QueryNumberProjectByCityDTO> getTopCityByProjects() {
-		TypedQuery<QueryNumberProjectByCityDTO> query = entityManager.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_CITY, QueryNumberProjectByCityDTO.class);
+		TypedQuery<QueryNumberProjectByCityDTO> query = entityManager
+				.createNamedQuery(Project.GET_NUMBER_PROJECTS_BY_CITY, QueryNumberProjectByCityDTO.class);
 		return query.getResultList();
 	}
 
+	/**
+	 * Gets the top projects by dwellings.
+	 *
+	 * @return the top projects by dwellings
+	 */
 	@Override
 	public List<QueryDwellingByProjectDTO> getTopProjectsByDwellings() {
-		TypedQuery<QueryDwellingByProjectDTO> query = entityManager.createNamedQuery(Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, QueryDwellingByProjectDTO.class);
-		
+		TypedQuery<QueryDwellingByProjectDTO> query = entityManager
+				.createNamedQuery(Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, QueryDwellingByProjectDTO.class);
+
 		return query.getResultList();
 	}
 
+	/**
+	 * List dwellings.
+	 *
+	 * @return the list
+	 */
 	@Override
 	public List<Dwelling> listDwellings() {
 		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.GET_ALL_DWELLING, Dwelling.class);
 		return query.getResultList();
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @param code the code
+	 * @return the project
+	 * @throws NonexistentProject the nonexistent project
+	 */
 	@Override
 	public Project getProject(int code) throws NonexistentProject {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECT_BY_ID, Project.class);
 		query.setParameter("projectCode", code);
 		List<Project> list = query.getResultList();
-		if(list.isEmpty())
-			throw new NonexistentProject("El proyecto con id: "+code+ " no extá registrado");
+		if (list.isEmpty())
+			throw new NonexistentProject("El proyecto con id: " + code + " no extá registrado");
 		return list.get(0);
 	}
 
+	/**
+	 * List estate agency count projects.
+	 *
+	 * @return the list
+	 * @throws NonexistentUserException the nonexistent user exception
+	 */
 	@Override
 	public List<QueryEstateAgencyCountProjectsDTO> listEstateAgencyCountProjects() throws NonexistentUserException {
 		List<EstateAgency> agencies = listAgencies();
@@ -252,13 +395,16 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		return resultList;
 	}
 
+	/**
+	 * Gets the cities.
+	 *
+	 * @return the cities
+	 */
 	@Override
 	public List<City> getCities() {
 		TypedQuery<City> query = entityManager.createNamedQuery(City.GET_ALL_CITY, City.class);
-		
+
 		return query.getResultList();
 	}
-	
-	
 
 }

@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: Comment.
  * 
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -46,16 +46,16 @@ public class Comment implements Serializable {
 	@JoinColumn(name = "project_code")
 	private Project projectCode;
 
+	private static final long serialVersionUID = 1L;
+
 	// Queries
 	public static final String GET_CLIENT_NO_REPEATED = "GET_CLIENT_NO_REPEATED";
 	public static final String GET_COMMENT_BY_CLIENT = "GET_COMMENT_BY_CLIENT";
 	public static final String GET_COMMENT_BY_PROYECT = "GET_COMMENT_BY_PROYECT";
 	public static final String GET_ALL_COMMENT = "GET_ALL_COMMENT";
 
-	private static final long serialVersionUID = 1L;
-
 	/**
-	 * Instantiates a new comment.
+	 * Default constructor method.
 	 */
 	public Comment() {
 		super();

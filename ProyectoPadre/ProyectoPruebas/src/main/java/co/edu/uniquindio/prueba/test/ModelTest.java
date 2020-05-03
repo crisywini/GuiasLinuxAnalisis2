@@ -50,7 +50,7 @@ import co.edu.uniquindio.unihogar.entities.User;
 /**
  * Class Model Test.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -2329,6 +2329,9 @@ public class ModelTest {
 
 	// -----------------Queries Tests----------------
 
+	/**
+	 * Authenticate user test.
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2344,6 +2347,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the dwelling area list test.
+	 *
+	 * @return the dwelling area list test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2357,6 +2365,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the all users query test.
+	 *
+	 * @return the all users query test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2369,6 +2382,11 @@ public class ModelTest {
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
+	/**
+	 * Gets the all estate agency test.
+	 *
+	 * @return the all estate agency test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2382,6 +2400,11 @@ public class ModelTest {
 		Assert.assertTrue("<getAllEstateAgencyQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
+	/**
+	 * Gets the all projects test.
+	 *
+	 * @return the all projects test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2394,6 +2417,11 @@ public class ModelTest {
 		Assert.assertTrue("<getAllProjectsQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
+	/**
+	 * Gets the all rating test.
+	 *
+	 * @return the all rating test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2406,6 +2434,11 @@ public class ModelTest {
 		Assert.assertTrue("<getAllRatingQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
+	/**
+	 * Gets the all service test.
+	 *
+	 * @return the all service test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2418,6 +2451,11 @@ public class ModelTest {
 		Assert.assertTrue("<getAllServiceQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
+	/**
+	 * Gets the max limit users query test.
+	 *
+	 * @return the max limit users query test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2432,6 +2470,11 @@ public class ModelTest {
 		Assert.assertTrue("<getAllUsersQueryTest>Size: " + size + " expected: " + expected, size == expected);
 	}
 
+	/**
+	 * Gets the last user client test.
+	 *
+	 * @return the last user client test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2443,6 +2486,11 @@ public class ModelTest {
 		Assert.assertEquals(client, requested);
 	}
 
+	/**
+	 * Gets the projects by its city test.
+	 *
+	 * @return the projects by its city test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2457,6 +2505,11 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
+	/**
+	 * Gets the project by latitude length test.
+	 *
+	 * @return the project by latitude length test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2470,6 +2523,11 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
+	/**
+	 * Gets the projects by name test.
+	 *
+	 * @return the projects by name test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2481,6 +2539,11 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
+	/**
+	 * Gets the project by id test.
+	 *
+	 * @return the project by id test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2492,6 +2555,11 @@ public class ModelTest {
 		Assert.assertEquals(projectResult, projectExpected);
 	}
 
+	/**
+	 * Gets the projects by estate agency test.
+	 *
+	 * @return the projects by estate agency test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2506,6 +2574,11 @@ public class ModelTest {
 				sizeResult == sizeExpected);
 	}
 
+	/**
+	 * Gets the name estate agency project test.
+	 *
+	 * @return the name estate agency project test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2516,6 +2589,11 @@ public class ModelTest {
 		Assert.assertEquals("Banderas Verdes", nameResult);
 	}
 
+	/**
+	 * Gets the project and score test.
+	 *
+	 * @return the project and score test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2529,6 +2607,11 @@ public class ModelTest {
 				sizeResult == expected);
 	}
 
+	/**
+	 * Gets the code estate agency and projects test.
+	 *
+	 * @return the code estate agency and projects test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2542,6 +2625,11 @@ public class ModelTest {
 				sizeResult == expected);
 	}
 
+	/**
+	 * Gets the clients contact project test.
+	 *
+	 * @return the clients contact project test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2555,6 +2643,11 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
+	/**
+	 * Gets the project rating test.
+	 *
+	 * @return the project rating test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2567,6 +2660,11 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
+	/**
+	 * Gets the comment client non repeated test.
+	 *
+	 * @return the comment client non repeated test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2580,6 +2678,11 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
+	/**
+	 * Gets the info projects by city test.
+	 *
+	 * @return the info projects by city test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2598,6 +2701,11 @@ public class ModelTest {
 		Assert.assertEquals(outExpected, infoConsole);
 	}
 
+	/**
+	 * Gets the favourites projects by client test.
+	 *
+	 * @return the favourites projects by client test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2611,6 +2719,11 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
+	/**
+	 * Gets the projects by house and price test.
+	 *
+	 * @return the projects by house and price test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2626,6 +2739,11 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
+	/**
+	 * Gets the projects images by services test.
+	 *
+	 * @return the projects images by services test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2641,6 +2759,11 @@ public class ModelTest {
 				expected == sizeResult);
 	}
 
+	/**
+	 * Gets the number of projects by its service test.
+	 *
+	 * @return the number of projects by its service test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2653,6 +2776,11 @@ public class ModelTest {
 				result == resultExpected);
 	}
 
+	/**
+	 * Gets the group number dwellings by type and city test.
+	 *
+	 * @return the group number dwellings by type and city test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2666,6 +2794,11 @@ public class ModelTest {
 		Assert.assertTrue(result1 == 6 && result2 == 4);
 	}
 
+	/**
+	 * Gets the projects without comments test.
+	 *
+	 * @return the projects without comments test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2679,6 +2812,11 @@ public class ModelTest {
 				sizeResult == expected);
 	}
 
+	/**
+	 * Gets the clients with gmail test.
+	 *
+	 * @return the clients with gmail test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2691,6 +2829,11 @@ public class ModelTest {
 				resultSize == expected);
 	}
 
+	/**
+	 * Gets the numer projects estate agency test.
+	 *
+	 * @return the numer projects estate agency test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2704,6 +2847,11 @@ public class ModelTest {
 				resultSize == expected);
 	}
 
+	/**
+	 * Gets the projects by service test.
+	 *
+	 * @return the projects by service test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2715,6 +2863,11 @@ public class ModelTest {
 		System.out.println(resultList);
 	}
 
+	/**
+	 * Gets the most expensive dwelling in armenia.
+	 *
+	 * @return the most expensive dwelling in armenia
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2725,6 +2878,11 @@ public class ModelTest {
 		System.out.println(listReList);
 	}
 
+	/**
+	 * Gets the most expensive dwellings by city.
+	 *
+	 * @return the most expensive dwellings by city
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2737,6 +2895,11 @@ public class ModelTest {
 		}
 	}
 
+	/**
+	 * Gets the estate agency by city.
+	 *
+	 * @return the estate agency by city
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2749,6 +2912,12 @@ public class ModelTest {
 			System.out.println(estateAgency);
 		}
 	}
+	
+	/**
+	 * Gets the all city test.
+	 *
+	 * @return the all city test
+	 */
 	@Deprecated
 
 	@Test
@@ -2761,6 +2930,11 @@ public class ModelTest {
 		Assert.assertEquals(13, listResult.size());
 	}
 
+	/**
+	 * Gets the all contact test.
+	 *
+	 * @return the all contact test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2771,6 +2945,11 @@ public class ModelTest {
 		Assert.assertEquals(10, listResult.size());
 	}
 
+	/**
+	 * Gets the admin by code test.
+	 *
+	 * @return the admin by code test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2787,6 +2966,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the city by code test.
+	 *
+	 * @return the city by code test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2802,6 +2986,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the city by name test.
+	 *
+	 * @return the city by name test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2817,6 +3006,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the comment by Client test.
+	 *
+	 * @return the comment by Client test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2832,6 +3026,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the comment by C project test.
+	 *
+	 * @return the comment by C project test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2847,6 +3046,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the all comment test.
+	 *
+	 * @return the all comment test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2859,6 +3063,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the contact by C lient test.
+	 *
+	 * @return the contact by C lient test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2874,6 +3083,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the contact by C project test.
+	 *
+	 * @return the contact by C project test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2889,6 +3103,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the all dwelling test.
+	 *
+	 * @return the all dwelling test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2901,6 +3120,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the dwelling by code test.
+	 *
+	 * @return the dwelling by code test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2916,6 +3140,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the dwelling by type test.
+	 *
+	 * @return the dwelling by type test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2931,6 +3160,11 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Gets the estate agency count projects test.
+	 *
+	 * @return the estate agency count projects test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2947,6 +3181,9 @@ public class ModelTest {
 
 	}
 
+	/**
+	 * Random test.
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({ "unihogar.json" })
@@ -2957,6 +3194,10 @@ public class ModelTest {
 		System.out.println(resultList.get(1));
 		System.out.println(resultList.get(2));
 	}
+	
+	/**
+	 * Random test 2.
+	 */
 	@Deprecated
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
@@ -2966,10 +3207,18 @@ public class ModelTest {
 		List<QueryNumberProjectByCityDTO> result = query.getResultList();
 		System.out.println(result);
 	}
+	
+	/**
+	 * Random test 3.
+	 */
 	public void randomTest3(){
 		TypedQuery<QueryDwellingByProjectDTO> query = entityManager.createNamedQuery(Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, QueryDwellingByProjectDTO.class);
 		System.out.println(query.getResultList());
 	}
+	
+	/**
+	 * Testt.
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})

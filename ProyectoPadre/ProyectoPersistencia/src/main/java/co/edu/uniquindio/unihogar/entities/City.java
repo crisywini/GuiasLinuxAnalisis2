@@ -10,7 +10,7 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: City.
  * 
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -130,6 +130,11 @@ public class City implements Serializable {
 		this.projects = projects;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "City [code=" + code + ", name=" + name + "]";

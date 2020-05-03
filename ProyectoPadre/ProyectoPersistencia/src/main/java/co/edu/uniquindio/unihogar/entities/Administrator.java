@@ -8,7 +8,7 @@ import co.edu.uniquindio.unihogar.entities.User;
 /**
  * Entity implementation class for Entity: Administrator.
  * 
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -23,7 +23,7 @@ public class Administrator extends User implements Serializable {
 
 	// Queries
 	public static final String ADMINISTRATORS_LIST = "ADMINISTRATORS_LIST";
-	public static final String ADMINISTRATOR_BY_EMAIL = "ADMINISTRATORS_BY_EMAIL";
+	public static final String ADMINISTRATOR_BY_EMAIL = "ADMINISTRATORS_BY_EMAIL";	
 	public static final String ADMINISTRATOR_BY_CODE = "ADMINISTRATORS_BY_CODE";
 
 	/**

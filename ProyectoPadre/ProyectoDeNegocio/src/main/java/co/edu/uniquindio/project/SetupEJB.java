@@ -17,36 +17,54 @@ import co.edu.uniquindio.unihogar.entities.Project;
 
 /**
  * Session Bean implementation class SetupEJB
+ *
+ * @author Cristian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
  */
 @Singleton
 @LocalBean
 @Startup
 public class SetupEJB {
 
+	/** The entity manager. */
 	@PersistenceContext
 	private EntityManager entityManager;
 
 	/**
-	 * Default constructor. 
+	 * Default constructor.
 	 */
 	public SetupEJB() {
 		// TODO Auto-generated constructor stub
 	}
+
+	/**
+	 * Config.
+	 */
 	@PostConstruct
-	public void config(){
-		if(!isThereAnyAdministrator()) {
+	public void config() {
+		if (!isThereAnyAdministrator()) {
 			Administrator newAdmin = new Administrator("root", "cgsanchezp@uqvirtual.edu.co", "root");
 			entityManager.persist(newAdmin);
 			loadInfo();
 		}
 	}
-	
+
+	/**
+	 * Checks if is there any administrator.
+	 *
+	 * @return true, if is there any administrator
+	 */
 	public boolean isThereAnyAdministrator() {
-		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATORS_LIST, Administrator.class);
+		TypedQuery<Administrator> query = entityManager.createNamedQuery(Administrator.ADMINISTRATORS_LIST,
+				Administrator.class);
 		return !query.getResultList().isEmpty();
 	}
+
+	/**
+	 * Load info.
+	 */
 	public void loadInfo() {
-		EstateAgency ea = new EstateAgency("nueva","456","ema@hotmail.com","123","porla 14");
+		EstateAgency ea = new EstateAgency("nueva", "456", "ema@hotmail.com", "123", "porla 14");
 		Project newProject = new Project(12, "banderas hota", 1, 45, "description");
 		ArrayList<String> images = new ArrayList<String>();
 		newProject.setImages(images);
@@ -61,6 +79,6 @@ public class SetupEJB {
 		ea.getProjects().add(newProject);
 		entityManager.persist(newProject);
 		entityManager.persist(ea);
-		//entityManager.persist(images);
+		// entityManager.persist(images);
 	}
 }

@@ -7,17 +7,16 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: User.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 @NamedQueries({
-	@NamedQuery(name = User.AUTHENTICATE_USER, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
-	@NamedQuery(name = User.GET_ALL_USERS, query = "SELECT u FROM User u"),
-	@NamedQuery(name = User.GET_USER_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email")
-})
+		@NamedQuery(name = User.AUTHENTICATE_USER, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
+		@NamedQuery(name = User.GET_ALL_USERS, query = "SELECT u FROM User u"),
+		@NamedQuery(name = User.GET_USER_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email") })
 public class User implements Serializable {
 
 	/** The code. */
@@ -32,13 +31,13 @@ public class User implements Serializable {
 	/** The password. */
 	@Column(name = "password", nullable = false)
 	private String password;
-	
-	//Queries
+
+	private static final long serialVersionUID = 1L;
+
+	// Queries
 	public static final String AUTHENTICATE_USER = "AUTHENTICATE_USER";
 	public static final String GET_ALL_USERS = "GET_ALL_USERS";
 	public static final String GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
-
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Default constructor method.

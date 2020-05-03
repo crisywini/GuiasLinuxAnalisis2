@@ -36,12 +36,25 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Class Negocio Test.
+ *
+ * @author Cristian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
+ */
+
 @RunWith(Arquillian.class)
 public class NegocioTest {
 
+	/** The prueba EJB. */
 	@EJB
 	private AdministratorEJB pruebaEJB;
 
+	/**
+	 * Creates the deployment package.
+	 *
+	 * @return the archive
+	 */
 	@Deployment
 	public static Archive<?> createDeploymentPackage() {
 		return ShrinkWrap.create(JavaArchive.class).addClass(AdministratorEJB.class)
@@ -50,6 +63,10 @@ public class NegocioTest {
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
 
 	}
+	
+	/**
+	 * Authenticate user test.
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -60,6 +77,10 @@ public class NegocioTest {
 				e.printStackTrace();
 			}
 	}
+	
+	/**
+	 * Send recovery password mail test.
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -70,6 +91,12 @@ public class NegocioTest {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Gets the top 5 state agencies by count projects test.
+	 *
+	 * @return the top 5 state agencies by count projects test
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -77,6 +104,12 @@ public class NegocioTest {
 		List<EstateAgency> result = pruebaEJB.getTop5ListEstateAgenciesByCity("Armenia");
 		System.out.println(result.size());
 	}
+	
+	/**
+	 * Gets the top 5 project rating.
+	 *
+	 * @return the top 5 project rating
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -84,6 +117,12 @@ public class NegocioTest {
 		List<Project> top5 = pruebaEJB.getTop5ProjectsByRatings();
 		System.out.println(top5);
 	}
+	
+	/**
+	 * Gets the top CITY.
+	 *
+	 * @return the top CITY
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -91,6 +130,12 @@ public class NegocioTest {
 		List<QueryNumberProjectByCityDTO> list = pruebaEJB.getTopCityByProjects();
 		System.out.println(list);
 	}
+	
+	/**
+	 * Gets the top projects by dwelling.
+	 *
+	 * @return the top projects by dwelling
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -98,6 +143,10 @@ public class NegocioTest {
 		List<QueryDwellingByProjectDTO> list = pruebaEJB.getTopProjectsByDwellings();
 		System.out.println(list);
 	}
+	
+	/**
+	 * Loggin user test.
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})
@@ -109,6 +158,10 @@ public class NegocioTest {
 		}
 		System.out.println("Passed");
 	}
+	
+	/**
+	 * Random.
+	 */
 	@Test
 	@Transactional(value = TransactionMode.ROLLBACK)
 	@UsingDataSet({"unihogar.json"})

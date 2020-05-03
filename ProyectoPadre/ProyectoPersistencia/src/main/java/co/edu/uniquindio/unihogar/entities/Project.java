@@ -10,35 +10,33 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: Project.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
 @Entity
-@NamedQueries({ 
-	@NamedQuery(name = Project.GET_ALL_PROJECTS, query = "SELECT p FROM Project p"),
-	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_CITY, query = "SELECT p FROM Project p WHERE p.city.name = :cityName"),
-	@NamedQuery(name = Project.GET_PROJECT_BY_NAME, query = "SELECT p FROM Project p WHERE p.name = :projectName"),
-	@NamedQuery(name = Project.GET_PROJECT_BY_ID, query = "SELECT p FROM Project p WHERE p.code = :projectCode"),
-	@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT p FROM Project p WHERE p.estateAgency.code = :estateAgencyCode"),
-	@NamedQuery(name = Project.GET_PROJECT_BY_LATTITUDE_LENGTH, query = "SELECT p FROM Project p WHERE p.latitude = :latitude AND p.length = :length"),
-	@NamedQuery(name = Project.GET_NAME_ESTATE_AGENCY, query = "SELECT p.estateAgency.name FROM Project p WHERE p.code = :projectCode"),
-	@NamedQuery(name = Project.GET_CLIENTS_CONTACT, query = "SELECT c.clientCode FROM Project p JOIN p.contacts c WHERE p.code = :projectCode"),
-	@NamedQuery(name = Project.GET_PROJECTS_RATING, query = "SELECT p, r.score FROM Project p LEFT JOIN p.ratings r"),
-	@NamedQuery(name = Project.GET_PROJECTS_CITY_ASSOCIATED, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO( p.code, p.name, p.latitude, p.length, p.estateAgency.name ) FROM Project p WHERE p.city.code = :cityCode"),
-	@NamedQuery(name = Project.GET_PROJECTS_HOUSE_PRICE, query = "SELECT p FROM Project p INNER JOIN p.dwellings d WHERE d.type = :type AND d.price >= :minPrice AND d.price <= :maxPrice"),
-	@NamedQuery(name = Project.GET_PROJECTS_IMAGES_BY_SERVICE, query = "SELECT p, i FROM Project p LEFT JOIN p.images i LEFT JOIN p.services s WHERE s.name = :serviceOne OR s.name =:serviceTwo"),
-	@NamedQuery(name = Project.GET_NUMBER_PROJECTS_SERVICE, query = "SELECT count(p) FROM Project p INNER JOIN p.services s WHERE s.name = :nameService"),
-	@NamedQuery(name = Project.GET_NUMBER_DWELLINGS_BY_TYPE, query = "SELECT d.type, count(d) FROM Project p INNER JOIN p.dwellings d WHERE p.city.name = :nameCity GROUP BY d.type"),
-	@NamedQuery(name = Project.GET_PROJECTS_WITHOUT_COMMENTS, query = "SELECT p FROM Project p WHERE p.comments IS EMPTY"),
-	@NamedQuery(name = Project.GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryNumberProjectsEstateAgencyDTO(p.estateAgency.name, p.estateAgency.address, count(p)) FROM Project p GROUP BY p.estateAgency"),
-	@NamedQuery(name = Project.GET_AVG_DWELLINGS, query = "SELECT avg(d.price) FROM Project p JOIN p.dwellings d JOIN p.services s WHERE p.city.name = :nameCity AND d.numBathrooms = 2 AND d.numRooms = 3 AND s.name = 'piscinita'"),
-	@NamedQuery(name = Project.GET_PROJECTS_BY_SERVICES, query = "SELECT p FROM Project p JOIN p.services s WHERE s.name IN(:nameService1, :nameService2) GROUP BY p HAVING count(p) = 2"),
-	@NamedQuery(name = Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, query = "SELECT d FROM Project p JOIN p.dwellings d WHERE p.city.name = 'Armenia' AND d.price = SELECT MAX(d2.price) FROM Project p2 JOIN p.dwellings d2 WHERE p2.city.name = 'Armenia'"),
-	@NamedQuery(name = Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY, query = "SELECT MAX(d.price), p.city.name FROM Project p LEFT JOIN p.dwellings d GROUP BY p.city"),
-	@NamedQuery(name = Project.GET_TOP_PROJECTS_RATING, query = "SELECT p FROM Project p LEFT JOIN p.ratings r ORDER BY r.score DESC"),
-	@NamedQuery(name = Project.GET_NUMBER_PROJECTS_BY_CITY, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO(COUNT(p), p.city.name) FROM Project p GROUP BY p.city.name")
-})
+@NamedQueries({ @NamedQuery(name = Project.GET_ALL_PROJECTS, query = "SELECT p FROM Project p"),
+		@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_CITY, query = "SELECT p FROM Project p WHERE p.city.name = :cityName"),
+		@NamedQuery(name = Project.GET_PROJECT_BY_NAME, query = "SELECT p FROM Project p WHERE p.name = :projectName"),
+		@NamedQuery(name = Project.GET_PROJECT_BY_ID, query = "SELECT p FROM Project p WHERE p.code = :projectCode"),
+		@NamedQuery(name = Project.GET_ALL_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT p FROM Project p WHERE p.estateAgency.code = :estateAgencyCode"),
+		@NamedQuery(name = Project.GET_PROJECT_BY_LATTITUDE_LENGTH, query = "SELECT p FROM Project p WHERE p.latitude = :latitude AND p.length = :length"),
+		@NamedQuery(name = Project.GET_NAME_ESTATE_AGENCY, query = "SELECT p.estateAgency.name FROM Project p WHERE p.code = :projectCode"),
+		@NamedQuery(name = Project.GET_CLIENTS_CONTACT, query = "SELECT c.clientCode FROM Project p JOIN p.contacts c WHERE p.code = :projectCode"),
+		@NamedQuery(name = Project.GET_PROJECTS_RATING, query = "SELECT p, r.score FROM Project p LEFT JOIN p.ratings r"),
+		@NamedQuery(name = Project.GET_PROJECTS_CITY_ASSOCIATED, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryProjectCityDTO( p.code, p.name, p.latitude, p.length, p.estateAgency.name ) FROM Project p WHERE p.city.code = :cityCode"),
+		@NamedQuery(name = Project.GET_PROJECTS_HOUSE_PRICE, query = "SELECT p FROM Project p INNER JOIN p.dwellings d WHERE d.type = :type AND d.price >= :minPrice AND d.price <= :maxPrice"),
+		@NamedQuery(name = Project.GET_PROJECTS_IMAGES_BY_SERVICE, query = "SELECT p, i FROM Project p LEFT JOIN p.images i LEFT JOIN p.services s WHERE s.name = :serviceOne OR s.name =:serviceTwo"),
+		@NamedQuery(name = Project.GET_NUMBER_PROJECTS_SERVICE, query = "SELECT count(p) FROM Project p INNER JOIN p.services s WHERE s.name = :nameService"),
+		@NamedQuery(name = Project.GET_NUMBER_DWELLINGS_BY_TYPE, query = "SELECT d.type, count(d) FROM Project p INNER JOIN p.dwellings d WHERE p.city.name = :nameCity GROUP BY d.type"),
+		@NamedQuery(name = Project.GET_PROJECTS_WITHOUT_COMMENTS, query = "SELECT p FROM Project p WHERE p.comments IS EMPTY"),
+		@NamedQuery(name = Project.GET_NUMBER_PROJECTS_BY_ESTATE_AGENCY, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryNumberProjectsEstateAgencyDTO(p.estateAgency.name, p.estateAgency.address, count(p)) FROM Project p GROUP BY p.estateAgency"),
+		@NamedQuery(name = Project.GET_AVG_DWELLINGS, query = "SELECT avg(d.price) FROM Project p JOIN p.dwellings d JOIN p.services s WHERE p.city.name = :nameCity AND d.numBathrooms = 2 AND d.numRooms = 3 AND s.name = 'piscinita'"),
+		@NamedQuery(name = Project.GET_PROJECTS_BY_SERVICES, query = "SELECT p FROM Project p JOIN p.services s WHERE s.name IN(:nameService1, :nameService2) GROUP BY p HAVING count(p) = 2"),
+		@NamedQuery(name = Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, query = "SELECT d FROM Project p JOIN p.dwellings d WHERE p.city.name = 'Armenia' AND d.price = SELECT MAX(d2.price) FROM Project p2 JOIN p.dwellings d2 WHERE p2.city.name = 'Armenia'"),
+		@NamedQuery(name = Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY, query = "SELECT MAX(d.price), p.city.name FROM Project p LEFT JOIN p.dwellings d GROUP BY p.city"),
+		@NamedQuery(name = Project.GET_TOP_PROJECTS_RATING, query = "SELECT p FROM Project p LEFT JOIN p.ratings r ORDER BY r.score DESC"),
+		@NamedQuery(name = Project.GET_NUMBER_PROJECTS_BY_CITY, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO(COUNT(p), p.city.name) FROM Project p GROUP BY p.city.name") })
 public class Project implements Serializable {
 
 	/** The code. */
@@ -108,6 +106,8 @@ public class Project implements Serializable {
 	@JoinColumn(name = "associated_favorite_clients")
 	private List<Client> favoriteClients;
 
+	private static final long serialVersionUID = 1L;
+
 	// Queries
 	public static final String GET_ALL_PROJECTS = "GET_ALL_PROJECTS";
 	public static final String GET_ALL_PROJECTS_BY_CITY = "GET_ALL_PROJECTS_BY_CITY";
@@ -131,8 +131,6 @@ public class Project implements Serializable {
 	public static final String GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY = "GET_MOST_EXPENSIVEs_DWELLINGS_BY_CITY";
 	public static final String GET_TOP_PROJECTS_RATING = "GET_TOP_PROJECTS_RATING";
 	public static final String GET_NUMBER_PROJECTS_BY_CITY = "GET_NUMBER_PROJECTS_BY_CITY";
-
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Default constructor method.
@@ -421,13 +419,22 @@ public class Project implements Serializable {
 				+ ", comments=" + comments + ", ratings=" + ratings + ", favoriteClients=" + favoriteClients + "]";
 	}
 
+	/**
+	 * Gets the estate agency.
+	 *
+	 * @return the estate agency
+	 */
 	public EstateAgency getEstateAgency() {
 		return estateAgency;
 	}
 
+	/**
+	 * Sets the estate agency.
+	 *
+	 * @param estateAgency the new estate agency
+	 */
 	public void setEstateAgency(EstateAgency estateAgency) {
 		this.estateAgency = estateAgency;
 	}
-	
 
 }

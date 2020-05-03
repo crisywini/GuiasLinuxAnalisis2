@@ -6,14 +6,12 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: Rating.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name = Rating.GET_ALL_RATING, query = "SELECT r FROM Rating r")
-})
+@NamedQueries({ @NamedQuery(name = Rating.GET_ALL_RATING, query = "SELECT r FROM Rating r") })
 public class Rating implements Serializable {
 
 	/** The key. */
@@ -36,11 +34,11 @@ public class Rating implements Serializable {
 	@MapsId("projectCode")
 	@JoinColumn(name = "project_rating")
 	private Project projectRating;
-	
-	//Queries
-	public static final String GET_ALL_RATING = "GET_ALL_RATING";
 
 	private static final long serialVersionUID = 1L;
+
+	// Queries
+	public static final String GET_ALL_RATING = "GET_ALL_RATING";
 
 	/**
 	 * Default constructor method.

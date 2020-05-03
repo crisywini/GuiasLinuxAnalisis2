@@ -12,7 +12,7 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: EstateAgency.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -49,14 +49,14 @@ public class EstateAgency extends User implements Serializable {
 	@JoinColumn(name = "associated_projects")
 	private List<Project> projects;
 
+	private static final long serialVersionUID = 1L;
+
 	// Queries
 	public static final String GET_ALL_ESTATE_AGENCY = "GET_ALL_ESTATE_AGENCY";
 	public static final String GET_ALL_ESTATE_AGENCY_PROJECTS = "GET_ALL_ESTATE_AGENCY_PROJECTS";
 	public static final String GET_ESTATE_AGENCY_BY_CITY = "GET_ESTATE_AGENCY_BY_CITY";
 	public static final String GET_ESTATE_AGENCIES_WITH_PROJECTS = "GET_ESTATE_AGENCIES_WITH_PROJECTS";
 	public static final String GET_ESTATE_AGENCY_WITH_COUNT_PROJECTS = "GET_ESTATE_AGENCY_WITH_COUNT_PROJECTS";
-
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Default constructor method.
@@ -66,13 +66,15 @@ public class EstateAgency extends User implements Serializable {
 	}
 
 	/**
-	 * @deprecated Constructor method from estate agency.
+	 * Instantiates a new estate agency.
+	 *
 	 * @param name     the name
 	 * @param code     from {@link User} primary key not nullable
 	 * @param email    from {@link User} unique not nullable
 	 * @param password from {@link User} not nullable
 	 * @param address  from {@link EstateAgency} not nullable
 	 * @param projects from relationship with {@link Project}
+	 * @deprecated Constructor method from estate agency.
 	 */
 	public EstateAgency(String name, String code, String email, String password, String address,
 			List<Project> projects) {

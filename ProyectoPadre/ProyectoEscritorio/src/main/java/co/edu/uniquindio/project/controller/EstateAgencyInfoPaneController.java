@@ -24,6 +24,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * The class EstateAgencyInfoPaneController
+ *
+ * @author Cristian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
+ */
 public class EstateAgencyInfoPaneController {
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -46,11 +52,18 @@ public class EstateAgencyInfoPaneController {
 
 	@FXML // fx:id="emailColumn"
 	private TableColumn<EstateAgencyObservable, String> emailColumn; // Value injected by FXMLLoader
+
 	@FXML // fx:id="addressColumn"
 	private TableColumn<EstateAgencyObservable, String> addressColumn; // Value injected by FXMLLoader
 
+	/** The menu pane controller. */
 	private MenuAdminPaneController menuPaneController;
 
+	/**
+	 * Handle remove estate agency button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void handleRemoveEstateAgencyButton(ActionEvent event) {
 		InitController.showAlert("No se puede eliminar las inmobiliarias", "INFORMACIÓN", "", AlertType.INFORMATION);
@@ -83,6 +96,11 @@ public class EstateAgencyInfoPaneController {
 
 	}
 
+	/**
+	 * Handle search by city button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void handleSearchByCityButton(ActionEvent event) {
 		if (isInputValid()) {
@@ -91,6 +109,11 @@ public class EstateAgencyInfoPaneController {
 		}
 	}
 
+	/**
+	 * Handle select all button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void handleSelectAllButton(ActionEvent event) {
 		cityField.setText("");
@@ -99,6 +122,11 @@ public class EstateAgencyInfoPaneController {
 		estateAgencyTableView.refresh();
 	}
 
+	/**
+	 * Handle add estate agency button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void handleAddEstateAgencyButton(ActionEvent event) {
 		loadAddEstateAgencyPane();
@@ -106,17 +134,28 @@ public class EstateAgencyInfoPaneController {
 		estateAgencyTableView.refresh();
 	}
 
+	/**
+	 * Handle update estate agency button.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void handleUpdateEstateAgencyButton(ActionEvent event) {
 		EstateAgencyObservable eao = estateAgencyTableView.getSelectionModel().getSelectedItem();
-		if(eao!=null) {
+		if (eao != null) {
 			String codeEstateAgency = eao.getCode().get();
 			loadUpdateStage(codeEstateAgency);
 			menuPaneController.loadEstateAgencyInfoPane();
 			estateAgencyTableView.refresh();
-		}else
+		} else
 			InitController.showAlert("Debes seleccionar una inmobiliaria", "ERROR", "", AlertType.ERROR);
 	}
+
+	/**
+	 * Load update stage.
+	 *
+	 * @param codeEstateAgency the code estate agency
+	 */
 	public void loadUpdateStage(String codeEstateAgency) {
 		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/UpdateEstateAgencyPane.fxml"));
 		try {
@@ -134,6 +173,10 @@ public class EstateAgencyInfoPaneController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Load add estate agency pane.
+	 */
 	public void loadAddEstateAgencyPane() {
 		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/AddEstateAgency.fxml"));
 		try {
@@ -150,8 +193,12 @@ public class EstateAgencyInfoPaneController {
 			stage.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	}
+		}
+	}
 
+	/**
+	 * Initialize.
+	 */
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
 		assert cityField != null : "fx:id=\"cityField\" was not injected: check your FXML file 'EstateAgencyInfoPane.fxml'.";
@@ -161,6 +208,9 @@ public class EstateAgencyInfoPaneController {
 		assert emailColumn != null : "fx:id=\"emailColumn\" was not injected: check your FXML file 'EstateAgencyInfoPane.fxml'.";
 	}
 
+	/**
+	 * Inits the table view.
+	 */
 	public void initTableView() {
 		codeColumn.setCellValueFactory(cellData -> cellData.getValue().getCode());
 		nameColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
@@ -170,11 +220,21 @@ public class EstateAgencyInfoPaneController {
 		estateAgencyTableView.refresh();
 	}
 
+	/**
+	 * Sets the menu pane controller.
+	 *
+	 * @param menuPaneController the new menu pane controller
+	 */
 	public void setMenuPaneController(MenuAdminPaneController menuPaneController) {
 		this.menuPaneController = menuPaneController;
 		initTableView();
 	}
 
+	/**
+	 * Checks if is input valid.
+	 *
+	 * @return true, if is input valid
+	 */
 	public boolean isInputValid() {
 		String errorMessage = "";
 		boolean isValid = false;

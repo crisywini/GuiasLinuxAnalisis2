@@ -9,7 +9,7 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: Contact.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -57,7 +57,7 @@ public class Contact implements Serializable {
 	public static final String GET_CONTACT_BY_PROJECT_CODE = "GET_CONTACT_BY_PROJECT_CODE";
 
 	/**
-	 * Instantiates a new contact.
+	 * Default constructor method.
 	 */
 	public Contact() {
 		super();

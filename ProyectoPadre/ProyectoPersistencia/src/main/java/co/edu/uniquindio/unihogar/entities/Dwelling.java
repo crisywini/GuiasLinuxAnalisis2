@@ -10,7 +10,7 @@ import co.edu.uniquindio.unihogar.entities.Type;
 /**
  * Entity implementation class for Entity: Dwelling.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -20,8 +20,7 @@ import co.edu.uniquindio.unihogar.entities.Type;
 		@NamedQuery(name = Dwelling.GET_ALL_DWELLING, query = "SELECT d FROM Dwelling d"),
 		@NamedQuery(name = Dwelling.GET_DWELLING_BY_CODE, query = "SELECT d FROM Dwelling d WHERE d.code =:code"),
 		@NamedQuery(name = Dwelling.GET_DWELLING_BY_TYPE, query = "SELECT d FROM Dwelling d WHERE d.type =:type"),
-		@NamedQuery(name = Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO(COUNT(d), d.project.name) FROM Dwelling d GROUP BY d.project.name")
-})
+		@NamedQuery(name = Dwelling.GET_NUMBER_DWELLINGS_BY_PROJECT, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryDwellingByProjectDTO(COUNT(d), d.project.name) FROM Dwelling d GROUP BY d.project.name") })
 public class Dwelling implements Serializable {
 
 	/** The code. */
@@ -63,14 +62,14 @@ public class Dwelling implements Serializable {
 	@JoinColumn(name = "project")
 	private Project project;
 
+	private static final long serialVersionUID = 1L;
+
 	// Queries
 	public static final String DWELLINGS_AREA_LIST = "DWELLINGS_AREA_LIST";
 	public static final String GET_ALL_DWELLING = "GET_ALL_DWELLING";
 	public static final String GET_DWELLING_BY_TYPE = "GET_DWELLING_BY_TYPE";
 	public static final String GET_DWELLING_BY_CODE = "GET_DWELLING_BY_CODE";
 	public static final String GET_NUMBER_DWELLINGS_BY_PROJECT = "GET_NUMBER_DWELLINGS_BY_PROJECT";
-
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Default constructor method.

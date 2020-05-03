@@ -11,10 +11,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * The class ApplicationProject
+ *
+ * @author Cristian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
+ */
 public class ApplicationProject extends Application {
-	
+
 	public static final ArrayList<User> LOGGIN_DATA = new ArrayList<User>();
-	
+
+	/**
+	 * Start.
+	 *
+	 * @param primaryStage the primary stage
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -24,9 +35,21 @@ public class ApplicationProject extends Application {
 		}
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	/**
+	 * Load main.
+	 *
+	 * @param primaryStage the primary stage
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void loadMain(Stage primaryStage) throws IOException {
 		FXMLLoader loader = new FXMLLoader(ApplicationProject.class.getResource("/initPane.fxml"));
 		Parent parent = loader.load();

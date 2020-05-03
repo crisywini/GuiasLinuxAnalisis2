@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: RatingPK.
  *
- * @author Critian G. Sanchez Pineda
+ * @author Cristian G. Sanchez Pineda
  * @author Luisa F. Cotte Sanchez
  */
 
@@ -23,7 +23,6 @@ public class RatingPK implements Serializable {
 	@Column(name = "project_code", nullable = false)
 	private int projectCode;
 
-	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
