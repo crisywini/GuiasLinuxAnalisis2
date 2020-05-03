@@ -59,9 +59,9 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		Administrator query1 = entityManager.find(Administrator.class, code);
 
 		if (query1 != null)
-			throw new RepeatedUserException("The user with code: " + code + " already exist");
+			throw new RepeatedUserException("El usuario con el codigo: " + code + " ya existe.");
 		if (isUserEmailRepeated(email))
-			throw new RepeatedUserException("The user with email: " + email + " already exist");
+			throw new RepeatedUserException("El ususario con el correo: " + email + " ya existe.");
 		Administrator newUser = new Administrator();
 		newUser.setCode(code);
 		newUser.setEmail(email);
@@ -97,7 +97,7 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		query.setParameter("password", password);
 		List<User> resultList = query.getResultList();
 		if (resultList.isEmpty())
-			throw new AuthenticationException("The user(email): " + email + " does not exist");
+			throw new AuthenticationException("El usuario (correo): " + email + " no existe.");
 
 		return resultList.get(0);
 	}
@@ -117,9 +117,9 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 			throws RepeatedUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
 		if (query != null)
-			throw new RepeatedUserException("The Estate Agency(code): " + code + " already exist");
+			throw new RepeatedUserException("La inmobiliaria (codigo): " + code + " ya existe.");
 		if (isUserEmailRepeated(email))
-			throw new RepeatedUserException("The Estate Agency(email): " + email + " already exist");
+			throw new RepeatedUserException("La inmobiliaria (correo): " + email + " ya existe.");
 		EstateAgency newEstateAgency = new EstateAgency(name, code, email, password, address);
 		entityManager.persist(newEstateAgency);
 	}
@@ -135,7 +135,7 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	public EstateAgency getEstateAgency(String code) throws NonexistentUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
 		if (query == null)
-			throw new NonexistentUserException("The Estate Agency(code): " + code + " does not exist");
+			throw new NonexistentUserException("La inmobiliaria (codigo): " + code + " no existe.");
 		return query;
 	}
 
@@ -149,7 +149,7 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	public void removeEstateAgency(String code) throws NonexistentUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
 		if (query == null)
-			throw new NonexistentUserException("The Estate Agency(code): " + code + " does not exist");
+			throw new NonexistentUserException("La inmobiliaria (cogido): " + code + " no existe.");
 		entityManager.remove(query);
 	}
 
@@ -220,11 +220,11 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		query.setParameter("emailAdmin", email);
 		List<Administrator> resultList = query.getResultList();
 		if (resultList.isEmpty())
-			throw new NonexistentUserException("The user(email): " + email + " does not exist");
+			throw new NonexistentUserException("El usuario (correo): " + email + " no existe.");
 		Administrator result = resultList.get(0);
 		String recipient = email;
-		String subject = "Password recovery";
-		String bodyMessage = "Your password is: " + result.getPassword();
+		String subject = "UNIHOGAR: Recupera tu contraseña.";
+		String bodyMessage = "Tu contraseña es: " + result.getPassword();
 		MailSender.sendMailWithGMail(recipient, subject, bodyMessage);
 		return true;
 	}
@@ -299,7 +299,7 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	public EstateAgency updateEstateAgency(String code, EstateAgency estateAgency) throws NonexistentUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
 		if (query == null)
-			throw new NonexistentUserException("The Estate Agency(code): " + code + " does not exist");
+			throw new NonexistentUserException("La inmobiliaria (codigo): " + code + " no existe.");
 
 		EstateAgency newEstateAgency = entityManager.merge(estateAgency);
 		return newEstateAgency;
@@ -317,7 +317,7 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 			throws NonexistentUserException {
 		EstateAgency query = entityManager.find(EstateAgency.class, code);
 		if (query == null)
-			throw new NonexistentUserException("The Estate Agency(code): " + code + " does not exist");
+			throw new NonexistentUserException("La inmobiliaria (codigo): " + code + " no existe.");
 		TypedQuery<QueryEstateAgencyCountProjectsDTO> queryE = entityManager.createNamedQuery(
 				EstateAgency.GET_ESTATE_AGENCY_WITH_COUNT_PROJECTS, QueryEstateAgencyCountProjectsDTO.class);
 		queryE.setParameter("code", code);
@@ -375,7 +375,7 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 		query.setParameter("projectCode", code);
 		List<Project> list = query.getResultList();
 		if (list.isEmpty())
-			throw new NonexistentProject("El proyecto con id: " + code + " no extá registrado");
+			throw new NonexistentProject("El proyecto con id: " + code + " no exta registrado");
 		return list.get(0);
 	}
 
