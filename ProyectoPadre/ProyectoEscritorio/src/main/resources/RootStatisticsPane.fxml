@@ -5,7 +5,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.project.controller.RootStatisticsPaneController">
    <top>
       <MenuBar style="-fx-background-radius: 20px;" BorderPane.alignment="CENTER">
@@ -22,11 +21,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleTopCityByProjectMenuItem" text="Top de ciudades con proyectos" />
                   <MenuItem mnemonicParsing="false" onAction="#handleTopProjectsByDwellingMenuItem" text="Top de proyectos por vivienda" />
                   <MenuItem mnemonicParsing="false" onAction="#handleEstateAgencyWithProjectMenuItem" text="Inmobiliarias y cantidad de proyectos" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>

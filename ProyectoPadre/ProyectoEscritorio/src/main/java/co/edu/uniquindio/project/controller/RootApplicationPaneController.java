@@ -59,7 +59,7 @@ public class RootApplicationPaneController {
 				e.printStackTrace();
 			}
 			
-		}
+		}	
 		int last = ApplicationProject.LOGGIN_DATA.size()-1;
 		User user = ApplicationProject.LOGGIN_DATA.get(last);
 		menuAdminController.setRootController(this);

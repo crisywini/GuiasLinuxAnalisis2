@@ -12,6 +12,7 @@ import co.edu.uniquindio.project.app.ApplicationProject;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.model.DelegateTest;
 import co.edu.uniquindio.project.model.EstateAgencyObservable;
+import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,22 +53,33 @@ public class EstateAgencyInfoPaneController {
 
 	@FXML
 	void handleRemoveEstateAgencyButton(ActionEvent event) {
-		EstateAgencyObservable eao = estateAgencyTableView.getSelectionModel().getSelectedItem();
-		if (eao != null) {
-			String code = eao.getCode().get();
-			DelegateTest delegate = DelegateTest.delegateTest;
-			try {
-				delegate.removeEstateAgency(code);
-				menuPaneController.loadEstateAgencyInfoPane();
-				estateAgencyTableView.refresh();
-				InitController.showAlert("La inmobiliaria: \n" + eao + "\nHa sido eliminada", "INFORMACIÓN", "",
-						AlertType.INFORMATION);
-			} catch (NonexistentUserException e) {
-				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
-			}
-
-		} else
-			InitController.showAlert("Debes seleccionar una inmobiliaria", "ERROR", "", AlertType.ERROR);
+		InitController.showAlert("No se puede eliminar las inmobiliarias", "INFORMACIÓN", "", AlertType.INFORMATION);
+//		EstateAgencyObservable eao = estateAgencyTableView.getSelectionModel().getSelectedItem();
+//		if (eao != null) {
+//			String code = eao.getCode().get();
+//			DelegateTest delegate = DelegateTest.delegateTest;
+//			try {
+//				EstateAgency ea = delegate.getEstateAgency(code);
+//				if(ea.getProjects().size()==0)
+//				{
+//					try {
+//						delegate.removeEstateAgency(code);
+//
+//						menuPaneController.loadEstateAgencyInfoPane();
+//						estateAgencyTableView.refresh();
+//						InitController.showAlert("La inmobiliaria: \n" + eao + "\nHa sido eliminada", "INFORMACIÓN", "",
+//								AlertType.INFORMATION);
+//					} catch (NonexistentUserException e) {
+//						InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
+//					}
+//				}
+//			} catch (NonexistentUserException e1) {
+//				System.out.println("Never happen");
+//			}
+//
+//
+//		} else
+//			InitController.showAlert("Debes seleccionar una inmobiliaria", "ERROR", "", AlertType.ERROR);
 
 	}
 

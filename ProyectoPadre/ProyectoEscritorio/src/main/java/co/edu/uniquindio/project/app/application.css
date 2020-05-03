@@ -46,12 +46,23 @@
 	-fx-background-radius: 20px;
 }
 .statistics-pane{
+	
+}
+.statistics-pane .button{
+	/*-fx-text-fill:#FFFFFF;*/	
+	-fx-background-color:  white;
+	-fx-background-radius: 20px;		
+}
+
+/* 
+.statistics-pane{
     -fx-background-color: #1d1d1d;
 	
 }
 .statistics-pane .button{
 	-fx-text-fill:#FFFFFF;	
-	-fx-background-color:  #211442;
+	-fx-background-color: derive(#1d1d1d,20.0%);
+	
 	-fx-background-radius: 20px;
 }
 .statistics-pane .menu-bar {
@@ -59,7 +70,6 @@
 	
 
 	-fx-text-fill:#FFFFFF;	
-	/*-fx-background-color:  #A38CD2;*/
 	-fx-background-radius: 20px;
 	
 }
@@ -70,3 +80,24 @@
     -fx-text-fill: white;
     -fx-opacity: 0.9;
 }
+.statistics-pane .chart {
+    -fx-padding: 10px;
+    -fx-text-fill: white;
+    
+}
+.statistics-pane .chart-content {
+    -fx-padding: 30px;
+    
+}
+.statistics-pane .chart-legend {
+   -fx-padding: 20px;
+}
+ 
+.statistics-pane .chart-legend-item-symbol{
+   -fx-background-radius: 20px;
+}
+ 
+.statistics-pane .chart-legend-item{
+    -fx-text-fill: #FFFFFF;
+}*/
+ 

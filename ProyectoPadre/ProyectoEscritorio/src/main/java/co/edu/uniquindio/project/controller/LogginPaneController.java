@@ -59,7 +59,6 @@ public class LogginPaneController {
 				InitController.showAlert(e.getMessage(), "ERROR", "", AlertType.ERROR);
 			}
 		}
-
 	}
 	 public  Stage loadRootApp() {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/RootApplicationPane.fxml"));
