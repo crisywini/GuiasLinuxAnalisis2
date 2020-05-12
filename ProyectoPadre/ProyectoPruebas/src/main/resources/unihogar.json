@@ -1,7 +1,7 @@
 {
 	"ADMINISTRATOR": [
 		{
-			"code": "123",
+			"code": "1236",
 			"email": "admin1@administrador.com",
 			"password": "password1"
 		},
@@ -14,6 +14,12 @@
 			"code": "1254567801",
 			"email": "admin3@administrador.com",
 			"password": "password3"
+		}
+		,
+		{
+			"code": "79981",
+			"email": "harmaharcri@hotmail.com",
+			"password": "root"
 		}
 	],
 	"CITY": [
@@ -83,7 +89,7 @@
 			"code": "2",
 			"complete_name": "Cliente2",
 			"date_of_birth": "2020-07-21",
-			"email": "c2@hotmail.com",
+			"email": "c2@gmail.com",
 			"password": "password2",
 			"phone_number": "3112345678"
 		},
@@ -91,7 +97,7 @@
 			"code": "3",
 			"complete_name": "Cliente3",
 			"date_of_birth": "2020-02-21",
-			"email": "c3@hotmail.com",
+			"email": "c3@gmail.com",
 			"password": "password3",
 			"phone_number": "3123456789"
 		}
@@ -108,7 +114,12 @@
 		{
 			"favoriteProjects_code": 3,
 			"favoriteClients_code": "3"
+		},
+		{
+			"favoriteProjects_code": 2,
+			"favoriteClients_code": "1"
 		}
+		
 	],
 	"COMMENT": [
 		{
@@ -307,7 +318,7 @@
 			"price": 88000000.0,
 			"type": 1,
 			"urlImage": "images/imagen4.png",
-			"project": 3
+			"project": 4
 		},
 		{
 			"code": 5,
@@ -318,7 +329,7 @@
 			"price": 88000000.0,
 			"type": 0,
 			"urlImage": "images/imagen5.png",
-			"project": 3
+			"project": 5
 		},
 		{
 			"code": 6,
@@ -329,7 +340,7 @@
 			"price": 88000000.0,
 			"type": 1,
 			"urlImage": "images/imagen6.png",
-			"project": 3
+			"project": 6
 		},
 		{
 			"code": 7,
@@ -337,10 +348,10 @@
 			"description": "Esta es la septima descripcion de prueba",
 			"numBathrooms": 1,
 			"numRooms": 2,
-			"price": 88000000.0,
+			"price": 100000000.0,
 			"type": 1,
 			"urlImage": "images/imagen7.png",
-			"project": 3
+			"project": 7
 		},
 		{
 			"code": 8,
@@ -351,7 +362,7 @@
 			"price": 88000000.0,
 			"type": 0,
 			"urlImage": "images/imagen8.png",
-			"project": 3
+			"project": 8
 		},
 		{
 			"code": 9,
@@ -362,7 +373,7 @@
 			"price": 880000000.0,
 			"type": 1,
 			"urlImage": "images/imagen9.png",
-			"project": 3
+			"project": 9
 		},
 		{
 			"code": 10,
@@ -373,7 +384,7 @@
 			"price": 8800000.0,
 			"type": 0,
 			"urlImage": "images/imagen10.png",
-			"project": 3
+			"project": 10
 		}
 	],
 	"ESTATEAGENCY": [
@@ -641,7 +652,7 @@
 			"length": 1.49898,
 			"name": "Villas claras",
 			"associated_city": 5,
-			"associated_estate_agency": "IMB10"
+			"associated_estate_agency": "IMB1"
 		}
 	],
 	"Project_IMAGES": [
@@ -701,6 +712,11 @@
 			"score": 157,
 			"client_rating": "3",
 			"project_rating": 3
+		},
+		{
+			"score": 1000,
+			"client_rating": "1",
+			"project_rating": 3
 		}
 	],
 	"SERVICE": [
@@ -734,7 +750,7 @@
 		},
 		{
 			"code": 8,
-			"name": "Canchas de futbol"
+			"name": "Canchas de tenis"
 		},
 		{
 			"code": 9,

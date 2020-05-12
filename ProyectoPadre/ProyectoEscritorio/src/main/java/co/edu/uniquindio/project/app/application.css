@@ -1,0 +1,103 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.button{
+	-fx-background-color:  #211442;
+	-fx-background-radius: 20px;
+}
+.text-field {
+    -fx-background-color:  #211442;
+	-fx-text-inner-color: #FFFFFF;
+	-fx-background-radius: 20px;
+}
+.pane{
+	-fx-background-image: url(\"file:src/main/resources/images/Splash1.png\");
+    /*-fx-background-image: url("../images/fondoApp.jpg");*/
+	-fx-background-size: 700, 500;
+	/*-fx-background-repeat: no-repeat;*/
+	-fx-background-position: center;
+	-fx-background-color:  #211442;
+		
+}
+.root-pane-app{
+	/*-fx-background-color:  #8A65D5;*/
+	-fx-background-color: #6443A6;
+	
+}
+.root-pane-app .button{
+	-fx-text-fill:#FFFFFF;	
+	-fx-background-color:  #211442;
+	-fx-background-radius: 20px;	
+}
+.root-pane-app .label{
+	-fx-text-fill:#FFFFFF;
+	
+}
+.alert{
+	-fx-background-color:   #35206A;
+	-fx-opacity:0.55;
+	/*-fx-background-radius: 20px;*/
+}
+.alert > .content.label {
+	-fx-text-fill:#FFFFFF;
+	
+}
+.alert .button{
+	-fx-text-fill:#FFFFFF;	
+	-fx-background-color:  #211442;
+	-fx-background-radius: 20px;
+}
+.statistics-pane{
+	
+}
+.statistics-pane .button{
+	/*-fx-text-fill:#FFFFFF;*/	
+	-fx-background-color:  white;
+	-fx-background-radius: 20px;		
+}
+
+/* 
+.statistics-pane{
+    -fx-background-color: #1d1d1d;
+	
+}
+.statistics-pane .button{
+	-fx-text-fill:#FFFFFF;	
+	-fx-background-color: derive(#1d1d1d,20.0%);
+	
+	-fx-background-radius: 20px;
+}
+.statistics-pane .menu-bar {
+	-fx-background-color: derive(#1d1d1d,20.0%);
+	
+
+	-fx-text-fill:#FFFFFF;	
+	-fx-background-radius: 20px;
+	
+}
+.statistics-pane .context-menu {
+    -fx-background-color: derive(#1d1d1d,50.0%);
+}
+.statistics-pane .menu-bar .label {
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+.statistics-pane .chart {
+    -fx-padding: 10px;
+    -fx-text-fill: white;
+    
+}
+.statistics-pane .chart-content {
+    -fx-padding: 30px;
+    
+}
+.statistics-pane .chart-legend {
+   -fx-padding: 20px;
+}
+ 
+.statistics-pane .chart-legend-item-symbol{
+   -fx-background-radius: 20px;
+}
+ 
+.statistics-pane .chart-legend-item{
+    -fx-text-fill: #FFFFFF;
+}*/
+ 

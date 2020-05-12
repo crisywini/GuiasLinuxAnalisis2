@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>grid.uniquindio.edu.co</groupId>
-	<artifactId>proyectoPadre</artifactId>
+	<artifactId>ProyectoPruebas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>proyecto padre</name>
+	<name>Proyecto de Pruebas</name>
 	<description>proyecto que agrupa los diferentes modulos de la
 		aplicacion</description>
 
@@ -93,6 +93,12 @@
 			<groupId>grid.uniquindio.edu.co</groupId>
 			<artifactId>ProyectoPersistencia</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>grid.uniquindio.edu.co</groupId>
+			<artifactId>ProyectoDeNegocio</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 </project>

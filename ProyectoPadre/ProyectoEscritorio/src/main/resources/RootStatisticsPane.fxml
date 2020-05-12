@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.project.controller.RootStatisticsPaneController">
+   <top>
+      <MenuBar style="-fx-background-radius: 20px;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="&lt;">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleBackButton" text="volver" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Estadisticos descriptivos ↓">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleTopProjectsByRatingMenuItem" text="Top projectos mejores calificados" />
+              <MenuItem mnemonicParsing="false" onAction="#handleTopEAByCityMenuItem" text="Top inmobiliarias por ciudad" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTopCityByProjectMenuItem" text="Top de ciudades con proyectos" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTopProjectsByDwellingMenuItem" text="Top de proyectos por vivienda" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleEstateAgencyWithProjectMenuItem" text="Inmobiliarias y cantidad de proyectos" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <Label text="Seleccione los &quot;Estadisticos descriptivos&quot;" textFill="#615b5b" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

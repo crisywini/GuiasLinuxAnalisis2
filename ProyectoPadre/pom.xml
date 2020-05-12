@@ -64,6 +64,10 @@
 		</pluginManagement>
 	</build>
 	<modules>
-		<module>proyectoPruebas</module>
+		<module>ProyectoPersistencia</module>
+		<module>ProyectoPruebas</module>
+		<module>ProyectoEAR</module>
+		<module>ProyectoDeNegocio</module>
+		<module>ProyectoEscritorio</module>
 	</modules>
 </project>
