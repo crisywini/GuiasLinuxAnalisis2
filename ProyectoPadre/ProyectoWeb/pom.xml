@@ -11,7 +11,19 @@
 	<packaging>war</packaging>
 	<name>Proyecto Web</name>
 	<description>Proyecto para el acceso de los clientes web a las funcionalidades del aplicativo</description>
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>Prime Repo</name>
+			<url>http://repository.primefaces.org</url>
+		</repository>
+	</repositories>
 	<dependencies>
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
@@ -42,5 +54,6 @@
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 </project>
