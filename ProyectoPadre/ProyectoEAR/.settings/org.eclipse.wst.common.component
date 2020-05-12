@@ -3,7 +3,6 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
         <dependent-module archiveName="ProyectoDeNegocio.jar" deploy-path="/" handle="module:/resource/ProyectoDeNegocio/ProyectoDeNegocio">
-            <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="ProyectoPersistencia.jar" deploy-path="/lib" handle="module:/resource/ProyectoPersistencia/ProyectoPersistencia">
@@ -13,6 +12,9 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="activation.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/activation/activation/1.1/activation-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ProyectoWeb.war" deploy-path="/" handle="module:/resource/ProyectoWeb/ProyectoWeb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
