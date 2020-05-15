@@ -103,6 +103,7 @@ public class AdministratorEJB implements AdministratorEJBRemote {
 	}
 
 	/**
+	 * CORREGIR
 	 * Creates the estate agency.
 	 *
 	 * @param name     the name
