@@ -6,7 +6,7 @@ import javax.inject.Named;
 @Named("holaMundoBean")
 @ApplicationScoped
 public class HolaMundoBean {
-	private String message = "Hola mundo BEAN!";
+	private String message = "Bienvenido a UNIHOGAR!";
 
 	public String getMessage() {
 		return message;

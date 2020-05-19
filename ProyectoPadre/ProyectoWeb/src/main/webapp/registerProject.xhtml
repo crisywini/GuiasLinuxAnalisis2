@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:leaf="http://java.sun.com/jsf/composite/jsf2leaf">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Registrar Projecto</title>
+</h:head>
+<body>
+	<p:panel header="Formulario para el registro de nuevos proyectos"
+		style="margin-bottom:20px">
+		<h:form>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Nombre: " for="project_name" />
+				<p:inputText id="project_name" value="#{projectBean.project.name}"
+					required="true" />
+				<p:message for="project_name" />
+
+				<h:outputLabel value="Descripción: " for="project_description" />
+				<p:inputTextarea id="project_description" rows="6" cols="33"
+					value="#{projectBean.project.description}" required="true" />
+				<p:message for="project_description" />
+
+				<h:outputLabel value="Ciudad: " for="project_city" />
+				<h:selectOneMenu id="project_city" required="true" label="Text 3">
+					<f:selectItem itemLabel="Selecciona una ciudad" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Armenia" itemValue="1" />
+					<f:selectItem itemLabel="Circasia" itemValue="2" />
+					<f:selectItem itemLabel="Calarcá" itemValue="3" />
+					<f:selectItem itemLabel="Montenegro" itemValue="4" />
+					<f:selectItem itemLabel="Filandia" itemValue="5" />
+				</h:selectOneMenu>
+				<p:message for="project_city" />
+			</h:panelGrid>
+			<h:outputLabel value="Ubicación: " for="map" />
+			<leaf:mapAdvanced id="map" map="#{projectBean.map}" />
+
+			<p:commandButton update="@form" value="Registrar Projecto"
+				action="#{projectBean.registerProject}" />
+			<p:growl for="messages_bean" showDetail="true" />
+		</h:form>
+
+	</p:panel>
+	<h:form>
+		<p:remoteCommand name="remoteFunction"
+			action="#{projectBean.createMarker}" update="pos_message"/>
+			<p:growl id="pos_message" for="pos_message" showDetail="true"/>
+	</h:form>
+	<script type="text/javascript">
+		map_map.on('click', onClickMarker);
+		function onClickMarker(e) {
+			
+			layer.clearLayers();
+    		var icon = new L.Icon({iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -45], iconUrl: '/ProyectoWeb/javax.faces.resource/marker-icon.png.xhtml?ln=images', shadowUrl: '/ProyectoWeb/javax.faces.resource/marker-shadow.png.xhtml?ln=images'});
+			var newMark = new L.marker(e.latlng,{icon:icon}).addTo(layer);
+			
+			remoteFunction([ {
+				name : "lat",
+				value : e.latlng.lat
+			}, {
+				name : "lng",
+				value : e.latlng.lng
+			} ])
+
+		}
+	</script>
+
+</body>
+</html>
