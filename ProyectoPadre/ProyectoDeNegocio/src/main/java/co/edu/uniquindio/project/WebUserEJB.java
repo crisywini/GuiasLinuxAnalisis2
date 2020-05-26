@@ -8,9 +8,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import co.edu.uniquindio.project.exceptions.NonexistentCityException;
 import co.edu.uniquindio.project.exceptions.NonexistentProject;
 import co.edu.uniquindio.project.exceptions.RepeatedProjectException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
+import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Client;
 import co.edu.uniquindio.unihogar.entities.Project;
 
@@ -74,6 +76,21 @@ public class WebUserEJB implements WebUserEJBRemote {
 			throw new RepeatedProjectException("El proyecto con el nombre: "+projectName+" ya se encuentra registrado");
 		entityManager.persist(project);
 
+	}
+
+	@Override
+	public List<City> getAllCity() {
+		TypedQuery<City> query = entityManager.createNamedQuery(City.GET_ALL_CITY, City.class);
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public City getCityByCode(int code) throws NonexistentCityException {
+		City city = entityManager.find(City.class, code);
+		if(city==null)
+			throw new NonexistentCityException("La ciudad con el código: "+code+" no existe");
+		return city;
 	}
 
 

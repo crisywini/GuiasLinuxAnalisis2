@@ -1,14 +1,16 @@
 package co.edu.uniquindio.project.beans;
 
-import java.util.HashMap;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.jsf2leaf.model.LatLong;
 import com.jsf2leaf.model.Layer;
@@ -21,13 +23,26 @@ import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Project;
 
 @Named("projectBean")
-@RequestScoped
-public class ProjectBean {
+@ViewScoped
+public class ProjectBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Map map;
 	@EJB
 	private WebUserEJB webUserEJB;
 	private Project project;
 	private double lat, lng;
+	@NotNull(message = "Debes ingresar el nombre del proyecto")
+	@Size(max = 255, message = "El nombre no puede tener más de 255 caracteres")
+	private String projectName;
+	@NotNull(message = "Debes ingresar la descripción del proyecto")
+	private String projectDescription;
+
+	private City projectCity;
+	private List<City> cities;
+	private List<Project> projects;
 
 	@PostConstruct
 	public void init() {
@@ -37,6 +52,9 @@ public class ProjectBean {
 		List<Project> projects = webUserEJB.getAllProjects();
 		// center="4.55396,-75.66038" width="100%" height="500px" zoom="18" map="{}"
 		fillMarkers(projects);
+
+		cities = webUserEJB.getAllCity();
+		this.projects = webUserEJB.getAllProjects();
 
 	}
 
@@ -55,14 +73,23 @@ public class ProjectBean {
 	}
 
 	public void registerProject() {
-		project =new Project();
-		project.setCity(new City());
-		
+
 		try {
-			
-			webUserEJB.addProject(project);
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "INFORMACIÓN", "Projecto registrado!");
-			FacesContext.getCurrentInstance().addMessage("messages_bean", message);
+			if(lat!=0 && lng!=0) {
+				project = new Project();
+				project.setLatitude(lat);
+				project.setLength(lng);
+				project.setName(projectName);
+				project.setDescription(projectDescription);
+				project.setCity(projectCity);
+				webUserEJB.addProject(project);
+				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "INFORMACIÓN", "Projecto registrado!");
+				FacesContext.getCurrentInstance().addMessage("messages_bean", message);
+			}
+			else {
+				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "ADVERTENCIA", "Debes ingresar la ubicación");
+				FacesContext.getCurrentInstance().addMessage("messages_bean", message);
+			}
 		} catch (RepeatedProjectException e) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", e.getMessage());
 			FacesContext.getCurrentInstance().addMessage("messages_bean", message);
@@ -80,10 +107,10 @@ public class ProjectBean {
 		String lng = map.get("lng");// Longitud
 		this.lat = Double.parseDouble(lat);
 		this.lng = Double.parseDouble(lng);
-		
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "POSICIÓN", lat+lng);
-		FacesContext.getCurrentInstance().addMessage("pos_message", message);	
-		
+
+		/*FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "POSICIÓN", lat + lng);
+		FacesContext.getCurrentInstance().addMessage("pos_message", message);*/
+
 	}
 
 	public void setMap(Map map) {
@@ -113,5 +140,45 @@ public class ProjectBean {
 	public void setLng(double lng) {
 		this.lng = lng;
 	}
-	
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getProjectDescription() {
+		return projectDescription;
+	}
+
+	public void setProjectDescription(String projectDescription) {
+		this.projectDescription = projectDescription;
+	}
+
+	public City getProjectCity() {
+		return projectCity;
+	}
+
+	public void setProjectCity(City projectCity) {
+		this.projectCity = projectCity;
+	}
+
+	public List<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(List<City> cities) {
+		this.cities = cities;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
 }

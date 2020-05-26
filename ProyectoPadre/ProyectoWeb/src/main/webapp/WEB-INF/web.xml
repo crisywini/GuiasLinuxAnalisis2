@@ -23,4 +23,8 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 		<param-value>nova-light</param-value>
 
 	</context-param>
+	<context-param>
+		<param-name>primefaces.MOVE_SCRIPTS_TO_BOTTOM</param-name>
+		<param-value>true</param-value>
+	</context-param>
 </web-app>
