@@ -7,49 +7,55 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:leaf="http://java.sun.com/jsf/composite/jsf2leaf">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputScript library="js" name="script.js" target="body"/>
-	<title>Registrar Projecto</title>
-</h:head>
-<h:body onload="onLoadBody()">
-	<p:panel header="Formulario para el registro de nuevos proyectos"
-		style="margin-bottom:20px">
-		<h:form>
+<ui:composition template="/resources/template.xhtml">
+	<ui:define name="content">
+		<div class="ui-g">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<p:panel header="Formulario para el registro de nuevos proyectos"
+					style="margin-bottom:20px">
+					<h:form>
 
-			<h:panelGrid columns="3">
-				<h:outputLabel value="Nombre: " for="project_name" />
-				<p:inputText id="project_name" value="#{projectBean.projectName}"
-					required="true" />
-				<p:message for="project_name" />
+						<h:panelGrid columns="3">
+							<h:outputLabel value="Nombre: " for="project_name" />
+							<p:inputText id="project_name" value="#{projectBean.projectName}"
+								required="true" />
+							<p:message for="project_name" />
 
-				<h:outputLabel value="Descripción: " for="project_description" />
-				<p:inputTextarea id="project_description" rows="6" cols="33"
-					value="#{projectBean.projectDescription}" />
-				<p:message for="project_description" />
+							<h:outputLabel value="Descripción: " for="project_description" />
+							<p:inputTextarea id="project_description" rows="6" cols="33"
+								value="#{projectBean.projectDescription}" />
+							<p:message for="project_description" />
 
-				<h:outputLabel value="Ciudad: " for="project_city" />
-				<h:selectOneMenu id="project_city"
-					value="#{projectBean.projectCity}" converter="#{converterCity}" label="Text 3">
-					<f:selectItem itemLabel="Selecciona una ciudad" noSelectionOption="true"/>
-					<f:selectItems value="#{projectBean.cities}" var="city" itemLabel="#{city.name}"/>
-				</h:selectOneMenu>
-				<p:message for="project_city" />
-			</h:panelGrid>
-			<h:outputLabel value="Ubicación: " for="map" />
-			<leaf:mapAdvanced id="map" map="#{projectBean.map}" />
+							<h:outputLabel value="Ciudad: " for="project_city" />
+							<h:selectOneMenu id="project_city"
+								value="#{projectBean.projectCity}" converter="#{converterCity}"
+								label="Text 3">
+								<f:selectItem itemLabel="Selecciona una ciudad"
+									noSelectionOption="true" />
+								<f:selectItems value="#{projectBean.cities}" var="city"
+									itemLabel="#{city.name}" />
+							</h:selectOneMenu>
+							<p:message for="project_city" />
+						</h:panelGrid>
+						<h:outputLabel value="Ubicación: " for="map" />
+						<leaf:mapAdvanced id="map" map="#{projectBean.map}" />
 
-			<p:commandButton update="@form" value="Registrar Projecto"
-				action="#{projectBean.registerProject}" />
-			<p:growl for="messages_bean" showDetail="true" />
-		</h:form>
+						<p:commandButton update="@form" value="Registrar Projecto"
+							action="#{projectBean.registerProject}" />
+						<p:growl for="messages_bean" showDetail="true" />
+					</h:form>
 
-	</p:panel>
-	<h:form>
-		<p:remoteCommand name="remoteFunction"
-			action="#{projectBean.createMarker}" update="pos_message" />
-		<p:growl id="pos_message" for="pos_message" showDetail="true" />
-	</h:form> 
+				</p:panel>
+				<h:form>
+					<p:remoteCommand name="remoteFunction"
+						action="#{projectBean.createMarker}" update="pos_message" />
+					<p:growl id="pos_message" for="pos_message" showDetail="true" />
+				</h:form>
+			</div>
+			<div class="ui-g-1"></div>
+		</div>
+	</ui:define>
 
-</h:body>
+</ui:composition>
 </html>

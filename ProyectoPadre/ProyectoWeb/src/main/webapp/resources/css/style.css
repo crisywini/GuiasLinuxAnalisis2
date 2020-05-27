@@ -1,4 +1,15 @@
+body{
+	margin: 0;
+}
 .div-inline{
 	display: inline-block !important;
 	margin-right: 10px; 
+}
+.menu-page{
+	background: #f4f4f4;
+	border-bottom: 1px solid #c8c8c8;
+}
+#footer{
+	background: #f4f4f4;
+	border-bottom: 1px solid #c8c8c8;
 }
