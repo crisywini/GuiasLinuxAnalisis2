@@ -14,6 +14,7 @@ import co.edu.uniquindio.project.exceptions.RepeatedProjectException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Client;
+import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
 
 /**
@@ -92,9 +93,10 @@ public class WebUserEJB implements WebUserEJBRemote {
 			throw new NonexistentCityException("La ciudad con el código: "+code+" no existe");
 		return city;
 	}
-
-
-
-
+	public EstateAgency getEaProvisional() {
+		EstateAgency ea = entityManager.find(EstateAgency.class, "456");
+		return ea;
+	}
+	
 
 }

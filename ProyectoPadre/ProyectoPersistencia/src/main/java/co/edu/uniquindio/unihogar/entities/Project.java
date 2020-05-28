@@ -42,6 +42,7 @@ public class Project implements Serializable {
 	/** The code. */
 	@Id
 	@Column(name = "code", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int code;
 
 	/** The name. */

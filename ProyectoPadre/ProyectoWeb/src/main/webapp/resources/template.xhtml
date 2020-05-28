@@ -11,10 +11,12 @@
 	<h:outputStylesheet library="css" name="primeflex.css" />
 	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputScript library="js" name="script.js" target="body" />
+	<ui:insert name="script_aux" ></ui:insert>
 	<title><ui:insert name="title">Unihogar</ui:insert></title>
 </h:head>
-
-<h:body onload="onLoadIndex()">
+<!-- Este metodo se inicia y es para poner los marcadores, pero en el index no debería poderse eso
+como hago para poner ese pero con el de registrar proyecto  -->
+<h:body onload="onLoadProject()">
 
 	<div id="header">
 		<ui:insert name="header">

@@ -8,6 +8,9 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:leaf="http://java.sun.com/jsf/composite/jsf2leaf">
 <ui:composition template="/resources/template.xhtml">
+
+	<ui:define name="script_aux"><h:outputScript name="script2.js" library="js" /></ui:define>
+
 	<ui:define name="content">
 		<div class="ui-g">
 			<div class="ui-g-1"></div>
@@ -16,6 +19,11 @@
 					style="margin-bottom:20px">
 					<h:form>
 
+						<div>
+							<h:outputLabel value="Ubicación: " for="map" />
+							<leaf:mapAdvanced id="map" map="#{projectBean.map}" />
+						</div>
+						<br />
 						<h:panelGrid columns="3">
 							<h:outputLabel value="Nombre: " for="project_name" />
 							<p:inputText id="project_name" value="#{projectBean.projectName}"
@@ -28,18 +36,25 @@
 							<p:message for="project_description" />
 
 							<h:outputLabel value="Ciudad: " for="project_city" />
-							<h:selectOneMenu id="project_city"
+							<p:selectOneMenu id="project_city"
 								value="#{projectBean.projectCity}" converter="#{converterCity}"
-								label="Text 3">
+								required="true">
 								<f:selectItem itemLabel="Selecciona una ciudad"
 									noSelectionOption="true" />
 								<f:selectItems value="#{projectBean.cities}" var="city"
 									itemLabel="#{city.name}" />
-							</h:selectOneMenu>
+							</p:selectOneMenu>
 							<p:message for="project_city" />
+
+							<h:outputLabel value="Imágenes: " for="project_images" />
+							<p:fileUpload id="project_images"
+								listener="#{projectBean.uploadFiles}" multiple="true"
+								mode="advanced" required="true" />
+							<p:message for="project_images" />
+
+
 						</h:panelGrid>
-						<h:outputLabel value="Ubicación: " for="map" />
-						<leaf:mapAdvanced id="map" map="#{projectBean.map}" />
+
 
 						<p:commandButton update="@form" value="Registrar Projecto"
 							action="#{projectBean.registerProject}" />

@@ -28,6 +28,7 @@ function onLoadIndex(){
 	 * Por otro lado para que funcionen las clases que dicen p-col- se necesita un archivo css adicional
 	 * el que se llama primeflex.css. Pero listo. 
 	 * Muchas gracias profe. Listo, cualquier cosa me escribe
+	 * saludos a lu
 	 */
 	
 }
@@ -35,26 +36,6 @@ function onLoadIndex(){
  * This method allows to initialize the needed components for the registerProject page
  * @returns void
  */
-function onLoadProject() {
-	map_map.on("locationfound", onLocationFound);
-	map_map.on("locationerror", onLocationError);
-	map_map.on('click', onClickMarker);
-
-	var icon = new L.Icon(
-			{
-				iconSize : [ 25, 41 ],
-				iconAnchor : [ 12, 41 ],
-				popupAnchor : [ 0, -45 ],
-				iconUrl : '/ProyectoWeb/javax.faces.resource/marker-icon.png.xhtml?ln=images',
-				shadowUrl : '/ProyectoWeb/javax.faces.resource/marker-shadow.png.xhtml?ln=images'
-			});
-
-	map_map.locate({
-		setView : true,
-		maxZoom : 16
-	});
-
-}
 
 function onLocationFound(e) {
 	var radio = e.accuracy / 2;
@@ -68,19 +49,4 @@ function onLocationFound(e) {
 }
 function onLocationError(e) {
 	alert(e.message)
-}
-function onClickMarker(e) {
-
-	layer.clearLayers();
-	var icon = new L.Icon({iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -45], iconUrl: '/ProyectoWeb/javax.faces.resource/marker-icon.png.xhtml?ln=images', shadowUrl: '/ProyectoWeb/javax.faces.resource/marker-shadow.png.xhtml?ln=images'});
-	var newMark = new L.marker(e.latlng,{icon:icon}).addTo(layer);
-
-	remoteFunction([ {
-		name : "lat",
-		value : e.latlng.lat
-	}, {
-		name : "lng",
-		value : e.latlng.lng
-	} ])
-
 }

@@ -2,6 +2,7 @@ package co.edu.uniquindio.project.converters;
 
 import java.io.Serializable;
 
+
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.annotation.FacesConfig;
@@ -14,7 +15,6 @@ import javax.faces.convert.ConverterException;
 import javax.inject.Named;
 
 import co.edu.uniquindio.project.WebUserEJB;
-import co.edu.uniquindio.project.exceptions.NonexistentCityException;
 import co.edu.uniquindio.unihogar.entities.City;
 @FacesConfig(version = Version.JSF_2_3)
 @Named("converterCity")
@@ -44,10 +44,9 @@ public class ConverterCity implements Converter<City>, Serializable{
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, City value) {
-		String primaryKey = "";
 		if(value!=null)
-			primaryKey = ""+value.getCode();
-		return primaryKey;
+			return  ""+value.getCode();
+		return "";
 	}
 
 
