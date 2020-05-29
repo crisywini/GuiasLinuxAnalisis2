@@ -10,7 +10,4 @@ http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
 			<var>mensajes</var>
 		</resource-bundle>
 	</application>
-	<protected-views>
-		<url-pattern> /user/registerProject.xhtml </url-pattern>
-	</protected-views>
 </faces-config>

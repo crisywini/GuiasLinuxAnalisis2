@@ -35,6 +35,12 @@ public class SecurityBean implements Serializable {
 		authenticated = false;
 		iEstateAgency = false;
 	}
+	
+	public String signOff() {
+		
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/index?faces-redirect=true";
+	}
 
 	public String authenticateUser() {
 
@@ -46,7 +52,7 @@ public class SecurityBean implements Serializable {
 				iEstateAgency = true;
 			}
 			
-			return "index?faces-redirect=true";
+			return "/index?faces-redirect=true";
 			
 		} catch (AuthenticationException e) {
 			

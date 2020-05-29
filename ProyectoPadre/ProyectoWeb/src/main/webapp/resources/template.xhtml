@@ -52,8 +52,8 @@ como hago para poner ese pero con el de registrar proyecto
 							<h:form rendered="#{securityBean.authenticated}">
 								<p:splitButton id="basic" value="#{securityBean.user.email}"
 									icon="pi pi-save">
-									<p:menuitem value="Ir a mi perfil" icon="pi pi-refresh" />
-									<p:menuitem value="Cerrar sesión" icon="pi pi-times" />
+									<p:menuitem value="Cerrar sesión" icon="pi pi-times"
+										action="#{securityBean.signOff}" process="@this" />
 									<p:separator />
 								</p:splitButton>
 
@@ -94,9 +94,8 @@ como hago para poner ese pero con el de registrar proyecto
 									action="user/registerProject?faces-redirect=true"
 									process="@this" />
 								<p:menuitem value="Registrar Vivienda"
-									action="registerUser?faces-redirect=true" process="@this" />
-								<p:menuitem value="Lista de Contactos Clientes"
-									action="registerUser?faces-redirect=true" process="@this" />
+									action="user/registerDwelling?faces-redirect=true"
+									process="@this" />
 								<p:menuitem value="Lista de Contactos Clientes"
 									action="registerUser?faces-redirect=true" process="@this" />
 							</p:menubar>
