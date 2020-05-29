@@ -22,7 +22,13 @@
 								<f:validateLength minimum="10" maximum="10" />
 							</p:inputText>
 							<p:message for="user_code" />
-
+							
+							<h:outputLabel value="Contraseña: " for="inlineFeedback" />
+							<p:password id="inlineFeedback"
+								value="#{userBean.clientPassword}" feedback="true" inline="true"
+								required="true" requiredMessage="Debes ingresar la contraseña" />
+							<p:message for="inlineFeedback" />
+							
 							<h:outputLabel value="Nombre: " for="user_name" />
 							<p:inputText id="user_name" value="#{userBean.clientName}"
 								required="true" requiredMessage="Debes ingresar el nombre" />
@@ -44,17 +50,10 @@
 
 							<p:outputLabel value="Fecha de nacimiento: "
 								for="user_date_of_birth" />
-							<p:calendar id="user_date_of_birth"
+							<p:datePicker id="user_date_of_birth"
 								value="#{userBean.clientDateOfBirth}" navigator="true"
 								yearRange="c-80;c+1" />
 							<p:message for="user_date_of_birth" />
-
-							<h:outputLabel value="Contraseña: " for="inlineFeedback" />
-							<p:password id="inlineFeedback"
-								value="#{userBean.clientPassword}" feedback="true" inline="true"
-								required="true" requiredMessage="Debes ingresar la contraseña" />
-							<p:message for="inlineFeedback" />
-
 
 						</h:panelGrid>
 

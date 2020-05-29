@@ -31,11 +31,12 @@ public class CreditCalculatorBean implements Serializable{
 		values.clear();
 		int n2 = Integer.parseInt(n);
 		double valueCredit2 = Double.parseDouble(valueCredit);
-		double tasaInteres2 = Double.parseDouble(tasaInteres); 
+		double tasaInteres2 = Double.parseDouble(tasaInteres);
+		tasaInteres2 = tasaInteres2/100;
 		double cuota = calcularCuota();
 		double interes = calcularInteres();
 		double amortizacion = calcularAmortizacion(cuota, interes);
-		values.add(new Value(String.format("%.2f", valueCredit2), String.format("%.2f", amortizacion), String.format("%.2f", interes), String.format("%.2f", cuota)));
+		values.add(new Value(String.format("%.2f", valueCredit2), 0.0+"", 0.0+"",0.0+""));
 		for (int i = 0; i < n2; i++) {
 			valueCredit2 = valueCredit2-amortizacion;
 			interes = valueCredit2*tasaInteres2;
@@ -50,7 +51,7 @@ public class CreditCalculatorBean implements Serializable{
 	
 	public double calcularInteres() {
 		double valueCredit2 = Double.parseDouble(valueCredit);
-		double tasaInteres2 = Double.parseDouble(tasaInteres); 
+		double tasaInteres2 = Double.parseDouble(tasaInteres)/100; 
 		double interes = valueCredit2*tasaInteres2;
 		return interes;
 	}
@@ -58,7 +59,7 @@ public class CreditCalculatorBean implements Serializable{
 	public double calcularCuota() {
 		int n2 = Integer.parseInt(n);
 		double valueCredit2 = Double.parseDouble(valueCredit);
-		double tasaInteres2 = Double.parseDouble(tasaInteres); 
+		double tasaInteres2 = Double.parseDouble(tasaInteres)/100; 
 		double cuota = (valueCredit2*tasaInteres2)/(1-Math.pow((1+tasaInteres2), -n2));
 		return cuota;
 	}

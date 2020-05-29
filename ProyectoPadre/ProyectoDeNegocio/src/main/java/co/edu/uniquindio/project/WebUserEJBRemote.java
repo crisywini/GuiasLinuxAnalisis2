@@ -27,4 +27,5 @@ public interface WebUserEJBRemote {
 	Project getProjectByCode(int code) throws NonexistentProject;
 	List<Service> getAllServices();
 	
+	
 }

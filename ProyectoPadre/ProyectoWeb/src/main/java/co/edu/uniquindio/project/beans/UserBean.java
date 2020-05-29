@@ -1,5 +1,6 @@
 package co.edu.uniquindio.project.beans;
 
+
 import java.util.Date;
 
 import javax.ejb.EJB;
@@ -45,6 +46,12 @@ public class UserBean {
 	public void registerClient() {
 		try {
 			Client client = new Client();
+			client.setCode(clientCode);
+			client.setDateOfBirth(clientDateOfBirth);
+			client.setEmail(clientEmail);
+			client.setCompleteName(clientName);
+			client.setPhoneNumber(clientPhoneNumber);
+			client.setPassword(clientPassword);
 			webUserEJB.registerClient(client);
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "INFORMACIÓN", "Registro exitoso");
 			FacesContext.getCurrentInstance().addMessage("messages_bean", message);
