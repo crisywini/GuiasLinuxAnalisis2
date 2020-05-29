@@ -1,17 +1,13 @@
 package co.edu.uniquindio.project.beans;
 
-import java.beans.XMLDecoder;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +22,7 @@ import javax.validation.constraints.Size;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
-import org.primefaces.shaded.commons.io.IOUtils;
+import org.primefaces.shaded.commons.io.FilenameUtils;
 
 import com.jsf2leaf.model.LatLong;
 import com.jsf2leaf.model.Layer;
@@ -62,10 +58,12 @@ public class ProjectBean implements Serializable {
 	private List<Project> projects;
 	private ArrayList<String> projectImages;
 	private EstateAgency estateAgencyProject;
+	private ArrayList<UploadedFile> imagesUploaded;
 
 	@PostConstruct
 	public void init() {
 		projectImages = new ArrayList<String>();
+		imagesUploaded = new ArrayList<UploadedFile>();
 		map = new Map();
 		map.setCenter(new LatLong("4.55396", "-75.66038")).setWidth("100%").setHeight("500px").setZoom(10);
 
@@ -155,55 +153,39 @@ public class ProjectBean implements Serializable {
 	 * @param event
 	 */
 	public void uploadFiles(FileUploadEvent event) {
-		System.out.println("AYUDA PARA SABER DONDE ESTÁ EN EL LOG");
 		UploadedFile file = event.getFile();
-		InputStream reader = null;
-		OutputStream writer = null;
-		try {
-			System.out.println("todo bien parce");
-			reader = file.getInputStream();
-			byte[] buffer = new byte[1024];
-			System.out.println("seguimos bien con el buffer");
-			writer = new FileOutputStream("~/uniquindio/analisis2/");
-			int length;
-			System.out.println("Está a punto de copiar");
-			while ((length = reader.read(buffer)) > 0) {
-				writer.write(buffer, 0, length);
-			}
-			//IOUtils.copy(reader, writer);
-			System.out.println("Imprimió cosas cheveres!!");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-//		finally {
-//			if(reader!=null)
-//				try {
-//					reader.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			if(writer!=null)
-//				try {
-//					writer.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
+//		try {
+//			Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2");
+//			String filename = FilenameUtils.getBaseName(file.getFileName()); 
+//			String extension = FilenameUtils.getExtension(file.getFileName());
+//			Path fileP = Files.createTempFile(folder, filename + "-", "." + extension);
+//			try (InputStream input = file.getInputStream()) {
+//				Files.copy(input, fileP, StandardCopyOption.REPLACE_EXISTING);
+//				System.out.println("Escritura correcta");
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
 //		}
-
+		imagesUploaded.add(file);
 		projectImages.add(file.getFileName());
 	}
 	public void createDirectoryImagesProject() {
-		for (String image : projectImages) {
-			File directory = new File("~/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
-			boolean isCreatedDir = directory.mkdir();
-			if(isCreatedDir) {
-				File imageFile = new File("~/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/"+projectName+"/"+image);
+		File directory = new File("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
+		boolean isCreatedDir = directory.mkdir();
+		System.out.println("CARPETA CREADA"+isCreatedDir);
+		if(isCreatedDir) {
+			System.out.println("CARPETA CREADA"+isCreatedDir);
+			for (UploadedFile file : imagesUploaded) {
+				Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
+				String filename = FilenameUtils.getBaseName(file.getFileName()); 
+				String extension = FilenameUtils.getExtension(file.getFileName());
+				Path fileP;
 				try {
-					boolean isCreated = imageFile.createNewFile();
-					if(isCreated) {
-						FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "INFORMACIÓN","IMAGEN CARGADA");
-						FacesContext.getCurrentInstance().addMessage("messages_bean", message);
+					fileP = Files.createTempFile(folder, filename + "-", "." + extension);
+					try (InputStream input = file.getInputStream()) {
+						Files.copy(input, fileP, StandardCopyOption.REPLACE_EXISTING);
+						System.out.println("Escritura correcta");
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
