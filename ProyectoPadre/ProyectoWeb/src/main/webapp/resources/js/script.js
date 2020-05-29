@@ -3,10 +3,18 @@
  * @returns void
  */
 function onLoadIndex(){
-	
-	if(map_map !=null){
+
+	if(typeof map_map !== 'undefined'){
 		map_map.on("locationfound", onLocationFound);
 		//map_map.on("locationerror", onLocationError);
+
+
+		if(document.getElementById("form_register_project")){
+
+			map_map.on('click', onClickMarker);
+		}
+
+
 		var icon = new L.Icon(
 				{
 					iconSize : [ 25, 41 ],
@@ -21,7 +29,7 @@ function onLoadIndex(){
 			maxZoom : 16
 		});
 	}
-	
+
 	/**
 	 * listo, por un lado, lo del color de fondo podía ser cache, cuando haga un cambio de estilos
 	 * en el navegador recargue la página con: ctrl + F5, para que elimine cache.
@@ -30,7 +38,7 @@ function onLoadIndex(){
 	 * Muchas gracias profe. Listo, cualquier cosa me escribe
 	 * saludos a lu
 	 */
-	
+
 }
 /**
  * This method allows to initialize the needed components for the registerProject page
@@ -49,4 +57,20 @@ function onLocationFound(e) {
 }
 function onLocationError(e) {
 	alert(e.message)
+}
+
+function onClickMarker(e) {
+
+	layer.clearLayers();
+	var icon = new L.Icon({iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -45], iconUrl: '/ProyectoWeb/javax.faces.resource/marker-icon.png.xhtml?ln=images', shadowUrl: '/ProyectoWeb/javax.faces.resource/marker-shadow.png.xhtml?ln=images'});
+	var newMark = new L.marker(e.latlng,{icon:icon}).addTo(layer);
+
+	remoteFunction([ {
+		name : "lat",
+		value : e.latlng.lat
+	}, {
+		name : "lng",
+		value : e.latlng.lng
+	} ])
+
 }
