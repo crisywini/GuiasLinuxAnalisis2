@@ -109,12 +109,12 @@ public class ProjectBean implements Serializable {
 					project.setName(projectName);
 					project.setDescription(projectDescription);
 					project.setCity(projectCity);
+					createDirectoryImagesProject();
 					project.setImages(projectImages);
 					project.setEstateAgency(estateAgencyProject);
 					webUserEJB.addProject(project);
 					FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "INFORMACIÓN", "Projecto registrado!");
 					FacesContext.getCurrentInstance().addMessage("messages_bean", message);
-					createDirectoryImagesProject();
 				}else {
 					FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "ADVERTENCIA", "Debes agregar por lo menos una imagen!");
 					FacesContext.getCurrentInstance().addMessage("messages_bean", message);
@@ -156,7 +156,7 @@ public class ProjectBean implements Serializable {
 	 * para las imagenes, pero bueno, profe otra cosa
 	 * en la parte del script, hay dos métodos, pero con el template
 	 * se inicia en ya le explico 
-	 * 
+	 * PONER TODA LA RUTA DE LAS IMAGENES EN EL PROYECTO NO SOLO EL NOMBRE
 	 * @param event
 	 */
 	public void uploadFiles(FileUploadEvent event) {
@@ -174,8 +174,10 @@ public class ProjectBean implements Serializable {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
+		String filename = FilenameUtils.getName(file.getFileName()); 
+		String extension = FilenameUtils.getExtension(file.getFileName());
 		imagesUploaded.add(file);
-		projectImages.add(file.getFileName());
+		projectImages.add(filename+"." + extension);
 	}
 	public void createDirectoryImagesProject() {
 		File directory = new File("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
@@ -185,11 +187,11 @@ public class ProjectBean implements Serializable {
 			System.out.println("CARPETA CREADA"+isCreatedDir);
 			for (UploadedFile file : imagesUploaded) {
 				Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
-				String filename = FilenameUtils.getBaseName(file.getFileName()); 
+				String filename = FilenameUtils.getName(file.getFileName()); 
 				String extension = FilenameUtils.getExtension(file.getFileName());
 				Path fileP;
 				try {
-					fileP = Files.createTempFile(folder, filename + "-", "." + extension);
+					fileP = Files.createTempFile(folder, filename, "." + extension);
 					try (InputStream input = file.getInputStream()) {
 						Files.copy(input, fileP, StandardCopyOption.REPLACE_EXISTING);
 						System.out.println("Escritura correcta");
@@ -199,6 +201,13 @@ public class ProjectBean implements Serializable {
 				}
 			}
 		}
+		ArrayList<String> withAbsolute = new ArrayList<String>();
+		for (String nameImage : projectImages) {
+			withAbsolute.add("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/"+nameImage);
+		}
+		projectImages.clear();
+		projectImages = withAbsolute;
+		
 	}
 	public void onItemUnselect(UnselectEvent<Service> event) {
         FacesContext context = FacesContext.getCurrentInstance();

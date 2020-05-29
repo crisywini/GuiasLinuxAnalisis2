@@ -18,7 +18,7 @@
 como hago para poner ese pero con el de registrar proyecto 
 <p> #{securityBean.authenticated} </p> -->
 
-<h:body onload="onLoadProject()">
+<h:body onload="onLoadIndex()">
 
 	<div id="header">
 		<ui:insert name="header">
@@ -68,7 +68,7 @@ como hago para poner ese pero con el de registrar proyecto
 								<p:menuitem value="Registrar Cliente"
 									action="registerUser?faces-redirect=true" rendered="#{!securityBean.authenticated}" process="@this" />
 								<p:menuitem value="Calculadora crediticia"
-									action="registerUser?faces-redirect=true" process="@this" />
+									action="creditCalculator?faces-redirect=true" process="@this" />
 							</p:menubar>
 							
 							<!-- Menú para clientes con la sesion activa -->
@@ -92,7 +92,7 @@ como hago para poner ese pero con el de registrar proyecto
 									action="registerUser?faces-redirect=true" process="@this" />
 								<p:menuitem value="Lista inmobiliarias"
 									action="registerUser?faces-redirect=true" process="@this" />
-								<p:menuitem value="Lista de CLientes"
+								<p:menuitem value="Lista de Clientes"
 									action="registerUser?faces-redirect=true" process="@this" />
 							</p:menubar>
 
