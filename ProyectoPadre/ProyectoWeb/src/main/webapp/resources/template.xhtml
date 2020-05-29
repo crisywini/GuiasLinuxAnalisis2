@@ -11,11 +11,13 @@
 	<h:outputStylesheet library="css" name="primeflex.css" />
 	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputScript library="js" name="script.js" target="body" />
-	<ui:insert name="script_aux" ></ui:insert>
+	<ui:insert name="script_aux"></ui:insert>
 	<title><ui:insert name="title">Unihogar</ui:insert></title>
 </h:head>
 <!-- Este metodo se inicia y es para poner los marcadores, pero en el index no debería poderse eso
-como hago para poner ese pero con el de registrar proyecto  -->
+como hago para poner ese pero con el de registrar proyecto 
+<p> #{securityBean.authenticated} </p> -->
+
 <h:body onload="onLoadProject()">
 
 	<div id="header">
@@ -27,7 +29,8 @@ como hago para poner ese pero con el de registrar proyecto  -->
 					<div class="ui-g-12 p-grid p-align-center">
 						<div class="p-col-2" align="center">
 							<p:commandLink process="@this" action="index?faces-redirect=true">
-								<p:graphicImage library="images" name="Splash1.png" width="120px"/>
+								<p:graphicImage library="images" name="Splash1.png"
+									width="120px" />
 							</p:commandLink>
 						</div>
 						<div class="p-col-8" align="center">
@@ -41,26 +44,55 @@ como hago para poner ese pero con el de registrar proyecto  -->
 							</h:form>
 						</div>
 						<div class="p-col-2" align="center">
-							<h:form>
-								<p:commandButton value="Iniciar Sesión" />
+							<h:form rendered="#{!securityBean.authenticated}">
+								<p:commandButton value="Iniciar Sesión"
+									oncomplete="PF('login').show()" />
+							</h:form>
+
+							<h:form rendered="#{securityBean.authenticated}">
+							<p:splitButton id="basic" value="#{securityBean.user.email}" icon="pi pi-save">
+									<p:menuitem value="Ir a mi perfil" icon="pi pi-refresh" />
+									<p:menuitem value="Cerrar sesión" icon="pi pi-times" />
+									<p:separator />
+								</p:splitButton>
+
 							</h:form>
 						</div>
 					</div>
 					<div class="ui-g-12" align="center">
 						<h:form class="navigator-menu">
-							<p:menubar>
+						
+						<!-- Menú para usuarios sin la sesion activa -->
+						
+							<p:menubar rendered="#{!securityBean.authenticated}">
 								<p:menuitem value="Registrar Cliente"
+									action="registerUser?faces-redirect=true" rendered="#{!securityBean.authenticated}" process="@this" />
+								<p:menuitem value="Calculadora crediticia"
 									action="registerUser?faces-redirect=true" process="@this" />
-								<p:menuitem value="Registrar Proyecto"
-									action="registerProject?faces-redirect=true" process="@this" />
-
+							</p:menubar>
+							
+							<!-- Menú para clientes con la sesion activa -->
+							
+							<p:menubar rendered="#{securityBean.authenticated and !securityBean.IEstateAgency}">
 								<p:menuitem value="Proyectos favoritos"
 									action="registerUser?faces-redirect=true" process="@this" />
 								<p:menuitem value="Lista inmobiliarias"
 									action="registerUser?faces-redirect=true" process="@this" />
 								<p:menuitem value="Calculadora crediticia"
 									action="registerUser?faces-redirect=true" process="@this" />
-
+							</p:menubar>
+							
+							<!-- Menú para inmobiliaria con la sesion activa -->
+							
+							<p:menubar rendered="#{securityBean.authenticated and securityBean.IEstateAgency}">
+								<p:menuitem value="Registrar Proyecto"
+									action="user/registerProject?faces-redirect=true" process="@this" />
+								<p:menuitem value="Registrar Vivienda"
+									action="registerUser?faces-redirect=true" process="@this" />
+								<p:menuitem value="Lista inmobiliarias"
+									action="registerUser?faces-redirect=true" process="@this" />
+								<p:menuitem value="Lista de CLientes"
+									action="registerUser?faces-redirect=true" process="@this" />
 							</p:menubar>
 
 						</h:form>
@@ -70,6 +102,37 @@ como hago para poner ese pero con el de registrar proyecto  -->
 				<div class="ui-g-1"></div>
 
 			</div>
+
+			<p:dialog widgetVar="login" modal="true" header="Iniciar Sesión"
+				draggable="false" showEffect="fade">
+
+				<h:form>
+
+					<h:panelGrid columns="3">
+
+						<p:outputLabel for="email_login" value="Email:" />
+						<p:inputText id="email_login" value="#{securityBean.emailLogin}"
+							required="true" />
+						<p:message for="email_login" />
+
+						<p:outputLabel for="password_login" value="Password:" />
+						<p:password id="password_login"
+							value="#{securityBean.passwordLogin}" required="true" />
+						<p:message for="password_login" />
+
+					</h:panelGrid>
+
+					<br />
+
+					<p:commandButton value="Iniciar Sesión"
+						action="#{securityBean.authenticateUser}" update="@form" />
+
+					<p:growl for="message_login" showDetail="true" />
+
+				</h:form>
+
+			</p:dialog>
+
 		</ui:insert>
 	</div>
 

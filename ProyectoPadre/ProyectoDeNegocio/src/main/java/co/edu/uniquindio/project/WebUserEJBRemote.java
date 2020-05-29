@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentCityException;
 import co.edu.uniquindio.project.exceptions.NonexistentProject;
 import co.edu.uniquindio.project.exceptions.NonexistentServiceException;
@@ -13,6 +14,7 @@ import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Client;
 import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.Service;
+import co.edu.uniquindio.unihogar.entities.User;
 
 @Remote
 public interface WebUserEJBRemote {
@@ -27,4 +29,5 @@ public interface WebUserEJBRemote {
 	Project getProjectByCode(int code) throws NonexistentProject;
 	List<Service> getAllServices();
 	
+	User authenticateUser(String email, String password) throws AuthenticationException;
 }
