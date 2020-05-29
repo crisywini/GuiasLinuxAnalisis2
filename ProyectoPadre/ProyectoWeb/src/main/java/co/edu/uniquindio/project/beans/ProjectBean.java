@@ -14,9 +14,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -37,6 +39,7 @@ import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.Service;
+import co.edu.uniquindio.unihogar.entities.User;
 
 @Named("projectBean")
 @ViewScoped
@@ -64,6 +67,10 @@ public class ProjectBean implements Serializable {
 	private ArrayList<UploadedFile> imagesUploaded;
 	private List<Service> projectServices;
 	private Service[] selectedServices;
+	
+	@Inject
+	@ManagedProperty(value = "#{securityBean.user}")
+	private User user;
 
 	@PostConstruct
 	public void init() {
@@ -101,7 +108,7 @@ public class ProjectBean implements Serializable {
 
 		try {
 			if(lat!=0 && lng!=0) {
-				if(!projectImages.isEmpty()) {
+				if(!projectImages.isEmpty() && user instanceof EstateAgency) {
 					project = new Project();
 					project.setServices(Arrays.asList(selectedServices));
 					project.setLatitude(lat);
@@ -110,11 +117,16 @@ public class ProjectBean implements Serializable {
 					project.setDescription(projectDescription);
 					project.setCity(projectCity);
 					project.setImages(projectImages);
-					project.setEstateAgency(estateAgencyProject);
+					project.setEstateAgency((EstateAgency)user);
+					
+					createDirectoryImagesProject();
+					
 					webUserEJB.addProject(project);
+					
 					FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "INFORMACIÓN", "Projecto registrado!");
 					FacesContext.getCurrentInstance().addMessage("messages_bean", message);
-					createDirectoryImagesProject();
+					
+					
 				}else {
 					FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "ADVERTENCIA", "Debes agregar por lo menos una imagen!");
 					FacesContext.getCurrentInstance().addMessage("messages_bean", message);
@@ -178,13 +190,13 @@ public class ProjectBean implements Serializable {
 		projectImages.add(file.getFileName());
 	}
 	public void createDirectoryImagesProject() {
-		File directory = new File("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
+		File directory = new File("/home/luisacotte/eclipse/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
 		boolean isCreatedDir = directory.mkdir();
 		System.out.println("CARPETA CREADA"+isCreatedDir);
 		if(isCreatedDir) {
 			System.out.println("CARPETA CREADA"+isCreatedDir);
 			for (UploadedFile file : imagesUploaded) {
-				Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
+				Path folder = Paths.get("/home/luisacotte/eclipse/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
 				String filename = FilenameUtils.getBaseName(file.getFileName()); 
 				String extension = FilenameUtils.getExtension(file.getFileName());
 				Path fileP;
