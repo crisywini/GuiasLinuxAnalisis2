@@ -50,7 +50,8 @@ como hago para poner ese pero con el de registrar proyecto
 							</h:form>
 
 							<h:form rendered="#{securityBean.authenticated}">
-							<p:splitButton id="basic" value="#{securityBean.user.email}" icon="pi pi-save">
+								<p:splitButton id="basic" value="#{securityBean.user.email}"
+									icon="pi pi-save">
 									<p:menuitem value="Ir a mi perfil" icon="pi pi-refresh" />
 									<p:menuitem value="Cerrar sesión" icon="pi pi-times" />
 									<p:separator />
@@ -61,19 +62,21 @@ como hago para poner ese pero con el de registrar proyecto
 					</div>
 					<div class="ui-g-12" align="center">
 						<h:form class="navigator-menu">
-						
-						<!-- Menú para usuarios sin la sesion activa -->
-						
+
+							<!-- Menú para usuarios sin la sesion activa -->
+
 							<p:menubar rendered="#{!securityBean.authenticated}">
 								<p:menuitem value="Registrar Cliente"
-									action="registerUser?faces-redirect=true" rendered="#{!securityBean.authenticated}" process="@this" />
+									action="registerUser?faces-redirect=true"
+									rendered="#{!securityBean.authenticated}" process="@this" />
 								<p:menuitem value="Calculadora crediticia"
 									action="creditCalculator?faces-redirect=true" process="@this" />
 							</p:menubar>
-							
+
 							<!-- Menú para clientes con la sesion activa -->
-							
-							<p:menubar rendered="#{securityBean.authenticated and !securityBean.IEstateAgency}">
+
+							<p:menubar
+								rendered="#{securityBean.authenticated and !securityBean.IEstateAgency}">
 								<p:menuitem value="Proyectos favoritos"
 									action="registerUser?faces-redirect=true" process="@this" />
 								<p:menuitem value="Lista inmobiliarias"
@@ -82,17 +85,20 @@ como hago para poner ese pero con el de registrar proyecto
 									action="creditCalculator?faces-redirect=true" process="@this" />
 
 							</p:menubar>
-							
+
 							<!-- Menú para inmobiliaria con la sesion activa -->
-							
-							<p:menubar rendered="#{securityBean.authenticated and securityBean.IEstateAgency}">
+
+							<p:menubar
+								rendered="#{securityBean.authenticated and securityBean.IEstateAgency}">
 								<p:menuitem value="Registrar Proyecto"
-									action="user/registerProject?faces-redirect=true" process="@this" />
+									action="user/registerProject?faces-redirect=true"
+									process="@this" />
 								<p:menuitem value="Registrar Vivienda"
 									action="registerUser?faces-redirect=true" process="@this" />
 								<p:menuitem value="Lista de Contactos Clientes"
 									action="registerUser?faces-redirect=true" process="@this" />
-								<p:menuitem value="Lista de Clientes"
+								<p:menuitem value="Lista de Contactos Clientes"
+									action="registerUser?faces-redirect=true" process="@this" />
 							</p:menubar>
 
 						</h:form>
