@@ -10,12 +10,14 @@ import javax.persistence.TypedQuery;
 
 import co.edu.uniquindio.project.exceptions.NonexistentCityException;
 import co.edu.uniquindio.project.exceptions.NonexistentProject;
+import co.edu.uniquindio.project.exceptions.NonexistentServiceException;
 import co.edu.uniquindio.project.exceptions.RepeatedProjectException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Client;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
+import co.edu.uniquindio.unihogar.entities.Service;
 
 /**
  * Session Bean implementation class WebUserEJB
@@ -96,6 +98,20 @@ public class WebUserEJB implements WebUserEJBRemote {
 	public EstateAgency getEaProvisional() {
 		EstateAgency ea = entityManager.find(EstateAgency.class, "456");
 		return ea;
+	}
+
+	@Override
+	public Service getService(int code) throws NonexistentServiceException {
+		Service service = entityManager.find(Service.class, code);
+		if(service==null)
+			throw new NonexistentServiceException("El servicio con el código: "+code+" no existe");
+		return service;
+	}
+
+	@Override
+	public List<Service> getAllServices() {
+		TypedQuery<Service> query = entityManager.createNamedQuery(Service.GET_ALL_SERVICES,Service.class);
+		return query.getResultList();
 	}
 	
 

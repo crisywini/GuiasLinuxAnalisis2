@@ -9,7 +9,9 @@
 	xmlns:leaf="http://java.sun.com/jsf/composite/jsf2leaf">
 <ui:composition template="/resources/template.xhtml">
 
-	<ui:define name="script_aux"><h:outputScript name="script2.js" library="js" /></ui:define>
+	<ui:define name="script_aux">
+		<h:outputScript name="script2.js" library="js" />
+	</ui:define>
 
 	<ui:define name="content">
 		<div class="ui-g">
@@ -49,8 +51,19 @@
 							<h:outputLabel value="Imágenes: " for="project_images" />
 							<p:fileUpload id="project_images"
 								listener="#{projectBean.uploadFiles}" multiple="true"
-								mode="advanced" required="true" />
+								mode="advanced" required="true"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 							<p:message for="project_images" />
+
+							<h:outputLabel  value="Servicios:" for="project_services" />
+							<p:selectCheckboxMenu id="project_services"
+								value="#{projectBean.selectedServices}" label="services"
+								multiple="true" filter="true" filterMatchMode="startsWith"
+								panelStyle="width:250px" converter="#{converterService}">
+								<p:ajax event="itemUnselect"
+									listener="#{checkboxView.onItemUnselect}" />
+								<f:selectItems value="#{projectBean.projectServices}" var="service" itemLabel="#{service.name}" />
+							</p:selectCheckboxMenu>
 
 
 						</h:panelGrid>

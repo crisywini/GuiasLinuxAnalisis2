@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.file.UploadedFile;
 import org.primefaces.shaded.commons.io.FilenameUtils;
 
@@ -34,6 +36,7 @@ import co.edu.uniquindio.project.exceptions.RepeatedProjectException;
 import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
+import co.edu.uniquindio.unihogar.entities.Service;
 
 @Named("projectBean")
 @ViewScoped
@@ -59,6 +62,8 @@ public class ProjectBean implements Serializable {
 	private ArrayList<String> projectImages;
 	private EstateAgency estateAgencyProject;
 	private ArrayList<UploadedFile> imagesUploaded;
+	private List<Service> projectServices;
+	private Service[] selectedServices;
 
 	@PostConstruct
 	public void init() {
@@ -68,6 +73,7 @@ public class ProjectBean implements Serializable {
 		map.setCenter(new LatLong("4.55396", "-75.66038")).setWidth("100%").setHeight("500px").setZoom(10);
 
 		List<Project> projects = webUserEJB.getAllProjects();
+		projectServices = webUserEJB.getAllServices();
 		// center="4.55396,-75.66038" width="100%" height="500px" zoom="18" map="{}"
 		fillMarkers(projects);
 
@@ -97,6 +103,7 @@ public class ProjectBean implements Serializable {
 			if(lat!=0 && lng!=0) {
 				if(!projectImages.isEmpty()) {
 					project = new Project();
+					project.setServices(Arrays.asList(selectedServices));
 					project.setLatitude(lat);
 					project.setLength(lng);
 					project.setName(projectName);
@@ -193,6 +200,15 @@ public class ProjectBean implements Serializable {
 			}
 		}
 	}
+	public void onItemUnselect(UnselectEvent<Service> event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+         
+        FacesMessage msg = new FacesMessage();
+        msg.setSummary("Item unselected: " + event.getObject().toString());
+        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+         
+        context.addMessage(null, msg);
+    }
 	public void setMap(Map map) {
 		this.map = map;
 	}
@@ -276,5 +292,22 @@ public class ProjectBean implements Serializable {
 	public void setEstateAgencyProject(EstateAgency estateAgencyProject) {
 		this.estateAgencyProject = estateAgencyProject;
 	}
+
+	public List<Service> getProjectServices() {
+		return projectServices;
+	}
+
+	public void setProjectServices(List<Service> projectServices) {
+		this.projectServices = projectServices;
+	}
+
+	public Service[] getSelectedServices() {
+		return selectedServices;
+	}
+
+	public void setSelectedServices(Service[] selectedServices) {
+		this.selectedServices = selectedServices;
+	}
+	
 
 }

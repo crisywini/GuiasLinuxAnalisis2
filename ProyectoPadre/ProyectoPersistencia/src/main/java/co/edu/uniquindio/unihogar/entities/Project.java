@@ -68,7 +68,7 @@ public class Project implements Serializable {
 	private List<String> images;
 
 	/** The services. */
-	@ManyToMany(mappedBy = "projects") // Esta es la entidad no propietaria
+	@ManyToMany // Esta es la entidad no propietaria
 	@JoinColumn(name = "associated_services")
 	private List<Service> services;
 
@@ -436,6 +436,30 @@ public class Project implements Serializable {
 	 */
 	public void setEstateAgency(EstateAgency estateAgency) {
 		this.estateAgency = estateAgency;
+	}
+
+	public List<Service> getServices() {
+		return services;
+	}
+
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+
+	public List<Dwelling> getDwellings() {
+		return dwellings;
+	}
+
+	public void setDwellings(List<Dwelling> dwellings) {
+		this.dwellings = dwellings;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 }
