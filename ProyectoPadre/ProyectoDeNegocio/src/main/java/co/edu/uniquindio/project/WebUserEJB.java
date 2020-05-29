@@ -113,6 +113,12 @@ public class WebUserEJB implements WebUserEJBRemote {
 		TypedQuery<Service> query = entityManager.createNamedQuery(Service.GET_ALL_SERVICES,Service.class);
 		return query.getResultList();
 	}
+
+	@Override
+	public Project getProjectByCode(int code) throws NonexistentProject {
+		Project project = entityManager.find(Project.class, code);
+		return project;
+	}
 	
 
 }

@@ -24,5 +24,7 @@ public interface WebUserEJBRemote {
 	List<City> getAllCity();
 	City getCityByCode(int code)throws NonexistentCityException;
 	Service getService(int code) throws NonexistentServiceException;
+	Project getProjectByCode(int code) throws NonexistentProject;
 	List<Service> getAllServices();
+	
 }
