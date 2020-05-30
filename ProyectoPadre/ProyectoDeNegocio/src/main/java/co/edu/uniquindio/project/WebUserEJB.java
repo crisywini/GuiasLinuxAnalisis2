@@ -21,6 +21,7 @@ import co.edu.uniquindio.unihogar.entities.Administrator;
 import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Client;
 import co.edu.uniquindio.unihogar.entities.Comment;
+import co.edu.uniquindio.unihogar.entities.Contact;
 import co.edu.uniquindio.unihogar.entities.Dwelling;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
@@ -106,12 +107,12 @@ public class WebUserEJB implements WebUserEJBRemote {
 		entityManager.persist(project);
 
 	}
-	
+
 	@Override
 	public void addDwelling(Dwelling dwelling) throws RepeatedDwellinException {
 		int dwellingCode = dwelling.getCode();
 		TypedQuery<Dwelling> query = entityManager.createNamedQuery(Dwelling.GET_DWELLING_BY_CODE, Dwelling.class);
-		query.setParameter("dwellingcode", dwelling);
+		query.setParameter("code", dwellingCode);
 
 		if (!query.getResultList().isEmpty())
 			throw new RepeatedDwellinException(
@@ -241,6 +242,12 @@ public class WebUserEJB implements WebUserEJBRemote {
 		String subject = "UNIHOGAR: Recupera tu contraseña.";
 		String bodyMessage = "Tu contraseña es: " + user.getPassword();
 		MailSender.sendMailWithGMail(recipient, subject, bodyMessage);
+	}
+
+	@Override
+	public void addContact(Contact contact) {
+		entityManager.persist(contact);
+
 	}
 }
 
