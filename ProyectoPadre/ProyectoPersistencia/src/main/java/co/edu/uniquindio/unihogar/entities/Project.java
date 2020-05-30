@@ -36,7 +36,11 @@ import javax.persistence.*;
 		@NamedQuery(name = Project.GET_MOST_EXPENSIVE_DWELLING_BY_CITY, query = "SELECT d FROM Project p JOIN p.dwellings d WHERE p.city.name = 'Armenia' AND d.price = SELECT MAX(d2.price) FROM Project p2 JOIN p.dwellings d2 WHERE p2.city.name = 'Armenia'"),
 		@NamedQuery(name = Project.GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY, query = "SELECT MAX(d.price), p.city.name FROM Project p LEFT JOIN p.dwellings d GROUP BY p.city"),
 		@NamedQuery(name = Project.GET_TOP_PROJECTS_RATING, query = "SELECT p FROM Project p LEFT JOIN p.ratings r ORDER BY r.score DESC"),
-		@NamedQuery(name = Project.GET_NUMBER_PROJECTS_BY_CITY, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO(COUNT(p), p.city.name) FROM Project p GROUP BY p.city.name") })
+		@NamedQuery(name = Project.GET_NUMBER_PROJECTS_BY_CITY, query = "SELECT new co.edu.uniquindio.unihogar.dto.QueryNumberProjectByCityDTO(COUNT(p), p.city.name) FROM Project p GROUP BY p.city.name") ,
+		@NamedQuery(name = Project.GET_COMMENTS_BY_PROJECT, query = "SELECT c FROM Project p INNER JOIN p.comments c WHERE p.code = :code"),
+		@NamedQuery(name = Project.GET_IMAGES_BY_PROJECT, query = "SELECT i FROM Project p INNER JOIN p.images i WHERE p.code = :code")
+
+})
 public class Project implements Serializable {
 
 	/** The code. */
@@ -132,6 +136,8 @@ public class Project implements Serializable {
 	public static final String GET_MOST_EXPENSIVES_DWELLINGS_BY_CITY = "GET_MOST_EXPENSIVEs_DWELLINGS_BY_CITY";
 	public static final String GET_TOP_PROJECTS_RATING = "GET_TOP_PROJECTS_RATING";
 	public static final String GET_NUMBER_PROJECTS_BY_CITY = "GET_NUMBER_PROJECTS_BY_CITY";
+	public static final String GET_COMMENTS_BY_PROJECT = "GET_COMMENTS_BY_PROJECT";
+	public static final String GET_IMAGES_BY_PROJECT = "GET_IMAGES_BY_PROJECT";
 
 	/**
 	 * Default constructor method.

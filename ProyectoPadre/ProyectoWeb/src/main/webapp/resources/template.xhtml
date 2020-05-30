@@ -48,6 +48,10 @@ como hago para poner ese pero con el de registrar proyecto
 								<p:commandButton value="Iniciar Sesión"
 									oncomplete="PF('login').show()" />
 							</h:form>
+							<br/>
+							<h:form id="send_message_form">
+								<p:commandButton update="@form" value="Recuperar contraseña" action="#{recoverPasswordBean.redirectRecoveryPage}"/>
+							</h:form>
 
 							<h:form rendered="#{securityBean.authenticated}">
 								<p:splitButton id="basic" value="#{securityBean.user.email}"

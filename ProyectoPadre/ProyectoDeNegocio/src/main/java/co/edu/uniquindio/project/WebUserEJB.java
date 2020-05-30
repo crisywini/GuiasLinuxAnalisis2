@@ -12,12 +12,18 @@ import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentCityException;
 import co.edu.uniquindio.project.exceptions.NonexistentProject;
 import co.edu.uniquindio.project.exceptions.NonexistentServiceException;
+import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedProjectException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
+import co.edu.uniquindio.project.util.MailSender;
+import co.edu.uniquindio.unihogar.entities.Administrator;
 import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Client;
+import co.edu.uniquindio.unihogar.entities.Comment;
 import co.edu.uniquindio.unihogar.entities.EstateAgency;
 import co.edu.uniquindio.unihogar.entities.Project;
+import co.edu.uniquindio.unihogar.entities.Rating;
+import co.edu.uniquindio.unihogar.entities.RatingPK;
 import co.edu.uniquindio.unihogar.entities.Service;
 import co.edu.uniquindio.unihogar.entities.User;
 
@@ -74,7 +80,7 @@ public class WebUserEJB implements WebUserEJBRemote {
 		TypedQuery<Project> query = entityManager.createNamedQuery(Project.GET_PROJECT_BY_NAME, Project.class);
 		query.setParameter("projectName", "%" + projectName + "%");
 		if (query.getResultList().isEmpty())
-			throw new NonexistentProject("No se han encontrado proyectos con el nombre: " + projectName);
+			throw new NonexistentProject("No se han encEontrado proyectos con el nombre: " + projectName);
 
 		return query.getResultList();
 	}
@@ -139,4 +145,87 @@ public class WebUserEJB implements WebUserEJBRemote {
 		return project;
 	}
 
+	@Override
+	public List<Comment> getCommentsByProject(int code) {
+		TypedQuery<Comment> query = entityManager.createNamedQuery(Project.GET_COMMENTS_BY_PROJECT, Comment.class);
+		query.setParameter("code", code);
+
+		return query.getResultList();
+	}
+
+
+	@Override
+	public List<String> getImagesByProject(int code) {
+		TypedQuery<String> query = entityManager.createNamedQuery(Project.GET_IMAGES_BY_PROJECT, String.class);
+		query.setParameter("code", code);
+		return query.getResultList();
+	}
+
+	@Override
+	public void addComment(Client client, Project project, String message) {
+		Comment comment = new Comment();
+		comment.setClientCode(client);
+		comment.setProjectCode(project);
+		comment.setMessage(message);
+		entityManager.persist(comment);
+	}
+
+	@Override
+	public Comment getCommentByCode(int code) throws NonexistentUserException {
+		Comment comment = entityManager.find(Comment.class, code);
+		if(comment==null)
+			throw new NonexistentUserException("El comentario con código: "+code+" no se encuentra!");
+		return comment;
+	}
+
+	@Override
+	public void createRating(Client client, Project project, int score) throws RepeatedProjectException{
+		RatingPK pk = new RatingPK(client.getCode(), project.getCode());
+		Rating rating = new Rating();
+		if(entityManager.find(Rating.class, pk)==null) {
+			rating.setClientRating(client);
+			rating.setProjectRating(project);
+			rating.setKey(pk);
+			rating.setScore(score);
+			entityManager.persist(rating);
+		}else
+			throw new RepeatedProjectException("La calificaión ya existe");
+
+	}
+
+	@Override
+	public void addProjectFavorite(Client client, Project favorite) {
+
+		favorite.getFavoriteClients().add(client);
+		client.getFavoriteProjects().add(favorite);
+
+		entityManager.merge(client);
+		entityManager.merge(favorite);
+	}
+
+	@Override
+	public void recoverPassword(String email) throws NonexistentUserException {
+		TypedQuery<Administrator> query2 = entityManager.createNamedQuery(Administrator.ADMINISTRATOR_BY_EMAIL,
+				Administrator.class);
+		query2.setParameter("emailAdmin", email);
+		TypedQuery<Client> query3 = entityManager.createNamedQuery(Client.GET_USER_BY_EMAIL, Client.class);
+		query3.setParameter("email", email);
+
+		User user = null;
+		if(query2.getResultList().isEmpty()) {
+			if(query3.getResultList().isEmpty()) {
+				throw new NonexistentUserException("Usuario no encontrado");
+			}else {
+				user = query3.getResultList().get(0);
+			}
+
+		}else
+			user = query2.getResultList().get(0);
+
+		String recipient = email;
+		String subject = "UNIHOGAR: Recupera tu contraseña.";
+		String bodyMessage = "Tu contraseña es: " + user.getPassword();
+		MailSender.sendMailWithGMail(recipient, subject, bodyMessage);
+	}
 }
+

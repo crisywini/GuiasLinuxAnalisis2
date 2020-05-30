@@ -67,7 +67,7 @@ public class ProjectBean implements Serializable {
 	private ArrayList<UploadedFile> imagesUploaded;
 	private List<Service> projectServices;
 	private Service[] selectedServices;
-	
+
 	@Inject
 	@ManagedProperty(value = "#{securityBean.user}")
 	private User user;
@@ -119,11 +119,10 @@ public class ProjectBean implements Serializable {
 					createDirectoryImagesProject();
 					project.setImages(projectImages);
 					project.setEstateAgency((EstateAgency)user);
-					
-					createDirectoryImagesProject();
-					
+
+
 					webUserEJB.addProject(project);
-					
+
 					FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "INFORMACIÓN", "Projecto registrado!");
 					FacesContext.getCurrentInstance().addMessage("messages_bean", message);
 				}else {
@@ -172,63 +171,61 @@ public class ProjectBean implements Serializable {
 	 */
 	public void uploadFiles(FileUploadEvent event) {
 		UploadedFile file = event.getFile();
-//		try {
-//			Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2");
-//			String filename = FilenameUtils.getBaseName(file.getFileName()); 
-//			String extension = FilenameUtils.getExtension(file.getFileName());
-//			Path fileP = Files.createTempFile(folder, filename + "-", "." + extension);
-//			try (InputStream input = file.getInputStream()) {
-//				Files.copy(input, fileP, StandardCopyOption.REPLACE_EXISTING);
-//				System.out.println("Escritura correcta");
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		String filename = FilenameUtils.getName(file.getFileName()); 
+		//		try {
+		//			Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2");
+		//			String filename = FilenameUtils.getBaseName(file.getFileName()); 
+		//			String extension = FilenameUtils.getExtension(file.getFileName());
+		//			Path fileP = Files.createTempFile(folder, filename + "-", "." + extension);
+		//			try (InputStream input = file.getInputStream()) {
+		//				Files.copy(input, fileP, StandardCopyOption.REPLACE_EXISTING);
+		//				System.out.println("Escritura correcta");
+		//			}
+		//
+		//		} catch (Exception e) {
+		//			e.printStackTrace();
+		//		}
+		String filename = FilenameUtils.getBaseName(file.getFileName()); 
 		String extension = FilenameUtils.getExtension(file.getFileName());
 		imagesUploaded.add(file);
 		projectImages.add(filename+"." + extension);
 	}
 	public void createDirectoryImagesProject() {
-		File directory = new File("/home/luisacotte/eclipse/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
-		boolean isCreatedDir = directory.mkdir();
-		System.out.println("CARPETA CREADA"+isCreatedDir);
-		if(isCreatedDir) {
-			System.out.println("CARPETA CREADA"+isCreatedDir);
-			for (UploadedFile file : imagesUploaded) {
-				Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/");
-				String filename = FilenameUtils.getName(file.getFileName()); 
-				String extension = FilenameUtils.getExtension(file.getFileName());
-				Path fileP;
-				try {
-					fileP = Files.createTempFile(folder, filename, "." + extension);
-					try (InputStream input = file.getInputStream()) {
-						Files.copy(input, fileP, StandardCopyOption.REPLACE_EXISTING);
-						System.out.println("Escritura correcta");
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 		ArrayList<String> withAbsolute = new ArrayList<String>();
-		for (String nameImage : projectImages) {
-			withAbsolute.add("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/"+projectName+"/"+nameImage);
+
+		for (UploadedFile file : imagesUploaded) {
+			Path folder = Paths.get("/home/crisisanchezp/uniquindio/analisis2/glassfish-5.1.0/glassfish5/glassfish/domains/domain1/docroot/unihogar/");
+			String filename = FilenameUtils.getBaseName(file.getFileName()); 
+			String extension = FilenameUtils.getExtension(file.getFileName());
+			System.out.println("-------------->>"+filename);
+			System.out.println("-------------__>"+extension);
+			Path fileP;
+			try {
+				File file2 = null;
+				fileP = Files.createTempFile(folder, filename, "." + extension);
+				file2 = fileP.toFile();
+				System.out.println(file2.getName());
+				withAbsolute.add(file2.getName());
+				try (InputStream input = file.getInputStream()) {
+					Files.copy(input, fileP, StandardCopyOption.REPLACE_EXISTING);
+					System.out.println("Escritura correcta");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		projectImages.clear();
 		projectImages = withAbsolute;
-		
+
 	}
 	public void onItemUnselect(UnselectEvent<Service> event) {
-        FacesContext context = FacesContext.getCurrentInstance();
-         
-        FacesMessage msg = new FacesMessage();
-        msg.setSummary("Item unselected: " + event.getObject().toString());
-        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-         
-        context.addMessage(null, msg);
-    }
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		FacesMessage msg = new FacesMessage();
+		msg.setSummary("Item unselected: " + event.getObject().toString());
+		msg.setSeverity(FacesMessage.SEVERITY_INFO);
+
+		context.addMessage(null, msg);
+	}
 	public void setMap(Map map) {
 		this.map = map;
 	}
@@ -328,6 +325,6 @@ public class ProjectBean implements Serializable {
 	public void setSelectedServices(Service[] selectedServices) {
 		this.selectedServices = selectedServices;
 	}
-	
+
 
 }

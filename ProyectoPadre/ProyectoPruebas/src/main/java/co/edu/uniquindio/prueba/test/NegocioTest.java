@@ -12,6 +12,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.runner.RunWith;
 
 import co.edu.uniquindio.project.AdministratorEJB;
+import co.edu.uniquindio.project.WebUserEJB;
 import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentUserException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
@@ -49,6 +50,8 @@ public class NegocioTest {
 	/** The prueba EJB. */
 	@EJB
 	private AdministratorEJB pruebaEJB;
+	@EJB
+	private WebUserEJB web;
 
 	/**
 	 * Creates the deployment package.
@@ -168,6 +171,17 @@ public class NegocioTest {
 	public void random() {
 		try {
 			System.out.println(pruebaEJB.listEstateAgencyCountProjects());
+		} catch (NonexistentUserException e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	@Transactional(value = TransactionMode.ROLLBACK)
+	@UsingDataSet({"unihogar.json"})
+	public void sendEmail() {
+		try {
+			web.recoverPassword("cgsanchezp@uqvirtual.edu.co");
+			Assert.assertTrue(true);
 		} catch (NonexistentUserException e) {
 			e.printStackTrace();
 		}

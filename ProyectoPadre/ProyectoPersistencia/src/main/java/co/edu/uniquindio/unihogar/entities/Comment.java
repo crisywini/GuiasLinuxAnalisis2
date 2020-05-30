@@ -29,7 +29,7 @@ public class Comment implements Serializable {
 	/** The comment. */
 	@Lob
 	@Column(name = "comment", nullable = false)
-	private String comment;
+	private String message;
 
 	/** The date. */
 	@Temporal(TemporalType.TIMESTAMP)
@@ -71,7 +71,7 @@ public class Comment implements Serializable {
 	public Comment(int code, String comment) {
 		super();
 		this.code = code;
-		this.comment = comment;
+		this.message = comment;
 		this.date = new Date();
 	}
 
@@ -93,22 +93,14 @@ public class Comment implements Serializable {
 		this.code = code;
 	}
 
-	/**
-	 * Gets the comment.
-	 *
-	 * @return the comment
-	 */
-	public String getComment() {
-		return this.comment;
+	
+
+	public String getMessage() {
+		return message;
 	}
 
-	/**
-	 * Sets the comment.
-	 *
-	 * @param comment the new comment
-	 */
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	/**
@@ -205,8 +197,7 @@ public class Comment implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Comment [code=" + code + ", comment=" + comment + ", date=" + date + ", clientCode=" + clientCode
-				+ ", projectCode=" + projectCode + "]";
+		return   message+"\n--->"+clientCode.getCompleteName();
 	}
 
 }
