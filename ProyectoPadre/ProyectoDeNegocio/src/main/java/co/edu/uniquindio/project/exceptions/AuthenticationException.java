@@ -20,5 +20,4 @@ public class AuthenticationException extends Exception implements Serializable {
 	public AuthenticationException(String errorMessage) {
 		super(errorMessage);
 	}
-
 }

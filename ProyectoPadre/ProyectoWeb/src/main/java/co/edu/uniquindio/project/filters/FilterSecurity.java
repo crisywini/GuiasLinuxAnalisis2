@@ -17,12 +17,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.edu.uniquindio.project.beans.SecurityBean;
 
+/**
+ * The class FilterSecurity
+ *
+ * @author Cristian G. Sanchez Pineda
+ * @author Luisa F. Cotte Sanchez
+ */
 @WebFilter("/user/*")
-public class FilterSecurity implements Filter{
+public class FilterSecurity implements Filter {
 
+	/** The bean manager. */
 	@Inject
 	private BeanManager beanManager;
 
+	/**
+	 * Do filter.
+	 *
+	 * @param req   the req
+	 * @param res   the res
+	 * @param chain the chain
+	 * @throws IOException      Signals that an I/O exception has occurred.
+	 * @throws ServletException the servlet exception
+	 */
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
@@ -35,7 +51,7 @@ public class FilterSecurity implements Filter{
 		Bean<?> bean = beanManager.getBeans("securityBean").iterator().next();
 
 		CreationalContext<?> ctx = beanManager.createCreationalContext(bean);
-		SecurityBean securityBean = (SecurityBean) beanManager.getReference(bean,bean.getBeanClass(), ctx);
+		SecurityBean securityBean = (SecurityBean) beanManager.getReference(bean, bean.getBeanClass(), ctx);
 
 		boolean autenticado = securityBean != null && securityBean.isAuthenticated() && securityBean.getIEstateAgency();
 		if (autenticado) {
@@ -43,7 +59,5 @@ public class FilterSecurity implements Filter{
 		} else {
 			response.sendRedirect(loginURL);
 		}
-
 	}
-
 }
