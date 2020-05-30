@@ -8,10 +8,12 @@ import co.edu.uniquindio.project.exceptions.AuthenticationException;
 import co.edu.uniquindio.project.exceptions.NonexistentCityException;
 import co.edu.uniquindio.project.exceptions.NonexistentProject;
 import co.edu.uniquindio.project.exceptions.NonexistentServiceException;
+import co.edu.uniquindio.project.exceptions.RepeatedDwellinException;
 import co.edu.uniquindio.project.exceptions.RepeatedProjectException;
 import co.edu.uniquindio.project.exceptions.RepeatedUserException;
 import co.edu.uniquindio.unihogar.entities.City;
 import co.edu.uniquindio.unihogar.entities.Client;
+import co.edu.uniquindio.unihogar.entities.Dwelling;
 import co.edu.uniquindio.unihogar.entities.Project;
 import co.edu.uniquindio.unihogar.entities.Service;
 import co.edu.uniquindio.unihogar.entities.User;
@@ -30,4 +32,5 @@ public interface WebUserEJBRemote {
 	List<Service> getAllServices();
 	
 	User authenticateUser(String email, String password) throws AuthenticationException;
+	void addDwelling(Dwelling dwelling) throws RepeatedDwellinException;
 }
