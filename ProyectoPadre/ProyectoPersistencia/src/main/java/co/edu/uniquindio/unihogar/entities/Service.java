@@ -20,6 +20,7 @@ public class Service implements Serializable {
 	/** The code. */
 	@Id
 	@Column(name = "code", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int code;
 
 	/** The name. */
@@ -27,7 +28,7 @@ public class Service implements Serializable {
 	private String name;
 
 	/** The projects. */
-	@ManyToMany
+	@ManyToMany(mappedBy = "services")
 	@JoinColumn(name = "associated_projects")
 	private List<Project> projects;
 

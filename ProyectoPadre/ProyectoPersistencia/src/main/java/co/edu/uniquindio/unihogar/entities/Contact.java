@@ -72,11 +72,19 @@ public class Contact implements Serializable {
 	 */
 
 	public Contact(int code, String subject, String content) {
-		super();
 		this.code = code;
 		this.subject = subject;
 		this.content = content;
 		this.date = new Date();
+	}
+	
+
+	public Contact(String subject, String content, Date date, Project projectCode, Client clientCode) {
+		this.subject = subject;
+		this.content = content;
+		this.date = date;
+		this.projectCode = projectCode;
+		this.clientCode = clientCode;
 	}
 
 	/**

@@ -16,7 +16,9 @@ import javax.persistence.*;
 @NamedQueries({
 		@NamedQuery(name = User.AUTHENTICATE_USER, query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
 		@NamedQuery(name = User.GET_ALL_USERS, query = "SELECT u FROM User u"),
-		@NamedQuery(name = User.GET_USER_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email") })
+		@NamedQuery(name = User.GET_USER_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email"),
+		@NamedQuery(name = User.GET_USER_BY_ID, query="SELECT u FROM User u WHERE u.code = :code")
+})
 public class User implements Serializable {
 
 	/** The code. */
@@ -38,7 +40,9 @@ public class User implements Serializable {
 	public static final String AUTHENTICATE_USER = "AUTHENTICATE_USER";
 	public static final String GET_ALL_USERS = "GET_ALL_USERS";
 	public static final String GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
+	public static final String GET_USER_BY_ID = "GET_USER_BY_ID";
 
+	
 	/**
 	 * Default constructor method.
 	 */

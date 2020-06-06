@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="primeflex.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="script.js" target="body" />
+	<ui:insert name="script_aux"></ui:insert>
+	<title><ui:insert name="title">Unihogar</ui:insert></title>
+</h:head>
+<!-- Este metodo se inicia y es para poner los marcadores, pero en el index no debería poderse eso
+como hago para poner ese pero con el de registrar proyecto 
+<p> #{securityBean.authenticated} </p> -->
+
+<h:body onload="onLoadIndex()">
+
+	<div id="header">
+		<ui:insert name="header">
+			<div class="ui-g menu-page">
+				<div class="ui-g-1"></div>
+				<div class="ui-g-10">
+
+					<div class="ui-g-12 p-grid p-align-center">
+						<div class="p-col-2" align="center">
+							<p:commandLink process="@this" action="index?faces-redirect=true">
+								<p:graphicImage library="images" name="Splash1.png"
+									width="120px" />
+							</p:commandLink>
+						</div>
+						<div class="p-col-8" align="center">
+							<h:form>
+								<div class="div-inline input-search ui-inputgroup">
+									<p:inputText placeholder="Ingrese el proyecto a buscar"
+										value="#{searchsBean.query}" required="true" />
+									<p:commandButton update="@form" icon="pi pi-search"
+										action="#{searchsBean.search}" styleClass="white-button" />
+								</div>
+							</h:form>
+						</div>
+						<div class="p-col-2" align="center">
+							<h:form rendered="#{!securityBean.authenticated}">
+								<p:commandButton value="Iniciar Sesión"
+									oncomplete="PF('login').show()" />
+							</h:form>
+							<br/>
+							<h:form id="send_message_form">
+								<p:commandButton update="@form" value="Recuperar contraseña" action="#{recoverPasswordBean.redirectRecoveryPage}"/>
+							</h:form>
+
+							<h:form rendered="#{securityBean.authenticated}">
+								<p:splitButton id="basic" value="#{securityBean.user.email}"
+									icon="pi pi-save">
+									<p:menuitem value="Cerrar sesión" icon="pi pi-times"
+										action="#{securityBean.signOff}" process="@this" />
+									<p:separator />
+								</p:splitButton>
+
+							</h:form>
+						</div>
+					</div>
+					<div class="ui-g-12" align="center">
+						<h:form class="navigator-menu">
+
+							<!-- Menú para usuarios sin la sesion activa -->
+
+							<p:menubar rendered="#{!securityBean.authenticated}">
+								<p:menuitem value="Registrar Cliente"
+									action="registerUser?faces-redirect=true"
+									rendered="#{!securityBean.authenticated}" process="@this" />
+								<p:menuitem value="Calculadora crediticia"
+									action="creditCalculator?faces-redirect=true" process="@this" />
+							</p:menubar>
+
+							<!-- Menú para clientes con la sesion activa -->
+
+							<p:menubar
+								rendered="#{securityBean.authenticated and !securityBean.IEstateAgency}">
+								<p:menuitem value="Proyectos favoritos"
+									action="registerUser?faces-redirect=true" process="@this" />
+								<p:menuitem value="Lista inmobiliarias"
+									action="registerUser?faces-redirect=true" process="@this" />
+								<p:menuitem value="Calculadora crediticia"
+									action="creditCalculator?faces-redirect=true" process="@this" />
+
+							</p:menubar>
+
+							<!-- Menú para inmobiliaria con la sesion activa -->
+
+							<p:menubar
+								rendered="#{securityBean.authenticated and securityBean.IEstateAgency}">
+								<p:menuitem value="Registrar Proyecto"
+									action="user/registerProject?faces-redirect=true"
+									process="@this" />
+								<p:menuitem value="Registrar Vivienda"
+									action="user/registerDwelling?faces-redirect=true"
+									process="@this" />
+							</p:menubar>
+
+						</h:form>
+					</div>
+
+				</div>
+				<div class="ui-g-1"></div>
+
+			</div>
+
+			<p:dialog widgetVar="login" modal="true" header="Iniciar Sesión"
+				draggable="false" showEffect="fade">
+
+				<h:form>
+
+					<h:panelGrid columns="3">
+
+						<p:outputLabel for="email_login" value="Email:" />
+						<p:inputText id="email_login" value="#{securityBean.emailLogin}"
+							required="true" />
+						<p:message for="email_login" />
+
+						<p:outputLabel for="password_login" value="Password:" />
+						<p:password id="password_login"
+							value="#{securityBean.passwordLogin}" required="true" />
+						<p:message for="password_login" />
+
+					</h:panelGrid>
+
+					<br />
+
+					<p:commandButton value="Iniciar Sesión"
+						action="#{securityBean.authenticateUser}" update="@form" />
+
+					<p:growl for="message_login" showDetail="true" />
+
+				</h:form>
+
+			</p:dialog>
+
+		</ui:insert>
+	</div>
+
+
+	<div id="content">
+		<ui:insert name="content">
+    	Content area.  See comments below this line in the source.
+    	<!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+			<!-- <div> -->
+			<!-- <ui:include src="content.xhtml"/> -->
+			<!-- </div> -->
+		</ui:insert>
+	</div>
+
+	<div id="footer">
+		<ui:insert name="footer">
+			<div class="ui-g">
+				<div class="ui-g-1"></div>
+				<div class="ui-g-10">
+					<p>Uniquindio análisis 2 2020</p>
+				</div>
+				<div class="ui-g-1"></div>
+
+			</div>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

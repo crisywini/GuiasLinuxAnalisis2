@@ -26,6 +26,7 @@ public class Dwelling implements Serializable {
 	/** The code. */
 	@Id
 	@Column(name = "code", nullable = false, length = 10)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int code;
 
 	/** The url image. */

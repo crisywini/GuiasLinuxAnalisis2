@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:leaf="http://java.sun.com/jsf/composite/jsf2leaf">
+<ui:composition template="/resources/template.xhtml">
+
+
+	<ui:define name="content">
+		<div class="ui-g">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<p:panel header="Formulario para el registro de viviendas"
+					style="margin-bottom:20px">
+
+					<h:form>
+
+						<h:panelGrid columns="3">
+							<h:outputLabel value="Area:  (metros cuadrados)"
+								for="area_dwelling" />
+							<p:inputText id="area_dwelling" value="#{dwellingBean.area}"
+								required="true" />
+							<p:message for="area_dwelling" />
+
+							<h:outputLabel value="Descripción: " for="description_dwelling" />
+							<p:inputTextarea id="description_dwelling" rows="6" cols="33"
+								value="#{dwellingBean.description}" required="true" />
+							<p:message for="description_dwelling" />
+
+							<h:outputLabel value="Numero baños: " for="numbathroom_dwelling" />
+							<p:inputText id="numbathroom_dwelling"
+								value="#{dwellingBean.numBathroom}" required="true" />
+							<p:message for="numbathroom_dwelling" />
+
+							<h:outputLabel value="Numero habitaciones: "
+								for="numroom_dwelling" />
+							<p:inputText id="numroom_dwelling"
+								value="#{dwellingBean.numRoom}" required="true" />
+							<p:message for="numroom_dwelling" />
+
+							<h:outputLabel value="Precio: " for="price_dwelling" />
+							<p:inputText id="price_dwelling" value="#{dwellingBean.price}"
+								required="true" />
+							<p:message for="price_dwelling" />
+
+							<h:outputLabel value="Tipo vivienda: " for="type_dwelling" />
+							<p:selectOneMenu id="type_dwelling" value="#{dwellingBean.type}"
+								required="true">
+								<f:selectItem itemLabel="Selecciona un tipo de vivienda"
+									noSelectionOption="true" />
+								<f:selectItems value="#{dwellingBean.types}" var="type"
+									itemLabel="#{type}" />
+							</p:selectOneMenu>
+							<p:message for="type_dwelling" />
+
+							<h:outputLabel value="Imágenes: " for="dwelling_images" />
+							<p:fileUpload id="dwelling_images"
+								listener="#{dwellingBean.uploadFiles}" multiple="true"
+								mode="advanced" required="true"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+							<p:message for="dwelling_images" />
+							<p:message for="dwelling_images" />
+						</h:panelGrid>
+						<br />
+
+						<h:panelGrid columns="3">
+							<p:outputLabel for="project" value="Proyecto asociado:" />
+							<p:selectOneMenu id="project" value="#{dwellingBean.project}"
+								converter="#{converterProject}" required="true">
+								<f:selectItem itemLabel="Selecciona un proyecto"
+									noSelectionOption="true" />
+								<f:selectItems value="#{dwellingBean.projects}" var="project"
+									itemLabel="#{project.name}" />
+							</p:selectOneMenu>
+							<p:message for="project" />
+						</h:panelGrid>
+
+
+
+
+						<p:commandButton update="@form" value="Registrar vivienda"
+							action="#{dwellingBean.registerDwelling}" />
+						<p:growl for="messages_bean" showDetail="true" />
+					</h:form>
+
+				</p:panel>
+			</div>
+			<div class="ui-g-1"></div>
+		</div>
+	</ui:define>
+
+
+</ui:composition>
+</html>

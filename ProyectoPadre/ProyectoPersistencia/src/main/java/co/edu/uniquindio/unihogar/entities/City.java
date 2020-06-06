@@ -26,6 +26,7 @@ public class City implements Serializable {
 	/** The code. */
 	@Id
 	@Column(name = "code", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int code;
 
 	/** The name. */
@@ -129,6 +130,14 @@ public class City implements Serializable {
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
+	
+	/**
+	 * Falta el hashcode y equals
+	 * 
+	 * 
+	 */
+	
+	
 
 	/**
 	 * To string.
@@ -138,6 +147,28 @@ public class City implements Serializable {
 	@Override
 	public String toString() {
 		return "City [code=" + code + ", name=" + name + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + code;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		City other = (City) obj;
+		if (code != other.code)
+			return false;
+		return true;
 	}
 
 }

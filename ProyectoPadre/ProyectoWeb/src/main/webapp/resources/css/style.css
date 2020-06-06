@@ -1,0 +1,15 @@
+body{
+	margin: 0;
+}
+.div-inline{
+	display: inline-block !important;
+	margin-right: 10px; 
+}
+.menu-page{
+	background: #692a97;
+	border-bottom: 1px solid #75697e;
+}
+#footer{
+	background: #692a97;
+	border-bottom: 1px solid #75697e;
+}

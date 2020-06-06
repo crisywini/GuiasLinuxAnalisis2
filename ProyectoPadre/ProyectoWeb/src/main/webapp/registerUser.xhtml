@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/resources/template.xhtml">
+	<ui:define name="content">
+		<div class="ui-g">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<p:panel header="Formulario para el registro de nuevos clientes"
+					style="margin-bottom:20px">
+					<h:form>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="Código: " for="user_code" />
+							<p:inputText id="user_code" value="#{userBean.clientCode}"
+								required="true" requiredMessage="Debes ingresar el código"
+								validatorMessage="El código debe tener entre 7 y 10 caracteres">
+								<f:validateLength minimum="7" maximum="10" />
+							</p:inputText>
+							<p:message for="user_code" />
+							
+							<h:outputLabel value="Contraseña: " for="inlineFeedback" />
+							<p:password id="inlineFeedback"
+								value="#{userBean.clientPassword}" feedback="true" inline="true"
+								required="true" requiredMessage="Debes ingresar la contraseña" />
+							<p:message for="inlineFeedback" />
+							
+							<h:outputLabel value="Nombre: " for="user_name" />
+							<p:inputText id="user_name" value="#{userBean.clientName}"
+								required="true" requiredMessage="Debes ingresar el nombre" />
+							<p:message for="user_name" />
+
+
+							<h:outputLabel value="Email: " for="user_email" />
+							<p:inputText id="user_email" value="#{userBean.clientEmail}"
+								required="true"
+								requiredMessage="Debes ingresar el correo electrónico" />
+							<p:message for="user_email" />
+
+
+							<h:outputLabel value="Número de telefono: "
+								for="user_phone_nombre" />
+							<p:inputText id="user_phone_nombre"
+								value="#{userBean.clientPhoneNumber}" />
+							<p:message for="user_phone_nombre" />
+
+							<p:outputLabel value="Fecha de nacimiento: "
+								for="user_date_of_birth" />
+							<p:datePicker id="user_date_of_birth"
+								value="#{userBean.clientDateOfBirth}" navigator="true"
+								yearRange="c-80;c+1" />
+							<p:message for="user_date_of_birth" />
+
+						</h:panelGrid>
+
+						<p:commandButton update="@form" value="Registrate"
+							action="#{userBean.registerClient}" />
+						<p:growl for="messages_bean" showDetail="true" />
+					</h:form>
+
+				</p:panel>
+			</div>
+			<div class="ui-g-1"></div>
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/resources/template.xhtml">
+	<ui:define name="title">Unihogar-Recuperar Contraseña</ui:define>
+
+	<ui:define name="content">
+		<div class="ui-g">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<p:panel header="Recupera tu contraseña"
+					style="margin-bottom:20px">
+					<br />
+					<h:form id="form_recover">
+						<h:panelGrid columns="2">
+							<h:outputLabel value="Correo electrónico: " for="email" />
+							<h:inputText id="email" value="#{recoverPasswordBean.email}"
+								required="true" requiredMessage="Debes ingresar el correo" />
+						</h:panelGrid>
+						<br />
+
+						<p:commandButton update="@form" value="Enviar correo"
+							action="#{recoverPasswordBean.sendEmailValidation}" />
+						<p:growl for="messages_bean" showDetail="true" />
+					</h:form>
+				</p:panel>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
